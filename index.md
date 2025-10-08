@@ -1,20 +1,18 @@
 # 🧠 MD Personal
 
-Bem-vindo ao **MD Personal** — base de conteúdo do Centro de Neurotreinamento.  
+Bem-vindo ao **Blog CNT** — a base de conteúdo do **MD Personal**.
+
 Aqui você encontra artigos que viram roteiros de vídeo sobre **treinamento, neurociência e saúde mental**.
 
 ---
 
-## 🏋️ Temas que trabalhamos
-- Treinamento físico e performance  
-- Neurociência aplicada ao treino  
-- Nutrição e comportamento alimentar  
-- Saúde emocional e estilo de vida  
+## 🆕 Últimos artigos
+👉 Acesse a aba [Blog](./blog) para ver todos os posts.
 
 ---
 
-👉 **Siga também:**
-- [Canal no YouTube](https://www.youtube.com/@marciodowglastreinador)
+📺 **Siga também:**
+- [YouTube](https://youtube.com/@marciodowglas)
 - [Canal no Youtube](https://www.youtube.com/@centrodeneurotreinamento)
 - [Instagram](https://instagram.com/marciodowglasfitness)
 
