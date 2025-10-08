@@ -7,7 +7,7 @@ Aqui você encontra artigos que viram roteiros de vídeo sobre **treinamento, ne
 ---
 
 ## 🆕 Últimos artigos
-👉 Acesse a aba [Blog](./blog) para ver todos os posts.
+👉 Veja tudo em [Blog](./blog)
 
 ---
 
