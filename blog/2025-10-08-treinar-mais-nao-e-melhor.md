@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Treinar mais ≠ Treinar melhor"
 date: 2025-10-08
 categories: [Treinamento]
