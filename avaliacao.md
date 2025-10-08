@@ -9,7 +9,7 @@ title: Avaliação gratuita
   <p>Responda o questionário e depois fale comigo no WhatsApp para o próximo passo.</p>
 
   <div style="margin:2rem 0;">
-    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc5gYXFmf8mT6ELaK2sm5b2i02Pd3EpLW-1i3Ko0ODGajbngw/viewform?usp=header" target="_blank">
+    <a class="btn" href="https://forms.gle/cTDSRmT5Q5JPw7zaA" target="_blank">
       Fazer avaliação agora
     </a>
   </div>
