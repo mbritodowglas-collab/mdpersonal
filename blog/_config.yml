@@ -1,0 +1,15 @@
+title: "MD Personal • Blog CNT"
+description: "Artigos sobre treino, neurociência e saúde — base para vídeos e materiais do canal CNT."
+theme: jekyll-theme-minimal
+author: "Márcio Dowglas"
+show_downloads: false
+
+# Links de rede social
+social_links:
+  youtube: https://youtube.com/@marciodowglas
+  instagram: https://instagram.com/marciodowglasfitness
+
+# Navegação
+header_pages:
+  - index.md
+  - blog
