@@ -37,3 +37,5 @@ defaults:
     values:
       layout: "page"
 google_analytics: "" # opcional: cole o ID do GA4
+rebuild_trigger: "ajuste-de-estilo"
+
