@@ -1,18 +1,14 @@
 title: "MD Personal Trainer • Blog CNT"
 description: "Treino, neurociência e saúde mental — base de conteúdo do canal CNT."
 author: "Márcio Dowglas"
-email: "mdowglastrainer@gmail.com" # opcional
 theme: jekyll-theme-minimal
 show_downloads: false
 
-# Configurações do site
 url: "https://mbritodowglas-collab.github.io"
 baseurl: "/mdpersonal"
 
-# Dados personalizados
-whatsapp: 5592981037222 
+whatsapp: 5592981037222
 
-# Configurações extras
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
