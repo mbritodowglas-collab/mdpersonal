@@ -18,13 +18,11 @@ title: Início
   <h2>Últimos artigos</h2>
 
   <div class="social-area">
-    <a href="https://www.instagram.com/marciodowglasfitness" target="_blank" class="social-link">
-      <img src="{{ '/assets/instagram.svg' | relative_url }}" alt="Instagram" width="28" height="28">
-      <span>@marciodowglasfitness</span>
-    </a>
-    <a href="{{ '/recursos' | relative_url }}" class="social-link recurso-link">
-      <img src="{{ '/assets/recursos.svg' | relative_url }}" alt="Recursos">
-      <span>Ferramentas</span>
+    <a href="{{ '/utilitarios' | relative_url }}" class="social-link recurso-link">
+  <img src="{{ '/assets/recursos.svg' | relative_url }}" alt="Utilitários de treino">
+  <span>Utilitários de treino</span>
+</a>
+    
     </a>
   </div>
 
