@@ -15,7 +15,7 @@
       align-items:center;
       justify-content:center;
       min-height:100vh;
-      background-image:url('{{ '/assets/avaliacao-bg.jpg' | relative_url }}');
+      background-image:url('{{ page.bg | default: "/assets/avaliacao-bg.jpg" | relative_url }}?v={{ site.time | date: "%s" }}');
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
