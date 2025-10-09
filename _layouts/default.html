@@ -11,16 +11,23 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-  <header>
-    <h1>Márcio Dowglas Personal Trainer</h1>
-    <nav>
-      <a href="{{ '/' | relative_url }}">Início</a>
-      <a href="{{ '/blog' | relative_url }}">Blog</a>
-      <a href="{{ '/avaliacao' | relative_url }}" class="cta">Avaliação</a>
-      <a href="{{ '/recursos' | relative_url }}">Recursos</a>
-      <a href="{{ '/about' | relative_url }}">Sobre</a>
-    </nav>
-  </header>
+  <header class="site-header">
+  <a href="{{ '/' | relative_url }}" class="brand" aria-label="{{ site.title }}">
+    {% if site.logo %}
+      <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}">
+    {% else %}
+      <span class="brand-text">{{ site.title }}</span>
+    {% endif %}
+  </a>
+  <nav>
+    <a href="{{ '/' | relative_url }}">Início</a>
+    <a href="{{ '/blog' | relative_url }}">Blog</a>
+    <a href="{{ '/avaliacao' | relative_url }}" class="cta">Avaliação</a>
+    <a href="{{ '/recursos' | relative_url }}">Recursos</a>
+    <a href="{{ '/about' | relative_url }}">Sobre</a>
+  </nav>
+</header>
+
 
   {{ content }}
 
