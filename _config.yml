@@ -10,12 +10,12 @@ plugins:
   - jekyll-seo-tag
 author:
   name: "Márcio Dowglas"
-  email: "seuemail@exemplo.com"
+  email: "mdowglastrainer@gmail.com"
 social_links:
   instagram: "https://instagram.com/marciodowglasfitness"
-  youtube: "https://youtube.com/@seucanal"
-  whatsapp: "https://wa.me/5592999999999"
-  github: "https://github.com/seuusuario"
+  youtube: "https://youtube.com/@marciodowglastreinador"
+  whatsapp: "https://wa.me/5592981037222"
+  github: "https://github.com/mdpersonal"
 markdown: kramdown
 kramdown:
   input: GFM
