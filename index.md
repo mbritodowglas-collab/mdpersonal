@@ -3,7 +3,7 @@ layout: default
 title: Início
 ---
 
-<section class="hero" style="background-image:url('{{ '/assets/hero.jpg' | relative_url }}?v={{ site.time | date: '%s' }}')">
+<section class="hero" style="background-image:url('{{ '/assets/hero-1.jpg' | relative_url }}?v={{ site.time | date: '%s' }}')">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>MÁRCIO DOWGLAS–PERSONAL TRAINER</h1>
