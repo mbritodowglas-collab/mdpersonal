@@ -4,22 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <style>
-    body{margin:0;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      display:flex;align-items:center;justify-content:center;min-height:100vh;
-      background: #000 url('{{ page.bg | default: "/assets/css/avaliacao-bg.jpg" | relative_url }}?v={{ site.time | date: "%s" }}') no-repeat center/cover;}
-    body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);pointer-events:none;z-index:0}
-    .avaliacao-box{position:relative;z-index:1;background:rgba(0,0,0,.75);padding:2rem;border-radius:12px;max-width:720px;width:90%;text-align:center;box-shadow:0 0 25px rgba(255,0,0,.15)}
-    h1{color:var(--dourado,#e3c565);margin:.25rem 0 1rem}
-    .btn{background:#d62828;color:#fff;padding:.9rem 2rem;border:none;border-radius:8px;text-decoration:none;font-weight:700;transition:.2s}
-    .btn:hover{background:#ff4040;transform:translateY(-2px)}
-    body.obrigado .btn{background:#25d366;color:#000}
-    body.obrigado .btn:hover{background:#1ebe5d}
-    @media (max-width:560px){ .avaliacao-box{padding:1.25rem} h1{font-size:1.4rem} }
+    /* ===== Fundo da página de Avaliação ===== */
+    body{
+      margin:0;
+      color:#fff;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      background:#000 url('{{ "/assets/css/avaliacao-bg.png" | relative_url }}?v={{ site.time | date: "%s" }}') center/cover no-repeat;
+    }
+    /* Overlay escuro */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.45);
+      z-index:0;
+      pointer-events:none;
+    }
+    /* Caixa central */
+    .avaliacao-box{
+      position:relative;
+      z-index:1;
+      background:rgba(0,0,0,.75);
+      padding:2rem;
+      border-radius:12px;
+      max-width:720px;
+      width:90%;
+      text-align:center;
+      box-shadow:0 0 25px rgba(214,40,40,.18);
+      margin:6vh auto;
+    }
+    h1{
+      color:#e3c565;
+      margin:.25rem 0 1rem;
+      font-size:1.8rem;
+    }
+    p{
+      opacity:.9;
+      line-height:1.6;
+      margin-bottom:1.5rem;
+    }
+    .btn{
+      background:#d62828;
+      color:#fff;
+      padding:.9rem 2rem;
+      border:none;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.25s;
+      display:inline-block;
+    }
+    .btn:hover{
+      background:#ff4040;
+      transform:translateY(-2px);
+    }
+    /* Botão verde no "obrigado" */
+    body.obrigado .btn{
+      background:#25d366; /* verde WhatsApp */
+      color:#000;
+    }
+    body.obrigado .btn:hover{
+      background:#1ebe5d;
+    }
+    @media (max-width:560px){
+      .avaliacao-box{ padding:1.25rem; }
+      h1{ font-size:1.4rem; }
+    }
   </style>
 </head>
-<body class="{{ page.body_class }}">
+
+<body class="{{ page.body_class | default: 'avaliacao' }}">
   <div class="avaliacao-box">
     {{ content }}
   </div>
