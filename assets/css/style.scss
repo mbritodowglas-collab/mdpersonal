@@ -1,12 +1,55 @@
-
-  ---
-# Só para o Jekyll processar via Sass
 ---
-  @import "minima";
-  .topbar { padding: .5rem 0; font-size: .9rem; }
-  .topbar .social a { margin-right: .75rem; text-decoration: none; }
-  .site-header .site-title { font-weight: 800; }
-  .site-nav a { margin-left: .75rem; }
-  .wrapper { max-width: 980px; }
-  .post-list { list-style: none; padding-left: 0; }
-  .post-list li { margin-bottom: .5rem; }
+# Mantém o pipeline Sass do Jekyll
+---
+@import "minima";
+
+/* ===== Paleta & base ===== */
+:root {
+  --bg: #0b0b0c;
+  --fg: #f3f3f3;
+  --muted: #c9c9c9;
+  --primary: #e31b23;
+  --card: #141416;
+  --line: #222227;
+}
+
+html, body { background: var(--bg); color: var(--fg); }
+
+/* Tipografia */
+p { line-height: 1.7; text-align: justify; }
+.lead { font-size: 1.15rem; opacity: .92; }
+
+/* Links */
+a { color: var(--primary); }
+a:hover { opacity: .85; }
+
+/* Header */
+.site-header { background: #0e0e10; border-bottom: 1px solid var(--line); }
+.site-header .site-title, .site-header .site-nav a { color: var(--fg) !important; }
+.site-header .site-title { font-weight: 800; letter-spacing: .3px; }
+
+/* Topbar social */
+.topbar { padding: .5rem 0; border-bottom: 1px solid var(--line); margin-bottom: .75rem; }
+.topbar .social a { color: var(--muted); margin-right: 1rem; text-decoration: none; }
+.topbar .social a:hover { color: var(--fg); }
+
+/* Largura */
+.page-content .wrapper, .wrapper { max-width: 1040px; }
+
+/* Lista de posts */
+.post-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 820px) { .post-list { grid-template-columns: 1fr; } }
+.post-list li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem; }
+.post-link { font-weight: 700; }
+
+/* Hero */
+.hero { background: linear-gradient(90deg, #101013, #16161a); border: 1px solid var(--line); border-radius: 16px; padding: 1.2rem 1.4rem; margin: .8rem 0 1.2rem; }
+.hero h1 { margin: 0 0 .25rem 0; }
+.hero p { margin: 0; }
+
+/* Botões */
+.btn { display: inline-block; padding: .6rem .9rem; border-radius: 10px; border: 1px solid var(--primary); color: var(--fg); text-decoration: none; }
+.btn:hover { background: rgba(227,27,35,.08); }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); }
