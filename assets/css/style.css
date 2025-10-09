@@ -113,3 +113,19 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 }
 .btn.destaque:hover{ background:#ff4040; transform:translateY(-2px); }
 
+/* ===== Desktop: descer um pouco o bloco do hero para não cobrir o rosto ===== */
+@media (min-width: 992px) {
+  .hero {
+    background-position: top center !important; 
+    min-height: 92vh;                            
+  }
+  .hero-content {
+    margin-top: 12vh;                            
+  }
+  .btn-row {                                   
+    margin-top: 2.2rem;
+  }
+}
+
+
+
