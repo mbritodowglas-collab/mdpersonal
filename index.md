@@ -19,7 +19,7 @@ title: Início
 
   <div class="social-area">
     <a href="{{ '/utilitarios' | relative_url }}" class="social-link recurso-link">
-  <img src="{{ '/assets/recursos.svg' | relative_url }}" alt="Utilitários de treino">
+  <img src="{{ '/assets/recursos.svg' | relative_url }}" alt="Utilitários">
   <span>Utilitários de treino</span>
 </a>
     
