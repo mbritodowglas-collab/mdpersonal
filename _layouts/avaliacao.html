@@ -8,7 +8,7 @@
   <style>
     body{margin:0;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       display:flex;align-items:center;justify-content:center;min-height:100vh;
-      background: #000 url('{{ page.bg | default: "/assets/avaliacao-bg.jpg" | relative_url }}?v={{ site.time | date: "%s" }}') no-repeat center/cover;}
+      background: #000 url('{{ page.bg | default: "/assets/css/avaliacao-bg.jpg" | relative_url }}?v={{ site.time | date: "%s" }}') no-repeat center/cover;}
     body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);pointer-events:none;z-index:0}
     .avaliacao-box{position:relative;z-index:1;background:rgba(0,0,0,.75);padding:2rem;border-radius:12px;max-width:720px;width:90%;text-align:center;box-shadow:0 0 25px rgba(255,0,0,.15)}
     h1{color:var(--dourado,#e3c565);margin:.25rem 0 1rem}
