@@ -122,4 +122,31 @@ blockquote {
 .social.whatsapp { background: #25d366; }
 .social-links a:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
+.social-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  transition: .25s;
+}
+
+.social.instagram { background: linear-gradient(45deg, #e1306c, #f77737); }
+.social.youtube { background: #ff0000; }
+.social.tiktok { background: linear-gradient(45deg, #25f4ee, #fe2c55); }
+.social.whatsapp { background: #25d366; }
+.social.linkedin { background: #0077b5; }
+
+.social-links a:hover { filter: brightness(1.2); transform: translateY(-2px); }
+
+
 
