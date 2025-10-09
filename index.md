@@ -5,7 +5,7 @@ title: Início
 
 <div class="hero" style="background-image:url('{{ "/assets/hero.jpg" | relative_url }}')">
   <div class="hero-inner">
-    <h1>MÁRCIO DOWGLAS PERSONAL TRAINER • BLOG CNT</h1>
+    <h1>MÁRCIO DOWGLAS-PERSONAL TRAINER</h1>
     <p>Treino, neurociência e saúde mental — artigos que viram vídeos e resultados reais.</p>
 
     <div class="btn-row">
