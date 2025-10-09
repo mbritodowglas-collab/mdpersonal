@@ -7,9 +7,6 @@ show_downloads: false
 url: "https://mbritodowglas-collab.github.io"
 baseurl: "/mdpersonal"
 
-
-whatsapp: 5592981037222
-
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
@@ -17,7 +14,7 @@ permalink: pretty
 # Redes Sociais
 social:
   instagram: "https://instagram.com/marciodowglasfitness"
-  youtube: "https://youtube.com/@marciodowglas"
-  tiktok: "https://tiktok.com/@marciodowglas"
+  youtube: "https://www.youtube.com/@marciodowglastreinador"
+  Youtube 2: "https://www.youtube.com/@centrodeneurotreinamento"
   whatsapp: "https://wa.me/5592999999999"
-  linkedin: "https://linkedin.com/in/marciodowglas"
+ 
