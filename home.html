@@ -1,0 +1,22 @@
+
+---
+layout: default
+---
+<div class="home">
+  {% include header-custom.html %}
+  <main class="content">
+    {{ content }}
+    <h2>Últimos posts</h2>
+    <ul class="post-list">
+      {% for post in site.posts limit:6 %}
+        <li>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+          <span class="post-meta">{{ post.date | date: "%d/%m/%Y" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    <p><a href="/blog/">Ver todos os posts →</a></p>
+  </main>
+</div>

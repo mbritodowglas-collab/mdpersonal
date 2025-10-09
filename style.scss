@@ -1,0 +1,12 @@
+
+  ---
+# Só para o Jekyll processar via Sass
+---
+  @import "minima";
+  .topbar { padding: .5rem 0; font-size: .9rem; }
+  .topbar .social a { margin-right: .75rem; text-decoration: none; }
+  .site-header .site-title { font-weight: 800; }
+  .site-nav a { margin-left: .75rem; }
+  .wrapper { max-width: 980px; }
+  .post-list { list-style: none; padding-left: 0; }
+  .post-list li { margin-bottom: .5rem; }
