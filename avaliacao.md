@@ -1,7 +1,7 @@
 ---
 layout: avaliacao
 title: Avaliação
-bg: "/assets/avaliacao-bg.jpg"
+bg: "/assets/css/avaliacao-bg.jpg"
 ---
 
 <div class="container prose">
