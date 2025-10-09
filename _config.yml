@@ -13,3 +13,11 @@ whatsapp: 5592981037222
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
+
+# Redes Sociais
+social:
+  instagram: "https://instagram.com/marciodowglasfitness"
+  youtube: "https://youtube.com/@marciodowglas"
+  tiktok: "https://tiktok.com/@marciodowglas"
+  whatsapp: "https://wa.me/5592999999999"
+  linkedin: "https://linkedin.com/in/marciodowglas"
