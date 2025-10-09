@@ -45,6 +45,22 @@ main{min-height:40vh}
 .hero-content h1{color:var(--dourado);letter-spacing:.5px;text-transform:uppercase;margin:0 0 .75rem}
 .hero-content .sub{color:var(--dourado);opacity:.95;margin:0 0 1.5rem;line-height:1.6}
 
+/* ===== Ajuste de posicionamento da imagem do hero ===== */
+
+/* Computador / telas grandes */
+@media (min-width: 768px) {
+  .hero {
+    background-position: top center !important; /* sobe o foco da imagem */
+  }
+}
+
+/* Celular / telas menores */
+@media (max-width: 767px) {
+  .hero {
+    background-position: center !important; /* mantém como estava */
+  }
+}
+
 /* Botões */
 .btn{display:inline-block;border-radius:10px;padding:.9rem 1.4rem;font-weight:700}
 .btn.destaque{background:var(--vermelho);color:#fff}
