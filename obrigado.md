@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: avaliacao
 title: Obrigado
+body_class: obrigado
 ---
 
 <div class="container prose" style="text-align:center">
