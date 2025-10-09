@@ -1,15 +1,23 @@
-title: "MD Personal • Blog CNT"
-description: "Treino, neurociência e saúde mental — base de conteúdo do canal CNT."
-theme: jekyll-theme-minimal
+title: "Márcio Dowglas Personal Trainer"
+description: "Treinamento físico, neurociência e saúde mental — base de conteúdo do Blog CNT."
 author: "Márcio Dowglas"
+theme: jekyll-theme-minimal
 show_downloads: false
 
-# adicionar CSS personalizado
-include:
-  - assets/css/style.css
+url: "https://mbritodowglas-collab.github.io"
+baseurl: "/mdpersonal"
 
-# links de navegação
-header_pages:
-  - index.md
-  - blog
-  - about.md
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Redes
+social:
+  instagram: "https://instagram.com/marciodowglasfitness"
+  youtube: "https://youtube.com/@marciodowglas"
+  tiktok: "https://tiktok.com/@marciodowglas"
+  whatsapp: "https://wa.me/5592999999999"
+  linkedin: "https://linkedin.com/in/marciodowglas"
+
+# Dados úteis
+whatsapp: 5592999999999
