@@ -77,3 +77,28 @@ footer{
   padding:1rem; font-size:.95rem;
 }
 footer a{ color:var(--dourado); }
+
+/* ===== HERO (capa da home) ===== */
+.hero{
+  position:relative; min-height:48vh; display:grid; place-items:center;
+  text-align:center; padding:4rem 1rem;
+  background-size:cover; background-position:center;
+}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(0,0,0,.6),rgba(15,15,15,.75))}
+.hero .hero-inner{position:relative;z-index:1;max-width:900px}
+.hero h1{color:var(--dourado);text-transform:uppercase;letter-spacing:1px;margin:0 0 .5rem}
+.hero p{opacity:.95;margin:0 auto 1.1rem}
+.btn-row{display:inline-flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+
+/* ===== LISTA / CARDS ===== */
+.section{padding:2rem 1rem}
+.section h2{margin-bottom:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.card{background:var(--preto-2);border:1px solid var(--borda);border-radius:.9rem;overflow:hidden;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:var(--vermelho)}
+.thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.card-body{padding:1rem}
+.card .title{color:#fff;font-weight:800;margin:0 0 .25rem;line-height:1.25}
+.card .meta{font-size:.85rem;opacity:.7;margin-bottom:.6rem}
+.card .more{color:var(--vermelho-claro);font-weight:700}
+
