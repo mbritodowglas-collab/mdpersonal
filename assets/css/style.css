@@ -93,3 +93,11 @@ footer{
   padding:1rem; font-size:.95rem
 }
 footer a{color:var(--dourado)}
+/* ===== JUSTIFICAR TEXTOS ===== */
+p,
+li,
+blockquote {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
