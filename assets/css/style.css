@@ -66,3 +66,34 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .hero{min-height:80vh}
   .hero-content h1{font-size:1.6rem}
 }
+/* Vinheta + gradiente sutil no hero */
+.hero-overlay{
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(120% 80% at 50% 30%, rgba(0,0,0,.15), rgba(0,0,0,.55) 70%),
+    linear-gradient(to bottom, rgba(0,0,0,.15) 20%, rgba(0,0,0,.55) 100%);
+}
+.hero-content h1{
+  color:#e3c565; letter-spacing:.5px; text-transform:uppercase;
+  margin:0 0 .75rem; line-height:1.15;
+}
+@media (max-width:640px){
+  .hero{ min-height:82vh; }
+  .hero-content{ padding:1.25rem; }
+  .hero-content h1{ font-size:1.6rem; }
+  .btn.destaque{ padding:.9rem 1.4rem; }
+}
+.site-header{
+  position:sticky; top:0; z-index:10;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:saturate(140%) blur(6px);
+  -webkit-backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.btn.destaque{
+  background:#d62828; color:#fff; font-weight:700;
+  padding:1rem 2rem; border-radius:10px; transition:.2s;
+  box-shadow:0 8px 24px rgba(214,40,40,.2), 0 0 0 1px rgba(214,40,40,.35) inset;
+}
+.btn.destaque:hover{ background:#ff4040; transform:translateY(-2px); }
+
