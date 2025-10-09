@@ -159,6 +159,14 @@ nav a.cta:hover{background:var(--vermelho);color:#fff}
 .recurso-link span{
   color:var(--vermelho);
 }
+nav a[href*="utilitarios"] {
+  color: #e3c565;
+  font-weight: 600;
+}
+
+nav a[href*="utilitarios"]:hover {
+  color: #ff4040;
+}
 
 
 
