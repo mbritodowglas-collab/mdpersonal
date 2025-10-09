@@ -1,0 +1,18 @@
+title: "Márcio Dowglas Personal Trainer"
+description: "Treinamento físico, neurociência e saúde mental — base de conteúdo do Blog CNT."
+author: "Márcio Dowglas"
+
+# endereço do seu Pages
+url: "https://mbritodowglas-collab.github.io"
+baseurl: "/mdpersonal"
+
+# motor do site
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# links globais (usaremos nas próximas etapas)
+social:
+  instagram: "https://instagram.com/marciodowglasfitness"
+  youtube: "https://youtube.com/@marciodowglas"
+  
