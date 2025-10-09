@@ -2,7 +2,6 @@
 layout: home
 title: "Início"
 ---
-
 <div class="hero">
   <h1>Reduza medidas e dores em até 90 dias</h1>
   <p class="lead">Sistema Evo360° — Treinamento físico com neurociência aplicada, por Márcio Dowglas.</p>
