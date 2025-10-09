@@ -1,30 +1,39 @@
+---
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }} | {{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% include head.html %}
 </head>
 <body>
   <header>
-    <a href="{{ '/' | relative_url }}">
-  <img src="{{ '/assets/Logo.png' | relative_url }}" alt="MD Personal" style="height:60px;margin-bottom:8px;">
-</a>
+    <h1>MD Personal</h1>
     <nav>
-  <a href="{{ '/' | relative_url }}">Início</a>
-  <a href="{{ '/blog' | relative_url }}">Blog</a>
-  <a href="{{ '/avaliacao' | relative_url }}">Avaliação</a>
-  <a href="{{ '/about' | relative_url }}">Sobre</a>
-  <a href="{{ '/recursos' | relative_url }}">Recursos</a>
-  </nav>
-</header>
+      <a href="{{ '/' | relative_url }}">Início</a>
+      <a href="{{ '/blog' | relative_url }}">Blog</a>
+      <a href="{{ '/avaliacao' | relative_url }}" class="cta">Avaliação</a>
+      <a href="{{ '/recursos' | relative_url }}">Recursos</a>
+      <a href="{{ '/about' | relative_url }}">Sobre</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    {{ content }}
+  <div class="container prose">
+    <article class="post">
+      <h1>{{ page.title }}</h1>
+      {% if page.date %}<p class="date small">{{ page.date | date: "%d/%m/%Y" }}</p>{% endif %}
+      {% if page.image %}
+        <img src="{{ page.image }}" alt="" />
+        <hr/>
+      {% endif %}
+      {{ content }}
+    </article>
   </div>
 
   <footer>
-    © {{ site.title }} — Criado por Márcio Dowglas Trainer | CNT 2025
+    © {{ site.title }} — CNT 2025
   </footer>
 </body>
 </html>
