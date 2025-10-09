@@ -13,11 +13,7 @@
 <body>
   <header class="site-header">
   <a href="{{ '/' | relative_url }}" class="brand" aria-label="{{ site.title }}">
-    {% if site.logo %}
-      <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}">
-    {% else %}
-      <span class="brand-text">{{ site.title }}</span>
-    {% endif %}
+    <img src="{{ site.logo | relative_url }}?v={{ site.time | date: '%s' }}" alt="{{ site.title }}" width="180" height="40">
   </a>
   <nav>
     <a href="{{ '/' | relative_url }}">Início</a>
@@ -27,6 +23,7 @@
     <a href="{{ '/about' | relative_url }}">Sobre</a>
   </nav>
 </header>
+
 
 
   {{ content }}
