@@ -22,7 +22,7 @@ title: Início
       {% assign posts = site.pages | where_exp: "p", "p.path contains 'blog/'" | sort: "date" | reverse %}
       {% for p in posts limit:6 %}
         {% if p.title and p.path != "blog/index.md" %}
-          {% assign thumb = p.image | default: '/mdpessoal/assets/thumb-default.jpg' %}
+          {% assign thumb = p.image | default: '/mdpeersonal/assets/thumb-default.jpg' %}
           <article class="card">
             <a href="{{ p.url | relative_url }}"><img class="thumb" src="{{ thumb }}" alt=""></a>
             <div class="card-body">
