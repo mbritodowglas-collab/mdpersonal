@@ -10,7 +10,6 @@ title: Início
 
     <div class="btn-row">
       <a class="btn destaque" href="{{ '/avaliacao' | relative_url }}">Avaliação gratuita</a>
-      <a class="btn destaque" href="{{ '/recursos' | relative_url }}">Guia de Recursos</a>
     </div>
   </div>
 </div>
