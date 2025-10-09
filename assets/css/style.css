@@ -1,0 +1,79 @@
+:root{
+  --vermelho:#e63946;
+  --vermelho-claro:#ff4d6d;
+  --dourado:#bfa64b;        /* dourado elegante */
+  --preto:#0b0b0b;
+  --preto-2:#111;
+  --borda:#222;
+  --texto:#f5f5f5;
+  --texto-2:#c9c9c9;
+}
+
+/* base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--preto);
+  color:var(--texto);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  line-height:1.65;
+}
+a{color:var(--vermelho-claro);text-decoration:none}
+a:hover{color:var(--dourado)}
+
+/* header / menu */
+header{
+  background:#000;
+  border-bottom:1px solid var(--borda);
+  padding:1rem 0 .6rem;
+  text-align:center;
+}
+header h1{
+  margin:.25rem 0 .5rem;
+  color:var(--dourado);
+  font-size:1.6rem;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+nav{
+  display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+}
+nav a{
+  color:#fff; font-weight:600; opacity:.92; padding:.25rem .4rem;
+}
+nav a:hover{ color:var(--vermelho-claro); }
+nav a.cta{
+  border:1px solid var(--vermelho);
+  border-radius:.5rem;
+  padding:.35rem .6rem;
+  background:rgba(0,0,0,.35);
+}
+nav a.cta:hover{ background:var(--vermelho); color:#fff; }
+
+/* estrutura de página */
+.container{ max-width:980px; margin:auto; padding:2rem 1rem; }
+.prose{ max-width:780px; margin:0 auto; }
+
+h1,h2,h3{ line-height:1.25; font-weight:800; color:var(--dourado); }
+h1{ font-size:clamp(1.8rem,3vw,2.4rem); }
+h2{ font-size:clamp(1.4rem,2.4vw,1.9rem); margin-top:2rem; }
+h3{ font-size:clamp(1.15rem,2vw,1.35rem); margin-top:1.25rem; }
+
+p{ opacity:.96; }
+.small{ font-size:.92rem; color:var(--texto-2); }
+hr{ border:0; border-top:1px solid var(--borda); margin:2rem 0; }
+
+/* utilidades */
+.btn{
+  padding:.7rem 1rem; border:1px solid var(--vermelho);
+  background:rgba(0,0,0,.35);
+  color:#fff; font-weight:700; border-radius:.6rem; transition:.25s;
+}
+.btn:hover{ background:var(--vermelho); color:#fff; }
+
+/* rodapé */
+footer{
+  text-align:center; color:#aaa; border-top:1px solid var(--borda);
+  padding:1rem; font-size:.95rem;
+}
+footer a{ color:var(--dourado); }
