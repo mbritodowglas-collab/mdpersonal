@@ -1,0 +1,39 @@
+
+title: "Márcio Dowglas Personal Trainer"
+description: "Treinamento físico, neurociência e comportamento. Centro de Neuro Treinamento (CNT) & MDT."
+url: "" # atualize com https://seuusuario.github.io se desejar
+baseurl: "" # deixe vazio para username.github.io
+lang: "pt-BR"
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+author:
+  name: "Márcio Dowglas"
+  email: "seuemail@exemplo.com"
+social_links:
+  instagram: "https://instagram.com/marciodowglasfitness"
+  youtube: "https://youtube.com/@seucanal"
+  whatsapp: "https://wa.me/5592999999999"
+  github: "https://github.com/seuusuario"
+markdown: kramdown
+kramdown:
+  input: GFM
+paginate: 6
+paginate_path: "/blog/page:num/"
+collections:
+  pages:
+    output: true
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Márcio Dowglas"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+google_analytics: "" # opcional: cole o ID do GA4
