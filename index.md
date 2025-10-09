@@ -40,3 +40,26 @@ title: Início
     </div>
   </div>
 </div>
+<hr/>
+
+<div class="container">
+  <div class="section" style="text-align:center;">
+    <h2>🌐 Conecte-se comigo</h2>
+    <p>Siga minhas redes para mais conteúdos sobre treino, neurociência e performance.</p>
+    <div class="social-links">
+      {% if site.social.instagram %}
+        <a href="{{ site.social.instagram }}" target="_blank" class="social instagram">Instagram</a>
+      {% endif %}
+      {% if site.social.youtube %}
+        <a href="{{ site.social.youtube }}" target="_blank" class="social youtube">YouTube</a>
+      {% endif %}
+      {% if site.social.tiktok %}
+        <a href="{{ site.social.tiktok }}" target="_blank" class="social tiktok">TikTok</a>
+      {% endif %}
+      {% if site.social.whatsapp %}
+        <a href="{{ site.social.whatsapp }}" target="_blank" class="social whatsapp">WhatsApp</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
