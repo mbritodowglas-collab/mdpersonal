@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'pt-BR' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <!-- CSS local + cache-buster -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
   <header class="site-header">
@@ -19,11 +19,15 @@
       </nav>
     </div>
   </header>
+
+  {% include header-custom.html %}
+
   <div class="page-content">
     <div class="wrapper">
       {{ content }}
     </div>
   </div>
+
   <footer class="site-footer">
     <div class="wrapper">
       <p>© {{ site.time | date: '%Y' }} {{ site.author.name }} — {{ site.title }}</p>
