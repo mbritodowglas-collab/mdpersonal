@@ -2,7 +2,7 @@
 layout: avaliacao
 title: Obrigado
 body_class: obrigado
-bg: "/assets/avaliacao-bg.jpg"
+bg: "/assets/css/avaliacao-bg.jpg"
 ---
 
 <h1>Obrigada por responder 💪</h1>
