@@ -40,6 +40,36 @@
       <div class="post-body">
         {{ content }}
       </div>
+      {% comment %}
+Posts relacionados pela 1ª categoria do artigo (até 3).
+Compatível com GitHub Pages (sem where_exp).
+{% endcomment %}
+{% assign cat = page.categories | first %}
+{% if cat %}
+  {% assign count = 0 %}
+  <section class="post-rel">
+    <h3>Artigos relacionados</h3>
+    <ul>
+      {% for p in site.posts %}
+        {% if p.url != page.url and p.categories %}
+          {% if count < 3 %}
+            {% for c in p.categories %}
+              {% if c == cat %}
+                <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+                {% assign count = count | plus: 1 %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% if count == 0 %}
+        <li><em>Em breve, mais artigos desta categoria.</em></li>
+      {% endif %}
+    </ul>
+  </section>
+{% endif %}
+
 
       <!-- bloco de afiliados opcional -->
       {% if page.afiliados %}
