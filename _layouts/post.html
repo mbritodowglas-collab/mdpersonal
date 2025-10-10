@@ -6,13 +6,15 @@ layout: default
 
   <!-- Cabeçalho do post -->
   <div class="post-head">
-    {% if page.categories %}
+    {% if page.categories and page.categories.size > 0 %}
       <p class="meta">
         <span class="cat">{{ page.categories[0] }}</span>
         <span class="date">{{ page.date | date: "%d %b %Y" }}</span>
       </p>
     {% endif %}
+
     <h1 class="post-title">{{ page.title }}</h1>
+
     {% if page.excerpt %}
       <p class="post-deck">{{ page.excerpt }}</p>
     {% endif %}
@@ -25,73 +27,48 @@ layout: default
   <!-- Conteúdo -->
   <div class="post-body">
     {{ content }}
-    
-    {% comment %} === Posts relacionados (mesma categoria) === {% endcomment %}
-{% assign primary_cat = page.categories | first %}
-{% assign rel = site.posts
-  | where_exp: "p", "p.url != page.url"
-  | where_exp: "p", "primary_cat and p.categories contains primary_cat"
-  | limit: 3 %}
+  </div>
 
-{% if rel.size == 0 %}
+  <!-- === Posts relacionados (mesma categoria; fallback para recentes) === -->
+  {% assign primary_cat = page.categories | first %}
   {% assign rel = site.posts
     | where_exp: "p", "p.url != page.url"
+    | where_exp: "p", "primary_cat and p.categories contains primary_cat"
     | limit: 3 %}
-{% endif %}
 
-<div class="post-rel">
-  <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
-  <ul class="rel-list">
-    {% for p in rel %}
-      <li class="rel-item">
-        <a class="rel-link" href="{{ p.url | relative_url }}">
-          <span class="rel-thumb"
-            style="background-image:url('{{ p.image | default: site.default_thumb | default: "/assets/css/thumb-default.jpg" | relative_url }}')"></span>
-          <span class="rel-meta">
-            <strong>{{ p.title }}</strong>
-            <small>{{ p.date | date: "%d %b %Y" }}</small>
-          </span>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-  <p style="margin:.5rem 0 0">
-    <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
-  </p>
-  
-</div>
-
-  <!-- Afiliados (se existir include; se não existir, pode remover esta linha) -->
-  {% include afiliados.html %}
-
-  <!-- RELACIONADOS: pela 1ª categoria, até 3 itens -->
-  {% assign cat = page.categories | first %}
-  {% if cat %}
-    {% assign count = 0 %}
-    <section class="post-rel">
-      <h3>Artigos relacionados</h3>
-      <ul>
-        {% for p in site.posts %}
-          {% if p.url != page.url and count < 3 %}
-            {% if p.categories %}
-              {% for c in p.categories %}
-                {% if c == cat %}
-                  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-                  {% assign count = count | plus: 1 %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        {% if count == 0 %}
-          <li><em>Em breve, mais artigos desta categoria.</em></li>
-        {% endif %}
-      </ul>
-    </section>
+  {% if rel.size == 0 %}
+    {% assign rel = site.posts
+      | where_exp: "p", "p.url != page.url"
+      | limit: 3 %}
   {% endif %}
 
-  <!-- Navegação entre posts (opcional) -->
+  <div class="post-rel">
+    <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
+    <ul class="rel-list">
+      {% for p in rel %}
+        <li class="rel-item">
+          <a class="rel-link" href="{{ p.url | relative_url }}">
+            <span class="rel-thumb"
+              style="background-image:url('{{ p.image | default: site.default_thumb | default: "/assets/css/thumb-default.jpg" | relative_url }}')"></span>
+            <span class="rel-meta">
+              <strong>{{ p.title }}</strong>
+              <small>{{ p.date | date: "%d %b %Y" }}</small>
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <p style="margin:.5rem 0 0">
+      <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
+    </p>
+  </div>
+
+  <!-- Afiliados (deixe para quando criar o include) -->
+  {%- comment -%}
+  {% include afiliados.html %}
+  {%- endcomment -%}
+
+  <!-- Navegação entre posts -->
   {% if page.previous or page.next %}
     <nav class="post-nav">
       {% if page.previous %}
