@@ -116,15 +116,17 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 /* ===== Desktop: descer um pouco o bloco do hero para não cobrir o rosto ===== */
 @media (min-width: 992px) {
   .hero {
-    background-position: top center !important; 
-    min-height: 92vh;                            
+    background-position: top center !important;
+    min-height: 92vh;
   }
   .hero-content {
-    margin-top: 12vh;                            
+    margin-top: 12vh;
   }
-  .btn-row {                                   
+  .btn-row {
     margin-top: 12rem;
   }
+} /* <- fecha o @media de 992px (faltava) */
+
 /* ===== BLOG: cabeçalho e cards ===== */
 .blog-header{max-width:1000px;margin:0 auto;padding:2rem 1rem 1rem}
 .blog-header h1{color:var(--dourado);margin:0 0 .5rem}
@@ -220,6 +222,7 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   grid-template-columns: 200px 1fr;
   gap:2rem;
   align-items:start;
+  margin-top:.75rem; /* respiro abaixo do header fixo */
 }
 
 .blog-sidebar{
@@ -269,10 +272,9 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   border-color:var(--vermelho);
 }
 
+/* Mobile: barra lateral vira faixa rolável no topo da lista */
 @media(max-width:768px){
-  .blog-layout{
-    grid-template-columns:1fr;
-  }
+  .blog-layout{ grid-template-columns:1fr; }
   .blog-sidebar{
     position:relative; top:0;
     flex-direction:row;
@@ -280,33 +282,27 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
     padding-bottom:.5rem;
     border-bottom:1px solid var(--borda);
   }
-  .blog-filtros-vertical{
-    flex-direction:row;
-    gap:.4rem;
-  }
-  
-/* ====== Header fixo do blog ====== */
+  .blog-filtros-vertical{ flex-direction:row; gap:.4rem; }
+} /* <- fecha o @media de 768px (faltava) */
+
+/* ====== Header fixo do blog (DEVE ficar fora dos @media) ====== */
+:root{ --navH: 64px; } /* ajuste se teu menu for mais alto/baixo */
 .blog-header{
   position: sticky;
-  top: 4.5rem; /* ajusta conforme a altura do menu */
-  z-index: 9;
+  top: calc(var(--navH) + 6px);
+  z-index: 20;
   background: rgba(11,11,11,0.85);
   backdrop-filter: saturate(150%) blur(6px);
   -webkit-backdrop-filter: saturate(150%) blur(6px);
   padding: 1rem 1rem 0.5rem;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
+.blog-header h1{ color: var(--dourado); margin: 0 0 .3rem; }
+.blog-header p{ color: #ccc; margin: 0; font-size: .95rem; }
 
-.blog-header h1{
-  color: var(--dourado);
-  margin: 0 0 .3rem;
-}
+/* Evita “salto” ao filtrar (reserva área mínima) */
+.blog-lista{ min-height: 60vh; }
 
-.blog-header p{
-  color: #ccc;
-  margin: 0;
-  font-size: .95rem;
-}
 
 
 
