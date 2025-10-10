@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+</head>
+<body class="post-page">
+  <!-- header simples (igual ao site) -->
+  <header class="site-header">
+    <nav class="main-nav">
+      <a href="{{ '/' | relative_url }}">Início</a>
+      <a href="{{ '/blog' | relative_url }}">Blog</a>
+      <a href="{{ '/utilitarios' | relative_url }}">Utilitários</a>
+      <a href="{{ '/sobre' | relative_url }}">Sobre</a>
+    </nav>
+  </header>
+
+  <main class="post-wrap">
+    <article class="post">
+      <header class="post-head">
+        <p class="meta">
+          {% if page.categories and page.categories.size > 0 %}
+            <span class="cat">{{ page.categories[0] }}</span>
+          {% endif %}
+          <span class="date">{{ page.date | date: "%d %b %Y" }}</span>
+        </p>
+        <h1 class="post-title">{{ page.title }}</h1>
+
+        {% if page.image %}
+          <figure class="post-cover" style="background-image:url('{{ page.image | relative_url }}')"></figure>
+        {% endif %}
+
+        {% if page.excerpt %}
+          <p class="post-deck">{{ page.excerpt }}</p>
+        {% endif %}
+      </header>
+
+      <div class="post-body">
+        {{ content }}
+      </div>
+
+      <!-- bloco de afiliados opcional -->
+      {% if page.afiliados %}
+        {% include afiliados.html itens=page.afiliados %}
+      {% endif %}
+
+      <!-- navegação entre posts -->
+      <nav class="post-nav">
+        {% if page.previous %}
+          <a class="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+        {% endif %}
+        {% if page.next %}
+          <a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+        {% endif %}
+      </nav>
+
+      <!-- relacionados por categoria -->
+      {% assign cat = page.categories | first %}
+      {% assign rel = site.posts | where_exp: "p", "p.url != page.url" | where_exp: "p", "p.categories contains cat" | limit: 3 %}
+      {% if rel and rel.size > 0 %}
+        <section class="post-rel">
+          <h3>Leia também</h3>
+          <ul>
+            {% for r in rel %}
+              <li><a href="{{ r.url | relative_url }}">{{ r.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ site.title }} — {{ 'now' | date: '%Y' }}</p>
+  </footer>
+</body>
+</html>
