@@ -125,6 +125,47 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .btn-row {                                   
     margin-top: 12rem;
   }
+/* ===== BLOG: cabeçalho e cards ===== */
+.blog-header{max-width:1000px;margin:0 auto;padding:2rem 1rem 1rem}
+.blog-header h1{color:var(--dourado);margin:0 0 .5rem}
+.blog-header p{opacity:.9;margin:0}
+
+.blog-lista{max-width:1000px;margin:0 auto;padding:1rem}
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1.2rem;
+}
+@media (max-width: 1000px){ .cards{ grid-template-columns: repeat(2, 1fr);} }
+@media (max-width: 640px){ .cards{ grid-template-columns: 1fr; } }
+
+.card{
+  background:#0f0f0f;border:1px solid #1c1c1c;border-radius:14px;
+  overflow:hidden; transition:.25s; display:block;
+}
+.card:hover{ transform:translateY(-3px); border-color:#2a2a2a; }
+
+.card a{ color:inherit; text-decoration:none; display:block; height:100% }
+
+.thumb{
+  width:100%; aspect-ratio: 16/9;
+  background:#111 center/cover no-repeat;
+  border-bottom:1px solid #1c1c1c;
+}
+
+.card-body{ padding:1rem }
+.meta{ display:flex; gap:.6rem; align-items:center; margin:0 0 .4rem; font-size:.9rem; opacity:.9 }
+.cat{
+  background:rgba(227,197,101,.1);
+  color:#e3c565; border:1px solid rgba(227,197,101,.35);
+  padding:.14rem .5rem; border-radius:999px; font-weight:600
+}
+.date{ color:#aaa }
+
+.card h3{ margin:.3rem 0 .5rem; font-size:1.05rem; color:#fff; line-height:1.35 }
+.exc{ margin:0 0 .8rem; color:#cfcfcf }
+.ler{ color:#d62828; font-weight:700 }
+.card:hover .ler{ color:#ff4040 }
 
 
 
