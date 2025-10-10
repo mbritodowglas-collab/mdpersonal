@@ -10,9 +10,8 @@ title: Blog
 
 <section class="blog-lista">
   <div class="cards">
-    {% assign posts_ok = site.posts | where_exp: "p", "p.draft != true" %}
-    {% if posts_ok.size > 0 %}
-      {% for post in posts_ok %}
+    {% if site.posts and site.posts.size > 0 %}
+      {% for post in site.posts %}
         <article class="card">
           <a href="{{ post.url | relative_url }}">
             <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/posts/default.jpg' | relative_url }}')"></div>
