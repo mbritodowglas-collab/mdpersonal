@@ -167,6 +167,53 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .ler{ color:#d62828; font-weight:700 }
 .card:hover .ler{ color:#ff4040 }
 
+/* ===== POST: layout e tipografia ===== */
+.post-wrap{max-width:920px;margin:0 auto;padding:1.5rem 1rem}
+.post-head .meta{display:flex;gap:.6rem;align-items:center;margin:.25rem 0 .5rem;opacity:.9}
+.post-head .cat{background:rgba(227,197,101,.1);color:#e3c565;border:1px solid rgba(227,197,101,.35);padding:.14rem .5rem;border-radius:999px;font-weight:600}
+.post-head .date{color:#aaa}
+.post-title{color:#fff;margin:.25rem 0 .75rem;line-height:1.2}
+.post-deck{color:#d7d7d7;margin:0 0 1.2rem}
+
+.post-cover{
+  width:100%; aspect-ratio:16/9;
+  background:#111 center/cover no-repeat;
+  border:1px solid #1c1c1c;border-radius:12px;overflow:hidden;margin:.5rem 0 1.2rem;
+}
+
+.post-body{color:#eaeaea;line-height:1.8}
+.post-body h2{color:#eedd9c;margin:1.6rem 0 .6rem}
+.post-body h3{color:#f0e3b1;margin:1.2rem 0 .4rem}
+.post-body p{margin:.7rem 0}
+.post-body ul, .post-body ol{padding-left:1.2rem}
+.post-body blockquote{border-left:3px solid #333;padding:.6rem 1rem;color:#d9d9d9;background:#0f0f0f;border-radius:8px}
+
+/* navegação e relacionados */
+.post-nav{display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 1rem}
+.post-nav a{color:#d62828;font-weight:700}
+.post-rel{margin:1.5rem 0 0}
+.post-rel h3{color:#e3c565;margin:0 0 .5rem}
+.post-rel ul{margin:0;padding-left:1rem}
+.post-rel li{margin:.25rem 0}
+
+/* ===== Afiliados ===== */
+.afiliados{margin:2rem 0 1rem}
+.afiliados h3{color:#e3c565;margin:0 0 .8rem}
+.af-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media (max-width:960px){.af-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.af-grid{grid-template-columns:1fr}}
+
+.af-card{
+  display:flex;gap:.8rem;border:1px solid #1f1f1f;border-radius:12px;
+  background:#0f0f0f;padding:.6rem;align-items:center;text-decoration:none;color:#fff;transition:.2s
+}
+.af-card:hover{transform:translateY(-2px);border-color:#2a2a2a}
+.af-thumb{width:88px;height:88px;background:#111 center/cover no-repeat;border-radius:10px;flex-shrink:0}
+.af-info strong{display:block;margin-bottom:.25rem}
+.af-note{display:block;color:#cfcfcf;font-size:.9rem}
+.af-cta{display:block;margin-top:.35rem;color:#d62828;font-weight:700}
+.af-card:hover .af-cta{color:#ff4040}
+
 
 
 
