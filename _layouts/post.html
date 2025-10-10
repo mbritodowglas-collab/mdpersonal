@@ -25,6 +25,7 @@ layout: default
   <!-- Conteúdo -->
   <div class="post-body">
     {{ content }}
+    
     {% comment %} === Posts relacionados (mesma categoria) === {% endcomment %}
 {% assign primary_cat = page.categories | first %}
 {% assign rel = site.posts
@@ -57,9 +58,8 @@ layout: default
   <p style="margin:.5rem 0 0">
     <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
   </p>
+  
 </div>
-
-  </div>
 
   <!-- Afiliados (se existir include; se não existir, pode remover esta linha) -->
   {% include afiliados.html %}
