@@ -284,7 +284,30 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
     flex-direction:row;
     gap:.4rem;
   }
+  
+/* ====== Header fixo do blog ====== */
+.blog-header{
+  position: sticky;
+  top: 4.5rem; /* ajusta conforme a altura do menu */
+  z-index: 9;
+  background: rgba(11,11,11,0.85);
+  backdrop-filter: saturate(150%) blur(6px);
+  -webkit-backdrop-filter: saturate(150%) blur(6px);
+  padding: 1rem 1rem 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
+
+.blog-header h1{
+  color: var(--dourado);
+  margin: 0 0 .3rem;
+}
+
+.blog-header p{
+  color: #ccc;
+  margin: 0;
+  font-size: .95rem;
+}
+
 
 
 
