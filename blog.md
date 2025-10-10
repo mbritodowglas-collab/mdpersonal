@@ -5,6 +5,22 @@ title: Blog
 
 <!-- TÍTULO FIXO (fora do grid) -->
 <section class="blog-header">
+  {% if site.posts and site.posts.size > 0 %}
+  {% assign destaque = site.posts | first %}
+  <section class="blog-destaque">
+    <a class="dst-wrap" href="{{ destaque.url | relative_url }}">
+      <div class="dst-thumb" style="background-image:url('{{ destaque.image | default: site.default_thumb | relative_url }}')"></div>
+      <div class="dst-info">
+        {% if destaque.categories and destaque.categories.size > 0 %}
+          <span class="cat">{{ destaque.categories[0] }}</span>
+        {% endif %}
+        <h2>{{ destaque.title }}</h2>
+        <p>{{ destaque.excerpt | default: destaque.content | strip_html | truncate: 160 }}</p>
+      </div>
+    </a>
+  </section>
+{% endif %}
+
   <h1>Artigos sobre Treino, Mente e Gestão Fitness</h1>
   <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
 </section>
