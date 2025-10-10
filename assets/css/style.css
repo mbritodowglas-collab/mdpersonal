@@ -214,6 +214,14 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .af-cta{display:block;margin-top:.35rem;color:#d62828;font-weight:700}
 .af-card:hover .af-cta{color:#ff4040}
 
-
+/* ====== Filtros do Blog ====== */
+.blog-filtros{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 1rem}
+.blog-filtros button{
+  background:#111; color:#ddd; border:1px solid #222;
+  padding:.5rem .9rem; border-radius:999px; cursor:pointer;
+  font-weight:600; transition:.2s;
+}
+.blog-filtros button:hover{border-color:#333; color:#fff}
+.blog-filtros button.on{background:#d62828; color:#fff; border-color:#d62828}
 
 
