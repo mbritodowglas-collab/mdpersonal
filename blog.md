@@ -1,15 +1,21 @@
 ---
 layout: default
 title: Blog
+permalink: /blog/
 ---
 
 <!-- TÍTULO FIXO (fora do grid) -->
 <section class="blog-header">
-  {% if site.posts and site.posts.size > 0 %}
+  <h1>Artigos sobre Treino, Mente e Gestão Fitness</h1>
+  <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
+</section>
+
+<!-- DESTAQUE (fora do header) -->
+{% if site.posts and site.posts.size > 0 %}
   {% assign destaque = site.posts | first %}
   <section class="blog-destaque">
     <a class="dst-wrap" href="{{ destaque.url | relative_url }}">
-      <div class="dst-thumb" style="background-image:url('{{ destaque.image | default: site.default_thumb | relative_url }}')"></div>
+      <div class="dst-thumb" style="background-image:url('{{ destaque.image | default: '/assets/css/thumb-default.jpg' | relative_url }}')"></div>
       <div class="dst-info">
         {% if destaque.categories and destaque.categories.size > 0 %}
           <span class="cat">{{ destaque.categories[0] }}</span>
@@ -21,21 +27,17 @@ title: Blog
   </section>
 {% endif %}
 
-  <h1>Artigos sobre Treino, Mente e Gestão Fitness</h1>
-  <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
-</section>
-
 <!-- GRID: lateral + lista -->
 <div class="blog-layout">
   <aside class="blog-sidebar">
     <h3>Categorias</h3>
-   <nav class="blog-filtros-vertical">
-  <button data-filter="all" class="on">📰 Últimos artigos</button>
-  <button data-filter="Treino">🏋️ Treino</button>
-  <button data-filter="Neurociência">🧠 Neurociência</button>
-  <button data-filter="Nutrição">🥗 Nutrição</button>
-  <button data-filter="Gestão">🧾 Gestão</button>
-</nav>
+    <nav class="blog-filtros-vertical">
+      <button data-filter="all" class="on">📰 Últimos artigos</button>
+      <button data-filter="Treino">🏋️ Treino</button>
+      <button data-filter="Neurociência">🧠 Neurociência</button>
+      <button data-filter="Nutrição">🥗 Nutrição</button>
+      <button data-filter="Gestão">🧾 Gestão</button>
+    </nav>
   </aside>
 
   <section class="blog-lista">
@@ -44,7 +46,7 @@ title: Blog
         {% for post in site.posts %}
           <article class="card" data-cats="{{ post.categories | join: ',' }}">
             <a href="{{ post.url | relative_url }}">
-              <div class="thumb" style="background-image:url('{{ post.image | default: site.default_thumb | relative_url }}')"></div>
+              <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/css/thumb-default.jpg' | relative_url }}')"></div>
               <div class="card-body">
                 <p class="meta">
                   {% if post.categories and post.categories.size > 0 %}
@@ -66,7 +68,7 @@ title: Blog
   </section>
 </div>
 
-<!-- SCRIPT (sem scroll) -->
+<!-- SCRIPT (filtro sem scroll) -->
 <script>
 (function(){
   const cards = Array.from(document.querySelectorAll('.card'));
@@ -77,7 +79,7 @@ title: Blog
       btns.forEach(b=>b.classList.remove('on'));
       btn.classList.add('on');
 
-      // filtra pela categoria
+      // filtra
       const f = (btn.dataset.filter || 'all').toLowerCase();
       cards.forEach(c=>{
         const cats = (c.dataset.cats || '').toLowerCase();
