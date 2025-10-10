@@ -1,109 +1,72 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-</head>
-<body class="post-page">
-  <!-- header simples (igual ao site) -->
-  <header class="site-header">
-    <nav class="main-nav">
-      <a href="{{ '/' | relative_url }}">Início</a>
-      <a href="{{ '/blog' | relative_url }}">Blog</a>
-      <a href="{{ '/utilitarios' | relative_url }}">Utilitários</a>
-      <a href="{{ '/sobre' | relative_url }}">Sobre</a>
+---
+layout: default
+---
+
+<div class="post-wrap">
+
+  <!-- Cabeçalho do post -->
+  <div class="post-head">
+    {% if page.categories %}
+      <p class="meta">
+        <span class="cat">{{ page.categories[0] }}</span>
+        <span class="date">{{ page.date | date: "%d %b %Y" }}</span>
+      </p>
+    {% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.excerpt %}
+      <p class="post-deck">{{ page.excerpt }}</p>
+    {% endif %}
+
+    {% if page.image %}
+      <div class="post-cover" style="background-image:url('{{ page.image | relative_url }}')"></div>
+    {% endif %}
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <!-- Afiliados (se existir include; se não existir, pode remover esta linha) -->
+  {% include afiliados.html %}
+
+  <!-- RELACIONADOS: pela 1ª categoria, até 3 itens -->
+  {% assign cat = page.categories | first %}
+  {% if cat %}
+    {% assign count = 0 %}
+    <section class="post-rel">
+      <h3>Artigos relacionados</h3>
+      <ul>
+        {% for p in site.posts %}
+          {% if p.url != page.url and count < 3 %}
+            {% if p.categories %}
+              {% for c in p.categories %}
+                {% if c == cat %}
+                  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+                  {% assign count = count | plus: 1 %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        {% if count == 0 %}
+          <li><em>Em breve, mais artigos desta categoria.</em></li>
+        {% endif %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <!-- Navegação entre posts (opcional) -->
+  {% if page.previous or page.next %}
+    <nav class="post-nav">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+      {% endif %}
     </nav>
-  </header>
+  {% endif %}
 
-  <main class="post-wrap">
-    <article class="post">
-      <header class="post-head">
-        <p class="meta">
-          {% if page.categories and page.categories.size > 0 %}
-            <span class="cat">{{ page.categories[0] }}</span>
-          {% endif %}
-          <span class="date">{{ page.date | date: "%d %b %Y" }}</span>
-        </p>
-        <h1 class="post-title">{{ page.title }}</h1>
-
-        {% if page.image %}
-          <figure class="post-cover" style="background-image:url('{{ page.image | relative_url }}')"></figure>
-        {% endif %}
-
-        {% if page.excerpt %}
-          <p class="post-deck">{{ page.excerpt }}</p>
-        {% endif %}
-      </header>
-
-      <div class="post-body">
-        {{ content }}
-      </div>
-      {% comment %}
-Posts relacionados pela 1ª categoria do artigo (até 3).
-Compatível com GitHub Pages (sem where_exp).
-{% endcomment %}
-{% assign cat = page.categories | first %}
-{% if cat %}
-  {% assign count = 0 %}
-  <section class="post-rel">
-    <h3>Artigos relacionados</h3>
-    <ul>
-      {% for p in site.posts %}
-        {% if p.url != page.url and p.categories %}
-          {% if count < 3 %}
-            {% for c in p.categories %}
-              {% if c == cat %}
-                <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-                {% assign count = count | plus: 1 %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-      {% if count == 0 %}
-        <li><em>Em breve, mais artigos desta categoria.</em></li>
-      {% endif %}
-    </ul>
-  </section>
-{% endif %}
-
-
-      <!-- bloco de afiliados opcional -->
-      {% if page.afiliados %}
-        {% include afiliados.html itens=page.afiliados %}
-      {% endif %}
-
-      <!-- navegação entre posts -->
-      <nav class="post-nav">
-        {% if page.previous %}
-          <a class="prev" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
-        {% endif %}
-        {% if page.next %}
-          <a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
-        {% endif %}
-      </nav>
-
-      <!-- relacionados por categoria -->
-      {% assign cat = page.categories | first %}
-      {% assign rel = site.posts | where_exp: "p", "p.url != page.url" | where_exp: "p", "p.categories contains cat" | limit: 3 %}
-      {% if rel and rel.size > 0 %}
-        <section class="post-rel">
-          <h3>Leia também</h3>
-          <ul>
-            {% for r in rel %}
-              <li><a href="{{ r.url | relative_url }}">{{ r.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </section>
-      {% endif %}
-    </article>
-  </main>
-
-  <footer class="site-footer">
-    <p>© {{ site.title }} — {{ 'now' | date: '%Y' }}</p>
-  </footer>
-</body>
-</html>
+</div>
