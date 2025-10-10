@@ -317,6 +317,65 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .dst-thumb{min-height:200px}
 }
 
+/* ===== BLOG: Mobile — categorias fixas e limpas ===== */
+@media (max-width: 768px){
+  /* Mantém destaque visível */
+  .blog-destaque{ display:block; margin-top:.75rem; }
+
+  /* Barra de categorias fixa logo abaixo do menu */
+  .blog-sidebar{
+    position: sticky;
+    top: 3.5rem;              /* ajusta conforme altura do menu */
+    z-index: 9;
+    background: #0b0b0b;
+    border-bottom: 1px solid var(--borda);
+    padding: .6rem 1rem .8rem;
+  }
+
+  /* Título “Categorias” visível */
+  .blog-sidebar h3{
+    color: var(--dourado);
+    font-size: .9rem;
+    margin: 0 0 .4rem;
+    text-transform: uppercase;
+    opacity: .9;
+  }
+
+  /* Botões em linha sem rolagem */
+  .blog-filtros-vertical{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: .35rem;
+    overflow: visible;
+  }
+
+  .blog-filtros-vertical button{
+    background: #111;
+    border: 1px solid rgba(255,255,255,.08);
+    color: #ccc;
+    padding: .45rem .2rem;
+    font-size: .82rem;
+    line-height: 1.1;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    white-space: normal;
+  }
+
+  .blog-filtros-vertical button:hover{
+    color: #fff;
+    border-color: rgba(255,255,255,.12);
+    background: rgba(255,255,255,.05);
+  }
+
+  .blog-filtros-vertical button.on{
+    background: var(--vermelho);
+    color: #fff;
+    border-color: var(--vermelho);
+  }
+}
+
+
 
 
 
