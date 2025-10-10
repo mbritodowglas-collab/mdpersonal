@@ -7,25 +7,41 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <style>
     /* ===== Fundo da página de Avaliação ===== */
-    body{
-      margin:0;
-      color:#fff;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:100vh;
-      background:#000 url('{{ "/assets/css/avaliacao-bg.jpg" | relative_url }}?v={{ site.time | date: "%s" }}') center/cover no-repeat;
-    }
-    /* Overlay escuro */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.45);
-      z-index:0;
-      pointer-events:none;
-    }
+body{
+  margin:0;
+  color:#fff;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+
+  /* IMAGEM PADRÃO (DESKTOP) */
+  background:#000 url('{{ "/assets/css/avaliacao-bg.jpg" | relative_url }}?v={{ site.time | date: "%s" }}');
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
+}
+
+/* Overlay escuro */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ===== MOBILE: versão vertical ===== */
+@media (max-width:768px){
+  body{
+    background-image:url('{{ "/assets/css/avaliacao-bg-m.jpg" | relative_url }}?v={{ site.time | date: "%s" }}');
+    background-position:center;
+    background-size:cover;
+  }
+}
+
     /* Caixa central */
     .avaliacao-box{
       position:relative;
