@@ -1,0 +1,15 @@
+<section class="afiliados">
+  <h3>Produtos que recomendo</h3>
+  <div class="af-grid">
+    {% for i in include.itens %}
+      <a class="af-card" href="{{ i.url }}" target="_blank" rel="nofollow noopener">
+        <div class="af-thumb" style="background-image:url('{{ i.image | relative_url }}')"></div>
+        <div class="af-info">
+          <strong>{{ i.title }}</strong>
+          {% if i.note %}<span class="af-note">{{ i.note }}</span>{% endif %}
+          <span class="af-cta">Ver detalhes →</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
