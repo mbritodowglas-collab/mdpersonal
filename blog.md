@@ -80,14 +80,17 @@ title: Blog
   const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
+      // estado ativo do botão
       btns.forEach(b=>b.classList.remove('on'));
       btn.classList.add('on');
+
+      // filtro (sem scroll automático)
       const f = (btn.dataset.filter || 'all').toLowerCase();
       cards.forEach(c=>{
         const cats = (c.dataset.cats || '').toLowerCase();
-        c.style.display = (f==='all' || cats.includes(f)) ? '' : 'none';
+        const match = (f === 'all' || cats.includes(f));
+        c.style.display = match ? '' : 'none';
       });
-      document.querySelector('.blog-lista')?.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
 })();
