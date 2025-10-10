@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Neuroplasticidade e Treino: Como o Corpo Aprende Novos Movimentos"
-date: 2025-10-12
+date: 2025-10-09
 categories: [Neurociência]
 image: "/assets/posts/neuroplasticidade.jpg"
 excerpt: "O treino físico não transforma só o corpo, mas também o cérebro. Entenda como a neuroplasticidade melhora desempenho e coordenação."
