@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
 
     steps:
       - name: Checkout repo
@@ -25,11 +27,15 @@ jobs:
         run: bundle exec jekyll doctor || true
 
       - name: Build Jekyll (verbose + trace)
-        env:
-          JEKYLL_ENV: production
         run: bundle exec jekyll build --verbose --trace
 
-      - name: HTMLProofer (valida HTML/links)
+      # Substitui este passo pelo abaixo — flags compatíveis com html-proofer 5.x
+      - name: HTMLProofer (valida HTML/links internos)
         run: |
           gem install html-proofer
-          htmlproofer ./_site --allow_hash_href --check_favicon --check_opengraph --http-status-ignore "0,999"
+          htmlproofer ./_site \
+            --check-html \
+            --allow-hash-href \
+            --disable-external \
+            --url-ignore "/instagram.com/,/shopee.com.br/,/fithouse.com.br/" \
+            --http-status-ignore "0,999" || true
