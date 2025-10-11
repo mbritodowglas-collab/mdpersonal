@@ -30,10 +30,14 @@ fithouse_link: "https://www.fithouse.com.br/"
 og_image: "/assets/img/og-default.jpg"
 ga4_id: "G-7LD3B5YK06"   # seu GA4
 
+
 # =========================
 # Excluir do build
 # =========================
 exclude:
+  - vendor
+  - vendor/**        # garante exclusão recursiva
+  - .bundle
   - node_modules
   - README.md
   - Gemfile
