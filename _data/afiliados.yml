@@ -1,8 +1,8 @@
-Treino:
-  - title: "Miniband (faixa elástica)"
-    url: "https://shopee.com.br/SEU_LINK_MINIBAND"
-    image: "/assets/img/afiliados/miniband.jpg"
-    note: "Ativação de glúteos e estabilidade."
+Gestão:
+  - title: "Ferramentas para Personal"
+    url: "https://shopee.com.br/SEU_LINK_FERRAMENTAS"
+    image: "/assets/img/afiliados/ferramentas.jpg"
+    note: "Organização e produtividade."
 
 Neurociência:
   - title: "Livro: Hábitos e Performance"
@@ -16,14 +16,14 @@ Nutrição:
     image: "/assets/img/afiliados/whey.jpg"
     note: "Recuperação muscular prática."
 
-Gestão:
-  - title: "Ferramentas para Personal"
-    url: "https://shopee.com.br/SEU_LINK_FERRAMENTA"
-    image: "/assets/img/afiliados/ferramentas.jpg"
-    note: "Organização e produtividade."
+Treino:
+  - title: "Miniband (faixa elástica)"
+    url: "https://shopee.com.br/SEU_LINK_MINIBAND"
+    image: "/assets/img/afiliados/miniband.jpg"
+    note: "Ativação de glúteos e estabilidade."
 
 default:
-  - title: "Garrafa térmica 2L"
-    url: "https://shopee.com.br/SEU_LINK_GARRAFA"
-    image: "/assets/img/afiliados/garrafa.jpg"
-    note: "Hidratação sempre à mão."
+  - title: "Produto genérico"
+    url: "#"
+    image: "/assets/img/afiliados/thumb-default.jpg"
+    note: "Descrição padrão."
