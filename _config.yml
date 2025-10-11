@@ -1,65 +1,40 @@
-# ==========================================
-# 🧠 CONFIGURAÇÃO GERAL DO SITE
-# ==========================================
+# =========================
+# Site
+# =========================
 title: "Márcio Dowglas Personal Trainer"
-description: "Treino, neurociência e saúde mental — artigos e conteúdos práticos baseados em ciência."
-author: "Márcio Dowglas Souza de Brito"
-email: "contato@mdpersonal.com"
+description: "Treino, neurociência e saúde mental — conteúdos práticos."
 url: "https://mbritodowglas-collab.github.io"
-baseurl: "/mdpersonal"
+baseurl: "/mdpersonal"   # sem barra no final
 
-# ==========================================
-# 🧱 ESTRUTURA DE CONTEÚDO
-# ==========================================
+# =========================
+# Build
+# =========================
 markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
+timezone: "America/Manaus"
 
-# ==========================================
-# 🗂️ PASTAS PADRÃO
-# ==========================================
-collections:
-  posts:
-    output: true
+# Deixa o Jekyll usar seu layout de post por padrão
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: posts
     values:
-      layout: "post"
+      layout: post
 
-# ==========================================
-# 🖼️ IMAGENS PADRÃO E CAMINHOS
-# ==========================================
-default_thumb: /assets/img/posts/default.jpg
-default_af_thumb: /assets/img/af/default.jpg
-
-# ==========================================
-# 🔗 LINKS FIXOS DE AFILIADOS
-# ==========================================
+# =========================
+# Variáveis do site (usadas no layout)
+# =========================
+default_thumb: "/assets/img/thumb-default.jpg"
+default_af_thumb: "/assets/img/af/default.jpg"
 shopee_link: "https://shopee.com.br/"
 fithouse_link: "https://www.fithouse.com.br/"
 
-# ==========================================
-# 📚 SEO E METADADOS
-# ==========================================
-social:
-  instagram: "https://instagram.com/marciodowglasfitness"
-  youtube: "https://youtube.com/@mdpersonal"
-  site: "https://mbritodowglas-collab.github.io/mdpersonal"
-
-# ==========================================
-# ⚙️ BUILD
-# ==========================================
+# =========================
+# Excluir do build
+# =========================
 exclude:
   - node_modules
+  - README.md
   - Gemfile
   - Gemfile.lock
-  - README.md
   - package.json
   - package-lock.json
-
-timezone: America/Manaus
