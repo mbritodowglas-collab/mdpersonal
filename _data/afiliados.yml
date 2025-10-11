@@ -1,29 +1,29 @@
 Treino:
   - title: "Miniband (faixa elástica)"
-    url: "https://SEU_LINK"
+    url: "https://shopee.com.br/SEU_LINK_MINIBAND"
     image: "/assets/img/afiliados/miniband.jpg"
     note: "Ativação de glúteos e estabilidade."
 
 Neurociência:
-  - title: "Livro: Hábitos Atômicos"
-    url: "https://SEU_LINK"
-    image: "/assets/img/afiliados/habitos-atomicos.jpg"
-    note: "Rotinas consistentes e melhoria cognitiva."
+  - title: "Livro: Hábitos e Performance"
+    url: "https://shopee.com.br/SEU_LINK_LIVRO"
+    image: "/assets/img/afiliados/habitos.jpg"
+    note: "Rotina, consistência e foco."
 
 Nutrição:
   - title: "Whey Protein"
-    url: "https://SEU_LINK"
+    url: "https://fithouse.com.br/SEU_LINK_WHEY"
     image: "/assets/img/afiliados/whey.jpg"
     note: "Recuperação muscular prática."
 
 Gestão:
-  - title: "Livro: Estratégia do Oceano Azul"
-    url: "https://SEU_LINK"
-    image: "/assets/img/afiliados/oceano-azul.jpg"
-    note: "Posicionamento e inovação no mercado fitness."
+  - title: "Ferramentas para Personal"
+    url: "https://shopee.com.br/SEU_LINK_FERRAMENTA"
+    image: "/assets/img/afiliados/ferramentas.jpg"
+    note: "Organização e produtividade."
 
 default:
-  - title: "Guia de Treino — Ebook Gratuito"
-    url: "/utilitarios#guias"
-    image: "/assets/img/afiliados/guia.jpg"
-    note: "Baixe o guia completo de treino e mentalidade."
+  - title: "Garrafa térmica 2L"
+    url: "https://shopee.com.br/SEU_LINK_GARRAFA"
+    image: "/assets/img/afiliados/garrafa.jpg"
+    note: "Hidratação sempre à mão."
