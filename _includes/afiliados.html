@@ -6,7 +6,9 @@
       {%- assign titulo = it.title | default: "Produto recomendado" -%}
       {%- assign link   = it.url   | default: "#" -%}
       {%- assign img    = it.image | default: site.default_af_thumb -%}
-      {%- if img == nil or img == "" -%}{% assign img = "/assets/img/afiliados/thumb-default.jpg" %}{%- endif -%}
+      {%- if img == nil or img == "" -%}
+        {%- assign img = "/assets/img/afiliados/thumb-default.jpg" -%}
+      {%- endif -%}
 
       <a class="af-card" href="{{ link }}" target="_blank" rel="noopener">
         <span class="af-thumb" style="background-image:url('{{ img | relative_url }}')"></span>
@@ -17,5 +19,12 @@
         </span>
       </a>
     {%- endfor -%}
+  </div>
+
+  <!-- Botão Ver todos -->
+  <div class="af-ver-todos">
+    <a href="{{ '/utilitarios/' | relative_url }}" class="btn-ver-todos">
+      Ver todos os utilitários →
+    </a>
   </div>
 </section>
