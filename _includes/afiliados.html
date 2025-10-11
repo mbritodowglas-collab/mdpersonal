@@ -1,16 +1,50 @@
-{% assign items = page.afiliados %}
+{% comment %}
+Regra:
+- Se page.afiliados existir → usar esses itens.
+- Senão → 1º item do catálogo por categoria + 2 fixos (Shopee e Fit House).
+{% endcomment %}
 
-{% if items and items.size > 0 %}
+{% if page.afiliados and page.afiliados.size > 0 %}
+  {% assign todos = page.afiliados %}
+{% else %}
+  {% assign cat = page.categories | first | default: 'default' %}
+  {% assign cat_list = site.data.afiliados[cat] | default: site.data.afiliados.default %}
+  {% assign primeiro = cat_list | first %}
+
+  {% assign todos = "" | split: "" %}
+  {% if primeiro %}{% assign todos = todos | push: primeiro %}{% endif %}
+
+  {% assign shopee =  {
+    "title": "Shopee — Acessórios & Suplementos",
+    "url": "https://shopee.com.br/SEU_LINK_LOJA",
+    "image": "/assets/img/afiliados/shopee.jpg",
+    "note": "Seleção com ótimo custo-benefício."
+  } %}
+  {% assign fithouse = {
+    "title": "Fit House — Suplementos",
+    "url": "https://fithouse.com.br/SEU_LINK_PAGINA",
+    "image": "/assets/img/afiliados/fithouse.jpg",
+    "note": "Parceiro recomendado para qualidade."
+  } %}
+
+  {% assign todos = todos | push: shopee | push: fithouse %}
+{% endif %}
+
+{% if todos and todos.size > 0 %}
 <section class="afiliados">
-  <h3>Produtos recomendados</h3>
+  <h3>Produtos que recomendo</h3>
   <div class="af-grid">
-    {% for item in items %}
-      <a class="af-card" href="{{ item.url }}" target="_blank" rel="nofollow noopener">
-        <span class="af-thumb"
-              style="background-image:url('{{ item.image | default: '/assets/img/thumb-default.jpg' | relative_url }}')"></span>
+    {% for i in todos limit:3 %}
+      {%- comment -%} UTM simples opcional {%- endcomment -%}
+      {% assign sep = i.url contains '?' | ternary: '&', '?' %}
+      {% assign camp = page.categories | first | default: 'geral' %}
+      {% assign utm = 'utm_source=blog&utm_medium=post&utm_campaign=' | append: camp %}
+
+      <a class="af-card" href="{{ i.url }}{{ sep }}{{ utm }}" target="_blank" rel="nofollow noopener">
+        <span class="af-thumb" style="background-image:url('{{ i.image | relative_url }}')"></span>
         <span class="af-info">
-          <strong>{{ item.title }}</strong>
-          {% if item.note %}<span class="af-note">{{ item.note }}</span>{% endif %}
+          <strong>{{ i.title }}</strong>
+          {% if i.note %}<span class="af-note">{{ i.note }}</span>{% endif %}
           <span class="af-cta">Ver detalhes →</span>
         </span>
       </a>
