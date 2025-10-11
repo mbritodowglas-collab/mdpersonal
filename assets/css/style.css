@@ -465,7 +465,15 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .uti-filtros{ flex-direction:row; overflow-x:auto; gap:.4rem; }
 }
 
-
+.af-partner{
+  display:inline-block;
+  height:22px; width:auto;
+  margin-top:.4rem;
+  opacity:.85;
+  vertical-align:middle;
+  filter:brightness(1.1);
+}
+.af-card:hover .af-partner{ opacity:1; }
 
 
 
