@@ -372,3 +372,51 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .af-thumb{ width:72px; height:72px; }
 }
 
+/* ===== AJUSTES PÁGINA SOBRE ===== */
+
+/* Centraliza e estiliza a foto no mobile */
+.sobre-foto {
+  display: block;
+  margin: 1rem auto;
+  max-width: 260px;
+  border-radius: 12px;
+  border: 1px solid #222;
+  box-shadow: 0 4px 12px rgba(0,0,0,.35);
+}
+
+/* Box de destaque para Missão e Conteúdo */
+.sobre-box {
+  background: #0f0f0f;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+
+/* Assinatura elegante */
+.sobre-assinatura {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: #bbb;
+  text-align: left;
+}
+
+/* Botões da seção "Sobre" */
+.sobre-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+.sobre-btns .btn {
+  flex: 1 1 180px;
+  text-align: center;
+}
+
+/* Responsivo: centraliza elementos no mobile */
+@media (max-width: 640px) {
+  .sobre-assinatura { text-align: center; }
+  .sobre-btns { justify-content: center; }
+}
+
