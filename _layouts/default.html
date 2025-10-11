@@ -3,17 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}"/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+
+  <!-- CSS (cache-busting) -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}"/>
+
+  <!-- Favicon / PWA basics -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/img/favicon-192.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
+  <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url }}">
+
+  <!-- JSON-LD: Website + Person -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"{{ site.title }}",
+    "url":"{{ site.url }}{{ site.baseurl }}/",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"{{ site.url }}{{ site.baseurl }}/utilitarios/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Márcio Dowglas Personal Trainer",
+    "url":"{{ site.url }}{{ site.baseurl }}/",
+    "sameAs":[
+      "https://instagram.com/marciodowglasfitness",
+      "https://youtube.com/@mdpersonal"
+    ]
+  }
+  </script>
+
+  <!-- GA4 (substitua pelo seu ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: 'G-XXXXXXX' }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config','{{ site.ga4_id | default: "G-XXXXXXX" }}');
+  </script>
 </head>
-<body>
+<body class="{{ page.body_class }}">
   <!-- Header minimalista: apenas o menu -->
   <header class="site-header">
     <nav class="main-nav">
       <a href="{{ '/' | relative_url }}">Início</a>
-      <a href="{{ '/blog' | relative_url }}">Blog</a>
-      <a href="{{ '/utilitarios' | relative_url }}">Utilitários</a>
-      <a href="{{ '/about' | relative_url }}">Sobre</a>
+      <a href="{{ '/blog/' | relative_url }}">Blog</a>
+      <a href="{{ '/utilitarios/' | relative_url }}">Utilitários</a>
+      <a href="{{ '/about/' | relative_url }}">Sobre</a>
     </nav>
   </header>
 
@@ -22,7 +84,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>© Márcio Dowglas Personal Trainer — 2025</p>
+    <p>© Márcio Dowglas Personal Trainer — {{ site.time | date: '%Y' }}</p>
     <p class="social">
       <a href="https://www.instagram.com/marciodowglasfitness" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -34,3 +96,4 @@
   </footer>
 </body>
 </html>
+
