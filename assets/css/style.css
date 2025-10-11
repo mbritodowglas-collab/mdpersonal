@@ -12,22 +12,41 @@
 /* ========= Base ========= */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:var(--preto);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+body{
+  background:var(--preto);
+  color:var(--texto);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.6
+}
 a{color:var(--dourado);text-decoration:none}
 a:hover{color:var(--vermelho-claro)}
 main{min-height:40vh}
 
-/* ========= Header (apenas menu) ========= */
+/* ========= Header com vidro (apenas menu) ========= */
 .site-header{
-  background:#000;border-bottom:1px solid var(--borda);
-  position:sticky;top:0;z-index:10;
+  position:sticky; top:0; z-index:10;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:saturate(140%) blur(6px);
+  -webkit-backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.06);
   padding:.75rem 1rem;
 }
-.main-nav{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.main-nav{
+  display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap
+}
 .main-nav a{color:#fff;font-weight:600;opacity:.95;padding:.25rem .4rem}
 .main-nav a:hover{color:var(--vermelho-claro)}
 .main-nav a[href*="utilitarios"]{color:var(--dourado);font-weight:700}
 .main-nav a[href*="utilitarios"]:hover{color:var(--vermelho-claro)}
+
+/* ========= Botões ========= */
+.btn{display:inline-block;border-radius:10px;padding:.9rem 1.4rem;font-weight:700}
+.btn.destaque{
+  background:#d62828; color:#fff; font-weight:700;
+  padding:1rem 2rem; border-radius:10px; transition:.2s;
+  box-shadow:0 8px 24px rgba(214,40,40,.2), 0 0 0 1px rgba(214,40,40,.35) inset;
+}
+.btn.destaque:hover{ background:#ff4040; transform:translateY(-2px); }
 
 /* ========= Hero com imagem de fundo ========= */
 .hero{
@@ -36,27 +55,30 @@ main{min-height:40vh}
   background-size:cover;background-position:center;background-repeat:no-repeat;
 }
 .hero-overlay{
-  position:absolute;inset:0;background:rgba(0,0,0,.45);
-  pointer-events:none;z-index:0;
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(120% 80% at 50% 30%, rgba(0,0,0,.15), rgba(0,0,0,.55) 70%),
+    linear-gradient(to bottom, rgba(0,0,0,.15) 20%, rgba(0,0,0,.55) 100%);
 }
 .hero-content{
   position:relative;z-index:1;text-align:center;max-width:900px;padding:1rem;color:#fff
 }
-.hero-content h1{color:var(--dourado);letter-spacing:.5px;text-transform:uppercase;margin:0 0 .75rem}
+.hero-content h1{
+  color:#e3c565; letter-spacing:.5px; text-transform:uppercase;
+  margin:0 0 .75rem; line-height:1.15;
+}
 .hero-content .sub{color:var(--dourado);opacity:.95;margin:0 0 1.5rem;line-height:1.6}
 
-/* ===== Ajuste de posicionamento da imagem do hero ===== */
-@media (min-width: 768px) {
-  .hero { background-position: top center !important; }
-}
-@media (max-width: 767px) {
-  .hero { background-position: center !important; }
-}
+/* Ajuste de posicionamento da imagem do hero */
+@media (min-width: 768px){ .hero{ background-position: top center !important; } }
+@media (max-width: 767px){ .hero{ background-position: center !important; } }
 
-/* Botões */
-.btn{display:inline-block;border-radius:10px;padding:.9rem 1.4rem;font-weight:700}
-.btn.destaque{background:var(--vermelho);color:#fff}
-.btn.destaque:hover{background:var(--vermelho-claro);transform:translateY(-2px);transition:.2s}
+/* Desktop: descer um pouco o bloco do hero */
+@media (min-width: 992px){
+  .hero{ min-height:92vh; }
+  .hero-content{ margin-top:12vh; }
+  .btn-row{ margin-top:12rem; }
+}
 
 /* ========= Seções ========= */
 section.artigos{padding:2rem 1rem;max-width:1000px;margin:0 auto}
@@ -69,50 +91,12 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .site-footer .social a:hover{color:var(--vermelho-claro)}
 .site-footer .icon{width:18px;height:18px}
 
-/* ========= Responsivo ========= */
+/* ========= Responsivo básico ========= */
 @media (max-width:640px){
-  .hero{min-height:80vh}
+  .hero{min-height:82vh}
+  .hero-content{padding:1.25rem}
   .hero-content h1{font-size:1.6rem}
-}
-
-/* Vinheta + gradiente sutil no hero */
-.hero-overlay{
-  position:absolute; inset:0; pointer-events:none; z-index:0;
-  background:
-    radial-gradient(120% 80% at 50% 30%, rgba(0,0,0,.15), rgba(0,0,0,.55) 70%),
-    linear-gradient(to bottom, rgba(0,0,0,.15) 20%, rgba(0,0,0,.55) 100%);
-}
-.hero-content h1{
-  color:#e3c565; letter-spacing:.5px; text-transform:uppercase;
-  margin:0 0 .75rem; line-height:1.15;
-}
-@media (max-width:640px){
-  .hero{ min-height:82vh; }
-  .hero-content{ padding:1.25rem; }
-  .hero-content h1{ font-size:1.6rem; }
-  .btn.destaque{ padding:.9rem 1.4rem; }
-}
-
-/* Header com vidro */
-.site-header{
-  position:sticky; top:0; z-index:10;
-  background:rgba(0,0,0,.6);
-  backdrop-filter:saturate(140%) blur(6px);
-  -webkit-backdrop-filter:saturate(140%) blur(6px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.btn.destaque{
-  background:#d62828; color:#fff; font-weight:700;
-  padding:1rem 2rem; border-radius:10px; transition:.2s;
-  box-shadow:0 8px 24px rgba(214,40,40,.2), 0 0 0 1px rgba(214,40,40,.35) inset;
-}
-.btn.destaque:hover{ background:#ff4040; transform:translateY(-2px); }
-
-/* ===== Desktop: descer um pouco o bloco do hero para não cobrir o rosto ===== */
-@media (min-width: 992px) {
-  .hero { background-position: top center !important; min-height: 92vh; }
-  .hero-content { margin-top: 12vh; }
-  .btn-row { margin-top: 12rem; }
+  .btn.destaque{padding:.9rem 1.4rem}
 }
 
 /* ===== BLOG: cabeçalho e cards ===== */
@@ -121,13 +105,9 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .blog-header p{opacity:.9;margin:0}
 
 .blog-lista{max-width:1000px;margin:0 auto;padding:1rem}
-.cards{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:1.2rem;
-}
-@media (max-width: 1000px){ .cards{ grid-template-columns: repeat(2, 1fr);} }
-@media (max-width: 640px){ .cards{ grid-template-columns: 1fr; } }
+.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+@media (max-width:1000px){ .cards{ grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .cards{ grid-template-columns:1fr; } }
 
 .card{
   background:#0f0f0f;border:1px solid #1c1c1c;border-radius:14px;
@@ -136,7 +116,7 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .card:hover{ transform:translateY(-3px); border-color:#2a2a2a; }
 .card a{ color:inherit; text-decoration:none; display:block; height:100% }
 .thumb{
-  width:100%; aspect-ratio: 16/9;
+  width:100%; aspect-ratio:16/9;
   background:#111 center/cover no-repeat;
   border-bottom:1px solid #1c1c1c;
 }
@@ -172,8 +152,8 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .post-body p{ margin:.7rem 0; text-align:justify; text-justify:inter-word }
 .post-body ul, .post-body ol{ padding-left:1.2rem; text-align:justify; text-justify:inter-word }
 .post-body blockquote{ border-left:3px solid #333; padding:.6rem 1rem; color:#d9d9d9; background:#0f0f0f; border-radius:8px; text-align:justify; text-justify:inter-word }
-@media (max-width: 768px){
-  .post-body p, .post-body ul, .post-body ol, .post-body blockquote { hyphens:auto; }
+@media (max-width:768px){
+  .post-body p, .post-body ul, .post-body ol, .post-body blockquote{ hyphens:auto; }
 }
 
 /* navegação e relacionados */
@@ -213,6 +193,18 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 }
 .af-card:hover .af-partner{ opacity:1; }
 
+/* Botão “Ver todos os utilitários” */
+.af-ver-todos{ text-align:center; margin-top:1.2rem; }
+.btn-ver-todos{
+  display:inline-block; background:var(--vermelho); color:#fff; font-weight:700;
+  padding:.8rem 1.6rem; border-radius:8px; text-decoration:none; transition:.25s;
+  box-shadow:0 8px 24px rgba(214,40,40,.2);
+}
+.btn-ver-todos:hover{ background:var(--vermelho-claro); transform:translateY(-2px); }
+
+/* Afiliados: thumb menor no mobile */
+@media (max-width:560px){ .af-thumb{ width:72px; height:72px; } }
+
 /* ====== Layout do Blog com barra lateral ====== */
 .blog-layout{
   display:grid;
@@ -235,7 +227,7 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .blog-filtros-vertical button:hover{ color:#fff; border-color:rgba(255,255,255,.08); background:rgba(255,255,255,.05); }
 .blog-filtros-vertical button.on{ background:var(--vermelho); color:#fff; border-color:var(--vermelho); }
 
-/* Mobile: barra lateral vira faixa rolável no topo da lista */
+/* Mobile: barra lateral vira faixa rolável */
 @media(max-width:768px){
   .blog-layout{ grid-template-columns:1fr; }
   .blog-sidebar{
@@ -259,7 +251,7 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .blog-header h1{ color: var(--dourado); margin: 0 0 .3rem; }
 .blog-header p{ color: #ccc; margin: 0; font-size: .95rem; }
 
-/* Evita “salto” ao filtrar (reserva área mínima) */
+/* Evita “salto” ao filtrar */
 .blog-lista{ min-height: 60vh; }
 
 /* ====== Destaque no topo do blog ====== */
@@ -277,14 +269,20 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 }
 
 /* ===== BLOG: Mobile — categorias fixas e limpas ===== */
-@media (max-width: 768px){
+@media (max-width:768px){
   .blog-destaque{ display:block; margin-top:.75rem; }
   .blog-sidebar{
     position: sticky; top: 3.5rem; z-index: 9;
     background: #0b0b0b; border-bottom: 1px solid var(--borda);
     padding: .6rem 1rem .8rem;
   }
-  .blog-sidebar h3{ color: var(--dourado); font-size: .9rem; margin: 0 0 .4rem; text-transform: uppercase; opacity: .9; }
+  .blog-sidebar h3{
+    color: var(--dourado);
+    font-size: .9rem;
+    margin: 0 0 .4rem;
+    text-transform: uppercase;
+    opacity: .9;
+  }
   .blog-filtros-vertical{
     display: grid; grid-template-columns: repeat(5, 1fr);
     gap: .35rem; overflow: visible;
@@ -323,60 +321,31 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   border-radius:10px; padding:.6rem .8rem; outline:none;
 }
 .uti-busca input:focus{ border-color:#2a2a2a; }
-@media(max-width: 860px){
+@media(max-width:860px){
   .uti-layout{ grid-template-columns:1fr; }
   .uti-sidebar{ position:relative; top:0; flex-direction:column; }
   .uti-filtros{ flex-direction:row; overflow-x:auto; gap:.4rem; }
 }
 
-/* ===== Afiliados: botão "Ver todos" ===== */
-.af-ver-todos{
-  text-align:center;
-  margin-top:1.2rem;
-}
-.btn-ver-todos{
-  display:inline-block;
-  background:var(--vermelho);
-  color:#fff;
-  font-weight:700;
-  padding:.8rem 1.6rem;
-  border-radius:8px;
-  text-decoration:none;
-  transition:.25s;
-  box-shadow:0 8px 24px rgba(214,40,40,.2);
-}
-.btn-ver-todos:hover{
-  background:var(--vermelho-claro);
-  transform:translateY(-2px);
-}
-
-/* Afiliados: refinamentos visuais */
-.af-info strong{
-  display:inline-block;        /* título + logo na mesma linha */
-  margin:0 .35rem 0 0;
-  line-height:1.1;
-  color:#fff;
-}
-.af-partner{
-  display:inline-block;
-  width:18px; height:18px;     /* jpg/png ok */
-  margin-left:.25rem;
-  vertical-align:middle;
-  opacity:.9;
-  filter:brightness(1.05);
-}
-.af-card:hover .af-partner{ opacity:1; }
-
-/* Afiliados: thumb um pouco menor no mobile */
-@media (max-width:560px){
-  .af-thumb{ width:72px; height:72px; }
-}
-
 /* ===== AJUSTES PÁGINA SOBRE ===== */
+
+/* Foto centralizada — cobre casos com <img>, <p><img>, <figure><img> e com/sem classe */
 .sobre .post-body img.sobre-foto,
-img.sobre-foto{
+.sobre .post-body p > img.sobre-foto,
+.sobre .post-body figure > img.sobre-foto{
   display:block;
-  margin:1rem auto;            /* centraliza */
+  margin:1rem auto;
+  max-width:260px;
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  border:1px solid #222;
+  box-shadow:0 4px 12px rgba(0,0,0,.35);
+}
+/* Fallback se a classe não for usada: primeira imagem do conteúdo */
+.sobre .post-body img:first-of-type{
+  display:block;
+  margin:1rem auto;
   max-width:260px;
   width:100%;
   height:auto;
@@ -398,13 +367,14 @@ img.sobre-foto{
 /* Assinatura */
 .sobre-assinatura{ margin-top:1.5rem; font-style:italic; color:#bbb; }
 
-/* Botões */
-.sobre-btns{ display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1rem; }
-.sobre-btns .btn{ flex:1 1 180px; text-align:center; }
-
-@media (max-width:640px){
-  .sobre-assinatura{ text-align:center; }
-  .sobre-btns{ justify-content:center; }
+/* Grupo de botões: grid estável (lado a lado quando couber) */
+.sobre-btns{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:.8rem;
+  margin-top:1rem;
 }
-
-
+.sobre-btns .btn{ display:block; text-align:center; width:100%; }
+@media (max-width:380px){
+  .sobre-btns{ grid-template-columns:1fr; }
+}
