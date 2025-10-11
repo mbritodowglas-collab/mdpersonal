@@ -15,28 +15,30 @@ permalink: /utilitarios/
     <h3>Categorias</h3>
     <nav class="blog-filtros-vertical">
       <button data-filter="all" class="on">Todos</button>
-      {%- assign cats = site.data.afiliados | keys | sort -%}
-      {%- for cat in cats -%}
+      {%- comment -%} Gera botões só com o nome da categoria {%- endcomment -%}
+      {%- for pair in site.data.afiliados -%}
+        {%- assign cat = pair[0] -%}
         <button data-filter="{{ cat | downcase }}">{{ cat }}</button>
       {%- endfor -%}
+      <button data-filter="parceiros">Parceiros</button>
     </nav>
   </aside>
 
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
-      {%- comment -%} Percorre categorias e itens {%- endcomment -%}
-      {%- for cat in cats -%}
-        {%- assign items = site.data.afiliados[cat] -%}
+
+      {%- comment -%} Para cada categoria, renderiza seus itens como cards {%- endcomment -%}
+      {%- for pair in site.data.afiliados -%}
+        {%- assign cat   = pair[0] -%}
+        {%- assign items = pair[1] -%}
         {%- for it in items -%}
           <article class="card" data-cat="{{ cat | downcase }}">
             <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
               <span class="af-thumb"
                 style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
               <span class="af-info">
-                <span class="meta">
-                  <span class="cat">{{ cat }}</span>
-                </span>
+                <span class="meta"><span class="cat">{{ cat }}</span></span>
                 <h3>{{ it.title }}</h3>
                 {%- if it.note -%}<p class="exc">{{ it.note }}</p>{%- endif -%}
                 <span class="ler">Ver detalhes →</span>
@@ -46,7 +48,7 @@ permalink: /utilitarios/
         {%- endfor -%}
       {%- endfor -%}
 
-      {%- comment -%} Parceiros fixos (Shopee e Fit House) {%- endcomment -%}
+      {%- comment -%} Parceiros fixos {%- endcomment -%}
       <article class="card" data-cat="parceiros">
         <a class="af-card" href="{{ site.shopee_link }}" target="_blank" rel="noopener">
           <span class="af-thumb" style="background-image:url('{{ '/assets/img/afiliados/shopee.jpg' | relative_url }}')"></span>
@@ -70,11 +72,12 @@ permalink: /utilitarios/
           </span>
         </a>
       </article>
+
     </div>
   </section>
 </div>
 
-<!-- Filtro por categoria (sem rolagem) -->
+<!-- Filtro por categoria -->
 <script>
 (function(){
   const cards = Array.from(document.querySelectorAll('.card[data-cat]'));
@@ -92,4 +95,3 @@ permalink: /utilitarios/
   });
 })();
 </script>
-
