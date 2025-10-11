@@ -328,3 +328,47 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .uti-sidebar{ position:relative; top:0; flex-direction:column; }
   .uti-filtros{ flex-direction:row; overflow-x:auto; gap:.4rem; }
 }
+
+/* ===== Afiliados: botão "Ver todos" ===== */
+.af-ver-todos{
+  text-align:center;
+  margin-top:1.2rem;
+}
+.btn-ver-todos{
+  display:inline-block;
+  background:var(--vermelho);
+  color:#fff;
+  font-weight:700;
+  padding:.8rem 1.6rem;
+  border-radius:8px;
+  text-decoration:none;
+  transition:.25s;
+  box-shadow:0 8px 24px rgba(214,40,40,.2);
+}
+.btn-ver-todos:hover{
+  background:var(--vermelho-claro);
+  transform:translateY(-2px);
+}
+
+/* Afiliados: refinamentos visuais */
+.af-info strong{
+  display:inline-block;        /* título + logo na mesma linha */
+  margin:0 .35rem 0 0;
+  line-height:1.1;
+  color:#fff;
+}
+.af-partner{
+  display:inline-block;
+  width:18px; height:18px;     /* jpg/png ok */
+  margin-left:.25rem;
+  vertical-align:middle;
+  opacity:.9;
+  filter:brightness(1.05);
+}
+.af-card:hover .af-partner{ opacity:1; }
+
+/* Afiliados: thumb um pouco menor no mobile */
+@media (max-width:560px){
+  .af-thumb{ width:72px; height:72px; }
+}
+
