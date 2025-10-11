@@ -20,5 +20,6 @@ social:
   future: true
   default_thumb: "/assets/img/thumb-default.jpg"
 
+default_af_thumb: /assets/img/af/default.jpg
 
   
