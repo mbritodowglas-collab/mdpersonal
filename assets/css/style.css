@@ -183,12 +183,56 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   border:1px solid #1c1c1c;border-radius:12px;overflow:hidden;margin:.5rem 0 1.2rem;
 }
 
-.post-body{color:#eaeaea;line-height:1.8}
-.post-body h2{color:#eedd9c;margin:1.6rem 0 .6rem}
-.post-body h3{color:#f0e3b1;margin:1.2rem 0 .4rem}
-.post-body p{margin:.7rem 0}
-.post-body ul, .post-body ol{padding-left:1.2rem}
-.post-body blockquote{border-left:3px solid #333;padding:.6rem 1rem;color:#d9d9d9;background:#0f0f0f;border-radius:8px}
+.post-body {
+  color: #eaeaea;
+  line-height: 1.8;
+}
+
+.post-body h2 {
+  color: #eedd9c;
+  margin: 1.6rem 0 .6rem;
+}
+
+.post-body h3 {
+  color: #f0e3b1;
+  margin: 1.2rem 0 .4rem;
+}
+
+/* Parágrafos justificados */
+.post-body p {
+  margin: .7rem 0;
+  text-align: justify;
+  text-justify: inter-word; /* melhora o espaçamento */
+}
+
+/* Listas justificados e com espaçamento */
+.post-body ul,
+.post-body ol {
+  padding-left: 1.2rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Blocos de citação */
+.post-body blockquote {
+  border-left: 3px solid #333;
+  padding: .6rem 1rem;
+  color: #d9d9d9;
+  background: #0f0f0f;
+  border-radius: 8px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  .post-body p,
+  .post-body ul,
+  .post-body ol,
+  .post-body blockquote {
+    hyphens: auto; /* quebra automática de palavras */
+  }
+}
 
 /* navegação e relacionados */
 .post-nav{display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 1rem}
