@@ -1,7 +1,6 @@
-{%- comment -%} Include minimalista para estabilizar build {%- endcomment -%}
-{%- if page.afiliados and page.afiliados.size > 0 -%}
 <section class="afiliados">
   <h3>Produtos que recomendo</h3>
+
   <div class="af-grid">
     {%- for it in page.afiliados -%}
       {%- assign titulo = it.title | default: "Produto recomendado" -%}
@@ -20,5 +19,3 @@
     {%- endfor -%}
   </div>
 </section>
-{%- endif -%}
-
