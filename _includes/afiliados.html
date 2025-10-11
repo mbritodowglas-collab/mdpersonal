@@ -1,11 +1,8 @@
-{% if page.af_rendered %}{% assign __skip = true %}{% endif %}
-{% unless __skip %}
-{% assign page.af_rendered = true %}
-<!-- (daqui pra baixo fica o conteúdo atual do afiliados.html) -->
 {% comment %}
 Regra:
 - Se page.afiliados existir → usar esses itens.
 - Senão → 1º item do catálogo por categoria + 2 fixos (Shopee e Fit House).
+Compatível com GitHub Pages (sem assign em page.*).
 {% endcomment %}
 
 {% if page.afiliados and page.afiliados.size > 0 %}
@@ -18,41 +15,15 @@ Regra:
   {% assign todos = "" | split: "" %}
   {% if primeiro %}{% assign todos = todos | push: primeiro %}{% endif %}
 
-  {% assign shopee =  {
-    "title": "Shopee — Acessórios & Suplementos",
-    "url": "https://collshp.com/ufitness?view=storefront",
-    "image": "/assets/img/afiliados/shopee.jpg",
-    "note": "Seleção com ótimo custo-benefício."
-  } %}
-  {% assign fithouse = {
-    "title": "Fit House — Suplementos",
-    "url": "https://www.fithouse.com.br?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5",
-    "image": "/assets/img/afiliados/fithouse.jpg",
-    "note": "Parceiro recomendado para qualidade."
-  } %}
+  {% assign shopee_title  = "Shopee — Acessórios & Suplementos" %}
+  {% assign shopee_url    = "https://shopee.com.br/SEU_LINK_LOJA" %}
+  {% assign shopee_image  = "/assets/img/afiliados/shopee.jpg" %}
+  {% assign shopee_note   = "Seleção com ótimo custo-benefício." %}
 
-  {% assign todos = todos | push: shopee | push: fithouse %}
-{% endif %}
+  {% assign fithouse_title = "Fit House — Suplementos" %}
+  {% assign fithouse_url   = "https://fithouse.com.br/SEU_LINK_PAGINA" %}
+  {% assign fithouse_image = "/assets/img/afiliados/fithouse.jpg" %}
+  {% assign fithouse_note  = "Parceiro recomendado para qualidade." %}
 
-{% if todos and todos.size > 0 %}
-<section class="afiliados">
-  <h3>Produtos que recomendo</h3>
-  <div class="af-grid">
-    {% for i in todos limit:3 %}
-      {%- comment -%} UTM simples opcional {%- endcomment -%}
-      {% assign sep = i.url contains '?' | ternary: '&', '?' %}
-      {% assign camp = page.categories | first | default: 'geral' %}
-      {% assign utm = 'utm_source=blog&utm_medium=post&utm_campaign=' | append: camp %}
-
-      <a class="af-card" href="{{ i.url }}{{ sep }}{{ utm }}" target="_blank" rel="nofollow noopener">
-        <span class="af-thumb" style="background-image:url('{{ i.image | relative_url }}')"></span>
-        <span class="af-info">
-          <strong>{{ i.title }}</strong>
-          {% if i.note %}<span class="af-note">{{ i.note }}</span>{% endif %}
-          <span class="af-cta">Ver detalhes →</span>
-        </span>
-      </a>
-    {% endfor %}
-  </div>
-</section>
-{% endif %}
+  {% capture shopee_obj %}{{ shopee_title }}|||{{ shopee_url }}|||{{ shopee_image }}|||{{ shopee_note }}{% endcapture %}
+  {% capture fithouse_obj %}{{ fithouse_title }}|||{{ fithouse_url }}|||{{ fithouse
