@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Utilitários
+permalink: /utilitarios/
 ---
 
 <section class="blog-header">
@@ -87,3 +88,5 @@ title: Utilitários
   });
 })();
 </script>
+
+
