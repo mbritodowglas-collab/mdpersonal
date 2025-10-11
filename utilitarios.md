@@ -10,60 +10,63 @@ permalink: /utilitarios/
 </section>
 
 <div class="blog-layout">
-  <!-- Barra lateral: categorias -->
+  <!-- Lateral com filtros -->
   <aside class="blog-sidebar">
     <h3>Categorias</h3>
-    <nav class="blog-filtros-vertical" id="ufiltros">
-      <button class="on" data-filter="all">🧰 Todos</button>
-      {% assign keys = site.data.afiliados | keys %}
-      {% for k in keys %}
-        {% unless k == 'default' %}
-          <button data-filter="{{ k }}">{{ k }}</button>
-        {% endunless %}
-      {% endfor %}
+    <nav class="blog-filtros-vertical">
+      <button data-filter="all" class="on">Todos</button>
+      {%- assign cats = site.data.afiliados | keys | sort -%}
+      {%- for cat in cats -%}
+        <button data-filter="{{ cat | downcase }}">{{ cat }}</button>
+      {%- endfor -%}
     </nav>
   </aside>
 
-  <!-- Lista -->
+  <!-- Lista de utilitários -->
   <section class="blog-lista">
-    <div class="cards" id="ugrid">
-      {% for k in keys %}
-        {% unless k == 'default' %}
-          {% for it in site.data.afiliados[k] %}
-            <article class="card uitem" data-cats="{{ k }}">
-              <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
-                <span class="af-thumb"
-                      style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
-                <span class="af-info">
-                  <strong>{{ it.title }}</strong>
-                  {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
-                  <span class="af-cta">Ver detalhes →</span>
+    <div class="cards">
+      {%- comment -%} Percorre categorias e itens {%- endcomment -%}
+      {%- for cat in cats -%}
+        {%- assign items = site.data.afiliados[cat] -%}
+        {%- for it in items -%}
+          <article class="card" data-cat="{{ cat | downcase }}">
+            <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
+              <span class="af-thumb"
+                style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
+              <span class="af-info">
+                <span class="meta">
+                  <span class="cat">{{ cat }}</span>
                 </span>
-              </a>
-            </article>
-          {% endfor %}
-        {% endunless %}
-      {% endfor %}
+                <h3>{{ it.title }}</h3>
+                {%- if it.note -%}<p class="exc">{{ it.note }}</p>{%- endif -%}
+                <span class="ler">Ver detalhes →</span>
+              </span>
+            </a>
+          </article>
+        {%- endfor -%}
+      {%- endfor -%}
 
-      <!-- Parceiros fixos -->
-      <article class="card uitem" data-cats="Parceiros">
+      {%- comment -%} Parceiros fixos (Shopee e Fit House) {%- endcomment -%}
+      <article class="card" data-cat="parceiros">
         <a class="af-card" href="{{ site.shopee_link }}" target="_blank" rel="noopener">
-          <span class="af-thumb" style="background-image:url('{{ site.shopee_thumb | relative_url }}')"></span>
+          <span class="af-thumb" style="background-image:url('{{ '/assets/img/afiliados/shopee.jpg' | relative_url }}')"></span>
           <span class="af-info">
-            <strong>Shopee — Acessórios & Suplementos</strong>
-            <span class="af-note">Seleção com ótimo custo-benefício.</span>
-            <span class="af-cta">Ver detalhes →</span>
+            <span class="meta"><span class="cat">Parceiros</span></span>
+            <h3>Shopee — Acessórios & Suplementos</h3>
+            <p class="exc">Seleção com ótimo custo-benefício.</p>
+            <span class="ler">Ver detalhes →</span>
           </span>
         </a>
       </article>
 
-      <article class="card uitem" data-cats="Parceiros">
+      <article class="card" data-cat="parceiros">
         <a class="af-card" href="{{ site.fithouse_link }}" target="_blank" rel="noopener">
-          <span class="af-thumb" style="background-image:url('{{ site.fithouse_thumb | relative_url }}')"></span>
+          <span class="af-thumb" style="background-image:url('{{ '/assets/img/afiliados/fithouse.jpg' | relative_url }}')"></span>
           <span class="af-info">
-            <strong>Fit House — Suplementos</strong>
-            <span class="af-note">Parceiro recomendado pela qualidade.</span>
-            <span class="af-cta">Ver detalhes →</span>
+            <span class="meta"><span class="cat">Parceiros</span></span>
+            <h3>Fit House — Suplementos</h3>
+            <p class="exc">Parceiro recomendado para qualidade.</p>
+            <span class="ler">Ver detalhes →</span>
           </span>
         </a>
       </article>
@@ -71,22 +74,22 @@ permalink: /utilitarios/
   </section>
 </div>
 
+<!-- Filtro por categoria (sem rolagem) -->
 <script>
 (function(){
-  const cards = Array.from(document.querySelectorAll('.uitem'));
-  const btns  = Array.from(document.querySelectorAll('#ufiltros [data-filter]'));
+  const cards = Array.from(document.querySelectorAll('.card[data-cat]'));
+  const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btns.forEach(b=>b.classList.remove('on'));
       btn.classList.add('on');
       const f = (btn.dataset.filter || 'all').toLowerCase();
       cards.forEach(c=>{
-        const cats = (c.dataset.cats || '').toLowerCase();
-        c.style.display = (f === 'all' || cats.includes(f)) ? '' : 'none';
+        const cat = (c.dataset.cat || '').toLowerCase();
+        c.style.display = (f === 'all' || cat === f) ? '' : 'none';
       });
     });
   });
 })();
 </script>
-
 
