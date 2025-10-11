@@ -24,9 +24,11 @@ defaults:
 # Variáveis do site (usadas no layout)
 # =========================
 default_thumb: "/assets/img/thumb-default.jpg"
-default_af_thumb: "/assets/img/afiliados/thumg-default.jpg"
+default_af_thumb: "/assets/img/afiliados/thumb-default.jpg"
 shopee_link: "https://shopee.com.br/"
 fithouse_link: "https://www.fithouse.com.br/"
+og_image: "/assets/img/og-default.jpg"
+ga4_id: "G-XXXXXXX"   # troque quando tiver
 
 # =========================
 # Excluir do build
@@ -39,6 +41,3 @@ exclude:
   - package.json
   - package-lock.json
 
-description: "Treino, neurociência e saúde mental — conteúdos práticos."
-og_image: "/assets/img/og-default.jpg"
-ga4_id: "G-XXXXXXX"   # troque quando tiver
