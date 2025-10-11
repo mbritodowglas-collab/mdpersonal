@@ -419,6 +419,52 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   }
 }
 
+/* ====== Utilitários (layout com barra lateral) ====== */
+.uti-layout{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:2rem;
+  align-items:start;
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 1rem 2rem;
+}
+.uti-sidebar{
+  position:sticky; top:5rem;
+  display:flex; flex-direction:column; gap:1rem;
+}
+.uti-sidebar h3{
+  color:var(--dourado);
+  font-size:1rem;
+  margin:0 0 .5rem;
+  border-bottom:1px solid var(--borda);
+  padding-bottom:.35rem;
+}
+.uti-filtros{ display:flex; flex-direction:column; gap:.5rem; }
+.uti-filtros button{
+  background:transparent; border:1px solid transparent; color:#ccc;
+  padding:.5rem .75rem; border-radius:8px; font-weight:600; text-align:left;
+  cursor:pointer; transition:.25s; font-size:.95rem;
+}
+.uti-filtros button:hover{ color:#fff; border-color:rgba(255,255,255,.08); background:rgba(255,255,255,.05); }
+.uti-filtros button.on{ background:var(--vermelho); color:#fff; border-color:var(--vermelho); }
+
+.uti-busca input{
+  width:100%; background:#0f0f0f; color:#fff; border:1px solid #1f1f1f;
+  border-radius:10px; padding:.6rem .8rem; outline:none;
+}
+.uti-busca input:focus{ border-color:#2a2a2a; }
+
+/* responsivo */
+@media(max-width: 860px){
+  .uti-layout{ grid-template-columns:1fr; }
+  .uti-sidebar{
+    position:relative; top:0;
+    flex-direction:column;
+  }
+  .uti-filtros{ flex-direction:row; overflow-x:auto; gap:.4rem; }
+}
+
 
 
 
