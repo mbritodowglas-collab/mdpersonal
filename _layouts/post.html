@@ -26,6 +26,9 @@ layout: default
   <!-- Conteúdo -->
   <div class="post-body">
     {{ content }}
+{%- if page.afiliados and page.afiliados.size > 0 -%}
+  {% include afiliados.html %}
+{%- endif -%}
 
   </div>
 
