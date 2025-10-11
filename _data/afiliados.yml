@@ -22,8 +22,3 @@ Treino:
     image: "/assets/img/afiliados/miniband.jpg"
     note: "Ativação de glúteos e estabilidade."
 
-default:
-  - title: "Produto genérico"
-    url: "#"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Descrição padrão."
