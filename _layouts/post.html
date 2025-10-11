@@ -26,13 +26,12 @@ layout: default
   <!-- Conteúdo -->
   <div class="post-body">
     {{ content }}
-{%- if page.afiliados and page.afiliados.size > 0 -%}
-  {% include afiliados.html %}
-{%- endif -%}
 
+    {%- if page.afiliados and page.afiliados.size > 0 -%}
+      {% include afiliados.html %}
+    {%- endif -%}
   </div>
 
-{% include afiliados.html %}
   <!-- === Posts relacionados (mesma categoria; fallback p/ recentes) === -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
