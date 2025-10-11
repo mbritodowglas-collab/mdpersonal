@@ -1,0 +1,23 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% assign base = site.url | append: site.baseurl %}
+  {% for p in site.pages %}
+    {% unless p.sitemap == false or p.url contains 'assets' %}
+    <url>
+      <loc>{{ base }}{{ p.url }}</loc>
+      <changefreq>weekly</changefreq>
+      <priority>{% if p.url == "/" or p.url == site.baseurl %}1.0{% else %}0.6{% endif %}</priority>
+    </url>
+    {% endunless %}
+  {% endfor %}
+  {% for post in site.posts %}
+  <url>
+    <loc>{{ base }}{{ post.url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+</urlset>
