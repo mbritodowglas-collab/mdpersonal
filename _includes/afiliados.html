@@ -1,3 +1,7 @@
+{% if page.af_rendered %}{% assign __skip = true %}{% endif %}
+{% unless __skip %}
+{% assign page.af_rendered = true %}
+<!-- (daqui pra baixo fica o conteúdo atual do afiliados.html) -->
 {% comment %}
 Regra:
 - Se page.afiliados existir → usar esses itens.
