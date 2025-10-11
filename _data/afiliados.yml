@@ -1,0 +1,29 @@
+Treino:
+  - title: "Miniband (faixa elástica)"
+    url: "https://SEU_LINK"
+    image: "/assets/img/afiliados/miniband.jpg"
+    note: "Ativação de glúteos e estabilidade."
+
+Neurociência:
+  - title: "Livro: Hábitos Atômicos"
+    url: "https://SEU_LINK"
+    image: "/assets/img/afiliados/habitos-atomicos.jpg"
+    note: "Rotinas consistentes e melhoria cognitiva."
+
+Nutrição:
+  - title: "Whey Protein"
+    url: "https://SEU_LINK"
+    image: "/assets/img/afiliados/whey.jpg"
+    note: "Recuperação muscular prática."
+
+Gestão:
+  - title: "Livro: Estratégia do Oceano Azul"
+    url: "https://SEU_LINK"
+    image: "/assets/img/afiliados/oceano-azul.jpg"
+    note: "Posicionamento e inovação no mercado fitness."
+
+default:
+  - title: "Guia de Treino — Ebook Gratuito"
+    url: "/utilitarios#guias"
+    image: "/assets/img/afiliados/guia.jpg"
+    note: "Baixe o guia completo de treino e mentalidade."
