@@ -8,7 +8,7 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}"/>
 
   <!-- Canonical -->
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+  <link rel="canonical" href="{{ page.url | relative_url | absolute_url }}" />
 
   <!-- CSS (cache-busting) -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}"/>
@@ -23,35 +23,36 @@
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
-  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-  <meta property="og:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url }}">
+  <meta property="og:url" content="{{ page.url | relative_url | absolute_url }}">
+  <meta property="og:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title | default: site.title }}">
   <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
-  <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url }}">
+  <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
 
-  <!-- JSON-LD: Website + Person -->
+  <!-- JSON-LD: Website -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"WebSite",
     "name":"{{ site.title }}",
-    "url":"{{ site.url }}{{ site.baseurl }}/",
+    "url":"{{ '/' | absolute_url }}",
     "potentialAction":{
       "@type":"SearchAction",
-      "target":"{{ site.url }}{{ site.baseurl }}/utilitarios/?q={search_term_string}",
+      "target":"{{ '/utilitarios/?q={search_term_string}' | absolute_url }}",
       "query-input":"required name=search_term_string"
     }
   }
   </script>
+  <!-- JSON-LD: Person -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"Márcio Dowglas Personal Trainer",
-    "url":"{{ site.url }}{{ site.baseurl }}/",
+    "url":"{{ '/' | absolute_url }}",
     "sameAs":[
       "https://instagram.com/marciodowglasfitness",
       "https://youtube.com/@mdpersonal"
@@ -59,7 +60,7 @@
   }
   </script>
 
-  <!-- GA4 (substitua pelo seu ID) -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: 'G-XXXXXXX' }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -94,6 +95,36 @@
       </a>
     </p>
   </footer>
+
+  <!-- ===== Rastreamento de cliques (Afiliados + CTA Avaliação) ===== -->
+  <script>
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a');
+      if(!a) return;
+
+      // Afiliados
+      if (a.href.includes('shopee.com') || a.href.includes('fithouse.com')) {
+        const parceiro = a.href.includes('shopee.com') ? 'Shopee' : 'FitHouse';
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_afiliado', {
+            event_category: 'Afiliado',
+            event_label: parceiro,
+            value: 1
+          });
+        }
+      }
+
+      // CTA "Avaliação gratuita"
+      if (a.classList.contains('destaque') || a.href.includes('/avaliacao')) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_cta_avaliacao', {
+            event_category: 'CTA',
+            event_label: 'Avaliacao gratuita',
+            value: 1
+          });
+        }
+      }
+    });
+  </script>
 </body>
 </html>
-
