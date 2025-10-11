@@ -1,51 +1,63 @@
-{% for it in page.afiliados %}
-  <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
-    <span class="af-thumb"
-      style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
-    <span class="af-info">
-      <strong>{{ it.title }}</strong>
-      {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
+<section class="afiliados">
+  <h3>Produtos que recomendo</h3>
 
-      {% if it.url contains 'shopee.com' %}
-        <img class="af-partner" src="{{ '/assets/img/afiliados/shopee.png' | relative_url }}" alt="Shopee">
-      {% elsif it.url contains 'fithouse.com' %}
-        <img class="af-partner" src="{{ '/assets/img/afiliados/fithouse.png' | relative_url }}" alt="Fit House">
-      {% endif %}
+  {% assign tem_afiliados = page.afiliados and page.afiliados.size > 0 %}
 
-      <span class="af-cta">Ver detalhes →</span>
-    </span>
-  </a>
-{% endfor %}
-</div>
+  {% if tem_afiliados %}
+    <div class="af-grid">
+      {% for it in page.afiliados %}
+        <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
+          <span class="af-thumb"
+                style="background-image:url('{{ it.image
+                  | default: site.default_af_thumb
+                  | default: "/assets/img/afiliados/thumb-default.jpg"
+                  | relative_url }}')"></span>
 
-{% else %}
-<div class="af-grid">
-  <!-- Produto Fixo: Shopee -->
-  <a class="af-card" href="{{ site.shopee_link }}" target="_blank" rel="noopener">
-    <span class="af-thumb"
-      style="background-image:url('{{ site.shopee_img 
-        | default: "/assets/img/afiliados/shopee.jpg" 
-        | relative_url }}')">
-    </span>
-    <span class="af-info">
-      <strong>Shopee — Acessórios & Suplementos</strong>
-      <span class="af-note">Seleção com ótimo custo-benefício.</span>
-      <span class="af-cta">Ver detalhes →</span>
-    </span>
-  </a>
+          <span class="af-info">
+            <strong>{{ it.title }}</strong>
+            {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
 
-  <!-- Produto Fixo: Fit House -->
-  <a class="af-card" href="{{ site.fithouse_link }}" target="_blank" rel="noopener">
-    <span class="af-thumb"
-      style="background-image:url('{{ site.fithouse_img 
-        | default: "/assets/img/afiliados/fithouse.jpg" 
-        | relative_url }}')">
-    </span>
-    <span class="af-info">
-      <strong>Fit House — Suplementos</strong>
-      <span class="af-note">Parceiro recomendado para qualidade.</span>
-      <span class="af-cta">Ver detalhes →</span>
-    </span>
-  </a>
-</div>
-{% endif %}
+            {%- if it.url contains 'shopee.com' -%}
+              <img class="af-partner" src="{{ '/assets/img/afiliados/shopee.png' | relative_url }}" alt="Shopee">
+            {%- elsif it.url contains 'fithouse.com' -%}
+              <img class="af-partner" src="{{ '/assets/img/afiliados/fithouse.png' | relative_url }}" alt="Fit House">
+            {%- endif -%}
+
+            <span class="af-cta">Ver detalhes →</span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div class="af-grid">
+      <!-- Produto Fixo: Shopee -->
+      <a class="af-card" href="{{ site.shopee_link | default: 'https://shopee.com.br/' }}" target="_blank" rel="noopener">
+        <span class="af-thumb"
+              style="background-image:url('{{ site.shopee_img
+                | default: "/assets/img/afiliados/shopee.jpg"
+                | relative_url }}')"></span>
+        <span class="af-info">
+          <strong>Shopee — Acessórios & Suplementos</strong>
+          <span class="af-note">Seleção com ótimo custo-benefício.</span>
+          <img class="af-partner" src="{{ '/assets/img/afiliados/shopee.png' | relative_url }}" alt="Shopee">
+          <span class="af-cta">Ver detalhes →</span>
+        </span>
+      </a>
+
+      <!-- Produto Fixo: Fit House -->
+      <a class="af-card" href="{{ site.fithouse_link | default: 'https://www.fithouse.com.br/' }}" target="_blank" rel="noopener">
+        <span class="af-thumb"
+              style="background-image:url('{{ site.fithouse_img
+                | default: "/assets/img/afiliados/fithouse.jpg"
+                | relative_url }}')"></span>
+        <span class="af-info">
+          <strong>Fit House — Suplementos</strong>
+          <span class="af-note">Parceiro recomendado para qualidade.</span>
+          <img class="af-partner" src="{{ '/assets/img/afiliados/fithouse.png' | relative_url }}" alt="Fit House">
+          <span class="af-cta">Ver detalhes →</span>
+        </span>
+      </a>
+    </div>
+  {% endif %}
+</section>
