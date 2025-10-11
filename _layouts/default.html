@@ -32,7 +32,7 @@
   <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
   <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
 
-  <!-- JSON-LD: Website -->
+  <!-- JSON-LD: WebSite -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -41,11 +41,12 @@
     "url":"{{ '/' | absolute_url }}",
     "potentialAction":{
       "@type":"SearchAction",
-      "target":"{{ '/utilitarios/?q={search_term_string}' | absolute_url }}",
+      "target":"{{ '/utilitarios/?q=' | absolute_url }}{% raw %}{search_term_string}{% endraw %}",
       "query-input":"required name=search_term_string"
     }
   }
   </script>
+
   <!-- JSON-LD: Person -->
   <script type="application/ld+json">
   {
