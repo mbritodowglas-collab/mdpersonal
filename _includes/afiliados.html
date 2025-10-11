@@ -5,12 +5,12 @@
 <section class="afiliados">
   <h3>Produtos que recomendo</h3>
 
-  {% comment %}
+  {%- comment -%}
     Regra:
-    - Se 'page.afiliados' existir → usa exatamente esses itens.
-    - Senão → pega 1 item do catálogo pela 1ª categoria do post (fallback: default)
-            + adiciona 2 fixos (Shopee e Fit House).
-  {% endcomment %}
+    - Se 'page.afiliados' existir → usa esses itens.
+    - Senão → pega 1 item do catálogo pela 1ª categoria (fallback: default)
+             + 2 fixos (Shopee e Fit House).
+  {%- endcomment -%}
 
   {% if page.afiliados and page.afiliados.size > 0 %}
     {% assign todos = page.afiliados %}
@@ -26,14 +26,14 @@
       "title": "Shopee — Acessórios & Suplementos",
       "url": site.shoppee_link | default: "https://shopee.com.br/",
       "image": "/assets/img/af/shopee.jpg",
-      "note": "Escolhas com melhor custo-benefício."
+      "note": "Seleção com ótimo custo-benefício."
     } %}
 
     {% assign fhouse = {
       "title": "Fit House — Suplementos",
       "url": site.fithouse_link | default: "https://www.fithouse.com.br/",
       "image": "/assets/img/af/fithouse.jpg",
-      "note": "Linha de suplementos com boa reputação."
+      "note": "Parceiro recomendado para qualidade."
     } %}
 
     {% assign todos = todos | push: shopee | push: fhouse %}
@@ -42,7 +42,8 @@
   <div class="af-grid">
     {% for it in todos %}
       <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
-        <span class="af-thumb" style="background-image:url('{{ it.image | relative_url }}')"></span>
+        <span class="af-thumb"
+              style="background-image:url('{{ it.image | default: site.default_af_thumb | default: "/assets/img/af/default.jpg" | relative_url }}')"></span>
         <span class="af-info">
           <strong>{{ it.title }}</strong>
           {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
@@ -54,4 +55,3 @@
 </section>
 
 {% endunless %}
-
