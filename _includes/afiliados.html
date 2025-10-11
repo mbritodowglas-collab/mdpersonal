@@ -1,41 +1,18 @@
-{% comment %}
-1º item = catálogo por categoria
-2º e 3º = fixos (Shopee + Fit House)
-{% endcomment %}
+{% assign items = page.afiliados %}
 
-{% assign cat = page.categories | first | default: 'default' %}
-{% assign itens = site.data.afiliados[cat] | default: site.data.afiliados.default %}
-
-{% assign fixos = "" | split: "" %}
-{% assign fixos = fixos | push:
-  {
-    "title": "Loja Shopee - Suplementos e Acessórios",
-    "url": "https://shopee.com.br/fitshop_oficial",
-    "image": "/assets/img/afiliados/shopee.jpg",
-    "note": "Produtos testados e aprovados pelos meus alunos."
-  } %}
-{% assign fixos = fixos | push:
-  {
-    "title": "Fit House Suplementos",
-    "url": "https://fithouse.com.br/",
-    "image": "/assets/img/afiliados/fithouse.jpg",
-    "note": "Parceiro oficial do programa de treino."
-  } %}
-
-{% assign todos = itens | concat: fixos %}
-
-{% if todos and todos.size > 0 %}
+{% if items and items.size > 0 %}
 <section class="afiliados">
-  <h3>Produtos que recomendo</h3>
+  <h3>Produtos recomendados</h3>
   <div class="af-grid">
-    {% for i in todos limit:3 %}
-      <a class="af-card" href="{{ i.url }}" target="_blank" rel="nofollow noopener">
-        <div class="af-thumb" style="background-image:url('{{ i.image | relative_url }}')"></div>
-        <div class="af-info">
-          <strong>{{ i.title }}</strong>
-          {% if i.note %}<span class="af-note">{{ i.note }}</span>{% endif %}
+    {% for item in items %}
+      <a class="af-card" href="{{ item.url }}" target="_blank" rel="nofollow noopener">
+        <span class="af-thumb"
+              style="background-image:url('{{ item.image | default: '/assets/img/thumb-default.jpg' | relative_url }}')"></span>
+        <span class="af-info">
+          <strong>{{ item.title }}</strong>
+          {% if item.note %}<span class="af-note">{{ item.note }}</span>{% endif %}
           <span class="af-cta">Ver detalhes →</span>
-        </div>
+        </span>
       </a>
     {% endfor %}
   </div>
