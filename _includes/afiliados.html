@@ -2,6 +2,7 @@
 Regra:
 - Se page.afiliados existir → usar esses itens.
 - Senão → 1º item do catálogo por categoria + 2 fixos (Shopee e Fit House).
+Compatível com GitHub Pages (sem assign em page.*).
 {% endcomment %}
 
 {% if page.afiliados and page.afiliados.size > 0 %}
@@ -14,20 +15,20 @@ Regra:
   {% assign todos = "" | split: "" %}
   {% if primeiro %}{% assign todos = todos | push: primeiro %}{% endif %}
 
-  {% assign shopee =  {
-    "title": "Shopee — Acessórios & Suplementos",
-    "url": "https://shopee.com.br/SEU_LINK_LOJA",
-    "image": "/assets/img/afiliados/shopee.jpg",
-    "note": "Seleção com ótimo custo-benefício."
-  } %}
-  {% assign fithouse = {
-    "title": "Fit House — Suplementos",
-    "url": "https://fithouse.com.br/SEU_LINK_PAGINA",
-    "image": "/assets/img/afiliados/fithouse.jpg",
-    "note": "Parceiro recomendado para qualidade."
-  } %}
+  {% assign shopee_title  = "Shopee — Acessórios & Suplementos" %}
+  {% assign shopee_url    = "https://shopee.com.br/SEU_LINK_LOJA" %}
+  {% assign shopee_image  = "/assets/img/afiliados/shopee.jpg" %}
+  {% assign shopee_note   = "Seleção com ótimo custo-benefício." %}
 
-  {% assign todos = todos | push: shopee | push: fithouse %}
+  {% assign fithouse_title = "Fit House — Suplementos" %}
+  {% assign fithouse_url   = "https://fithouse.com.br/SEU_LINK_PAGINA" %}
+  {% assign fithouse_image = "/assets/img/afiliados/fithouse.jpg" %}
+  {% assign fithouse_note  = "Parceiro recomendado para qualidade." %}
+
+  {% capture shopee_obj %}{{ shopee_title }}|||{{ shopee_url }}|||{{ shopee_image }}|||{{ shopee_note }}{% endcapture %}
+  {% capture fithouse_obj %}{{ fithouse_title }}|||{{ fithouse_url }}|||{{ fithouse_image }}|||{{ fithouse_note }}{% endcapture %}
+
+  {% assign todos = todos | push: shopee_obj | push: fithouse_obj %}
 {% endif %}
 
 {% if todos and todos.size > 0 %}
@@ -35,16 +36,31 @@ Regra:
   <h3>Produtos que recomendo</h3>
   <div class="af-grid">
     {% for i in todos limit:3 %}
-      {%- comment -%} UTM simples opcional {%- endcomment -%}
-      {% assign sep = i.url contains '?' | ternary: '&', '?' %}
+      {%- assign t = i -%}
+      {%- if i.title and i.url -%}
+        {# vindo do front-matter do post (objeto) #}
+        {% assign title = i.title %}
+        {% assign url = i.url %}
+        {% assign image = i.image | default: '/assets/img/thumb-default.jpg' %}
+        {% assign note = i.note %}
+      {%- else -%}
+        {# vindo dos fixos (string capturada) #}
+        {% assign parts = t | split: '|||' %}
+        {% assign title = parts[0] %}
+        {% assign url = parts[1] %}
+        {% assign image = parts[2] | default: '/assets/img/thumb-default.jpg' %}
+        {% assign note = parts[3] %}
+      {%- endif -%}
+
+      {% assign sep = url contains '?' | ternary: '&', '?' %}
       {% assign camp = page.categories | first | default: 'geral' %}
       {% assign utm = 'utm_source=blog&utm_medium=post&utm_campaign=' | append: camp %}
 
-      <a class="af-card" href="{{ i.url }}{{ sep }}{{ utm }}" target="_blank" rel="nofollow noopener">
-        <span class="af-thumb" style="background-image:url('{{ i.image | relative_url }}')"></span>
+      <a class="af-card" href="{{ url }}{{ sep }}{{ utm }}" target="_blank" rel="nofollow noopener">
+        <span class="af-thumb" style="background-image:url('{{ image | relative_url }}')"></span>
         <span class="af-info">
-          <strong>{{ i.title }}</strong>
-          {% if i.note %}<span class="af-note">{{ i.note }}</span>{% endif %}
+          <strong>{{ title }}</strong>
+          {% if note %}<span class="af-note">{{ note }}</span>{% endif %}
           <span class="af-cta">Ver detalhes →</span>
         </span>
       </a>
@@ -52,4 +68,3 @@ Regra:
   </div>
 </section>
 {% endif %}
-
