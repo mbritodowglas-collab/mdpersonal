@@ -32,7 +32,6 @@
 
   {% else %}
     <div class="af-grid">
-      <!-- Produto Fixo: Shopee -->
       <a class="af-card" href="{{ site.shopee_link | default: 'https://shopee.com.br/' }}" target="_blank" rel="noopener">
         <span class="af-thumb"
           style="background-image:url('{{ site.shopee_img
@@ -46,7 +45,6 @@
         </span>
       </a>
 
-      <!-- Produto Fixo: Fit House -->
       <a class="af-card" href="{{ site.fithouse_link | default: 'https://www.fithouse.com.br/' }}" target="_blank" rel="noopener">
         <span class="af-thumb"
           style="background-image:url('{{ site.fithouse_img
@@ -62,3 +60,4 @@
     </div>
   {% endif %}
 </section>
+
