@@ -1,20 +1,21 @@
-{% if tem_afiliados %}
-<div class="af-grid">
-  {% for it in page.afiliados %}
-    <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
-      <span class="af-thumb"
-        style="background-image:url('{{ it.image 
-          | default: site.default_af_thumb 
-          | default: "/assets/img/afiliados/thumb-default.jpg" 
-          | relative_url }}')">
-      </span>
-      <span class="af-info">
-        <strong>{{ it.title }}</strong>
-        {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
-        <span class="af-cta">Ver detalhes →</span>
-      </span>
-    </a>
-  {% endfor %}
+{% for it in page.afiliados %}
+  <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
+    <span class="af-thumb"
+      style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
+    <span class="af-info">
+      <strong>{{ it.title }}</strong>
+      {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
+
+      {% if it.url contains 'shopee.com' %}
+        <img class="af-partner" src="{{ '/assets/img/afiliados/shopee.png' | relative_url }}" alt="Shopee">
+      {% elsif it.url contains 'fithouse.com' %}
+        <img class="af-partner" src="{{ '/assets/img/afiliados/fithouse.png' | relative_url }}" alt="Fit House">
+      {% endif %}
+
+      <span class="af-cta">Ver detalhes →</span>
+    </span>
+  </a>
+{% endfor %}
 </div>
 
 {% else %}
