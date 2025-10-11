@@ -15,7 +15,7 @@ permalink: /blog/
   {% assign destaque = site.posts | first %}
   <section class="blog-destaque">
     <a class="dst-wrap" href="{{ destaque.url | relative_url }}">
-      <div class="dst-thumb" style="background-image:url('{{ destaque.image | default: '/assets/css/thumb-default.jpg' | relative_url }}')"></div>
+      <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/img/thumb-default.jpg' | relative_url }}')"></div>
       <div class="dst-info">
         {% if destaque.categories and destaque.categories.size > 0 %}
           <span class="cat">{{ destaque.categories[0] }}</span>
