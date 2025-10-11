@@ -27,6 +27,8 @@ default_thumb: "/assets/img/thumb-default.jpg"
 default_af_thumb: "/assets/img/afiliados/thumg-default.jpg"
 shopee_link: "https://shopee.com.br/"
 fithouse_link: "https://www.fithouse.com.br/"
+shopee_img: "/assets/img/afiliados/shopee.jpg"
+fithouse_img: "/assets/img/afiliados/fithouse.jpg"
 
 # =========================
 # Excluir do build
