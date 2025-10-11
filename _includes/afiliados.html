@@ -1,17 +1,14 @@
 <section class="afiliados">
   <h3>Produtos que recomendo</h3>
 
-  {%- assign lista = page.afiliados | default: empty -%}
-  {%- assign tem_afiliados = lista.size | default: 0 -%}
-
-  {%- if tem_afiliados > 0 -%}
+  {%- if page.afiliados and page.afiliados.size > 0 -%}
     <div class="af-grid">
-      {%- for it in lista -%}
+      {%- for it in page.afiliados -%}
         {%- assign titulo = it.title | default: "Produto recomendado" -%}
         {%- assign link   = it.url   | default: "#" -%}
         {%- assign nota   = it.note  | default: "" -%}
-        {%- assign img    = it.image | default: site.default_af_thumb | default: "/assets/img/afiliados/thumb-default.jpg" -%}
-        {%- assign host   = link | default: "" | downcase -%}
+        {%- assign img    = it.image | default: site.default_af_thumb -%}
+        {%- if img == nil or img == "" -%}{% assign img = "/assets/img/afiliados/thumb-default.jpg" %}{%- endif -%}
 
         <a class="af-card" href="{{ link }}" target="_blank" rel="noopener">
           <span class="af-thumb" style="background-image:url('{{ img | relative_url }}')"></span>
@@ -19,10 +16,13 @@
             <strong>{{ titulo }}</strong>
             {%- if nota and nota != "" -%}<span class="af-note">{{ nota }}</span>{%- endif -%}
 
-            {%- if host contains "shopee" -%}
-              <img class="af-partner" src="{{ '/assets/img/afiliados/shopee.jpg' | relative_url }}" alt="Shopee" loading="lazy" width="18" height="18">
-            {%- elsif host contains "fithouse" -%}
-              <img class="af-partner" src="{{ '/assets/img/afiliados/fithouse.jpg' | relative_url }}" alt="Fit House" loading="lazy" width="18" height="18">
+            {%- if it.url -%}
+              {%- assign host = it.url | downcase -%}
+              {%- if host contains "shopee" -%}
+                <img class="af-partner" src="{{ '/assets/img/afiliados/shopee.jpg' | relative_url }}" alt="Shopee" loading="lazy" width="18" height="18">
+              {%- elsif host contains "fithouse" -%}
+                <img class="af-partner" src="{{ '/assets/img/afiliados/fithouse.jpg' | relative_url }}" alt="Fit House" loading="lazy" width="18" height="18">
+              {%- endif -%}
             {%- endif -%}
 
             <span class="af-cta">Ver detalhes →</span>
@@ -33,6 +33,7 @@
 
   {%- else -%}
     <div class="af-grid">
+      <!-- Shopee (fallback) -->
       <a class="af-card" href="{{ site.shopee_link | default: 'https://shopee.com.br/' }}" target="_blank" rel="noopener">
         <span class="af-thumb" style="background-image:url('{{ site.shopee_img | default: '/assets/img/afiliados/shopee.jpg' | relative_url }}')"></span>
         <span class="af-info">
@@ -43,6 +44,7 @@
         </span>
       </a>
 
+      <!-- Fit House (fallback) -->
       <a class="af-card" href="{{ site.fithouse_link | default: 'https://www.fithouse.com.br/' }}" target="_blank" rel="noopener">
         <span class="af-thumb" style="background-image:url('{{ site.fithouse_img | default: '/assets/img/afiliados/fithouse.jpg' | relative_url }}')"></span>
         <span class="af-info">
