@@ -22,15 +22,7 @@ permalink: /utilitarios/
       {%- endfor -%}
       <button data-filter="parceiros">Parceiros</button>
     </nav>
-<!-- Parceiros (logos) -->
-<div class="parceiros-strip">
-  <a class="p-logo" href="{{ site.shopee_link }}" target="_blank" rel="noopener">
-    <img src="{{ '/assets/img/afiliados/shopee.png' | relative_url }}" alt="Shopee parceiro">
-  </a>
-  <a class="p-logo" href="{{ site.fithouse_link }}" target="_blank" rel="noopener">
-    <img src="{{ '/assets/img/afiliados/fithouse.png' | relative_url }}" alt="Fit House parceiro">
-  </a>
-</div>
+
   </aside>
 
   <!-- Lista de utilitários -->
