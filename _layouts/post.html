@@ -26,9 +26,10 @@ layout: default
   <!-- Conteúdo -->
   <div class="post-body">
     {{ content }}
-{% include afiliados.html %}
+
   </div>
 
+{% include afiliados.html %}
   <!-- === Posts relacionados (mesma categoria; fallback p/ recentes) === -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
