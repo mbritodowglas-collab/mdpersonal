@@ -2,7 +2,7 @@
 Regra:
 - Se page.afiliados existir → usar esses itens.
 - Senão → 1º item do catálogo por categoria + 2 fixos (Shopee e Fit House).
-Compatível com GitHub Pages (sem assign em page.*).
+Compatível com GitHub Pages (sem push, sem comments estranhos, sem escrever em page.*).
 {% endcomment %}
 
 {% if page.afiliados and page.afiliados.size > 0 %}
@@ -12,18 +12,14 @@ Compatível com GitHub Pages (sem assign em page.*).
   {% assign cat_list = site.data.afiliados[cat] | default: site.data.afiliados.default %}
   {% assign primeiro = cat_list | first %}
 
-  {% assign todos = "" | split: "" %}
-  {% if primeiro %}{% assign todos = todos | push: primeiro %}{% endif %}
+  {%- assign todos = "" | split: "" -%} {# cria array vazio #}
+  {% if primeiro %}
+    {% assign todos = todos | concat: [primeiro] %}
+  {% endif %}
 
-  {% assign shopee_title  = "Shopee — Acessórios & Suplementos" %}
-  {% assign shopee_url    = "https://shopee.com.br/SEU_LINK_LOJA" %}
-  {% assign shopee_image  = "/assets/img/afiliados/shopee.jpg" %}
-  {% assign shopee_note   = "Seleção com ótimo custo-benefício." %}
+  {%- assign shopee_title  = "Shopee — Acessórios & Suplementos" -%}
+  {%- assign shopee_url    = "https://shopee.com.br/SEU_LINK_LOJA" -%}
+  {%- assign shopee_image  = "/assets/img/afiliados/shopee.jpg" -%}
+  {%- assign shopee_note   = "Seleção com ótimo custo-benefício." -%}
 
-  {% assign fithouse_title = "Fit House — Suplementos" %}
-  {% assign fithouse_url   = "https://fithouse.com.br/SEU_LINK_PAGINA" %}
-  {% assign fithouse_image = "/assets/img/afiliados/fithouse.jpg" %}
-  {% assign fithouse_note  = "Parceiro recomendado para qualidade." %}
-
-  {% capture shopee_obj %}{{ shopee_title }}|||{{ shopee_url }}|||{{ shopee_image }}|||{{ shopee_note }}{% endcapture %}
-  {% capture fithouse_obj %}{{ fithouse_title }}|||{{ fithouse_url }}|||{{ fithouse
+  {%- assign fithouse_title = "Fit House
