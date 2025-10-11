@@ -24,7 +24,7 @@ defaults:
 # Variáveis do site (usadas no layout)
 # =========================
 default_thumb: "/assets/img/thumb-default.jpg"
-default_af_thumb: "/assets/img/afiliado/default.jpg"
+default_af_thumb: "/assets/img/afiliados/default.jpg"
 shopee_link: "https://shopee.com.br/"
 fithouse_link: "https://www.fithouse.com.br/"
 
