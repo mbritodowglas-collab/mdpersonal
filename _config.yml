@@ -1,25 +1,75 @@
-title: "Márcio Dowglas Personal Trainer"
-description: "Treinamento físico, neurociência e saúde mental — base de conteúdo do Blog CNT."
-logo: "/assets/logo.png"
-author: "Márcio Dowglas"
+{% if page.af_rendered %}{% assign __skip = true %}{% endif %}
+{% unless __skip %}
+{% assign page.af_rendered = true %}
 
-# endereço do seu Pages
-url: "https://mbritodowglas-collab.github.io"
-baseurl: "/mdpersonal"
+<section class="afiliados">
+  <h3>Produtos que recomendo</h3>
 
-# motor do site
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
+  {% comment %}
+    Regras:
+    - Se 'page.afiliados' existir → usa esses itens.
+    - Senão → 1 item do catálogo pela 1ª categoria (fallback: default)
+             + 2 fixos (Shopee e Fit House).
+  {% endcomment %}
 
-# links globais (usaremos nas próximas etapas)
-social:
-  instagram: "https://instagram.com/marciodowglasfitness"
-  youtube: "https://youtube.com/@marciodowglas"
+  {% assign tem_afiliados = page.afiliados and page.afiliados.size > 0 %}
 
-  future: true
-  default_thumb: "/assets/img/thumb-default.jpg"
+  {% if tem_afiliados %}
+    <div class="af-grid">
+      {% for it in page.afiliados %}
+        <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
+          <span class="af-thumb"
+                style="background-image:url('{{ it.image | default: site.default_af_thumb | default: "/assets/img/af/default.jpg" | relative_url }}')"></span>
+          <span class="af-info">
+            <strong>{{ it.title }}</strong>
+            {% if it.note %}<span class="af-note">{{ it.note }}</span>{% endif %}
+            <span class="af-cta">Ver detalhes →</span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
 
-default_af_thumb: /assets/img/af/default.jpg
+  {% else %}
+    {% assign cat = page.categories | first | default: 'default' %}
+    {% assign cat_list = site.data.afiliados[cat] | default: site.data.afiliados.default %}
+    {% assign primeiro = cat_list | first %}
 
-  
+    <div class="af-grid">
+      {% if primeiro %}
+        <a class="af-card" href="{{ primeiro.url }}" target="_blank" rel="noopener">
+          <span class="af-thumb"
+                style="background-image:url('{{ primeiro.image | default: site.default_af_thumb | default: "/assets/img/af/default.jpg" | relative_url }}')"></span>
+          <span class="af-info">
+            <strong>{{ primeiro.title }}</strong>
+            {% if primeiro.note %}<span class="af-note">{{ primeiro.note }}</span>{% endif %}
+            <span class="af-cta">Ver detalhes →</span>
+          </span>
+        </a>
+      {% endif %}
+
+      <!-- Fixo: Shopee -->
+      <a class="af-card" href="{{ site.shopee_link | default: 'https://shopee.com.br/' }}" target="_blank" rel="noopener">
+        <span class="af-thumb"
+              style="background-image:url('{{ '/assets/img/af/shopee.jpg' | relative_url }}')"></span>
+        <span class="af-info">
+          <strong>Shopee — Acessórios & Suplementos</strong>
+          <span class="af-note">Seleção com ótimo custo-benefício.</span>
+          <span class="af-cta">Ver detalhes →</span>
+        </span>
+      </a>
+
+      <!-- Fixo: Fit House -->
+      <a class="af-card" href="{{ site.fithouse_link | default: 'https://www.fithouse.com.br/' }}" target="_blank" rel="noopener">
+        <span class="af-thumb"
+              style="background-image:url('{{ '/assets/img/af/fithouse.jpg' | relative_url }}')"></span>
+        <span class="af-info">
+          <strong>Fit House — Suplementos</strong>
+          <span class="af-note">Parceiro recomendado para qualidade.</span>
+          <span class="af-cta">Ver detalhes →</span>
+        </span>
+      </a>
+    </div>
+  {% endif %}
+</section>
+
+{% endunless %}
