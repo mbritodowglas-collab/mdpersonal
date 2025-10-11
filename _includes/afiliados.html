@@ -1,34 +1,33 @@
 {% comment %}
-Afiliados – compatível com GitHub Pages (Jekyll safe mode).
 Regra:
-- Se page.afiliados existir → usa esses itens (title, url, image, note).
-- Senão → 1º item do catálogo da categoria (se existir) + 2 fixos (Shopee e Fit House).
-_catálogo é opcional_; se não existir, caímos só nos 2 fixos.
+- Se page.afiliados existir → usar esses itens.
+- Senão → 1º item do catálogo por categoria + 2 fixos (Shopee e Fit House).
 {% endcomment %}
-
-{% assign todos = nil %}
 
 {% if page.afiliados and page.afiliados.size > 0 %}
   {% assign todos = page.afiliados %}
 {% else %}
   {% assign cat = page.categories | first | default: 'default' %}
-
-  {%- assign cat_list = nil -%}
-  {% if site.data and site.data.afiliados %}
-    {% assign cat_list = site.data.afiliados[cat] | default: site.data.afiliados.default %}
-  {% endif %}
+  {% assign cat_list = site.data.afiliados[cat] | default: site.data.afiliados.default %}
   {% assign primeiro = cat_list | first %}
 
-  {%- assign todos = "" | split: "" -%}  {# array vazio seguro #}
-  {% if primeiro %}
-    {% assign todos = todos | concat: [primeiro] %}
-  {% endif %}
+  {% assign todos = "" | split: "" %}
+  {% if primeiro %}{% assign todos = todos | push: primeiro %}{% endif %}
 
-  {%- comment -%} Itens fixos (edite os links/imagens) {%- endcomment -%}
-  {% capture shopee_obj %}Shopee — Acessórios & Suplementos|||https://shopee.com.br/SEU_LINK_LOJA|||/assets/img/afiliados/shopee.jpg|||Seleção com ótimo custo-benefício.{% endcapture %}
-  {% capture fithouse_obj %}Fit House — Suplementos|||https://fithouse.com.br/SEU_LINK_PAGINA|||/assets/img/afiliados/fithouse.jpg|||Parceiro recomendado para qualidade.{% endcapture %}
+  {% assign shopee =  {
+    "title": "Shopee — Acessórios & Suplementos",
+    "url": "https://shopee.com.br/SEU_LINK_LOJA",
+    "image": "/assets/img/afiliados/shopee.jpg",
+    "note": "Seleção com ótimo custo-benefício."
+  } %}
+  {% assign fithouse = {
+    "title": "Fit House — Suplementos",
+    "url": "https://fithouse.com.br/SEU_LINK_PAGINA",
+    "image": "/assets/img/afiliados/fithouse.jpg",
+    "note": "Parceiro recomendado para qualidade."
+  } %}
 
-  {% assign todos = todos | concat: [shopee_obj] | concat: [fithouse_obj] %}
+  {% assign todos = todos | push: shopee | push: fithouse %}
 {% endif %}
 
 {% if todos and todos.size > 0 %}
@@ -36,34 +35,16 @@ _catálogo é opcional_; se não existir, caímos só nos 2 fixos.
   <h3>Produtos que recomendo</h3>
   <div class="af-grid">
     {% for i in todos limit:3 %}
-      {% if i.title and i.url %}
-        {# objeto vindo do front-matter do post #}
-        {% assign title = i.title %}
-        {% assign url = i.url %}
-        {% assign image = i.image | default: '/assets/img/thumb-default.jpg' %}
-        {% assign note = i.note %}
-      {% else %}
-        {# string capturada (fixos) #}
-        {% assign parts = i | split: '|||' %}
-        {% assign title = parts[0] %}
-        {% assign url = parts[1] %}
-        {% assign image = parts[2] | default: '/assets/img/thumb-default.jpg' %}
-        {% assign note = parts[3] %}
-      {% endif %}
-
-      {% if url contains '?' %}
-        {% assign sep = '&' %}
-      {% else %}
-        {% assign sep = '?' %}
-      {% endif %}
+      {%- comment -%} UTM simples opcional {%- endcomment -%}
+      {% assign sep = i.url contains '?' | ternary: '&', '?' %}
       {% assign camp = page.categories | first | default: 'geral' %}
-      {% capture utm %}utm_source=blog&utm_medium=post&utm_campaign={{ camp | downcase }}{% endcapture %}
+      {% assign utm = 'utm_source=blog&utm_medium=post&utm_campaign=' | append: camp %}
 
-      <a class="af-card" href="{{ url }}{{ sep }}{{ utm }}" target="_blank" rel="nofollow noopener">
-        <span class="af-thumb" style="background-image:url('{{ image | relative_url }}')"></span>
+      <a class="af-card" href="{{ i.url }}{{ sep }}{{ utm }}" target="_blank" rel="nofollow noopener">
+        <span class="af-thumb" style="background-image:url('{{ i.image | relative_url }}')"></span>
         <span class="af-info">
-          <strong>{{ title }}</strong>
-          {% if note %}<span class="af-note">{{ note }}</span>{% endif %}
+          <strong>{{ i.title }}</strong>
+          {% if i.note %}<span class="af-note">{{ i.note }}</span>{% endif %}
           <span class="af-cta">Ver detalhes →</span>
         </span>
       </a>
@@ -71,3 +52,4 @@ _catálogo é opcional_; se não existir, caímos só nos 2 fixos.
   </div>
 </section>
 {% endif %}
+
