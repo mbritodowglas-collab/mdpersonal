@@ -2,9 +2,10 @@
 # Site
 # =========================
 title: "Márcio Dowglas Personal Trainer"
+email: "mdowglastrainer@gmail.com"
 description: "Treino, neurociência e saúde mental — conteúdos práticos."
-url: "https://mbritodowglas-collab.github.io"
-baseurl: "/mdpersonal"   # sem barra no final
+url: "https://mbritodowglas-collab.github.io"   # domínio raiz do GitHub Pages
+baseurl: "/mdpersonal"                           # caminho do projeto (não deixe vazio)
 
 # =========================
 # Build
@@ -12,7 +13,7 @@ baseurl: "/mdpersonal"   # sem barra no final
 markdown: kramdown
 timezone: "America/Manaus"
 
-# Deixa o Jekyll usar seu layout de post por padrão
+# Layout padrão para posts
 defaults:
   - scope:
       path: ""
@@ -21,15 +22,28 @@ defaults:
       layout: post
 
 # =========================
-# Variáveis do site (usadas no layout)
+# Variáveis globais usadas no layout
 # =========================
 default_thumb: "/assets/img/thumb-default.jpg"
 default_af_thumb: "/assets/img/afiliados/thumb-default.jpg"
-shopee_link: "https://shopee.com.br/"
-fithouse_link: "https://www.fithouse.com.br/"
 og_image: "/assets/img/og-default.jpg"
-ga4_id: "G-7LD3B5YK06"   # seu GA4
+ga4_id: "G-7LD3B5YK06"
 
+# Links de parceiros (usei os que você vem usando nas páginas)
+shopee_link: "https://s.shopee.com.br/1LX4vemlrI"
+fithouse_link: "https://www.fithouse.com.br?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+
+# =========================
+# Meta descriptions por página (opcional)
+# =========================
+meta_descriptions:
+  default: "Conteúdos práticos sobre treino, neurociência e comportamento humano — aprenda como transformar corpo e mente com orientações diretas e fáceis de aplicar."
+  home: "Treino, neurociência e mentalidade em um só lugar. Descubra como alcançar resultados reais no corpo e na mente com orientações simples e aplicáveis."
+  blog: "Artigos curtos e diretos sobre treino, neurociência, nutrição e gestão fitness — um bate-papo com base científica para o seu dia a dia."
+  utilitarios: "Acessórios, suplementos e ferramentas recomendadas por Márcio Dowglas — seleções práticas para quem busca evolução com propósito."
+  sobre: "Conheça Márcio Dowglas, personal trainer e criador do MD Personal. Entenda a missão por trás do projeto: unir treino, mente e comportamento em uma jornada real de evolução."
+  contato: "Entre em contato com Márcio Dowglas — tire dúvidas sobre treinos, consultorias e programas personalizados baseados em neurociência."
+  artigo_padrao: "Aprenda sobre [tema do post] de forma simples e prática. Entenda como aplicar no seu treino e rotina com base em neurociência e comportamento."
 
 # =========================
 # Excluir do build
@@ -45,30 +59,3 @@ exclude:
   - Gemfile.lock
   - package.json
   - package-lock.json
-
-# ----------------------------------------
-# CONFIGURAÇÕES DO SITE
-# ----------------------------------------
-title: "MD Personal"
-email: "mdowglastrainer@gmail.com"
-description: "Treino, neurociência e comportamento humano."
-baseurl: ""
-url: "https://mbritodowglas-collab.github.io"
-
-# ----------------------------------------
-# META DESCRIPTIONS — BLOCO ADICIONADO
-# ----------------------------------------
-meta_descriptions:
-  default: "Conteúdos práticos sobre treino, neurociência e comportamento humano — aprenda como transformar corpo e mente com orientações diretas e fáceis de aplicar."
-
-  home: "Treino, neurociência e mentalidade em um só lugar. Descubra como alcançar resultados reais no corpo e na mente com orientações simples e aplicáveis."
-
-  blog: "Artigos curtos e diretos sobre treino, neurociência, nutrição e gestão fitness — um bate-papo com base científica para o seu dia a dia."
-
-  utilitarios: "Acessórios, suplementos e ferramentas recomendadas por Márcio Dowglas — seleções práticas para quem busca evolução com propósito."
-
-  sobre: "Conheça Márcio Dowglas, personal trainer e criador do MD Personal. Entenda a missão por trás do projeto: unir treino, mente e comportamento em uma jornada real de evolução."
-
-  contato: "Entre em contato com Márcio Dowglas — tire dúvidas sobre treinos, consultorias e programas personalizados baseados em neurociência."
-
-  artigo_padrao: "Aprenda sobre [tema do post] de forma simples e prática. Entenda como aplicar no seu treino e rotina com base em neurociência e comportamento."
