@@ -13,8 +13,8 @@
   <!-- Canonical -->
   <link rel="canonical" href="{{ page.url | relative_url | absolute_url }}" />
 
-  <!-- CSS (cache-busting) -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}"/>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
   <!-- Favicon / PWA basics -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
@@ -67,7 +67,7 @@
   }
   </script>
 
-  <!-- GA4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: 'G-XXXXXXX' }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -78,7 +78,7 @@
 </head>
 
 <body class="{{ page.body_class }}">
-  <!-- Header minimalista: apenas o menu -->
+  <!-- Header minimalista -->
   <header class="site-header">
     <nav class="main-nav">
       <a href="{{ '/' | relative_url }}">Início</a>
@@ -95,7 +95,7 @@
   <footer class="site-footer">
     <p>© Márcio Dowglas Personal Trainer — {{ site.time | date: '%Y' }}</p>
     <p class="social">
-      <a href="https://instagram.com/marciodowglasfitness" target="_blank" rel="noopener">
+      <a href="https://www.instagram.com/marciodowglasfitness" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#e3c565" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 6.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 1.5a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm5.25-.75a.9.9 0 1 1 0 1.8a.9.9 0 0 1 0-1.8z"/>
         </svg>
@@ -104,7 +104,7 @@
     </p>
   </footer>
 
-  <!-- ===== Rastreamento de cliques (Afiliados + CTA Avaliação) ===== -->
+  <!-- Rastreamento de cliques -->
   <script>
     document.addEventListener('click', function(e){
       const a = e.target.closest('a');
