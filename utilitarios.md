@@ -106,15 +106,20 @@ body_class: utilitarios-page
 
 <!-- Estilos escopados desta página -->
 <style>
-/* ===== /utilitarios — grade e cards ===== */
+/* ===== /utilitarios — grade e cards (ajuste colunas + thumbs 1:1) ===== */
 .utilitarios-page .blog-lista .cards{
   display:grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr;          /* mobile: 1 coluna */
   gap: 1rem;
 }
-@media (min-width: 760px){
+@media (min-width: 480px){
   .utilitarios-page .blog-lista .cards{
-    grid-template-columns: repeat(2, minmax(0,1fr));
+    grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 colunas já no mobile largo */
+  }
+}
+@media (min-width: 1024px){
+  .utilitarios-page .blog-lista .cards{
+    grid-template-columns: repeat(3, minmax(0,1fr)); /* 3 colunas em telas grandes */
   }
 }
 
@@ -130,11 +135,12 @@ body_class: utilitarios-page
   border-color:#2a2a2a; transition:.25s;
 }
 
-/* Thumb full-bleed no topo */
+/* Thumb QUADRADA (1:1) no topo */
 .utilitarios-page .blog-lista .card .af-thumb{
-  width:100%; aspect-ratio:16/9;
+  width:100%;
+  aspect-ratio: 1 / 1;                      /* <- faz 300x300 visual */
   background:#111 center/cover no-repeat;
-  border-radius:10px; border:1px solid #1c1c1c;
+  border-radius:12px; border:1px solid #1c1c1c;
 }
 
 /* Conteúdo */
@@ -150,12 +156,7 @@ body_class: utilitarios-page
 .utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
 .utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
 
-/* Parceiros em largura total da grade */
-.utilitarios-page .blog-lista .card[data-cats*="parceiros"]{ grid-column: 1 / -1; }
+/* IMPORTANTE: REMOVIDO o “grid-column: 1/-1” dos parceiros
+   (assim parceiros também ficam em 2 colunas quando filtrados) */
 
-/* Ajustes mobile finos */
-@media (max-width:640px){
-  .utilitarios-page .blog-lista .card, 
-  .utilitarios-page .blog-lista .card .af-card{ width:100%; }
-}
-</style>
+</script>
