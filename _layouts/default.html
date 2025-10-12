@@ -6,17 +6,17 @@
 
   <title>{{ page.title | default: site.title }}</title>
 
-  <!-- Meta description: usa page.description; se não houver, usa site.description -->
+  <!-- Meta description: usa page.description; se não houver, usa excerpt/site.description -->
   <meta name="description"
         content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}" />
 
-  <!-- Canonical respeitando baseurl/url -->
+  <!-- Canonical -->
   <link rel="canonical" href="{{ page.url | relative_url | absolute_url }}" />
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"/>
+  <!-- CSS principal (com cache-busting simples) -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
 
-  <!-- Favicon / PWA (opcionais) -->
+  <!-- Favicon / PWA -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/img/favicon-192.png' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
@@ -72,7 +72,7 @@
     gtag('config','{{ site.ga4_id | default: "G-XXXXXXX" }}');
   </script>
 </head>
-<body class="{{ page.body_class }}">
+<body class="{{ page.body_class | default: '' }}">
   <!-- Header -->
   <header class="site-header">
     <nav class="main-nav">
@@ -102,13 +102,14 @@
       const a = e.target.closest('a');
       if(!a) return;
 
+      // Afiliados
       if (a.href.includes('shopee.com') || a.href.includes('fithouse.com')) {
         const parceiro = a.href.includes('shopee.com') ? 'Shopee' : 'FitHouse';
         if (typeof gtag === 'function') {
           gtag('event', 'click_afiliado', { event_category:'Afiliado', event_label: parceiro, value:1 });
         }
       }
-
+      // CTA "Avaliação gratuita"
       if (a.classList.contains('destaque') || a.href.includes('/avaliacao')) {
         if (typeof gtag === 'function') {
           gtag('event', 'click_cta_avaliacao', { event_category:'CTA', event_label:'Avaliacao gratuita', value:1 });
@@ -118,4 +119,3 @@
   </script>
 </body>
 </html>
-
