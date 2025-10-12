@@ -26,7 +26,6 @@ body_class: utilitarios-page
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
-      {%- comment -%} Renderiza cada item do afiliados.yml {%- endcomment -%}
       {%- for it in site.data.afiliados -%}
         {%- assign cats = "" -%}
         {%- if it.cat -%}
@@ -66,64 +65,102 @@ body_class: utilitarios-page
 
 <!-- Estilos escopados desta página -->
 <style>
-/* ===== /utilitarios — grade e cards (ajuste colunas + thumbs 1:1) ===== */
+/* ===== /utilitarios — grade 2 colunas fixas (inclusive no mobile) ===== */
 .utilitarios-page .blog-lista .cards{
   display:grid;
-  grid-template-columns: 1fr;          /* mobile: 1 coluna */
-  gap: 1rem;
-}
-@media (min-width: 480px){
-  .utilitarios-page .blog-lista .cards{
-    grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 colunas já no mobile largo */
-  }
-}
-@media (min-width: 1024px){
-  .utilitarios-page .blog-lista .cards{
-    grid-template-columns: repeat(3, minmax(0,1fr)); /* 3 colunas em telas grandes */
-  }
+  grid-template-columns: repeat(2, minmax(0,1fr)); /* Sempre duas colunas */
+  gap:.9rem;
 }
 
-/* Cartão “cheio” para todas as categorias */
-.utilitarios-page .blog-lista .card{ border:0; background:transparent; padding:0; }
+/* Corrige padding e largura para caber lado a lado no mobile */
+.utilitarios-page .blog-lista{
+  width:100%;
+  padding:0 .5rem;
+  box-sizing:border-box;
+}
+
+/* Cards */
+.utilitarios-page .blog-lista .card{
+  border:0;
+  background:transparent;
+  padding:0;
+}
 .utilitarios-page .blog-lista .card .af-card{
-  display:flex; flex-direction:column; gap:.65rem;
-  width:100%; height:100%; padding:.75rem;
-  background:#0f0f0f; border-radius:14px; border:1px solid #1c1c1c;
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+  width:100%;
+  height:100%;
+  padding:.65rem;
+  background:#0f0f0f;
+  border-radius:14px;
+  border:1px solid #1c1c1c;
+  transition:transform .25s, border-color .25s;
 }
 .utilitarios-page .blog-lista .card .af-card:hover{
   transform:translateY(-3px);
-  border-color:#2a2a2a; transition:.25s;
+  border-color:#2a2a2a;
 }
 
-/* Thumb QUADRADA (1:1) no topo */
+/* Thumb QUADRADA */
 .utilitarios-page .blog-lista .card .af-thumb{
   width:100%;
-  aspect-ratio: 1 / 1;                      /* visual 300x300 */
+  aspect-ratio:1/1;
   background:#111 center/cover no-repeat;
-  border-radius:12px; border:1px solid #1c1c1c;
+  border-radius:12px;
+  border:1px solid #1c1c1c;
 }
 
-/* Conteúdo */
-.utilitarios-page .blog-lista .card .af-info{ display:flex; flex-direction:column; gap:.35rem; }
-.utilitarios-page .blog-lista .card .meta{ display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.9; margin:0; }
+/* Info */
+.utilitarios-page .blog-lista .card .af-info{
+  display:flex;
+  flex-direction:column;
+  gap:.3rem;
+}
+.utilitarios-page .blog-lista .card .meta{
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  font-size:.85rem;
+  opacity:.9;
+  margin:0;
+}
 .utilitarios-page .blog-lista .card .cat{
   background:rgba(227,197,101,.1);
-  color:#e3c565; border:1px solid rgba(227,197,101,.35);
-  padding:.14rem .5rem; border-radius:999px; font-weight:600;
+  color:#e3c565;
+  border:1px solid rgba(227,197,101,.35);
+  padding:.1rem .45rem;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.8rem;
 }
-.utilitarios-page .blog-lista .card h3{ margin:.2rem 0 .25rem; font-size:1.05rem; color:#fff; line-height:1.35; }
-.utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
-.utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
-.utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
-
-/* Sem “grid-column: 1/-1” para parceiros: entram na mesma grade dos demais */
+.utilitarios-page .blog-lista .card h3{
+  margin:.15rem 0 .2rem;
+  font-size:.9rem;
+  color:#fff;
+  line-height:1.35;
+}
+.utilitarios-page .blog-lista .card .exc{
+  margin:0;
+  color:#cfcfcf;
+  font-size:.8rem;
+  line-height:1.3;
+}
+.utilitarios-page .blog-lista .card .ler{
+  color:#d62828;
+  font-weight:700;
+  margin-top:.15rem;
+  font-size:.85rem;
+}
+.utilitarios-page .blog-lista .card:hover .ler{
+  color:#ff4040;
+}
 </style>
 
-<!-- Filtro por categoria + fallback da classe no body -->
+<!-- Filtro JS -->
 <script>
 (function(){
-  // garante a classe no body mesmo se o layout não usar body_class
-  document.addEventListener('DOMContentLoaded', function(){
+  document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('utilitarios-page');
   });
 
@@ -146,7 +183,6 @@ body_class: utilitarios-page
     });
   });
 
-  // filtro inicial: Parceiros
   const initial = 'parceiros';
   const startBtn = btns.find(b => (b.dataset.filter||'').toLowerCase() === initial);
   if (startBtn) {
