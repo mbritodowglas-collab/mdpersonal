@@ -95,3 +95,20 @@ permalink: /utilitarios/
   applyFilter(initial);
 })();
 </script>
+
+<!-- Ajuste de layout mobile -->
+<style>
+@media (max-width: 640px){
+  /* Oculta thumb e deixa texto ocupar toda a largura */
+  .blog-lista .af-card .af-thumb{
+    display:none !important;
+  }
+  .blog-lista .af-card{
+    gap:.4rem !important;
+    align-items:flex-start;
+  }
+  .blog-lista .af-info{
+    width:100%;
+  }
+}
+</style>
