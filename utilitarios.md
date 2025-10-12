@@ -2,6 +2,7 @@
 layout: default
 title: Utilitários
 permalink: /utilitarios/
+body_class: utilitarios-page
 ---
 
 <section class="blog-header">
