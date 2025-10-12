@@ -378,3 +378,66 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 @media (max-width:380px){
   .sobre-btns{ grid-template-columns:1fr; }
 }
+
+/* ====== UTILITÁRIOS: cards no formato "cheio" para TODAS as categorias ====== */
+.utilitarios-page .blog-lista .cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1rem;
+}
+@media (max-width:1000px){ .utilitarios-page .blog-lista .cards{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width:640px){  .utilitarios-page .blog-lista .cards{ grid-template-columns: 1fr; } }
+
+/* Card container aproveita o visual padrão */
+.utilitarios-page .blog-lista .card{
+  background:#0f0f0f;
+  border:1px solid #1c1c1c;
+  border-radius:14px;
+  overflow:hidden;
+  padding:0;            /* sem padding no wrapper */
+}
+
+/* AF-CARD vira “bloco” vertical (e não row) */
+.utilitarios-page .blog-lista .card .af-card{
+  display:block;        /* derruba o display:flex global */
+  padding:0;            /* padding vai na área de info */
+  background:transparent;
+  border:none;
+}
+
+/* Thumb cheia no topo do card */
+.utilitarios-page .blog-lista .card .af-thumb{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#111 center/cover no-repeat;
+  border-bottom:1px solid #1c1c1c;
+  border-radius:0;
+}
+
+/* Área de informações igual aos cards do blog */
+.utilitarios-page .blog-lista .card .af-info{
+  display:block;
+  padding:1rem;
+}
+.utilitarios-page .blog-lista .card .meta{
+  display:flex; align-items:center; gap:.5rem;
+  font-size:.9rem; opacity:.9; margin:0 0 .25rem;
+}
+.utilitarios-page .blog-lista .card .cat{
+  background:rgba(227,197,101,.1);
+  color:#e3c565; border:1px solid rgba(227,197,101,.35);
+  padding:.14rem .5rem; border-radius:999px; font-weight:600;
+}
+.utilitarios-page .blog-lista .card h3{
+  margin:.2rem 0 .35rem; font-size:1.05rem; color:#fff; line-height:1.35;
+}
+.utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
+.utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.25rem; }
+.utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
+
+/* Hover consistente */
+.utilitarios-page .blog-lista .card .af-card:hover{
+  transform:translateY(-3px);
+  transition:.25s;
+}
