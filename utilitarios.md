@@ -96,21 +96,24 @@ permalink: /utilitarios/
 })();
 </script>
 
-<!-- Ajuste de layout mobile (força todos os cards sem thumb) -->
+<!-- Ajuste mobile: cards sem thumb (fica tudo como Nutrição) -->
 <style>
-/* breakpoint um pouco mais largo p/ garantir em celulares */
-@media (max-width: 820px){
-  /* esconde a thumb em TODOS os cards */
-  .blog-lista .card .af-thumb{
-    display: none !important;
+/* Fallback imediato: esconde a thumb dos Parceiros em qualquer largura */
+.card[data-cats*="parceiros"] .af-thumb{ display:none !important; }
+
+/* Mobile/tablet: esconde a thumb de TODOS os cards */
+@media (max-width: 900px){
+  /* seletor bem específico para garantir que vença qualquer CSS anterior */
+  .blog-lista .cards .card .af-card .af-thumb,
+  .af-thumb{
+    display:none !important;
   }
-  /* deixa o conteúdo ocupar 100% */
-  .blog-lista .af-card{
-    gap: .6rem !important;
-    align-items: flex-start !important;
+  .blog-lista .cards .card .af-card{
+    gap:.6rem !important;
+    align-items:flex-start !important;
   }
-  .blog-lista .card .af-info{
-    width: 100% !important;
+  .blog-lista .cards .card .af-info{
+    width:100% !important;
   }
 }
 </style>
