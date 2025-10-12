@@ -93,6 +93,23 @@
     </nav>
   </header>
 
+  <!-- Banner de instalação PWA (fica oculto até o JS ativar) -->
+  <div id="pwa-install" hidden>
+    <div class="pwa-bar">
+      <div class="pwa-left">
+        <img src="{{ '/assets/img/favicon-192.png' | relative_url }}" alt="" width="28" height="28" loading="lazy">
+        <div>
+          <strong>Instalar o app do MD Personal?</strong>
+          <small>Receba os posts mais rápido e acesse offline.</small>
+        </div>
+      </div>
+      <div class="pwa-actions">
+        <button class="pwa-btn pwa-later">Depois</button>
+        <button class="pwa-btn pwa-install">Instalar</button>
+      </div>
+    </div>
+  </div>
+
   <main>
     {{ content }}
   </main>
@@ -119,7 +136,6 @@
         if (typeof gtag === 'function') {
           gtag('event', 'click_afiliado', { event_category:'Afiliado', event_label: parceiro, value:1 });
         }
-        // garante atributos recomendados
         a.setAttribute('rel','nofollow sponsored noopener');
       }
 
@@ -131,7 +147,7 @@
       }
     });
 
-    // Aplica backgrounds de forma “deferida” onde houver data-bg
+    // Defer de data-bg
     window.addEventListener('load', function(){
       document.querySelectorAll('[data-bg]').forEach(function(el){
         const url = el.getAttribute('data-bg');
@@ -139,5 +155,8 @@
       });
     });
   </script>
+
+  <!-- PWA: lógica do banner + install prompt -->
+  <script src="{{ '/assets/js/pwa.js' | relative_url }}" defer></script>
 </body>
 </html>
