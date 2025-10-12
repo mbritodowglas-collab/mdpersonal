@@ -1,30 +1,68 @@
-<section class="afiliados">
-  <h3>Produtos que recomendo</h3>
+{%- comment -%}
+  _includes/afiliados.html
+  Renderiza a grade de produtos afiliados definidos no front matter da página/post.
+
+  Espera em page.afiliados itens com:
+    - title (string)
+    - url (string)
+    - image (string) – opcional
+    - note (string) – opcional
+    - cat (string ou array) – opcional
+{%- endcomment -%}
+
+{%- if page.afiliados and page.afiliados.size > 0 -%}
+<section class="afiliados" aria-labelledby="afiliados-title">
+  <h3 id="afiliados-title">Produtos que recomendo</h3>
 
   <div class="af-grid">
     {%- for it in page.afiliados -%}
       {%- assign titulo = it.title | default: "Produto recomendado" -%}
       {%- assign link   = it.url   | default: "#" -%}
-      {%- assign img    = it.image | default: site.default_af_thumb -%}
+
+      {%- assign img = it.image | default: site.default_af_thumb -%}
       {%- if img == nil or img == "" -%}
         {%- assign img = "/assets/img/afiliados/thumb-default.jpg" -%}
       {%- endif -%}
 
-      <a class="af-card" href="{{ link }}" target="_blank" rel="noopener">
+      {%- comment %} Normaliza categoria em string p/ data-cat e chip {% endcomment -%}
+      {%- if it.cat -%}
+        {%- if it.cat | kind_of: Array -%}
+          {%- assign cat_str = it.cat | join: "," -%}
+          {%- assign cat_first = it.cat[0] -%}
+        {%- else -%}
+          {%- assign cat_str = it.cat -%}
+          {%- assign cat_first = it.cat -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- assign cat_str = "" -%}
+        {%- assign cat_first = "" -%}
+      {%- endif -%}
+
+      <a class="af-card"
+         href="{{ link }}"
+         target="_blank"
+         rel="sponsored nofollow noopener"
+         data-cat="{{ cat_str | escape }}"
+         aria-label="{{ titulo | escape }}">
         <span class="af-thumb" style="background-image:url('{{ img | relative_url }}')"></span>
         <span class="af-info">
           <strong>{{ titulo }}</strong>
-          {%- if it.note -%}<span class="af-note">{{ it.note }}</span>{%- endif -%}
+          {%- if cat_first and cat_first != "" -%}
+            <span class="cat" style="margin-left:.35rem">{{ cat_first }}</span>
+          {%- endif -%}
+          {%- if it.note and it.note != "" -%}
+            <span class="af-note">{{ it.note }}</span>
+          {%- endif -%}
           <span class="af-cta">Ver detalhes →</span>
         </span>
       </a>
     {%- endfor -%}
   </div>
 
-  <!-- Botão Ver todos -->
   <div class="af-ver-todos">
     <a href="{{ '/utilitarios/' | relative_url }}" class="btn-ver-todos">
       Ver todos os utilitários →
     </a>
   </div>
 </section>
+{%- endif -%}
