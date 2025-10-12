@@ -6,35 +6,31 @@
 
   <title>{{ page.title | default: site.title }}</title>
 
-  <!-- Meta Description dinâmica -->
+  <!-- Meta description: usa page.description; se não houver, usa site.description -->
   <meta name="description"
-        content="{{ page.description | default: site.meta_descriptions[page.layout] | default: site.meta_descriptions.default }}"/>
+        content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}" />
 
-  <!-- Canonical -->
+  <!-- Canonical respeitando baseurl/url -->
   <link rel="canonical" href="{{ page.url | relative_url | absolute_url }}" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"/>
 
-  <!-- Favicon / PWA basics -->
+  <!-- Favicon / PWA (opcionais) -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/img/favicon-192.png' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
-  <meta property="og:description"
-        content="{{ page.description | default: site.meta_descriptions[page.layout] | default: site.meta_descriptions.default }}">
+  <meta property="og:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
   <meta property="og:url" content="{{ page.url | relative_url | absolute_url }}">
   <meta property="og:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title | default: site.title }}">
-  <meta name="twitter:description"
-        content="{{ page.description | default: site.meta_descriptions[page.layout] | default: site.meta_descriptions.default }}">
+  <meta name="twitter:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
   <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
 
   <!-- JSON-LD: WebSite -->
@@ -67,18 +63,17 @@
   }
   </script>
 
-  <!-- Google Analytics 4 -->
+  <!-- GA4 (opcional) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: 'G-XXXXXXX' }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config','{{ site.ga4_id | default: "G-XXXXXXX" }}');
   </script>
 </head>
-
 <body class="{{ page.body_class }}">
-  <!-- Header minimalista -->
+  <!-- Header -->
   <header class="site-header">
     <nav class="main-nav">
       <a href="{{ '/' | relative_url }}">Início</a>
@@ -95,44 +90,32 @@
   <footer class="site-footer">
     <p>© Márcio Dowglas Personal Trainer — {{ site.time | date: '%Y' }}</p>
     <p class="social">
-      <a href="https://www.instagram.com/marciodowglasfitness" target="_blank" rel="noopener">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="#e3c565" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 6.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 1.5a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm5.25-.75a.9.9 0 1 1 0 1.8a.9.9 0 0 1 0-1.8z"/>
-        </svg>
-        <span>@marciodowglasfitness</span>
-      </a>
+      <a href="https://www.instagram.com/marciodowglasfitness" target="_blank" rel="noopener">@marciodowglasfitness</a> ·
+      <a href="https://youtube.com/@marciodowglastreinador" target="_blank" rel="noopener">@marciodowglastreinador</a> ·
+      <a href="https://youtube.com/@centrodeneurotreinamento" target="_blank" rel="noopener">@centrodeneurotreinamento</a>
     </p>
   </footer>
 
-  <!-- Rastreamento de cliques -->
+  <!-- Rastreamento de cliques (Afiliados + CTA Avaliação) -->
   <script>
     document.addEventListener('click', function(e){
       const a = e.target.closest('a');
       if(!a) return;
 
-      // Afiliados
       if (a.href.includes('shopee.com') || a.href.includes('fithouse.com')) {
         const parceiro = a.href.includes('shopee.com') ? 'Shopee' : 'FitHouse';
         if (typeof gtag === 'function') {
-          gtag('event', 'click_afiliado', {
-            event_category: 'Afiliado',
-            event_label: parceiro,
-            value: 1
-          });
+          gtag('event', 'click_afiliado', { event_category:'Afiliado', event_label: parceiro, value:1 });
         }
       }
 
-      // CTA "Avaliação gratuita"
       if (a.classList.contains('destaque') || a.href.includes('/avaliacao')) {
         if (typeof gtag === 'function') {
-          gtag('event', 'click_cta_avaliacao', {
-            event_category: 'CTA',
-            event_label: 'Avaliacao gratuita',
-            value: 1
-          });
+          gtag('event', 'click_cta_avaliacao', { event_category:'CTA', event_label:'Avaliacao gratuita', value:1 });
         }
       }
     });
   </script>
 </body>
 </html>
+
