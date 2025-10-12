@@ -1,36 +1,33 @@
-afiliados:
-  # =========================
-  # PARCEIROS / LOJAS
-  # =========================
-  - title: "Fit House — Cupom MDSUPLEMENTOS5"
-    url: "https://www.fithouse.com.br?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Use o cupom MDSUPLEMENTOS5."
-    cat: ["Parceiros"]
+# ===== PARCEIROS (lojas/vitrines) =====
+- title: "Fit House — Cupom MDSUPLEMENTOS5"
+  url: "https://www.fithouse.com.br?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/fithouse.jpg"
+  note: "Use o cupom MDSUPLEMENTOS5."
+  cat: ["Parceiros"]
 
-  - title: "Shopee — Acessórios & Utilidades"
-    url: "https://s.shopee.com.br/1LX4vemlrI"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Vitrine com ótimo custo-benefício."
-    cat: ["Parceiros"]
+- title: "Shopee — Acessórios & Utilidades"
+  url: "https://s.shopee.com.br/1LX4vemlrI"
+  image: "/assets/img/afiliados/shopee.jpg"
+  note: "Vitrine com ótimo custo-benefício."
+  cat: ["Parceiros"]
 
-  - title: "Massam Fitness — Moda Fitness"
-    url: "https://s.shopee.com.br/8fJfk5bZ1G"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Autoestima + performance."
-    cat: ["Parceiros"]
+- title: "Massam Fitness — Moda Fitness"
+  url: "https://s.shopee.com.br/8fJfk5bZ1G"
+  image: "/assets/img/afiliados/massam-fitness.jpg"
+  note: "Autoestima + performance."
+  cat: ["Parceiros"]
 
-  - title: "MXD Conceito — Camisetas de treino"
-    url: "https://s.shopee.com.br/1qTLbsNxgj"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Linha casual/treino."
-    cat: ["Parceiros"]
+- title: "MXD Conceito — Camisetas de treino"
+  url: "https://s.shopee.com.br/1qTLbsNxgj"
+  image: "/assets/img/afiliados/mxd-conceito.jpg"
+  note: "Linha casual/treino."
+  cat: ["Parceiros"]
 
-  - title: "Rocca Fitness & Fashion — Moda Fitness Feminina"
-    url: "https://s.shopee.com.br/2B6C0vGBbD"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Conforto e estilo."
-    cat: ["Parceiros"]
+- title: "Rocca Fitness & Fashion — Moda feminina"
+  url: "https://s.shopee.com.br/2B6C0vGBbD"
+  image: "/assets/img/afiliados/rocca-fitness.jpg"
+  note: "Conforto e estilo."
+  cat: ["Parceiros"]
 
   # =========================
   # NUTRIÇÃO — WHEY PROTEIN
