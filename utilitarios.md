@@ -26,9 +26,7 @@ body_class: utilitarios-page
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
-      {%- comment -%}
-      Renderiza cada item de afiliados.yml. Cada item pode ter várias categorias (cat), gerando múltiplos slugs.
-      {%- endcomment -%}
+      {%- comment -%} Renderiza cada item do afiliados.yml {%- endcomment -%}
       {%- for it in site.data.afiliados -%}
         {%- assign cats = "" -%}
         {%- if it.cat -%}
@@ -65,6 +63,61 @@ body_class: utilitarios-page
     </div>
   </section>
 </div>
+
+<!-- Estilos escopados desta página -->
+<style>
+/* ===== /utilitarios — grade e cards (ajuste colunas + thumbs 1:1) ===== */
+.utilitarios-page .blog-lista .cards{
+  display:grid;
+  grid-template-columns: 1fr;          /* mobile: 1 coluna */
+  gap: 1rem;
+}
+@media (min-width: 480px){
+  .utilitarios-page .blog-lista .cards{
+    grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 colunas já no mobile largo */
+  }
+}
+@media (min-width: 1024px){
+  .utilitarios-page .blog-lista .cards{
+    grid-template-columns: repeat(3, minmax(0,1fr)); /* 3 colunas em telas grandes */
+  }
+}
+
+/* Cartão “cheio” para todas as categorias */
+.utilitarios-page .blog-lista .card{ border:0; background:transparent; padding:0; }
+.utilitarios-page .blog-lista .card .af-card{
+  display:flex; flex-direction:column; gap:.65rem;
+  width:100%; height:100%; padding:.75rem;
+  background:#0f0f0f; border-radius:14px; border:1px solid #1c1c1c;
+}
+.utilitarios-page .blog-lista .card .af-card:hover{
+  transform:translateY(-3px);
+  border-color:#2a2a2a; transition:.25s;
+}
+
+/* Thumb QUADRADA (1:1) no topo */
+.utilitarios-page .blog-lista .card .af-thumb{
+  width:100%;
+  aspect-ratio: 1 / 1;                      /* visual 300x300 */
+  background:#111 center/cover no-repeat;
+  border-radius:12px; border:1px solid #1c1c1c;
+}
+
+/* Conteúdo */
+.utilitarios-page .blog-lista .card .af-info{ display:flex; flex-direction:column; gap:.35rem; }
+.utilitarios-page .blog-lista .card .meta{ display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.9; margin:0; }
+.utilitarios-page .blog-lista .card .cat{
+  background:rgba(227,197,101,.1);
+  color:#e3c565; border:1px solid rgba(227,197,101,.35);
+  padding:.14rem .5rem; border-radius:999px; font-weight:600;
+}
+.utilitarios-page .blog-lista .card h3{ margin:.2rem 0 .25rem; font-size:1.05rem; color:#fff; line-height:1.35; }
+.utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
+.utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
+.utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
+
+/* Sem “grid-column: 1/-1” para parceiros: entram na mesma grade dos demais */
+</style>
 
 <!-- Filtro por categoria + fallback da classe no body -->
 <script>
@@ -103,60 +156,3 @@ body_class: utilitarios-page
   applyFilter(initial);
 })();
 </script>
-
-<!-- Estilos escopados desta página -->
-<style>
-/* ===== /utilitarios — grade e cards (ajuste colunas + thumbs 1:1) ===== */
-.utilitarios-page .blog-lista .cards{
-  display:grid;
-  grid-template-columns: 1fr;          /* mobile: 1 coluna */
-  gap: 1rem;
-}
-@media (min-width: 480px){
-  .utilitarios-page .blog-lista .cards{
-    grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 colunas já no mobile largo */
-  }
-}
-@media (min-width: 1024px){
-  .utilitarios-page .blog-lista .cards{
-    grid-template-columns: repeat(3, minmax(0,1fr)); /* 3 colunas em telas grandes */
-  }
-}
-
-/* Cartão “cheio” para todas as categorias */
-.utilitarios-page .blog-lista .card{ border:0; background:transparent; padding:0; }
-.utilitarios-page .blog-lista .card .af-card{
-  display:flex; flex-direction:column; gap:.65rem;
-  width:100%; height:100%; padding:.75rem;
-  background:#0f0f0f; border-radius:14px; border:1px solid #1c1c1c;
-}
-.utilitarios-page .blog-lista .card .af-card:hover{
-  transform:translateY(-3px);
-  border-color:#2a2a2a; transition:.25s;
-}
-
-/* Thumb QUADRADA (1:1) no topo */
-.utilitarios-page .blog-lista .card .af-thumb{
-  width:100%;
-  aspect-ratio: 1 / 1;                      /* <- faz 300x300 visual */
-  background:#111 center/cover no-repeat;
-  border-radius:12px; border:1px solid #1c1c1c;
-}
-
-/* Conteúdo */
-.utilitarios-page .blog-lista .card .af-info{ display:flex; flex-direction:column; gap:.35rem; }
-.utilitarios-page .blog-lista .card .meta{ display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.9; margin:0; }
-.utilitarios-page .blog-lista .card .cat{
-  background:rgba(227,197,101,.1);
-  color:#e3c565; border:1px solid rgba(227,197,101,.35);
-  padding:.14rem .5rem; border-radius:999px; font-weight:600;
-}
-.utilitarios-page .blog-lista .card h3{ margin:.2rem 0 .25rem; font-size:1.05rem; color:#fff; line-height:1.35; }
-.utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
-.utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
-.utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
-
-/* IMPORTANTE: REMOVIDO o “grid-column: 1/-1” dos parceiros
-   (assim parceiros também ficam em 2 colunas quando filtrados) */
-
-<stile>
