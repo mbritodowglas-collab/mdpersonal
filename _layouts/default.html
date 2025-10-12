@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}"/>
+
+  <!-- Meta Description dinâmica -->
+  <meta name="description"
+        content="{{ page.description | default: site.meta_descriptions[page.layout] | default: site.meta_descriptions.default }}"/>
 
   <!-- Canonical -->
   <link rel="canonical" href="{{ page.url | relative_url | absolute_url }}" />
@@ -22,14 +25,16 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
-  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
+  <meta property="og:description"
+        content="{{ page.description | default: site.meta_descriptions[page.layout] | default: site.meta_descriptions.default }}">
   <meta property="og:url" content="{{ page.url | relative_url | absolute_url }}">
   <meta property="og:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title | default: site.title }}">
-  <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
+  <meta name="twitter:description"
+        content="{{ page.description | default: site.meta_descriptions[page.layout] | default: site.meta_descriptions.default }}">
   <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: '/assets/img/og-default.jpg' | relative_url | absolute_url }}">
 
   <!-- JSON-LD: WebSite -->
@@ -56,7 +61,8 @@
     "url":"{{ '/' | absolute_url }}",
     "sameAs":[
       "https://instagram.com/marciodowglasfitness",
-      "https://youtube.com/@mdpersonal"
+      "https://youtube.com/@marciodowglastreinador",
+      "https://youtube.com/@centrodeneurotreinamento"
     ]
   }
   </script>
@@ -70,6 +76,7 @@
     gtag('config','{{ site.ga4_id | default: "G-XXXXXXX" }}');
   </script>
 </head>
+
 <body class="{{ page.body_class }}">
   <!-- Header minimalista: apenas o menu -->
   <header class="site-header">
@@ -88,7 +95,7 @@
   <footer class="site-footer">
     <p>© Márcio Dowglas Personal Trainer — {{ site.time | date: '%Y' }}</p>
     <p class="social">
-      <a href="https://www.instagram.com/marciodowglasfitness" target="_blank" rel="noopener">
+      <a href="https://instagram.com/marciodowglasfitness" target="_blank" rel="noopener">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#e3c565" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 6.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11zm0 1.5a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm5.25-.75a.9.9 0 1 1 0 1.8a.9.9 0 0 1 0-1.8z"/>
         </svg>
