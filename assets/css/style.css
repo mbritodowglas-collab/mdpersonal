@@ -449,3 +449,12 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   grid-column:1 / -1;
 }
 
+/* ========= Destaque visual no título do HERO ========= */
+.hero-content h1{
+  color:#e3c565; /* mantém o dourado */
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.55),
+    0 0 1px rgba(0,0,0,.55); /* cria contraste em fotos claras */
+  -webkit-text-stroke: 0.3px rgba(0,0,0,.35); /* contorno sutil compatível com WebKit */
+}
+
