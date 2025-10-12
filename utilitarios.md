@@ -96,19 +96,21 @@ permalink: /utilitarios/
 })();
 </script>
 
-<!-- Ajuste de layout mobile -->
+<!-- Ajuste de layout mobile (força todos os cards sem thumb) -->
 <style>
-@media (max-width: 640px){
-  /* Oculta thumb e deixa texto ocupar toda a largura */
-  .blog-lista .af-card .af-thumb{
-    display:none !important;
+/* breakpoint um pouco mais largo p/ garantir em celulares */
+@media (max-width: 820px){
+  /* esconde a thumb em TODOS os cards */
+  .blog-lista .card .af-thumb{
+    display: none !important;
   }
+  /* deixa o conteúdo ocupar 100% */
   .blog-lista .af-card{
-    gap:.4rem !important;
-    align-items:flex-start;
+    gap: .6rem !important;
+    align-items: flex-start !important;
   }
-  .blog-lista .af-info{
-    width:100%;
+  .blog-lista .card .af-info{
+    width: 100% !important;
   }
 }
 </style>
