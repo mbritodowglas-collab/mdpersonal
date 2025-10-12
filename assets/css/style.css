@@ -379,65 +379,73 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .sobre-btns{ grid-template-columns:1fr; }
 }
 
-/* ====== UTILITÁRIOS: cards no formato "cheio" para TODAS as categorias ====== */
+/* ================================
+   UTILITÁRIOS — grid compacto 2 col
+   ================================ */
+.utilitarios-page .blog-lista .cards{
+  /* base: 1 coluna no mobile bem pequeno */
+  grid-template-columns: 1fr;
+  gap: .9rem;
+}
+
+/* 480–860px: vira 2 colunas */
+@media (min-width:480px) and (max-width:860px){
+  .utilitarios-page .blog-lista .cards{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+  /* Card mais “vertical” pra caber melhor em 2 col */
+  .utilitarios-page .card .af-card{
+    display:flex; flex-direction:column; align-items:stretch;
+  }
+  .utilitarios-page .af-thumb{
+    aspect-ratio:16/9; border-radius:10px;
+  }
+  .utilitarios-page .af-info{ padding-top:.5rem; }
+  .utilitarios-page .af-info h3{ font-size:1rem; line-height:1.25; }
+  .utilitarios-page .af-info .exc{ font-size:.92rem; }
+}
+
+/* >= 861px: volta para o comportamento padrão (2–3 col conforme teu tema) */
+@media (min-width:861px){
+  .utilitarios-page .blog-lista .cards{
+    /* deixa o global cuidar (já tens 3/2/1 no tema) */
+  }
+}
+
+/* (Opcional) Destaque: parceiros ocupam a linha inteira nas 2 colunas */
+@media (min-width:480px) and (max-width:860px){
+  .utilitarios-page .card[data-cats*="parceiros"]{
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== UTILITÁRIOS — duas colunas também no mobile ===== */
 .utilitarios-page .blog-lista .cards{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:1rem;
-}
-@media (max-width:1000px){ .utilitarios-page .blog-lista .cards{ grid-template-columns: repeat(2, 1fr); } }
-@media (max-width:640px){  .utilitarios-page .blog-lista .cards{ grid-template-columns: 1fr; } }
-
-/* Card container aproveita o visual padrão */
-.utilitarios-page .blog-lista .card{
-  background:#0f0f0f;
-  border:1px solid #1c1c1c;
-  border-radius:14px;
-  overflow:hidden;
-  padding:0;            /* sem padding no wrapper */
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:.9rem;
 }
 
-/* AF-CARD vira “bloco” vertical (e não row) */
-.utilitarios-page .blog-lista .card .af-card{
-  display:block;        /* derruba o display:flex global */
-  padding:0;            /* padding vai na área de info */
-  background:transparent;
-  border:none;
+/* thumb e info adaptados */
+.utilitarios-page .card .af-card{
+  display:flex; flex-direction:column; align-items:stretch;
+}
+.utilitarios-page .af-thumb{
+  aspect-ratio:1/1;
+  border-radius:10px;
+}
+.utilitarios-page .af-info{
+  padding-top:.5rem;
+}
+.utilitarios-page .af-info h3{
+  font-size:.95rem; line-height:1.25;
+}
+.utilitarios-page .af-info .exc{
+  font-size:.9rem;
 }
 
-/* Thumb cheia no topo do card */
-.utilitarios-page .blog-lista .card .af-thumb{
-  display:block;
-  width:100%;
-  aspect-ratio:16/9;
-  background:#111 center/cover no-repeat;
-  border-bottom:1px solid #1c1c1c;
-  border-radius:0;
+/* parceiros ainda ocupam toda a linha */
+.utilitarios-page .card[data-cats*="parceiros"]{
+  grid-column:1 / -1;
 }
 
-/* Área de informações igual aos cards do blog */
-.utilitarios-page .blog-lista .card .af-info{
-  display:block;
-  padding:1rem;
-}
-.utilitarios-page .blog-lista .card .meta{
-  display:flex; align-items:center; gap:.5rem;
-  font-size:.9rem; opacity:.9; margin:0 0 .25rem;
-}
-.utilitarios-page .blog-lista .card .cat{
-  background:rgba(227,197,101,.1);
-  color:#e3c565; border:1px solid rgba(227,197,101,.35);
-  padding:.14rem .5rem; border-radius:999px; font-weight:600;
-}
-.utilitarios-page .blog-lista .card h3{
-  margin:.2rem 0 .35rem; font-size:1.05rem; color:#fff; line-height:1.35;
-}
-.utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
-.utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.25rem; }
-.utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
-
-/* Hover consistente */
-.utilitarios-page .blog-lista .card .af-card:hover{
-  transform:translateY(-3px);
-  transition:.25s;
-}
