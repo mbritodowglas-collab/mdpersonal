@@ -26,10 +26,8 @@ body_class: utilitarios-page
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
-
       {%- comment -%}
-      Renderiza cada item de afiliados.yml.
-      Cada item pode ter várias categorias (cat), gerando múltiplos slugs.
+      Renderiza cada item de afiliados.yml. Cada item pode ter várias categorias (cat), gerando múltiplos slugs.
       {%- endcomment -%}
       {%- for it in site.data.afiliados -%}
         {%- assign cats = "" -%}
@@ -37,7 +35,14 @@ body_class: utilitarios-page
           {%- assign slugs = "" | split:"|" -%}
           {%- for c in it.cat -%}
             {%- assign label = c | strip -%}
-            {%- assign slug  = label | downcase | strip | replace:"ç","c" | replace:"ã","a" | replace:"á","a" | replace:"â","a" | replace:"à","a" | replace:"é","e" | replace:"ê","e" | replace:"í","i" | replace:"ó","o" | replace:"ô","o" | replace:"õ","o" | replace:"ú","u" | replace:"ü","u" | replace:"’","" | replace:"'","" | replace:"&","e" | replace:"/","-" | replace:"  "," " | replace:" ","-" -%}
+            {%- assign slug  = label | downcase | strip
+              | replace:"ç","c" | replace:"ã","a" | replace:"á","a" | replace:"â","a" | replace:"à","a"
+              | replace:"é","e" | replace:"ê","e" | replace:"í","i"
+              | replace:"ó","o" | replace:"ô","o" | replace:"õ","o"
+              | replace:"ú","u" | replace:"ü","u"
+              | replace:"’",""  | replace:"'",""
+              | replace:"&","e" | replace:"/","-" | replace:"  "," " | replace:" ","-"
+            -%}
             {%- assign slugs = slugs | push: slug -%}
           {%- endfor -%}
           {%- assign cats = slugs | join: " " -%}
@@ -45,8 +50,7 @@ body_class: utilitarios-page
 
         <article class="card" data-cats="{{ cats }}">
           <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
-            <span class="af-thumb"
-              style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
+            <span class="af-thumb" style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
             <span class="af-info">
               {%- if it.cat and it.cat.size > 0 -%}
                 <span class="meta"><span class="cat">{{ it.cat[0] }}</span></span>
@@ -58,14 +62,18 @@ body_class: utilitarios-page
           </a>
         </article>
       {%- endfor -%}
-
     </div>
   </section>
 </div>
 
-<!-- Filtro por categoria -->
+<!-- Filtro por categoria + fallback da classe no body -->
 <script>
 (function(){
+  // garante a classe no body mesmo se o layout não usar body_class
+  document.addEventListener('DOMContentLoaded', function(){
+    document.body.classList.add('utilitarios-page');
+  });
+
   const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
   const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
 
@@ -77,7 +85,6 @@ body_class: utilitarios-page
     });
   }
 
-  // clique nos botões
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btns.forEach(b=>b.classList.remove('on'));
@@ -97,104 +104,58 @@ body_class: utilitarios-page
 })();
 </script>
 
-<!-- Ajuste mobile: cards sem thumb (fica tudo como Nutrição) -->
+<!-- Estilos escopados desta página -->
 <style>
-/* Fallback imediato: esconde a thumb dos Parceiros em qualquer largura */
-.card[data-cats*="parceiros"] .af-thumb{ display:none !important; }
-
-/* Mobile/tablet: esconde a thumb de TODOS os cards */
-@media (max-width: 900px){
-  /* seletor bem específico para garantir que vença qualquer CSS anterior */
-  .blog-lista .cards .card .af-card .af-thumb,
-  .af-thumb{
-    display:none !important;
-  }
-  .blog-lista .cards .card .af-card{
-    gap:.6rem !important;
-    align-items:flex-start !important;
-  }
-  .blog-lista .cards .card .af-info{
-    width:100% !important;
-  }
-}
-</style>
-
-/* ====== FORÇA LAYOUT CHEIO SÓ NA PÁGINA /utilitarios ====== */
-
-/* 1) Card ocupa a grade normalmente */
-.blog-lista .cards{
+/* ===== /utilitarios — grade e cards ===== */
+.utilitarios-page .blog-lista .cards{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:1rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 760px){
+  .utilitarios-page .blog-lista .cards{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
 }
 
-/* 2) No mobile e telas médias, 1 ou 2 colunas */
-@media (max-width: 1000px){ .blog-lista .cards{ grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 640px){  .blog-lista .cards{ grid-template-columns: 1fr; } }
-
-/* 3) Transforma TODOS os .af-card em formato “card cheio” (thumb grande em cima) */
-.blog-lista .card .af-card{
-  display:flex;
-  flex-direction:column;
-  gap:.65rem;
-  width:100%;
-  height:100%;
-  padding:.75rem;                /* mesmo respiro do card de Nutrição */
-  background:#0f0f0f;            /* fundo igual ao card */
-  border-radius:14px;
-  border:1px solid #1c1c1c;
+/* Cartão “cheio” para todas as categorias */
+.utilitarios-page .blog-lista .card{ border:0; background:transparent; padding:0; }
+.utilitarios-page .blog-lista .card .af-card{
+  display:flex; flex-direction:column; gap:.65rem;
+  width:100%; height:100%; padding:.75rem;
+  background:#0f0f0f; border-radius:14px; border:1px solid #1c1c1c;
 }
-
-/* remove possíveis estilos herdados que deixem o af-card “solto” */
-.blog-lista .card{
-  border:none;
-  background:transparent;
-  padding:0;
+.utilitarios-page .blog-lista .card .af-card:hover{
+  transform:translateY(-3px);
+  border-color:#2a2a2a; transition:.25s;
 }
 
 /* Thumb full-bleed no topo */
-.blog-lista .card .af-thumb{
-  width:100%;
-  height:auto;
-  aspect-ratio: 16/9;
+.utilitarios-page .blog-lista .card .af-thumb{
+  width:100%; aspect-ratio:16/9;
   background:#111 center/cover no-repeat;
-  border-radius:10px;
-  border:1px solid #1c1c1c;
+  border-radius:10px; border:1px solid #1c1c1c;
 }
 
-/* Info preenche o restante e alinha com o estilo do blog */
-.blog-lista .card .af-info{
-  display:flex;
-  flex-direction:column;
-  gap:.35rem;
-}
-.blog-lista .card .meta{
-  display:flex; align-items:center; gap:.5rem;
-  font-size:.9rem; opacity:.9; margin:0;
-}
-.blog-lista .card .cat{
+/* Conteúdo */
+.utilitarios-page .blog-lista .card .af-info{ display:flex; flex-direction:column; gap:.35rem; }
+.utilitarios-page .blog-lista .card .meta{ display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.9; margin:0; }
+.utilitarios-page .blog-lista .card .cat{
   background:rgba(227,197,101,.1);
   color:#e3c565; border:1px solid rgba(227,197,101,.35);
   padding:.14rem .5rem; border-radius:999px; font-weight:600;
 }
-.blog-lista .card h3{
-  margin:.2rem 0 .25rem; font-size:1.05rem; color:#fff; line-height:1.35;
-}
-.blog-lista .card .exc{ margin:0; color:#cfcfcf; }
-.blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
-.blog-lista .card:hover .ler{ color:#ff4040; }
+.utilitarios-page .blog-lista .card h3{ margin:.2rem 0 .25rem; font-size:1.05rem; color:#fff; line-height:1.35; }
+.utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
+.utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
+.utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
 
-/* 4) Ajuste do botão “Ver detalhes” e hover “lift” */
-.blog-lista .card .af-card:hover{
-  transform:translateY(-3px);
-  border-color:#2a2a2a;
-  transition:.25s;
-}
+/* Parceiros em largura total da grade */
+.utilitarios-page .blog-lista .card[data-cats*="parceiros"]{ grid-column: 1 / -1; }
 
-/* 5) Quando filtrar (mostrar 1 coluna no mobile), os cards continuam 100% */
+/* Ajustes mobile finos */
 @media (max-width:640px){
-  .blog-lista .card, .blog-lista .card .af-card{ width:100%; }
+  .utilitarios-page .blog-lista .card, 
+  .utilitarios-page .blog-lista .card .af-card{ width:100%; }
 }
 </style>
-
-
