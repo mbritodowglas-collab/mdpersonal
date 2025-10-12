@@ -14,34 +14,11 @@ permalink: /utilitarios/
   <aside class="blog-sidebar">
     <h3>Categorias</h3>
     <nav class="blog-filtros-vertical">
-      <button data-filter="all" class="on">Todos</button>
-
-      {%- comment -%}
-      Construir lista única de categorias a partir dos itens (site.data.afiliados é uma LISTA).
-      Guardamos pares [slug, label] em 'cat_pairs'.
-      {%- endcomment -%}
-      {%- assign cat_pairs = "" | split: "|" -%}
-      {%- for it in site.data.afiliados -%}
-        {%- if it.cat -%}
-          {%- for c in it.cat -%}
-            {%- assign label = c | strip -%}
-            {%- assign slug  = label | downcase | strip | replace: "ç","c" | replace: "ã","a" | replace: "á","a" | replace: "â","a" | replace:"à","a" | replace:"é","e" | replace:"ê","e" | replace:"í","i" | replace:"ó","o" | replace:"ô","o" | replace:"õ","o" | replace:"ú","u" | replace:"ü","u" | replace:"’","" | replace:"'","" | replace:"&","e" | replace:"/","-" | replace:"  "," " | replace:" ","-" -%}
-            {%- capture pair %}{{ slug }}::{{ label }}{%- endcapture -%}
-            {%- unless cat_pairs contains pair -%}
-              {%- assign cat_pairs = cat_pairs | push: pair -%}
-            {%- endunless -%}
-          {%- endfor -%}
-        {%- endif -%}
-      {%- endfor -%}
-
-      {%- comment -%} Ordena alfabeticamente pelas labels {%- endcomment -%}
-      {%- assign cat_pairs_sorted = cat_pairs | sort -%}
-      {%- for p in cat_pairs_sorted -%}
-        {%- assign parts = p | split: "::" -%}
-        {%- assign slug  = parts[0] -%}
-        {%- assign label = parts[1] -%}
-        <button data-filter="{{ slug }}">{{ label }}</button>
-      {%- endfor -%}
+      <!-- Ordem fixa dos filtros -->
+      <button data-filter="parceiros" class="on">Parceiros</button>
+      <button data-filter="nutricao">Nutrição</button>
+      <button data-filter="treino">Treino</button>
+      <button data-filter="autocuidado">Autocuidado</button>
     </nav>
   </aside>
 
@@ -50,8 +27,8 @@ permalink: /utilitarios/
     <div class="cards">
 
       {%- comment -%}
-      Render dos cards. data-cats recebe todos os slugs de categorias do item,
-      separados por espaço, para permitir match por includes.
+      Renderiza cada item de afiliados.yml.
+      Cada item pode ter várias categorias (cat), gerando múltiplos slugs.
       {%- endcomment -%}
       {%- for it in site.data.afiliados -%}
         {%- assign cats = "" -%}
@@ -92,13 +69,14 @@ permalink: /utilitarios/
   const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
 
   function applyFilter(slug){
-    const f = (slug || 'all').toLowerCase();
+    const f = (slug || '').toLowerCase();
     cards.forEach(c=>{
-      const cats = (c.dataset.cats || '').toLowerCase().split(' ');
-      c.style.display = (f === 'all' || cats.includes(f)) ? '' : 'none';
+      const cats = (c.dataset.cats || '').toLowerCase().split(' ').filter(Boolean);
+      c.style.display = (!f || cats.includes(f)) ? '' : 'none';
     });
   }
 
+  // clique nos botões
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btns.forEach(b=>b.classList.remove('on'));
@@ -106,5 +84,14 @@ permalink: /utilitarios/
       applyFilter(btn.dataset.filter);
     });
   });
+
+  // filtro inicial: Parceiros
+  const initial = 'parceiros';
+  const startBtn = btns.find(b => (b.dataset.filter||'').toLowerCase() === initial);
+  if (startBtn) {
+    btns.forEach(b=>b.classList.remove('on'));
+    startBtn.classList.add('on');
+  }
+  applyFilter(initial);
 })();
 </script>
