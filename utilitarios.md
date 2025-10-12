@@ -9,49 +9,93 @@ permalink: /utilitarios/
   <p>Ferramentas, acessórios e suplementos que recomendo — com curadoria por categoria.</p>
 </section>
 
-<!-- Barra horizontal de categorias (igual ao blog) -->
-<nav class="blog-filtros-vertical" id="utiFiltros" style="position:sticky;top:4.5rem;z-index:9;background:#0b0b0b;border-bottom:1px solid var(--borda);padding:.6rem 1rem .8rem;max-width:1000px;margin:0 auto;">
-  <button data-filter="__all" class="on">Todos</button>
-  {%- assign cats = site.data.afiliados
-    | map: 'cat' | join: ',' | split: ',' | map: 'strip'
-    | reject: '' | uniq | sort -%}
-  {%- for cat in cats -%}
-    <button data-filter="{{ cat | downcase }}">{{ cat }}</button>
-  {%- endfor -%}
-</nav>
+<div class="blog-layout">
+  <!-- Lateral com filtros -->
+  <aside class="blog-sidebar">
+    <h3>Categorias</h3>
+    <nav class="blog-filtros-vertical">
+      <button data-filter="all" class="on">Todos</button>
 
-<section class="blog-lista">
-  <div class="cards">
-    {%- for it in site.data.afiliados -%}
-      {%- assign classes = it.cat | join: ',' | downcase -%}
-      <article class="card" data-cat="{{ classes }}">
-        <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
-          <span class="af-thumb"
-            style="background-image:url('{{ it.image | default: site.default_af_thumb | default: "/assets/img/afiliados/thumb-default.jpg" | relative_url }}')"></span>
-          <span class="af-info">
-            <span class="meta"><span class="cat">{{ it.cat | first }}</span></span>
-            <h3>{{ it.title }}</h3>
-            {%- if it.note -%}<p class="exc">{{ it.note }}</p>{%- endif -%}
-            <span class="ler">Ver detalhes →</span>
-          </span>
-        </a>
-      </article>
-    {%- endfor -%}
-  </div>
-</section>
+      {%- comment -%}
+      Construir lista única de categorias a partir dos itens (site.data.afiliados é uma LISTA).
+      Guardamos pares [slug, label] em 'cat_pairs'.
+      {%- endcomment -%}
+      {%- assign cat_pairs = "" | split: "|" -%}
+      {%- for it in site.data.afiliados -%}
+        {%- if it.cat -%}
+          {%- for c in it.cat -%}
+            {%- assign label = c | strip -%}
+            {%- assign slug  = label | downcase | strip | replace: "ç","c" | replace: "ã","a" | replace: "á","a" | replace: "â","a" | replace:"à","a" | replace:"é","e" | replace:"ê","e" | replace:"í","i" | replace:"ó","o" | replace:"ô","o" | replace:"õ","o" | replace:"ú","u" | replace:"ü","u" | replace:"’","" | replace:"'","" | replace:"&","e" | replace:"/","-" | replace:"  "," " | replace:" ","-" -%}
+            {%- capture pair %}{{ slug }}::{{ label }}{%- endcapture -%}
+            {%- unless cat_pairs contains pair -%}
+              {%- assign cat_pairs = cat_pairs | push: pair -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
 
-<!-- Filtro (mesma lógica do blog) -->
+      {%- comment -%} Ordena alfabeticamente pelas labels {%- endcomment -%}
+      {%- assign cat_pairs_sorted = cat_pairs | sort -%}
+      {%- for p in cat_pairs_sorted -%}
+        {%- assign parts = p | split: "::" -%}
+        {%- assign slug  = parts[0] -%}
+        {%- assign label = parts[1] -%}
+        <button data-filter="{{ slug }}">{{ label }}</button>
+      {%- endfor -%}
+    </nav>
+  </aside>
+
+  <!-- Lista de utilitários -->
+  <section class="blog-lista">
+    <div class="cards">
+
+      {%- comment -%}
+      Render dos cards. data-cats recebe todos os slugs de categorias do item,
+      separados por espaço, para permitir match por includes.
+      {%- endcomment -%}
+      {%- for it in site.data.afiliados -%}
+        {%- assign cats = "" -%}
+        {%- if it.cat -%}
+          {%- assign slugs = "" | split:"|" -%}
+          {%- for c in it.cat -%}
+            {%- assign label = c | strip -%}
+            {%- assign slug  = label | downcase | strip | replace:"ç","c" | replace:"ã","a" | replace:"á","a" | replace:"â","a" | replace:"à","a" | replace:"é","e" | replace:"ê","e" | replace:"í","i" | replace:"ó","o" | replace:"ô","o" | replace:"õ","o" | replace:"ú","u" | replace:"ü","u" | replace:"’","" | replace:"'","" | replace:"&","e" | replace:"/","-" | replace:"  "," " | replace:" ","-" -%}
+            {%- assign slugs = slugs | push: slug -%}
+          {%- endfor -%}
+          {%- assign cats = slugs | join: " " -%}
+        {%- endif -%}
+
+        <article class="card" data-cats="{{ cats }}">
+          <a class="af-card" href="{{ it.url }}" target="_blank" rel="noopener">
+            <span class="af-thumb"
+              style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
+            <span class="af-info">
+              {%- if it.cat and it.cat.size > 0 -%}
+                <span class="meta"><span class="cat">{{ it.cat[0] }}</span></span>
+              {%- endif -%}
+              <h3>{{ it.title }}</h3>
+              {%- if it.note -%}<p class="exc">{{ it.note }}</p>{%- endif -%}
+              <span class="ler">Ver detalhes →</span>
+            </span>
+          </a>
+        </article>
+      {%- endfor -%}
+
+    </div>
+  </section>
+</div>
+
+<!-- Filtro por categoria -->
 <script>
 (function(){
-  const cards = Array.from(document.querySelectorAll('.card[data-cat]'));
-  const btns  = Array.from(document.querySelectorAll('#utiFiltros [data-filter]'));
+  const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
+  const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
 
-  function applyFilter(f){
-    const filter = (f || '__all').toLowerCase();
-    cards.forEach(card=>{
-      const list = (card.dataset.cat || '').split(',').map(s=>s.trim());
-      const hit  = list.includes(filter);
-      card.style.display = (filter === '__all' || hit) ? '' : 'none';
+  function applyFilter(slug){
+    const f = (slug || 'all').toLowerCase();
+    cards.forEach(c=>{
+      const cats = (c.dataset.cats || '').toLowerCase().split(' ');
+      c.style.display = (f === 'all' || cats.includes(f)) ? '' : 'none';
     });
   }
 
@@ -62,7 +106,5 @@ permalink: /utilitarios/
       applyFilter(btn.dataset.filter);
     });
   });
-
-  applyFilter('__all');
 })();
 </script>
