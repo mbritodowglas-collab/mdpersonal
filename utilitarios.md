@@ -159,4 +159,4 @@ body_class: utilitarios-page
 /* IMPORTANTE: REMOVIDO o “grid-column: 1/-1” dos parceiros
    (assim parceiros também ficam em 2 colunas quando filtrados) */
 
-</script>
+<stile>
