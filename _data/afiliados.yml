@@ -29,440 +29,440 @@
   note: "Conforto e estilo."
   cat: ["Parceiros"]
 
-  # =========================
-  # NUTRIÇÃO — WHEY PROTEIN
-  # =========================
-  - title: "Shark Pro Ultra Whey 900g — Banana & Canela"
-    url: "https://www.fithouse.com.br/whey-protein-concentrado/ultra-whey-protein-pote-900g-sabor-banana-ccanela-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Base proteica essencial."
-    cat: ["Nutrição"]
-
-  - title: "Adaptogen Tasty Whey 900g"
-    url: "https://www.fithouse.com.br/proteinas/whey-protein-tasty-whey-pote-900g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Blend saboroso para o dia a dia."
-    cat: ["Nutrição"]
-
-  - title: "New Millen Whey Zero Lactose 900g — Chocolate"
-    url: "https://www.fithouse.com.br/whey-zero-lactose-pote-900g-chocolate-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Opção zero lactose."
-    cat: ["Nutrição"]
-
-  - title: "New Millen Whey Zero Lactose 900g — Morango"
-    url: "https://www.fithouse.com.br/whey-zero-lactose-pote-900g-morango-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Opção zero lactose."
-    cat: ["Nutrição"]
-
-  - title: "Vitafor Whey Concentrado 900g — Morango (Refil)"
-    url: "https://www.fithouse.com.br/whey-protein-concentrado/whey-protein-concentrado-refil-900g-morango-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Custo-benefício no refil."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — CREATINA
-  # =========================
-  - title: "Shark Pro Creatina Flavor 300g — Limão"
-    url: "https://www.fithouse.com.br/creatina/energy-creatina-flavor-pote-300g-sabor-limao-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Força, volume e cognição."
-    cat: ["Nutrição"]
-
-  - title: "Black Skull Creatine 300g"
-    url: "https://www.fithouse.com.br/creatina/creatine-300g-blackskull?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Monohidratada clássica."
-    cat: ["Nutrição"]
-
-  - title: "New Millen Creatina ATP 300g"
-    url: "https://www.fithouse.com.br/creatina/creatina-atp-pote-300g-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Boa relação custo/benefício."
-    cat: ["Nutrição"]
-
-  - title: "Adaptogen Creatina — Refil 1kg"
-    url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Economia por dose (1kg)."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — AMINOÁCIDOS (INTRA)
-  # =========================
-  - title: "Adaptogen Intra Amino Sport 196,8g"
-    url: "https://www.fithouse.com.br/pre-treino/aminoacido-intra-amino-sport-pote-196-80g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Apoio à recuperação."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — MULTIVITAMÍNICOS
-  # =========================
-  - title: "Adaptogen Osteo Ultra — 120 cáps"
-    url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-osteo-ultra-pote-120-capsulas-72g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Cobre deficiências comuns."
-    cat: ["Nutrição"]
-
-  - title: "MuscleTech Platinum — 60 comp."
-    url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-platinum-pote-com-60-comprimidos-muscletech?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Boa cobertura diária."
-    cat: ["Nutrição"]
-
-  - title: "Shark Pro Vitta Daily — 30 cáps"
-    url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-vitta-daily-pote-com-30-capsulas-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Rotina simplificada."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — ÔMEGA-3
-  # =========================
-  - title: "Nutrify Ômega-3 — 60 cáps"
-    url: "https://www.fithouse.com.br/vitaminas/omega-3-pote-com-60-capsulas-nutrify?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "EPA/DHA — anti-inflamatório."
-    cat: ["Nutrição"]
-
-  - title: "Vitafor Ômega-3 — 120 cáps"
-    url: "https://www.fithouse.com.br/omega-3/omega-3-epa-e-dha-120-capsulas-1000mg-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Humor e saúde cardiovascular."
-    cat: ["Nutrição"]
-
-  - title: "DUX Fish Oil — 180 cáps"
-    url: "https://www.fithouse.com.br/omega-3/omega-3-fish-oil-pote-com-180-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Alto rendimento."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — MAGNÉSIO
-  # =========================
-  - title: "Bodyaction Magnésio Inositol 210g"
-    url: "https://www.fithouse.com.br/vitaminas/vitamina-magnesio-inositol-pote-210g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Sono e sistema nervoso."
-    cat: ["Nutrição"]
-
-  - title: "Ocean Drop Magnésio Plus — 180 cáps"
-    url: "https://www.fithouse.com.br/vitaminas/magnesio-plus-pote-180-capsulas-ocean-drop?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Praticidade em cápsulas."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — D3 + K2
-  # =========================
-  - title: "DUX Vitamina D3 + K2 — 20 ml"
-    url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-frasco-20ml-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Imunidade + cálcio."
-    cat: ["Nutrição"]
-
-  - title: "PuraVida D3 + K2 — 20 ml"
-    url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-gotas-20-ml-pura-vida?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Gotas fáceis de dosar."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — COLÁGENO / ESTÉTICA
-  # =========================
-  - title: "Bodyaction Colágeno Verisol + Ácido Hialurônico 200g"
-    url: "https://www.fithouse.com.br/colagenos/colageno-verisol-com-acido-hialuronico-lata-200g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Pele, unhas e articulações."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — TERMOGÊNICO / PROBIÓTICO
-  # =========================
-  - title: "Vitafor Termo Plus 240g"
-    url: "https://www.fithouse.com.br/termogenicos/termogenico-termo-plus-pote-240g-frutas-vermelhas-com-gengibre-e-cha-verde-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Gasto energético (uso orientado)."
-    cat: ["Nutrição"]
-
-  - title: "PuraVida PuraBiotics — 30 cáps"
-    url: "https://www.fithouse.com.br/vitaminas/probiotico-purabiotics-pote-30-capsulas-pura-vida?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Saúde intestinal."
-    cat: ["Nutrição"]
-
-  # =========================
-  # NUTRIÇÃO — PRÉ-TREINO / CAFEÍNA
-  # =========================
-  - title: "Nex Life Pre-Workout 300g — Uva"
-    url: "https://www.fithouse.com.br/pre-treino/pre-workout-pote-300g-sabor-uva-nex-life?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Energia e foco."
-    cat: ["Nutrição"]
-
-  - title: "Shark Pro — Pré Treino 300g"
-    url: "https://www.fithouse.com.br/pre-treino/pre-treino-shark-energy-pote-300g-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Disposição para treinar."
-    cat: ["Nutrição"]
-
-  - title: "Nutrata Nervous 415g — Pink Lemonade"
-    url: "https://www.fithouse.com.br/pre-treino/promopack-pre-treino-nervous-415g-nutrata-pink-lemonade?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Para treinos intensos."
-    cat: ["Nutrição"]
-
-  - title: "DUX Cafeína — 90 cáps"
-    url: "https://www.fithouse.com.br/pre-treino/cafeina-pote-90-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Estímulo controlável."
-    cat: ["Nutrição"]
-
-  # =========================
-  # TREINO — ESSENCIAIS / ACESSÓRIOS
-  # =========================
-  - title: "Kettlebell (4–12 kg)"
-    url: "https://s.shopee.com.br/1VqV85rdT0"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Força funcional e versatilidade."
-    cat: ["Treino"]
-
-  - title: "Caneleiras com peso (2–5 kg)"
-    url: "https://s.shopee.com.br/1VqV8EwndC"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Glúteos e pernas — resultado rápido."
-    cat: ["Treino"]
-
-  - title: "Minibands / Faixas elásticas"
-    url: "https://s.shopee.com.br/5pzUIGrxGf"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Ativação e aquecimento."
-    cat: ["Treino"]
-
-  - title: "Roda Abdominal (Ab Wheel)"
-    url: "https://s.shopee.com.br/BL7XxFVHh"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Core forte e proteção lombar."
-    cat: ["Treino"]
-
-  - title: "Corda de Pular Ajustável"
-    url: "https://s.shopee.com.br/2B6BvkeGAa"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "HIIT rápido e eficiente."
-    cat: ["Treino"]
-
-  - title: "Tapete / Colchonete de EVA"
-    url: "https://s.shopee.com.br/20mljYKT3v"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Conforto para o solo."
-    cat: ["Treino"]
-
-  - title: "Super Band — Elástico de resistência"
-    url: "https://s.shopee.com.br/AKRtewQelF"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Força, mobilidade e assistência."
-    cat: ["Treino"]
-
-  - title: "Elástico com pegadores"
-    url: "https://s.shopee.com.br/9AFwGtt8oY"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Treino completo em qualquer lugar."
-    cat: ["Treino"]
-
-  - title: "Mini step / Plataforma"
-    url: "https://s.shopee.com.br/1g9vLFrevk"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Cardio e pliometria."
-    cat: ["Treino"]
-
-  # =========================
-  # TREINO — PERFORMANCE & FORÇA
-  # =========================
-  - title: "Cinto de suporte lombar"
-    url: "https://s.shopee.com.br/10uEYGwruo"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Segurança para cargas altas."
-    cat: ["Treino"]
-
-  - title: "Ganchos de pegada"
-    url: "https://s.shopee.com.br/60IuVkSERZ"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Puxadas mais firmes."
-    cat: ["Treino"]
-
-  - title: "Straps de levantamento"
-    url: "https://s.shopee.com.br/20mlkh0WC0"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Auxilia na pegada de força."
-    cat: ["Treino"]
-
-  - title: "Luvas Grip (musculação)"
-    url: "https://s.shopee.com.br/9KZMUM7krD"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Evita calos e melhora aderência."
-    cat: ["Treino"]
-
-  - title: "Luva de musculação (tradicional)"
-    url: "https://s.shopee.com.br/8ANP6MdMIw"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Conforto em séries longas."
-    cat: ["Treino"]
-
-  # =========================
-  # TREINO — MOBILIDADE & RECUPERAÇÃO
-  # =========================
-  - title: "Foam Roller — Liberação miofascial"
-    url: "https://s.shopee.com.br/9AFwIahWad"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Recuperação e mobilidade."
-    cat: ["Treino"]
-
-  - title: "Bola de liberação — Lacrosse/dupla"
-    url: "https://s.shopee.com.br/8KgpJBz43Z"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Gatilhos e pontos de tensão."
-    cat: ["Treino"]
-
-  - title: "Massage Gun (mini pistola)"
-    url: "https://s.shopee.com.br/7pkYj4TZU7"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Alívio rápido pós-treino."
-    cat: ["Treino"]
-
-  # =========================
-  # TREINO — FEMININO / UTILITÁRIOS
-  # =========================
-  - title: "Garrafa térmica 900 ml (personalizada)"
-    url: "https://s.shopee.com.br/2Vj2NWYc1V"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Hidratação sempre à mão."
-    cat: ["Treino"]
-
-  - title: "Garrafa térmica Alma Genius 1 L"
-    url: "https://s.shopee.com.br/7fR8XMk3eG"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "1 litro para o dia todo."
-    cat: ["Treino"]
-
-  - title: "Bolsa de academia — organizador"
-    url: "https://s.shopee.com.br/8zwW828vcG"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Praticidade e estilo."
-    cat: ["Treino"]
-
-  - title: "Bolsa com compartimento para tênis"
-    url: "https://s.shopee.com.br/5L3DljByqn"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Tudo no lugar, sem sujeira."
-    cat: ["Treino"]
-
-  # =========================
-  # TREINO — EXTRAS (MENTE & CORPO / GADGETS)
-  # =========================
-  - title: "Caderno / Bullet Journal Fitness"
-    url: "https://s.shopee.com.br/30fJ14SSfi"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Hábito, foco e progresso."
-    cat: ["Treino"]
-
-  - title: "Fone condução óssea (Bluetooth)"
-    url: "https://s.shopee.com.br/AKRtkiitwu"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Treino seguro, atento ao ambiente."
-    cat: ["Treino"]
-
-  - title: "Fone esportivo Bluetooth"
-    url: "https://s.shopee.com.br/3qEQ12NBKx"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Música e foco no treino."
-    cat: ["Treino"]
-
-  - title: "Smartband — monitoramento"
-    url: "https://s.shopee.com.br/60IubBSQML"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Passos, frequência e sono."
-    cat: ["Treino"]
-
-  - title: "Xiaomi Smartband"
-    url: "https://s.shopee.com.br/2qLspQcrbs"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Clássica e precisa."
-    cat: ["Treino"]
-
-  # =========================
-  # AUTOCUIDADO — AROMATERAPIA & HIDRATAÇÃO
-  # =========================
-  - title: "Grace La Rose Sublime — Hinode"
-    url: "https://s.shopee.com.br/9Usmlowiaf"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Âncora olfativa leve e feminina."
-    cat: ["Autocuidado"]
-
-  - title: "Empire VIP — Hinode"
-    url: "https://s.shopee.com.br/2B6C2NwxNi"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Autoconfiança antes do treino."
-    cat: ["Autocuidado"]
-
-  - title: "Empire Intense — Hinode"
-    url: "https://s.shopee.com.br/4ArGQ6AbPE"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Energia e determinação."
-    cat: ["Autocuidado"]
-
-  - title: "Spot Her — Hinode"
-    url: "https://s.shopee.com.br/1BDeqgAjOv"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Notas cítricas e frescas."
-    cat: ["Autocuidado"]
-
-  - title: "Spot Him — Hinode"
-    url: "https://s.shopee.com.br/2g2SdUPsOb"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Frescor esportivo."
-    cat: ["Autocuidado"]
-
-  - title: "Grace Midnight — Hinode"
-    url: "https://s.shopee.com.br/2B6C2fGYZr"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Relaxamento noturno."
-    cat: ["Autocuidado"]
-
-  - title: "Routine Dermo — Hidratante FPS 50"
-    url: "https://s.shopee.com.br/1g9vRrOMa1"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Protege ao ar livre (uso diário)."
-    cat: ["Autocuidado"]
-
-  - title: "Hinode Strax — Loção 240 ml"
-    url: "https://s.shopee.com.br/3AyjEfv6hv"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Toque seco; realça tatuagens."
-    cat: ["Autocuidado"]
-
-  - title: "Hinode Sensações Envolvente — 300 ml"
-    url: "https://s.shopee.com.br/8V0FeMnRfL"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Ritual de relaxamento."
-    cat: ["Autocuidado"]
-
-  - title: "Soul Brasileira Tropicália — 200 ml"
-    url: "https://s.shopee.com.br/6Kvl5CWgzt"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Vibe vibrante e bem-estar."
-    cat: ["Autocuidado"]
-
-  - title: "Óleo Corporal Joli — Ameixa & Jasmine"
-    url: "https://s.shopee.com.br/4ArGVuWIls"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Pele macia e aroma envolvente."
-    cat: ["Autocuidado"]
-
-  - title: "Inebriante For Her — Hidratante 200 g"
-    url: "https://s.shopee.com.br/7V7iToTjg8"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Autoestima e confiança."
-    cat: ["Autocuidado"]
+# =========================
+# NUTRIÇÃO — WHEY PROTEIN
+# =========================
+- title: "Shark Pro Ultra Whey 900g — Banana & Canela"
+  url: "https://www.fithouse.com.br/whey-protein-concentrado/ultra-whey-protein-pote-900g-sabor-banana-ccanela-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Base proteica essencial."
+  cat: ["Nutrição"]
+
+- title: "Adaptogen Tasty Whey 900g"
+  url: "https://www.fithouse.com.br/proteinas/whey-protein-tasty-whey-pote-900g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Blend saboroso para o dia a dia."
+  cat: ["Nutrição"]
+
+- title: "New Millen Whey Zero Lactose 900g — Chocolate"
+  url: "https://www.fithouse.com.br/whey-zero-lactose-pote-900g-chocolate-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Opção zero lactose."
+  cat: ["Nutrição"]
+
+- title: "New Millen Whey Zero Lactose 900g — Morango"
+  url: "https://www.fithouse.com.br/whey-zero-lactose-pote-900g-morango-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Opção zero lactose."
+  cat: ["Nutrição"]
+
+- title: "Vitafor Whey Concentrado 900g — Morango (Refil)"
+  url: "https://www.fithouse.com.br/whey-protein-concentrado/whey-protein-concentrado-refil-900g-morango-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Custo-benefício no refil."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — CREATINA
+# =========================
+- title: "Shark Pro Creatina Flavor 300g — Limão"
+  url: "https://www.fithouse.com.br/creatina/energy-creatina-flavor-pote-300g-sabor-limao-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Força, volume e cognição."
+  cat: ["Nutrição"]
+
+- title: "Black Skull Creatine 300g"
+  url: "https://www.fithouse.com.br/creatina/creatine-300g-blackskull?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Monohidratada clássica."
+  cat: ["Nutrição"]
+
+- title: "New Millen Creatina ATP 300g"
+  url: "https://www.fithouse.com.br/creatina/creatina-atp-pote-300g-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Boa relação custo/benefício."
+  cat: ["Nutrição"]
+
+- title: "Adaptogen Creatina — Refil 1kg"
+  url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Economia por dose (1kg)."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — AMINOÁCIDOS (INTRA)
+# =========================
+- title: "Adaptogen Intra Amino Sport 196,8g"
+  url: "https://www.fithouse.com.br/pre-treino/aminoacido-intra-amino-sport-pote-196-80g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Apoio à recuperação."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — MULTIVITAMÍNICOS
+# =========================
+- title: "Adaptogen Osteo Ultra — 120 cáps"
+  url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-osteo-ultra-pote-120-capsulas-72g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Cobre deficiências comuns."
+  cat: ["Nutrição"]
+
+- title: "MuscleTech Platinum — 60 comp."
+  url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-platinum-pote-com-60-comprimidos-muscletech?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Boa cobertura diária."
+  cat: ["Nutrição"]
+
+- title: "Shark Pro Vitta Daily — 30 cáps"
+  url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-vitta-daily-pote-com-30-capsulas-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Rotina simplificada."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — ÔMEGA-3
+# =========================
+- title: "Nutrify Ômega-3 — 60 cáps"
+  url: "https://www.fithouse.com.br/vitaminas/omega-3-pote-com-60-capsulas-nutrify?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "EPA/DHA — anti-inflamatório."
+  cat: ["Nutrição"]
+
+- title: "Vitafor Ômega-3 — 120 cáps"
+  url: "https://www.fithouse.com.br/omega-3/omega-3-epa-e-dha-120-capsulas-1000mg-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Humor e saúde cardiovascular."
+  cat: ["Nutrição"]
+
+- title: "DUX Fish Oil — 180 cáps"
+  url: "https://www.fithouse.com.br/omega-3/omega-3-fish-oil-pote-com-180-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Alto rendimento."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — MAGNÉSIO
+# =========================
+- title: "Bodyaction Magnésio Inositol 210g"
+  url: "https://www.fithouse.com.br/vitaminas/vitamina-magnesio-inositol-pote-210g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Sono e sistema nervoso."
+  cat: ["Nutrição"]
+
+- title: "Ocean Drop Magnésio Plus — 180 cáps"
+  url: "https://www.fithouse.com.br/vitaminas/magnesio-plus-pote-180-capsulas-ocean-drop?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Praticidade em cápsulas."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — D3 + K2
+# =========================
+- title: "DUX Vitamina D3 + K2 — 20 ml"
+  url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-frasco-20ml-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Imunidade + cálcio."
+  cat: ["Nutrição"]
+
+- title: "PuraVida D3 + K2 — 20 ml"
+  url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-gotas-20-ml-pura-vida?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Gotas fáceis de dosar."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — COLÁGENO / ESTÉTICA
+# =========================
+- title: "Bodyaction Colágeno Verisol + Ácido Hialurônico 200g"
+  url: "https://www.fithouse.com.br/colagenos/colageno-verisol-com-acido-hialuronico-lata-200g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Pele, unhas e articulações."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — TERMOGÊNICO / PROBIÓTICO
+# =========================
+- title: "Vitafor Termo Plus 240g"
+  url: "https://www.fithouse.com.br/termogenicos/termogenico-termo-plus-pote-240g-frutas-vermelhas-com-gengibre-e-cha-verde-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Gasto energético (uso orientado)."
+  cat: ["Nutrição"]
+
+- title: "PuraVida PuraBiotics — 30 cáps"
+  url: "https://www.fithouse.com.br/vitaminas/probiotico-purabiotics-pote-30-capsulas-pura-vida?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Saúde intestinal."
+  cat: ["Nutrição"]
+
+# =========================
+# NUTRIÇÃO — PRÉ-TREINO / CAFEÍNA
+# =========================
+- title: "Nex Life Pre-Workout 300g — Uva"
+  url: "https://www.fithouse.com.br/pre-treino/pre-workout-pote-300g-sabor-uva-nex-life?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Energia e foco."
+  cat: ["Nutrição"]
+
+- title: "Shark Pro — Pré Treino 300g"
+  url: "https://www.fithouse.com.br/pre-treino/pre-treino-shark-energy-pote-300g-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Disposição para treinar."
+  cat: ["Nutrição"]
+
+- title: "Nutrata Nervous 415g — Pink Lemonade"
+  url: "https://www.fithouse.com.br/pre-treino/promopack-pre-treino-nervous-415g-nutrata-pink-lemonade?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Para treinos intensos."
+  cat: ["Nutrição"]
+
+- title: "DUX Cafeína — 90 cáps"
+  url: "https://www.fithouse.com.br/pre-treino/cafeina-pote-90-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Estímulo controlável."
+  cat: ["Nutrição"]
+
+# =========================
+# TREINO — ESSENCIAIS / ACESSÓRIOS
+# =========================
+- title: "Kettlebell (4–12 kg)"
+  url: "https://s.shopee.com.br/1VqV85rdT0"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Força funcional e versatilidade."
+  cat: ["Treino"]
+
+- title: "Caneleiras com peso (2–5 kg)"
+  url: "https://s.shopee.com.br/1VqV8EwndC"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Glúteos e pernas — resultado rápido."
+  cat: ["Treino"]
+
+- title: "Minibands / Faixas elásticas"
+  url: "https://s.shopee.com.br/5pzUIGrxGf"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Ativação e aquecimento."
+  cat: ["Treino"]
+
+- title: "Roda Abdominal (Ab Wheel)"
+  url: "https://s.shopee.com.br/BL7XxFVHh"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Core forte e proteção lombar."
+  cat: ["Treino"]
+
+- title: "Corda de Pular Ajustável"
+  url: "https://s.shopee.com.br/2B6BvkeGAa"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "HIIT rápido e eficiente."
+  cat: ["Treino"]
+
+- title: "Tapete / Colchonete de EVA"
+  url: "https://s.shopee.com.br/20mljYKT3v"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Conforto para o solo."
+  cat: ["Treino"]
+
+- title: "Super Band — Elástico de resistência"
+  url: "https://s.shopee.com.br/AKRtewQelF"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Força, mobilidade e assistência."
+  cat: ["Treino"]
+
+- title: "Elástico com pegadores"
+  url: "https://s.shopee.com.br/9AFwGtt8oY"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Treino completo em qualquer lugar."
+  cat: ["Treino"]
+
+- title: "Mini step / Plataforma"
+  url: "https://s.shopee.com.br/1g9vLFrevk"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Cardio e pliometria."
+  cat: ["Treino"]
+
+# =========================
+# TREINO — PERFORMANCE & FORÇA
+# =========================
+- title: "Cinto de suporte lombar"
+  url: "https://s.shopee.com.br/10uEYGwruo"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Segurança para cargas altas."
+  cat: ["Treino"]
+
+- title: "Ganchos de pegada"
+  url: "https://s.shopee.com.br/60IuVkSERZ"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Puxadas mais firmes."
+  cat: ["Treino"]
+
+- title: "Straps de levantamento"
+  url: "https://s.shopee.com.br/20mlkh0WC0"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Auxilia na pegada de força."
+  cat: ["Treino"]
+
+- title: "Luvas Grip (musculação)"
+  url: "https://s.shopee.com.br/9KZMUM7krD"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Evita calos e melhora aderência."
+  cat: ["Treino"]
+
+- title: "Luva de musculação (tradicional)"
+  url: "https://s.shopee.com.br/8ANP6MdMIw"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Conforto em séries longas."
+  cat: ["Treino"]
+
+# =========================
+# TREINO — MOBILIDADE & RECUPERAÇÃO
+# =========================
+- title: "Foam Roller — Liberação miofascial"
+  url: "https://s.shopee.com.br/9AFwIahWad"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Recuperação e mobilidade."
+  cat: ["Treino"]
+
+- title: "Bola de liberação — Lacrosse/dupla"
+  url: "https://s.shopee.com.br/8KgpJBz43Z"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Gatilhos e pontos de tensão."
+  cat: ["Treino"]
+
+- title: "Massage Gun (mini pistola)"
+  url: "https://s.shopee.com.br/7pkYj4TZU7"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Alívio rápido pós-treino."
+  cat: ["Treino"]
+
+# =========================
+# TREINO — FEMININO / UTILITÁRIOS
+# =========================
+- title: "Garrafa térmica 900 ml (personalizada)"
+  url: "https://s.shopee.com.br/2Vj2NWYc1V"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Hidratação sempre à mão."
+  cat: ["Treino"]
+
+- title: "Garrafa térmica Alma Genius 1 L"
+  url: "https://s.shopee.com.br/7fR8XMk3eG"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "1 litro para o dia todo."
+  cat: ["Treino"]
+
+- title: "Bolsa de academia — organizador"
+  url: "https://s.shopee.com.br/8zwW828vcG"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Praticidade e estilo."
+  cat: ["Treino"]
+
+- title: "Bolsa com compartimento para tênis"
+  url: "https://s.shopee.com.br/5L3DljByqn"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Tudo no lugar, sem sujeira."
+  cat: ["Treino"]
+
+# =========================
+# TREINO — EXTRAS (MENTE & CORPO / GADGETS)
+# =========================
+- title: "Caderno / Bullet Journal Fitness"
+  url: "https://s.shopee.com.br/30fJ14SSfi"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Hábito, foco e progresso."
+  cat: ["Treino"]
+
+- title: "Fone condução óssea (Bluetooth)"
+  url: "https://s.shopee.com.br/AKRtkiitwu"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Treino seguro, atento ao ambiente."
+  cat: ["Treino"]
+
+- title: "Fone esportivo Bluetooth"
+  url: "https://s.shopee.com.br/3qEQ12NBKx"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Música e foco no treino."
+  cat: ["Treino"]
+
+- title: "Smartband — monitoramento"
+  url: "https://s.shopee.com.br/60IubBSQML"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Passos, frequência e sono."
+  cat: ["Treino"]
+
+- title: "Xiaomi Smartband"
+  url: "https://s.shopee.com.br/2qLspQcrbs"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Clássica e precisa."
+  cat: ["Treino"]
+
+# =========================
+# AUTOCUIDADO — AROMATERAPIA & HIDRATAÇÃO
+# =========================
+- title: "Grace La Rose Sublime — Hinode"
+  url: "https://s.shopee.com.br/9Usmlowiaf"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Âncora olfativa leve e feminina."
+  cat: ["Autocuidado"]
+
+- title: "Empire VIP — Hinode"
+  url: "https://s.shopee.com.br/2B6C2NwxNi"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Autoconfiança antes do treino."
+  cat: ["Autocuidado"]
+
+- title: "Empire Intense — Hinode"
+  url: "https://s.shopee.com.br/4ArGQ6AbPE"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Energia e determinação."
+  cat: ["Autocuidado"]
+
+- title: "Spot Her — Hinode"
+  url: "https://s.shopee.com.br/1BDeqgAjOv"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Notas cítricas e frescas."
+  cat: ["Autocuidado"]
+
+- title: "Spot Him — Hinode"
+  url: "https://s.shopee.com.br/2g2SdUPsOb"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Frescor esportivo."
+  cat: ["Autocuidado"]
+
+- title: "Grace Midnight — Hinode"
+  url: "https://s.shopee.com.br/2B6C2fGYZr"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Relaxamento noturno."
+  cat: ["Autocuidado"]
+
+- title: "Routine Dermo — Hidratante FPS 50"
+  url: "https://s.shopee.com.br/1g9vRrOMa1"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Protege ao ar livre (uso diário)."
+  cat: ["Autocuidado"]
+
+- title: "Hinode Strax — Loção 240 ml"
+  url: "https://s.shopee.com.br/3AyjEfv6hv"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Toque seco; realça tatuagens."
+  cat: ["Autocuidado"]
+
+- title: "Hinode Sensações Envolvente — 300 ml"
+  url: "https://s.shopee.com.br/8V0FeMnRfL"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Ritual de relaxamento."
+  cat: ["Autocuidado"]
+
+- title: "Soul Brasileira Tropicália — 200 ml"
+  url: "https://s.shopee.com.br/6Kvl5CWgzt"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Vibe vibrante e bem-estar."
+  cat: ["Autocuidado"]
+
+- title: "Óleo Corporal Joli — Ameixa & Jasmine"
+  url: "https://s.shopee.com.br/4ArGVuWIls"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Pele macia e aroma envolvente."
+  cat: ["Autocuidado"]
+
+- title: "Inebriante For Her — Hidratante 200 g"
+  url: "https://s.shopee.com.br/7V7iToTjg8"
+  image: "/assets/img/afiliados/thumb-default.jpg"
+  note: "Autoestima e confiança."
+  cat: ["Autocuidado"]
