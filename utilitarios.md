@@ -117,3 +117,27 @@ permalink: /utilitarios/
   }
 }
 </style>
+
+<!-- Padroniza cards no mobile: sem thumb e com conteúdo “cheio” -->
+<style>
+  /* Parceiros: já some a thumb em qualquer largura (mantém padrão que você gostou) */
+  .card[data-cats*="parceiros"] .af-thumb{ display:none !important; }
+
+  /* Mobile / tablet */
+  @media (max-width: 900px){
+    /* Esconde thumb de TODOS os cards */
+    .af-thumb{ display:none !important; }
+
+    /* Garante que o link ocupe toda a largura e aplique o padding interno */
+    .card .af-card{
+      display:block !important;
+      width:100% !important;
+      padding:1rem 1.2rem !important;
+    }
+
+    /* Remove qualquer lacuna, força o conteúdo a “encher” o card */
+    .card{ padding:0 !important; }
+    .card .af-info{ width:100% !important; }
+  }
+</style>
+
