@@ -118,26 +118,82 @@ permalink: /utilitarios/
 }
 </style>
 
-<!-- Padroniza cards no mobile: sem thumb e com conteúdo “cheio” -->
-<style>
-  /* Parceiros: já some a thumb em qualquer largura (mantém padrão que você gostou) */
-  .card[data-cats*="parceiros"] .af-thumb{ display:none !important; }
+/* ====== FORÇA LAYOUT CHEIO SÓ NA PÁGINA /utilitarios ====== */
 
-  /* Mobile / tablet */
-  @media (max-width: 900px){
-    /* Esconde thumb de TODOS os cards */
-    .af-thumb{ display:none !important; }
+/* 1) Card ocupa a grade normalmente */
+.blog-lista .cards{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:1rem;
+}
 
-    /* Garante que o link ocupe toda a largura e aplique o padding interno */
-    .card .af-card{
-      display:block !important;
-      width:100% !important;
-      padding:1rem 1.2rem !important;
-    }
+/* 2) No mobile e telas médias, 1 ou 2 colunas */
+@media (max-width: 1000px){ .blog-lista .cards{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px){  .blog-lista .cards{ grid-template-columns: 1fr; } }
 
-    /* Remove qualquer lacuna, força o conteúdo a “encher” o card */
-    .card{ padding:0 !important; }
-    .card .af-info{ width:100% !important; }
-  }
+/* 3) Transforma TODOS os .af-card em formato “card cheio” (thumb grande em cima) */
+.blog-lista .card .af-card{
+  display:flex;
+  flex-direction:column;
+  gap:.65rem;
+  width:100%;
+  height:100%;
+  padding:.75rem;                /* mesmo respiro do card de Nutrição */
+  background:#0f0f0f;            /* fundo igual ao card */
+  border-radius:14px;
+  border:1px solid #1c1c1c;
+}
+
+/* remove possíveis estilos herdados que deixem o af-card “solto” */
+.blog-lista .card{
+  border:none;
+  background:transparent;
+  padding:0;
+}
+
+/* Thumb full-bleed no topo */
+.blog-lista .card .af-thumb{
+  width:100%;
+  height:auto;
+  aspect-ratio: 16/9;
+  background:#111 center/cover no-repeat;
+  border-radius:10px;
+  border:1px solid #1c1c1c;
+}
+
+/* Info preenche o restante e alinha com o estilo do blog */
+.blog-lista .card .af-info{
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+}
+.blog-lista .card .meta{
+  display:flex; align-items:center; gap:.5rem;
+  font-size:.9rem; opacity:.9; margin:0;
+}
+.blog-lista .card .cat{
+  background:rgba(227,197,101,.1);
+  color:#e3c565; border:1px solid rgba(227,197,101,.35);
+  padding:.14rem .5rem; border-radius:999px; font-weight:600;
+}
+.blog-lista .card h3{
+  margin:.2rem 0 .25rem; font-size:1.05rem; color:#fff; line-height:1.35;
+}
+.blog-lista .card .exc{ margin:0; color:#cfcfcf; }
+.blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
+.blog-lista .card:hover .ler{ color:#ff4040; }
+
+/* 4) Ajuste do botão “Ver detalhes” e hover “lift” */
+.blog-lista .card .af-card:hover{
+  transform:translateY(-3px);
+  border-color:#2a2a2a;
+  transition:.25s;
+}
+
+/* 5) Quando filtrar (mostrar 1 coluna no mobile), os cards continuam 100% */
+@media (max-width:640px){
+  .blog-lista .card, .blog-lista .card .af-card{ width:100%; }
+}
 </style>
+
 
