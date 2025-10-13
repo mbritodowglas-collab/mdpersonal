@@ -29,6 +29,7 @@
   note: "Conforto e estilo."
   cat: ["Parceiros"]
 
+
 # =========================
 # NUTRIÇÃO — WHEY PROTEIN
 # =========================
@@ -62,6 +63,7 @@
   note: "Custo-benefício no refil."
   cat: ["Nutrição"]
 
+
 # =========================
 # NUTRIÇÃO — CREATINA
 # =========================
@@ -89,6 +91,7 @@
   note: "Economia por dose (1kg)."
   cat: ["Nutrição"]
 
+
 # =========================
 # NUTRIÇÃO — AMINOÁCIDOS (INTRA)
 # =========================
@@ -97,6 +100,7 @@
   image: "/assets/img/afiliados/thumb-default.jpg"
   note: "Apoio à recuperação."
   cat: ["Nutrição"]
+
 
 # =========================
 # NUTRIÇÃO — MULTIVITAMÍNICOS
@@ -119,6 +123,7 @@
   note: "Rotina simplificada."
   cat: ["Nutrição"]
 
+
 # =========================
 # NUTRIÇÃO — ÔMEGA-3
 # =========================
@@ -140,6 +145,7 @@
   note: "Alto rendimento."
   cat: ["Nutrição"]
 
+
 # =========================
 # NUTRIÇÃO — MAGNÉSIO
 # =========================
@@ -154,6 +160,7 @@
   image: "/assets/img/afiliados/thumb-default.jpg"
   note: "Praticidade em cápsulas."
   cat: ["Nutrição"]
+
 
 # =========================
 # NUTRIÇÃO — D3 + K2
@@ -170,6 +177,7 @@
   note: "Gotas fáceis de dosar."
   cat: ["Nutrição"]
 
+
 # =========================
 # NUTRIÇÃO — COLÁGENO / ESTÉTICA
 # =========================
@@ -179,20 +187,6 @@
   note: "Pele, unhas e articulações."
   cat: ["Nutrição"]
 
-# =========================
-# NUTRIÇÃO — TERMOGÊNICO / PROBIÓTICO
-# =========================
-- title: "Vitafor Termo Plus 240g"
-  url: "https://www.fithouse.com.br/termogenicos/termogenico-termo-plus-pote-240g-frutas-vermelhas-com-gengibre-e-cha-verde-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-  image: "/assets/img/afiliados/thumb-default.jpg"
-  note: "Gasto energético (uso orientado)."
-  cat: ["Nutrição"]
-
-- title: "PuraVida PuraBiotics — 30 cáps"
-  url: "https://www.fithouse.com.br/vitaminas/probiotico-purabiotics-pote-30-capsulas-pura-vida?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-  image: "/assets/img/afiliados/thumb-default.jpg"
-  note: "Saúde intestinal."
-  cat: ["Nutrição"]
 
 # =========================
 # NUTRIÇÃO — PRÉ-TREINO / CAFEÍNA
@@ -221,248 +215,254 @@
   note: "Estímulo controlável."
   cat: ["Nutrição"]
 
+
 # =========================
 # TREINO — ESSENCIAIS / ACESSÓRIOS
 # =========================
 - title: "Kettlebell (4–12 kg)"
   url: "https://s.shopee.com.br/1VqV85rdT0"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/kettlebell.jpg"
   note: "Força funcional e versatilidade."
   cat: ["Treino"]
 
 - title: "Caneleiras com peso (2–5 kg)"
   url: "https://s.shopee.com.br/1VqV8EwndC"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/caneleira-com-peso.jpg"
   note: "Glúteos e pernas — resultado rápido."
   cat: ["Treino"]
 
 - title: "Minibands / Faixas elásticas"
   url: "https://s.shopee.com.br/5pzUIGrxGf"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/minibands.jpg"
   note: "Ativação e aquecimento."
   cat: ["Treino"]
 
 - title: "Roda Abdominal (Ab Wheel)"
   url: "https://s.shopee.com.br/BL7XxFVHh"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/ab-wheel.jpg"
   note: "Core forte e proteção lombar."
   cat: ["Treino"]
 
 - title: "Corda de Pular Ajustável"
   url: "https://s.shopee.com.br/2B6BvkeGAa"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/corda-pular.jpg"
   note: "HIIT rápido e eficiente."
   cat: ["Treino"]
 
 - title: "Tapete / Colchonete de EVA"
   url: "https://s.shopee.com.br/20mljYKT3v"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/tapete-eva.jpg"
   note: "Conforto para o solo."
   cat: ["Treino"]
 
 - title: "Super Band — Elástico de resistência"
   url: "https://s.shopee.com.br/AKRtewQelF"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/super-band.jpg"
   note: "Força, mobilidade e assistência."
   cat: ["Treino"]
 
 - title: "Elástico com pegadores"
   url: "https://s.shopee.com.br/9AFwGtt8oY"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/elastico-pegadores.jpg"
   note: "Treino completo em qualquer lugar."
   cat: ["Treino"]
 
 - title: "Mini step / Plataforma"
   url: "https://s.shopee.com.br/1g9vLFrevk"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/mini-step.jpg"
   note: "Cardio e pliometria."
   cat: ["Treino"]
+
 
 # =========================
 # TREINO — PERFORMANCE & FORÇA
 # =========================
 - title: "Cinto de suporte lombar"
   url: "https://s.shopee.com.br/10uEYGwruo"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/cinto-lombar.jpg"
   note: "Segurança para cargas altas."
   cat: ["Treino"]
 
 - title: "Ganchos de pegada"
   url: "https://s.shopee.com.br/60IuVkSERZ"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/ganchos-pegada.jpg"
   note: "Puxadas mais firmes."
   cat: ["Treino"]
 
 - title: "Straps de levantamento"
   url: "https://s.shopee.com.br/20mlkh0WC0"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/straps.jpg"
   note: "Auxilia na pegada de força."
   cat: ["Treino"]
 
 - title: "Luvas Grip (musculação)"
   url: "https://s.shopee.com.br/9KZMUM7krD"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/luvas-grip.jpg"
   note: "Evita calos e melhora aderência."
   cat: ["Treino"]
 
 - title: "Luva de musculação (tradicional)"
   url: "https://s.shopee.com.br/8ANP6MdMIw"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/luva-musculacao.jpg"
   note: "Conforto em séries longas."
   cat: ["Treino"]
+
 
 # =========================
 # TREINO — MOBILIDADE & RECUPERAÇÃO
 # =========================
 - title: "Foam Roller — Liberação miofascial"
   url: "https://s.shopee.com.br/9AFwIahWad"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/foam-roller.jpg"
   note: "Recuperação e mobilidade."
   cat: ["Treino"]
 
 - title: "Bola de liberação — Lacrosse/dupla"
   url: "https://s.shopee.com.br/8KgpJBz43Z"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/bola-liberacao.jpg"
   note: "Gatilhos e pontos de tensão."
   cat: ["Treino"]
 
 - title: "Massage Gun (mini pistola)"
   url: "https://s.shopee.com.br/7pkYj4TZU7"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/massage-gun.jpg"
   note: "Alívio rápido pós-treino."
   cat: ["Treino"]
+
 
 # =========================
 # TREINO — FEMININO / UTILITÁRIOS
 # =========================
 - title: "Garrafa térmica 900 ml (personalizada)"
   url: "https://s.shopee.com.br/2Vj2NWYc1V"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/garrafa-termica-900ml.jpg"
   note: "Hidratação sempre à mão."
   cat: ["Treino"]
 
 - title: "Garrafa térmica Alma Genius 1 L"
   url: "https://s.shopee.com.br/7fR8XMk3eG"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/garrafa-termica-1l.jpg"
   note: "1 litro para o dia todo."
   cat: ["Treino"]
 
 - title: "Bolsa de academia — organizador"
   url: "https://s.shopee.com.br/8zwW828vcG"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/bolsa-academia.jpg"
   note: "Praticidade e estilo."
   cat: ["Treino"]
 
 - title: "Bolsa com compartimento para tênis"
   url: "https://s.shopee.com.br/5L3DljByqn"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/bolsa-academia-tenis.jpg"
   note: "Tudo no lugar, sem sujeira."
   cat: ["Treino"]
+
 
 # =========================
 # TREINO — EXTRAS (MENTE & CORPO / GADGETS)
 # =========================
 - title: "Caderno / Bullet Journal Fitness"
   url: "https://s.shopee.com.br/30fJ14SSfi"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/bullet-journal-fitness.jpg"
   note: "Hábito, foco e progresso."
   cat: ["Treino"]
 
 - title: "Fone condução óssea (Bluetooth)"
   url: "https://s.shopee.com.br/AKRtkiitwu"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/fone-conducao-ossea.jpg"
   note: "Treino seguro, atento ao ambiente."
   cat: ["Treino"]
 
 - title: "Fone esportivo Bluetooth"
   url: "https://s.shopee.com.br/3qEQ12NBKx"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/fone-esportivo.jpg"
   note: "Música e foco no treino."
   cat: ["Treino"]
 
 - title: "Smartband — monitoramento"
   url: "https://s.shopee.com.br/60IubBSQML"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/smartband.jpg"
   note: "Passos, frequência e sono."
   cat: ["Treino"]
 
 - title: "Xiaomi Smartband"
   url: "https://s.shopee.com.br/2qLspQcrbs"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/xiaomi-smartband.jpg"
   note: "Clássica e precisa."
   cat: ["Treino"]
+
 
 # =========================
 # AUTOCUIDADO — AROMATERAPIA & HIDRATAÇÃO
 # =========================
 - title: "Grace La Rose Sublime — Hinode"
   url: "https://s.shopee.com.br/9Usmlowiaf"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/grace-la-rose.jpg"
   note: "Âncora olfativa leve e feminina."
   cat: ["Autocuidado"]
 
 - title: "Empire VIP — Hinode"
   url: "https://s.shopee.com.br/2B6C2NwxNi"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/empire-vip.jpg"
   note: "Autoconfiança antes do treino."
   cat: ["Autocuidado"]
 
 - title: "Empire Intense — Hinode"
   url: "https://s.shopee.com.br/4ArGQ6AbPE"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/empire-intense.jpg"
   note: "Energia e determinação."
   cat: ["Autocuidado"]
 
 - title: "Spot Her — Hinode"
   url: "https://s.shopee.com.br/1BDeqgAjOv"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/spot-her.jpg"
   note: "Notas cítricas e frescas."
   cat: ["Autocuidado"]
 
 - title: "Spot Him — Hinode"
   url: "https://s.shopee.com.br/2g2SdUPsOb"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/spot-him.jpg"
   note: "Frescor esportivo."
   cat: ["Autocuidado"]
 
 - title: "Grace Midnight — Hinode"
   url: "https://s.shopee.com.br/2B6C2fGYZr"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/grace-midnight.jpg"
   note: "Relaxamento noturno."
   cat: ["Autocuidado"]
 
 - title: "Routine Dermo — Hidratante FPS 50"
   url: "https://s.shopee.com.br/1g9vRrOMa1"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/routine-dermo-fps50.jpg"
   note: "Protege ao ar livre (uso diário)."
   cat: ["Autocuidado"]
 
 - title: "Hinode Strax — Loção 240 ml"
   url: "https://s.shopee.com.br/3AyjEfv6hv"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/hinode-strax.jpg"
   note: "Toque seco; realça tatuagens."
   cat: ["Autocuidado"]
 
 - title: "Hinode Sensações Envolvente — 300 ml"
   url: "https://s.shopee.com.br/8V0FeMnRfL"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/hinode-sensacoes-envolvente.jpg"
   note: "Ritual de relaxamento."
   cat: ["Autocuidado"]
 
 - title: "Soul Brasileira Tropicália — 200 ml"
   url: "https://s.shopee.com.br/6Kvl5CWgzt"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/soul-brasileira-tropicalia.jpg"
   note: "Vibe vibrante e bem-estar."
   cat: ["Autocuidado"]
 
 - title: "Óleo Corporal Joli — Ameixa & Jasmine"
   url: "https://s.shopee.com.br/4ArGVuWIls"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/oleo-joli-ameixa-jasmine.jpg"
   note: "Pele macia e aroma envolvente."
   cat: ["Autocuidado"]
 
 - title: "Inebriante For Her — Hidratante 200 g"
   url: "https://s.shopee.com.br/7V7iToTjg8"
-  image: "/assets/img/afiliados/thumb-default.jpg"
+  image: "/assets/img/afiliados/inebriante-for-her.jpg"
   note: "Autoestima e confiança."
   cat: ["Autocuidado"]
