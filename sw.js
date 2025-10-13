@@ -1,14 +1,23 @@
-// sw.js (raiz)
-const VERSION = 'v4';                  // <-- aumente SEMPRE que publicar mudanças
+---
+layout: null
+permalink: /sw.js
+---
+const VERSION   = 'v5';  // ↑ aumente sempre que mudar algo do SW/manifest
 const APP_CACHE = `mdp-app-${VERSION}`;
 const IMG_CACHE = `mdp-img-${VERSION}`;
 
+// Prefixo seguro para GitHub Pages ou raiz
+const BASE = '{{ site.baseurl | default: "" }}';
+
 // Arquivos “estáticos” básicos
 const APP_SHELL = [
-  '/',                           // homepage
-  '/utilitarios/',               // lista
-  '/assets/css/style.css',
-  '/manifest.webmanifest',
+  `${BASE}/`,
+  `${BASE}/utilitarios/`,
+  `${BASE}/assets/css/style.css`,
+  `${BASE}/manifest.webmanifest`,
+  `${BASE}/assets/img/icons/icon-192.png`,
+  `${BASE}/assets/img/icons/icon-512.png`,
+  `${BASE}/assets/img/icons/maskable-512.png`
 ];
 
 // Instala e pré-cacheia o básico
@@ -23,43 +32,39 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys
-        .filter(k => ![APP_CACHE, IMG_CACHE].includes(k))
-        .map(k => caches.delete(k))
+      Promise.all(
+        keys
+          .filter(k => ![APP_CACHE, IMG_CACHE].includes(k))
+          .map(k => caches.delete(k))
       )
     ).then(() => self.clients.claim())
   );
 });
 
-// Estratégias de fetch:
-// - Navegação/HTML/CSS/JS: network-first (para você ver mudanças)
-// - Imagens: cache-first (performance), com atualização em segundo plano
+// Estratégias de fetch
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   const url = new URL(req.url);
-
-  // Só escopamos o que é do seu site (evita interferir em links externos)
   const isSameOrigin = url.origin === self.location.origin;
 
-  // HTML (navegações)
+  // Navegações (HTML)
   if (req.mode === 'navigate') {
     e.respondWith(networkFirst(req, APP_CACHE));
     return;
   }
 
-  // CSS/JS do seu domínio
+  // CSS/JS internos
   if (isSameOrigin && (req.destination === 'style' || req.destination === 'script')) {
     e.respondWith(networkFirst(req, APP_CACHE));
     return;
   }
 
-  // Imagens do seu domínio
+  // Imagens internas
   if (isSameOrigin && req.destination === 'image') {
     e.respondWith(cacheFirst(req, IMG_CACHE));
     return;
   }
-
-  // Demais: passa direto
+  // demais: indiferente (segue a rede)
 });
 
 // Helpers
@@ -74,12 +79,12 @@ async function networkFirst(req, cacheName) {
     return cached || Response.error();
   }
 }
+
 async function cacheFirst(req, cacheName) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(req);
   if (cached) {
-    // Atualiza em segundo plano
-    fetch(req).then(res => res.ok && cache.put(req, res.clone()));
+    fetch(req).then(res => res.ok && cache.put(req, res.clone())); // atualiza em BG
     return cached;
   }
   const fresh = await fetch(req);
