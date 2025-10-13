@@ -18,9 +18,16 @@ layout: default
     {% assign resumo = page.excerpt | default: page.content | strip_html | truncate: 180 %}
     {% if resumo %}<p class="post-deck">{{ resumo }}</p>{% endif %}
 
-    {% if page.image %}
-      <div class="post-cover" style="background-image:url('{{ page.image | relative_url }}')"></div>
-    {% endif %}
+   {% if page.image %}
+  <div class="post-cover">
+    <img
+      src="{{ page.image | default: site.og_image | relative_url }}"
+      alt="{{ page.title | escape }}"
+      class="post-cover-img"
+      loading="lazy"
+      decoding="async">
+  </div>
+{% endif %}
   </div>
 
   <!-- Conteúdo -->
