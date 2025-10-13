@@ -271,7 +271,7 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   .dst-thumb{min-height:200px}
 }
 
-/* ===== BLOG: Mobile — categorias fixas e limpas ===== */
+/* ===== BLOG: Mobile — categorias fixas e limpas ====== */
 @media (max-width:768px){
   .blog-destaque{ display:block; margin-top:.75rem; }
   .blog-sidebar{
@@ -388,7 +388,7 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 /* destaque opcional para parceiros ocuparem a linha inteira */
 .utilitarios-page .card[data-cats*="parceiros"]{ grid-column:1 / -1; }
 
-/* ====== PWA Install Bar ====== */
+/* ====== PWA Install Bar (ajustado para evitar quebra do ícone) ====== */
 #pwa-install{ position:fixed; inset:auto 0 0 0; z-index:9999; display:block; }
 #pwa-install[hidden]{ display:none; }
 #pwa-install .pwa-bar{
@@ -407,8 +407,8 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   border-top-right-radius:12px;
 }
 #pwa-install.on .pwa-bar{ transform: translateY(0); }
-#pwa-install .pwa-left{ display:flex; align-items:center; gap:.7rem; color:#fff; }
-#pwa-install .pwa-left img{ width:28px; height:28px; border-radius:6px; }
+#pwa-install .pwa-left{ display:flex; align-items:center; gap:.7rem; color:#fff; min-width:0; }
+#pwa-install .pwa-left img{ width:40px; height:40px; border-radius:8px; object-fit:cover; flex:0 0 40px; background:#111; }
 #pwa-install .pwa-left strong{ display:block; line-height:1.1; }
 #pwa-install .pwa-left small{ display:block; color:#cfcfcf; opacity:.9; }
 #pwa-install .pwa-actions{ display:flex; gap:.5rem; }
@@ -418,16 +418,3 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .pwa-btn.pwa-install{ background:var(--vermelho); color:#fff; box-shadow:0 8px 24px rgba(214,40,40,.2); }
 .pwa-btn.pwa-install:hover{ background:var(--vermelho-claro); }
 @media (max-width:640px){ #pwa-install .pwa-bar{ border-radius:0; max-width:none; } }
-
-/* --- MOBILE: Parceiros em 2 colunas, thumb quadrada --- */
-@media (max-width: 860px){
-  /* não ocupa a linha inteira */
-  .utilitarios-page .card[data-cats*="parceiros"]{
-    grid-column: auto !important;
-  }
-  /* thumb 1:1 no mobile */
-  .utilitarios-page .card[data-cats*="parceiros"] .af-thumb{
-    aspect-ratio: 1 / 1 !important;
-  }
-}
-
