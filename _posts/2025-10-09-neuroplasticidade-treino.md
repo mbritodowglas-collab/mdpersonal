@@ -14,6 +14,10 @@ afiliados:
     url: "https://www.fithouse.com.br/vitaminas/vitamina-magnesio-inositol-pote-210g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
     image: "/assets/img/afiliados/thumb-default.jpg"
     note: "Auxilia no foco, sono e equilíbrio do sistema nervoso."
+  - title: "DUX Vitamina D3 + K2 — 20 ml"
+    url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-frasco-20ml-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+    image: "/assets/img/afiliados/thumb-default.jpg"
+    note: "Regula neurotransmissores e favorece a performance cognitiva."
 cta:
   text: "Agende sua Avaliação Gratuita"
   url: "/avaliacao/"
@@ -44,7 +48,7 @@ quanto mais vezes você repete o padrão certo, **mais forte ele se torna na sua
    O cérebro responde melhor à novidade — ela ativa regiões ligadas à atenção e à motivação.  
 2. **Visualize o movimento:** antes de executar, imagine-se realizando o exercício com precisão.  
    A visualização ativa as mesmas áreas cerebrais do movimento real.  
-3. **Cuide do sono e da nutrição:** o descanso consolida as novas conexões neurais, e nutrientes como **ômega-3** e **magnésio** favorecem a plasticidade cerebral.  
+3. **Cuide do sono e da nutrição:** o descanso consolida as novas conexões neurais, e nutrientes como **ômega-3**, **magnésio** e **vitamina D3 + K2** favorecem a plasticidade cerebral.  
 4. **Respeite o processo:** o aprendizado motor é gradual. Valorize cada pequena melhora.
 
 ## Neurociência aplicada ao treino
@@ -63,4 +67,4 @@ E é isso que transforma o treino em algo maior: um processo contínuo de evolu�
 
 ---
 
-**Tags:** neuroplasticidade, aprendizado motor, foco, dopamina, treino consciente, sistema nervoso, coordenação, desempenho, ômega-3, magnésio
+**Tags:** neuroplasticidade, aprendizado motor, foco, dopamina, treino consciente, sistema nervoso, coordenação, desempenho, ômega-3, magnésio, vitamina D3
