@@ -9,13 +9,17 @@ afiliados:
   - title: "Shark Pro Creatina Flavor 300g — Limão"
     url: "https://www.fithouse.com.br/creatina/energy-creatina-flavor-pote-300g-sabor-limao-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
     image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Força, volume e foco nos treinos."
+    note: "Mais força, energia e recuperação muscular acelerada."
   - title: "Foam Roller — Liberação miofascial"
     url: "https://s.shopee.com.br/9AFwIahWad"
     image: "/assets/img/afiliados/foam-roller.jpg"
-    note: "Recupere seu corpo e reduza dores musculares."
+    note: "Recupere seu corpo, reduza dores e melhore a mobilidade."
+  - title: "Corde de Pular Ajustável"
+    url: "https://s.shopee.com.br/2B6BvkeGAa"
+    image: "/assets/img/afiliados/corda-pular.jpg"
+    note: "Aqueça, melhore o condicionamento e otimize o treino."
 cta:
-  text: "Agendar sua avaliação gratuita"
+  text: "Agende sua Avaliação Gratuita"
   url: "/avaliacao/"
 ---
 
