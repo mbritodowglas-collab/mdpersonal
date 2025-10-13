@@ -502,4 +502,26 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   #pwa-install .pwa-bar{ border-radius:0; max-width:none; }
 }
 
+/* ================================
+   UTILITÁRIOS — thumbs dos PRODUTOS
+   (não altera Parceiros)
+   ================================ */
+
+/* Thumb QUADRADA (1:1) só para cards que não são parceiros */
+.utilitarios-page .blog-lista .card:not([data-cats*="parceiros"]) .af-thumb{
+  aspect-ratio: 1 / 1;           /* força 1:1 */
+  background-position: center;   /* centraliza o corte */
+  background-size: cover;        /* preenche sem distorcer */
+  border-radius: 12px;
+  border: 1px solid #1c1c1c;
+}
+
+/* Mantém o layout dos cards consistente */
+.utilitarios-page .blog-lista .card:not([data-cats*="parceiros"]) .af-card{
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+
 
