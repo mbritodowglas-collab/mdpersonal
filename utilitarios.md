@@ -16,7 +16,6 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   <aside class="blog-sidebar">
     <h3>Categorias</h3>
     <nav class="blog-filtros-vertical">
-      <!-- Ordem fixa dos filtros -->
       <button data-filter="" class="on">Todos</button>
       <button data-filter="parceiros">Parceiros</button>
       <button data-filter="nutrição">Nutrição</button>
@@ -31,28 +30,26 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 
       {%- comment -%}
       Lê _data/afiliados.yml (lista de itens).
-      data-cats recebe todas as categorias do item, em lowercase simples.
+      data-cats recebe todas as categorias do item, em lowercase.
       A thumb é 1:1 por padrão e 16:9 quando o item tem "Parceiros".
       {%- endcomment -%}
       {%- for it in site.data.afiliados -%}
-        {%- assign cats_arr = it.cat | default: empty -%}
+        {%- assign cats_arr   = it.cat | default: empty -%}
         {%- assign cats_lower = cats_arr | join: ' ' | downcase -%}
         {%- assign is_partner = cats_lower contains 'parceiros' -%}
 
-        <article class="card" data-cats="{{ cats_lower | escape }}">
+        <article class="card" data-cats="{{ cats_lower }}">
           <a class="af-card"
              href="{{ it.url }}"
              target="_blank"
              rel="{% if is_partner %}noopener nofollow sponsored{% else %}noopener{% endif %}">
 
-            {%- comment -%} 
-            Thumb com proporção inline (garante visual mesmo se CSS conflitar)
-            Parceiros = 16/9; demais = 1/1
-            {%- endcomment -%}
+            <!-- Thumb com proporção inline (1:1 padrão; 16:9 para Parceiros) -->
             <span class="af-thumb"
                   style="
+                    display:block; width:100%;
                     background:#111 center/cover no-repeat;
-                    border:1px solid #1c1c1c; border-radius:12px; width:100%;
+                    border:1px solid #1c1c1c; border-radius:12px;
                     aspect-ratio:{% if is_partner %}16/9{% else %}1/1{% endif %};
                     background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}');
                   ">
@@ -81,7 +78,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 <!-- Filtro por categoria -->
 <script>
 (function(){
-  // força classe no body por segurança
+  // garante classe-escopo no body
   document.addEventListener('DOMContentLoaded', function(){
     document.body.classList.add('utilitarios-page');
   });
@@ -89,15 +86,18 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
   const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
 
+  // remove acentos e espaços extras (robustez)
+  const norm = (s='') =>
+    s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
+
   function applyFilter(slug){
-    const f = (slug || '').trim().toLowerCase();
+    const f = norm(slug);
     cards.forEach(c=>{
-      const cats = (c.dataset.cats || '');
+      const cats = norm(c.dataset.cats || '');
       c.style.display = (!f || cats.includes(f)) ? '' : 'none';
     });
   }
 
-  // clique nos botões
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btns.forEach(b=>b.classList.remove('on'));
@@ -107,7 +107,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
     });
   });
 
-  // Sem filtro inicial: mostra tudo para facilitar debug visual
+  // inicia mostrando todos
   applyFilter('');
 })();
 </script>
@@ -117,25 +117,26 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 .utilitarios-page .blog-lista .cards{
   display:grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: .95rem;
+  gap:.95rem;
 }
 .utilitarios-page .blog-lista .card{ border:0; background:transparent; padding:0; }
 .utilitarios-page .blog-lista .card .af-card{
   display:flex; flex-direction:column; gap:.65rem;
   width:100%; height:100%; padding:.75rem;
   background:#0f0f0f; border-radius:14px; border:1px solid #1c1c1c;
+  transition:.25s;
 }
 .utilitarios-page .blog-lista .card .af-card:hover{
   transform:translateY(-3px);
-  border-color:#2a2a2a; transition:.25s;
+  border-color:#2a2a2a;
 }
 
-/* Thumb: 1:1 por padrão; Parceiros 16:9 (também reforçado inline) */
+/* Thumb: base 1:1; Parceiros 16:9 */
 .utilitarios-page .blog-lista .card .af-thumb{
-  display:block; width:100%; aspect-ratio:1/1;
+  display:block; width:100%;
+  aspect-ratio:1/1;
 }
-.utilitorios-page .blog-lista .card[data-cats*="parceiros"] .af-thumb,
-.utilitarios-page .blog-lista .card[data-cats*="parceiro"] .af-thumb{
+.utilitarios-page .blog-lista .card[data-cats*="parceiros"] .af-thumb{
   aspect-ratio:16/9;
 }
 
@@ -152,3 +153,4 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 .utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
 .utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
 </style>
+
