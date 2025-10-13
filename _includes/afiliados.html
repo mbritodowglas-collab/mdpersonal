@@ -24,27 +24,32 @@
         {%- assign img = "/assets/img/afiliados/thumb-default.jpg" -%}
       {%- endif -%}
 
-      {%- comment %} Normaliza categoria em string p/ data-cat e chip {% endcomment -%}
+      {%- comment -%} Normaliza categoria (string/array) {%- endcomment -%}
+      {%- assign cat_first = "" -%}
+      {%- assign cat_list  = "" -%}
       {%- if it.cat -%}
         {%- if it.cat | kind_of: Array -%}
-          {%- assign cat_str = it.cat | join: "," -%}
+          {%- assign cat_list = it.cat | join: "," -%}
           {%- assign cat_first = it.cat[0] -%}
         {%- else -%}
-          {%- assign cat_str = it.cat -%}
+          {%- assign cat_list = it.cat -%}
           {%- assign cat_first = it.cat -%}
         {%- endif -%}
-      {%- else -%}
-        {%- assign cat_str = "" -%}
-        {%- assign cat_first = "" -%}
       {%- endif -%}
+
+      {%- comment -%} data-cats em minúsculas (útil se quiser filtrar depois) {%- endcomment -%}
+      {%- assign data_cats = cat_list | downcase -%}
 
       <a class="af-card"
          href="{{ link }}"
          target="_blank"
          rel="sponsored nofollow noopener"
-         data-cat="{{ cat_str | escape }}"
+         data-cats="{{ data_cats | escape }}"
          aria-label="{{ titulo | escape }}">
-        <span class="af-thumb" style="background-image:url('{{ img | relative_url }}')"></span>
+        <span class="af-thumb"
+              role="img"
+              aria-label="{{ titulo | escape }}"
+              style="background-image:url('{{ img | relative_url }}')"></span>
         <span class="af-info">
           <strong>{{ titulo }}</strong>
           {%- if cat_first and cat_first != "" -%}
