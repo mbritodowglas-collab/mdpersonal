@@ -16,34 +16,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   <aside class="blog-sidebar">
     <h3>Categorias</h3>
     <nav class="blog-filtros-vertical">
-      <button data-filter="" class="on">Todos</button>
-      <button data-filter="parceiros">Parceiros</button>
-      <button data-filter="nutrição">Nutrição</button>
-      <button data-filter="treino">Treino</button>
-      <button data-filter="autocuidado">Autocuidado</button>
-    </nav>
-  </aside>
-
-  ---
-layout: default
-title: Utilitários
-permalink: /utilitarios/
-body_class: utilitarios-page
-description: "Acessórios, suplementos e ferramentas recomendadas — curadoria prática por categoria."
----
-
-<section class="blog-header">
-  <h1>Utilitários de treino</h1>
-  <p>Ferramentas, acessórios e suplementos que recomendo — com curadoria por categoria.</p>
-</section>
-
-<div class="blog-layout">
-  <!-- Lateral com filtros -->
-  <aside class="blog-sidebar">
-    <h3>Categorias</h3>
-    <nav class="blog-filtros-vertical">
-      <button data-filter="" class="on">Todos</button>
-      <button data-filter="parceiros">Parceiros</button>
+      <button data-filter="parceiros" class="on">Parceiros</button>
       <button data-filter="nutrição">Nutrição</button>
       <button data-filter="treino">Treino</button>
       <button data-filter="autocuidado">Autocuidado</button>
@@ -55,13 +28,13 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
     <div class="cards">
 
       {%- comment -%}
-      Lê _data/afiliados.yml (lista de itens).
-      data-cats recebe todas as categorias do item, em lowercase.
-      A thumb é 1:1 por padrão e 16:9 quando o item tem "Parceiros".
+        Lê _data/afiliados.yml.
+        data-cats = categorias do item (lowercase) para o filtro.
+        Thumb: 1:1 por padrão; 16:9 para itens com categoria Parceiros.
       {%- endcomment -%}
       {%- for it in site.data.afiliados -%}
         {%- assign cats_arr   = it.cat | default: empty -%}
-        {%- assign cats_lower = cats_arr | join: ' ' | downcase -%}
+        {%- assign cats_lower = cats_arr | join:' ' | downcase -%}
         {%- assign is_partner = cats_lower contains 'parceiros' -%}
 
         <article class="card" data-cats="{{ cats_lower }}">
@@ -69,24 +42,17 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
              href="{{ it.url }}"
              target="_blank"
              rel="{% if is_partner %}noopener nofollow sponsored{% else %}noopener{% endif %}">
-
-            <!-- Thumb com proporção inline (1:1 padrão; 16:9 para Parceiros) -->
-            <span class="af-thumb"
-                  style="
-                    display:block; width:100%;
-                    background:#111 center/cover no-repeat;
-                    border:1px solid #1c1c1c; border-radius:12px;
-                    aspect-ratio:{% if is_partner %}16/9{% else %}1/1{% endif %};
-                    background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}');
-                  ">
+            
+            <!-- Wrapper fixa a proporção por padding-top -->
+            <span class="af-thumb {% if is_partner %}r16x9{% else %}r1x1{% endif %}">
+              <span class="af-img"
+                    style="background-image:url('{{ it.image | default: site.default_af_thumb | relative_url }}')"></span>
             </span>
 
             <span class="af-info">
               {%- if cats_arr and cats_arr.size > 0 -%}
                 <span class="meta">
-                  {%- for c in cats_arr -%}
-                    <span class="cat">{{ c }}</span>
-                  {%- endfor -%}
+                  {%- for c in cats_arr -%}<span class="cat">{{ c }}</span>{%- endfor -%}
                 </span>
               {%- endif -%}
               <h3>{{ it.title }}</h3>
@@ -104,7 +70,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 <!-- Filtro por categoria -->
 <script>
 (function(){
-  // garante classe-escopo no body
+  // Escopo por segurança
   document.addEventListener('DOMContentLoaded', function(){
     document.body.classList.add('utilitarios-page');
   });
@@ -112,9 +78,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
   const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
 
-  // remove acentos e espaços extras (robustez)
-  const norm = (s='') =>
-    s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
+  const norm = (s='') => s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
 
   function applyFilter(slug){
     const f = norm(slug);
@@ -133,12 +97,12 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
     });
   });
 
-  // inicia mostrando todos
-  applyFilter('');
+  // Começa em Parceiros
+  applyFilter('parceiros');
 })();
 </script>
 
-<!-- Estilo escopado desta página (duas colunas inclusive no mobile) -->
+<!-- Estilo escopado desta página -->
 <style>
 .utilitarios-page .blog-lista .cards{
   display:grid;
@@ -157,13 +121,19 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   border-color:#2a2a2a;
 }
 
-/* Thumb: base 1:1; Parceiros 16:9 */
+/* Wrapper de proporção */
 .utilitarios-page .blog-lista .card .af-thumb{
-  display:block; width:100%;
-  aspect-ratio:1/1;
+  position:relative; display:block; width:100%;
+  border:1px solid #1c1c1c; border-radius:12px;
+  background:#111; overflow:hidden;
 }
-.utilitarios-page .blog-lista .card[data-cats*="parceiros"] .af-thumb{
-  aspect-ratio:16/9;
+.utilitarios-page .blog-lista .card .af-thumb.r1x1{ padding-top:100%; }      /* 1:1 */
+.utilitarios-page .blog-lista .card .af-thumb.r16x9{ padding-top:56.25%; }   /* 16:9 */
+
+/* Imagem preenchendo o wrapper */
+.utilitarios-page .blog-lista .card .af-thumb .af-img{
+  position:absolute; inset:0;
+  background-position:center; background-size:cover;
 }
 
 /* Conteúdo */
