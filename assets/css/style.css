@@ -419,3 +419,15 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 .pwa-btn.pwa-install:hover{ background:var(--vermelho-claro); }
 @media (max-width:640px){ #pwa-install .pwa-bar{ border-radius:0; max-width:none; } }
 
+/* --- MOBILE: Parceiros em 2 colunas, thumb quadrada --- */
+@media (max-width: 860px){
+  /* não ocupa a linha inteira */
+  .utilitarios-page .card[data-cats*="parceiros"]{
+    grid-column: auto !important;
+  }
+  /* thumb 1:1 no mobile */
+  .utilitarios-page .card[data-cats*="parceiros"] .af-thumb{
+    aspect-ratio: 1 / 1 !important;
+  }
+}
+
