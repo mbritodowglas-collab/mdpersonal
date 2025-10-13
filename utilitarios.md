@@ -24,6 +24,32 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
     </nav>
   </aside>
 
+  ---
+layout: default
+title: Utilitários
+permalink: /utilitarios/
+body_class: utilitarios-page
+description: "Acessórios, suplementos e ferramentas recomendadas — curadoria prática por categoria."
+---
+
+<section class="blog-header">
+  <h1>Utilitários de treino</h1>
+  <p>Ferramentas, acessórios e suplementos que recomendo — com curadoria por categoria.</p>
+</section>
+
+<div class="blog-layout">
+  <!-- Lateral com filtros -->
+  <aside class="blog-sidebar">
+    <h3>Categorias</h3>
+    <nav class="blog-filtros-vertical">
+      <button data-filter="" class="on">Todos</button>
+      <button data-filter="parceiros">Parceiros</button>
+      <button data-filter="nutrição">Nutrição</button>
+      <button data-filter="treino">Treino</button>
+      <button data-filter="autocuidado">Autocuidado</button>
+    </nav>
+  </aside>
+
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
