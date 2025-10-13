@@ -3,7 +3,7 @@ layout: post
 title: "Quantas Vezes por Semana Devo Treinar?"
 date: 2025-10-13
 categories: [Treino]
-image: "/assets/posts/frequencia-treino-adaptacoes-neuromusculares.jpg"
+image: "/assets/img/post/frequencia-treino-adaptacoes-neuromusculares.jpg"
 excerpt: "Mais treino nem sempre significa mais resultado. Entenda como a frequência ideal equilibra estímulo, recuperação e consistência neural para evoluir de verdade."
 afiliados:
   - title: "Shark Pro Creatina Flavor 300g — Limão"
