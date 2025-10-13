@@ -66,6 +66,9 @@ main{min-height:40vh}
 .hero-content h1{
   color:#e3c565; letter-spacing:.5px; text-transform:uppercase;
   margin:0 0 .75rem; line-height:1.15;
+  /* destaque extra em fundos claros */
+  text-shadow: 0 2px 6px rgba(0,0,0,.55), 0 0 1px rgba(0,0,0,.55);
+  -webkit-text-stroke: .3px rgba(0,0,0,.35);
 }
 .hero-content .sub{color:var(--dourado);opacity:.95;margin:0 0 1.5rem;line-height:1.6}
 
@@ -328,135 +331,62 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 }
 
 /* ===== AJUSTES PÁGINA SOBRE ===== */
-
-/* Foto centralizada — cobre casos com <img>, <p><img>, <figure><img> e com/sem classe */
 .sobre .post-body img.sobre-foto,
 .sobre .post-body p > img.sobre-foto,
 .sobre .post-body figure > img.sobre-foto{
-  display:block;
-  margin:1rem auto;
-  max-width:260px;
-  width:100%;
-  height:auto;
-  border-radius:12px;
-  border:1px solid #222;
-  box-shadow:0 4px 12px rgba(0,0,0,.35);
+  display:block; margin:1rem auto; max-width:260px; width:100%; height:auto;
+  border-radius:12px; border:1px solid #222; box-shadow:0 4px 12px rgba(0,0,0,.35);
 }
-/* Fallback se a classe não for usada: primeira imagem do conteúdo */
 .sobre .post-body img:first-of-type{
-  display:block;
-  margin:1rem auto;
-  max-width:260px;
-  width:100%;
-  height:auto;
-  border-radius:12px;
-  border:1px solid #222;
-  box-shadow:0 4px 12px rgba(0,0,0,.35);
+  display:block; margin:1rem auto; max-width:260px; width:100%; height:auto;
+  border-radius:12px; border:1px solid #222; box-shadow:0 4px 12px rgba(0,0,0,.35);
 }
-
-/* Boxes de destaque */
 .sobre-box{
-  background:#0f0f0f;
-  border:1px solid #222;
-  border-radius:12px;
-  padding:1rem 1.2rem;
-  margin:1.2rem 0;
-  box-shadow:0 2px 6px rgba(0,0,0,.3);
+  background:#0f0f0f; border:1px solid #222; border-radius:12px;
+  padding:1rem 1.2rem; margin:1.2rem 0; box-shadow:0 2px 6px rgba(0,0,0,.3);
 }
-
-/* Assinatura */
 .sobre-assinatura{ margin-top:1.5rem; font-style:italic; color:#bbb; }
-
-/* Grupo de botões: grid estável (lado a lado quando couber) */
 .sobre-btns{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap:.8rem;
-  margin-top:1rem;
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:.8rem; margin-top:1rem;
 }
 .sobre-btns .btn{ display:block; text-align:center; width:100%; }
-@media (max-width:380px){
-  .sobre-btns{ grid-template-columns:1fr; }
-}
+@media (max-width:380px){ .sobre-btns{ grid-template-columns:1fr; } }
 
 /* ================================
-   UTILITÁRIOS — grid compacto 2 col
+   UTILITÁRIOS — layout + thumbs
+   (Produtos = 1:1 | Parceiros = 16:9)
    ================================ */
-.utilitarios-page .blog-lista .cards{
-  /* base: 1 coluna no mobile bem pequeno */
-  grid-template-columns: 1fr;
-  gap: .9rem;
-}
-
-/* 480–860px: vira 2 colunas */
-@media (min-width:480px) and (max-width:860px){
-  .utilitarios-page .blog-lista .cards{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-  /* Card mais “vertical” pra caber melhor em 2 col */
-  .utilitarios-page .card .af-card{
-    display:flex; flex-direction:column; align-items:stretch;
-  }
-  .utilitarios-page .af-thumb{
-    aspect-ratio:16/9; border-radius:10px;
-  }
-  .utilitarios-page .af-info{ padding-top:.5rem; }
-  .utilitarios-page .af-info h3{ font-size:1rem; line-height:1.25; }
-  .utilitarios-page .af-info .exc{ font-size:.92rem; }
-}
-
-/* >= 861px: volta para o comportamento padrão (2–3 col conforme teu tema) */
-@media (min-width:861px){
-  .utilitarios-page .blog-lista .cards{
-    /* deixa o global cuidar (já tens 3/2/1 no tema) */
-  }
-}
-
-/* (Opcional) Destaque: parceiros ocupam a linha inteira nas 2 colunas */
-@media (min-width:480px) and (max-width:860px){
-  .utilitarios-page .card[data-cats*="parceiros"]{
-    grid-column: 1 / -1;
-  }
-}
-
-/* ===== UTILITÁRIOS — duas colunas também no mobile ===== */
 .utilitarios-page .blog-lista .cards{
   display:grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
   gap:.9rem;
 }
-
-/* thumb e info adaptados */
 .utilitarios-page .card .af-card{
-  display:flex; flex-direction:column; align-items:stretch;
-}
-.utilitarios-page .af-thumb{
-  aspect-ratio:1/1;
-  border-radius:10px;
-}
-.utilitarios-page .af-info{
-  padding-top:.5rem;
-}
-.utilitarios-page .af-info h3{
-  font-size:.95rem; line-height:1.25;
-}
-.utilitarios-page .af-info .exc{
-  font-size:.9rem;
+  display:flex; flex-direction:column; gap:.65rem;
 }
 
-/* parceiros ainda ocupam toda a linha */
-.utilitarios-page .card[data-cats*="parceiros"]{
-  grid-column:1 / -1;
+/* PRODUTOS — thumb quadrada */
+.utilitarios-page .card:not([data-cats*="parceiros"]) .af-thumb{
+  display:block; width:100%; aspect-ratio:1/1;
+  background:#111 center/cover no-repeat;
+  border-radius:12px; border:1px solid #1c1c1c;
 }
 
-/* ========= Destaque visual no título do HERO ========= */
-.hero-content h1{
-  color:#e3c565; /* mantém o dourado */
-  text-shadow:
-    0 2px 6px rgba(0,0,0,.55),
-    0 0 1px rgba(0,0,0,.55); /* cria contraste em fotos claras */
-  -webkit-text-stroke: 0.3px rgba(0,0,0,.35); /* contorno sutil compatível com WebKit */
+/* PARCEIROS — thumb horizontal */
+.utilitarios-page .card[data-cats*="parceiros"] .af-thumb{
+  display:block; width:100%; aspect-ratio:16/9;
+  background:#111 center/cover no-repeat;
+  border-radius:12px; border:1px solid #1c1c1c;
 }
+
+/* info */
+.utilitarios-page .af-info{ padding-top:.5rem; }
+.utilitarios-page .af-info h3{ font-size:.95rem; line-height:1.25; }
+.utilitarios-page .af-info .exc{ font-size:.9rem; }
+
+/* destaque opcional para parceiros ocuparem a linha inteira */
+.utilitarios-page .card[data-cats*="parceiros"]{ grid-column:1 / -1; }
 
 /* ====== PWA Install Bar ====== */
 #pwa-install{ position:fixed; inset:auto 0 0 0; z-index:9999; display:block; }
@@ -477,51 +407,15 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
   border-top-right-radius:12px;
 }
 #pwa-install.on .pwa-bar{ transform: translateY(0); }
-
 #pwa-install .pwa-left{ display:flex; align-items:center; gap:.7rem; color:#fff; }
 #pwa-install .pwa-left img{ width:28px; height:28px; border-radius:6px; }
 #pwa-install .pwa-left strong{ display:block; line-height:1.1; }
 #pwa-install .pwa-left small{ display:block; color:#cfcfcf; opacity:.9; }
-
 #pwa-install .pwa-actions{ display:flex; gap:.5rem; }
-.pwa-btn{
-  appearance:none; border:none; cursor:pointer; font-weight:700;
-  padding:.55rem .9rem; border-radius:10px;
-}
-.pwa-btn.pwa-later{
-  background:#111; color:#ddd; border:1px solid #262626;
-}
+.pwa-btn{ appearance:none; border:none; cursor:pointer; font-weight:700; padding:.55rem .9rem; border-radius:10px; }
+.pwa-btn.pwa-later{ background:#111; color:#ddd; border:1px solid #262626; }
 .pwa-btn.pwa-later:hover{ border-color:#333; }
-.pwa-btn.pwa-install{
-  background:var(--vermelho); color:#fff; box-shadow:0 8px 24px rgba(214,40,40,.2);
-}
+.pwa-btn.pwa-install{ background:var(--vermelho); color:#fff; box-shadow:0 8px 24px rgba(214,40,40,.2); }
 .pwa-btn.pwa-install:hover{ background:var(--vermelho-claro); }
-
-/* Mobile: ocupa a largura toda */
-@media (max-width:640px){
-  #pwa-install .pwa-bar{ border-radius:0; max-width:none; }
-}
-
-/* ================================
-   UTILITÁRIOS — thumbs dos PRODUTOS
-   (não altera Parceiros)
-   ================================ */
-
-/* Thumb QUADRADA (1:1) só para cards que não são parceiros */
-.utilitarios-page .blog-lista .card:not([data-cats*="parceiros"]) .af-thumb{
-  aspect-ratio: 1 / 1;           /* força 1:1 */
-  background-position: center;   /* centraliza o corte */
-  background-size: cover;        /* preenche sem distorcer */
-  border-radius: 12px;
-  border: 1px solid #1c1c1c;
-}
-
-/* Mantém o layout dos cards consistente */
-.utilitarios-page .blog-lista .card:not([data-cats*="parceiros"]) .af-card{
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-
+@media (max-width:640px){ #pwa-install .pwa-bar{ border-radius:0; max-width:none; } }
 
