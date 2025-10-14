@@ -306,5 +306,27 @@ main{min-height:40vh}
   }
 }
 
+/* ===== BLOG (DESKTOP) — trava imagens/figures no cabeçalho ===== */
+@media (min-width: 900px){
+  /* Qualquer <img> ou <figure> imediatamente dentro do cabeçalho do blog */
+  .blog-header > img,
+  .blog-header > figure,
+  .blog-header > p > img {
+    display:block;
+    max-width: 100%;
+    max-height: 240px;   /* <<< altura máxima visível */
+    width: auto;
+    height: auto;        /* mantém proporção natural */
+    margin: .75rem auto 0;
+    object-fit: contain; /* evita corte/zoom exagerado */
+  }
+}
+
+/* Segurança extra: impede que o cabeçalho “grude” demais no conteúdo */
+.blog-header{ margin-bottom: .75rem; }
+
+/* Opcional: garante que a lista comece logo após o cabeçalho */
+.blog-lista{ padding-top: .5rem; }
+
 
 
