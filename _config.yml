@@ -48,11 +48,6 @@ meta_descriptions:
 plugins:
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-paginate   # <-- habilita a paginação (suportado pelo GitHub Pages)
-
-# Paginação: 10 posts por página em /blog/, páginas seguintes em /blog/page2, /blog/page3, ...
-paginate: 10
-paginate_path: "/page:num/"
 
 feed:
   path: feed.xml
