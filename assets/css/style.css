@@ -245,3 +245,6 @@ main{min-height:40vh}
 .pwa-btn.pwa-install{background:var(--vermelho);color:#fff;box-shadow:0 8px 24px rgba(214,40,40,.2)}
 .pwa-btn.pwa-install:hover{background:var(--vermelho-claro)}
 @media(max-width:640px){#pwa-install .pwa-bar{border-radius:0;max-width:none}}
+
+/* ==== UTILITÁRIOS — Filtros como "chips" compactos ==== */
+... (tudo até o final do bloco)
