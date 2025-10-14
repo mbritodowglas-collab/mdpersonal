@@ -52,7 +52,7 @@ plugins:
 
 # Paginação: 10 posts por página em /blog/, páginas seguintes em /blog/page2, /blog/page3, ...
 paginate: 10
-paginate_path: "/blog/page:num"
+paginate_path: "/page:num/"
 
 feed:
   path: feed.xml
