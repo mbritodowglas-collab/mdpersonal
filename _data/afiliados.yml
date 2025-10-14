@@ -79,12 +79,6 @@
   note: "Monohidratada clássica."
   cat: ["Nutrição"]
 
-- title: "New Millen Creatina ATP 300g"
-  url: "https://www.fithouse.com.br/creatina/creatina-atp-pote-300g-new-millen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-  image: "/assets/img/afiliados/thumb-default.jpg"
-  note: "Boa relação custo/benefício."
-  cat: ["Nutrição"]
-
 - title: "Adaptogen Creatina — Refil 1kg"
   url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
   image: "/assets/img/afiliados/thumb-default.jpg"
@@ -133,12 +127,6 @@
   note: "EPA/DHA — anti-inflamatório."
   cat: ["Nutrição"]
 
-- title: "Vitafor Ômega-3 — 120 cáps"
-  url: "https://www.fithouse.com.br/omega-3/omega-3-epa-e-dha-120-capsulas-1000mg-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-  image: "/assets/img/afiliados/thumb-default.jpg"
-  note: "Humor e saúde cardiovascular."
-  cat: ["Nutrição"]
-
 - title: "DUX Fish Oil — 180 cáps"
   url: "https://www.fithouse.com.br/omega-3/omega-3-fish-oil-pote-com-180-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
   image: "/assets/img/afiliados/thumb-default.jpg"
@@ -149,12 +137,6 @@
 # =========================
 # NUTRIÇÃO — MAGNÉSIO
 # =========================
-- title: "Bodyaction Magnésio Inositol 210g"
-  url: "https://www.fithouse.com.br/vitaminas/vitamina-magnesio-inositol-pote-210g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-  image: "/assets/img/afiliados/thumb-default.jpg"
-  note: "Sono e sistema nervoso."
-  cat: ["Nutrição"]
-
 - title: "Ocean Drop Magnésio Plus — 180 cáps"
   url: "https://www.fithouse.com.br/vitaminas/magnesio-plus-pote-180-capsulas-ocean-drop?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
   image: "/assets/img/afiliados/thumb-default.jpg"
@@ -207,12 +189,6 @@
   url: "https://www.fithouse.com.br/pre-treino/promopack-pre-treino-nervous-415g-nutrata-pink-lemonade?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
   image: "/assets/img/afiliados/thumb-default.jpg"
   note: "Para treinos intensos."
-  cat: ["Nutrição"]
-
-- title: "DUX Cafeína — 90 cáps"
-  url: "https://www.fithouse.com.br/pre-treino/cafeina-pote-90-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-  image: "/assets/img/afiliados/thumb-default.jpg"
-  note: "Estímulo controlável."
   cat: ["Nutrição"]
 
 
