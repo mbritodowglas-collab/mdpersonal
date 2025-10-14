@@ -1,66 +1,43 @@
 ---
 layout: default
 title: Início
-body_class: home-page
-description: "{{ site.meta_descriptions.home }}"
 ---
 
-<!-- HERO da Home -->
-<section class="home-hero" style="background-image:url('{{ site.og_image | default: "/assets/img/og-default.jpg" | relative_url }}')">
-  <div class="home-hero__overlay"></div>
-  <div class="home-hero__content">
-    <h1>Artigos sobre Treino, Mente e Gestão Fitness</h1>
-    <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
+<section class="hero" style="background-image:url('{{ '/assets/css/hero.jpg' | relative_url }}')">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>MÁRCIO DOWGLAS PERSONAL TRAINER</h1>
+    <p class="sub">Treino, neurociência e saúde mental — artigos que viram vídeos e resultados reais.</p>
+    <div class="btn-row">
+      <a class="btn destaque" href="{{ '/avaliacao' | relative_url }}">Avaliação gratuita</a>
+    </div>
   </div>
 </section>
 
-<!-- Destaque (post mais recente) -->
-{% assign _posts = paginator.posts | default: site.posts %}
-{% assign top = _posts | first %}
-{% if top %}
-<section class="home-feature">
-  <a class="dst-wrap" href="{{ top.url | relative_url }}">
-    <span class="dst-thumb" style="background-image:url('{{ top.cover | default: site.default_thumb | relative_url }}')"></span>
-    <span class="dst-info">
-      <span class="cat">{{ top.category | default: 'Treino' }}</span>
-      <h2>{{ top.title }}</h2>
-      <p>{{ top.description | default: top.excerpt | strip_html | truncate: 160 }}</p>
-      <span class="ler">Ler artigo →</span>
-    </span>
-  </a>
-</section>
-{% endif %}
-
-<!-- Lista de artigos (pula o primeiro) -->
-<section class="blog-lista">
+<section class="artigos">
+  <h2>Últimos artigos</h2>
   <div class="cards">
-    {% for post in _posts offset:1 %}
-    <article class="card" data-cats="{{ post.category | downcase }}">
-      <a href="{{ post.url | relative_url }}">
-        <span class="thumb" style="background-image:url('{{ post.cover | default: site.default_thumb | relative_url }}')"></span>
-        <div class="card-body">
-          <div class="meta">
-            <span class="cat">{{ post.category | default: 'Treino' }}</span>
-            <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
-          </div>
-          <h3>{{ post.title }}</h3>
-          <p class="exc">{{ post.description | default: post.excerpt | strip_html | truncate: 110 }}</p>
-          <span class="ler">Ler artigo →</span>
-        </div>
-      </a>
-    </article>
-    {% endfor %}
-  </div>
-
-  <!-- Paginação (Últimos / Antigos) -->
-  <nav class="post-nav" aria-label="Paginação">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}">← Mais recentes</a>
+    {% if site.posts and site.posts.size > 0 %}
+      {% for post in site.posts limit:3 %}
+        <article class="card">
+          <a href="{{ post.url | relative_url }}">
+            <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/posts/default.jpg' | relative_url }}')"></div>
+            <div class="card-body">
+              <p class="meta">
+                {% if post.categories and post.categories.size > 0 %}
+                  <span class="cat">{{ post.categories[0] }}</span>
+                {% endif %}
+                <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+              </p>
+              <h3>{{ post.title }}</h3>
+              <p class="exc">{{ post.excerpt | default: post.content | strip_html | truncate: 140 }}</p>
+              <span class="ler">Ler artigo →</span>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
     {% else %}
-      <span></span>
+      <p>Em breve, novos artigos no blog.</p>
     {% endif %}
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}">Mais antigos →</a>
-    {% endif %}
-  </nav>
+  </div>
 </section>
