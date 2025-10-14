@@ -2,14 +2,14 @@
 layout: null
 permalink: /sw.js
 ---
-const VERSION   = 'v5';  // ↑ aumente sempre que mudar algo do SW/manifest
+const VERSION   = 'v8';                   // <-- sobe SEMPRE ao publicar
 const APP_CACHE = `mdp-app-${VERSION}`;
 const IMG_CACHE = `mdp-img-${VERSION}`;
 
-// Prefixo seguro para GitHub Pages ou raiz
+// Prefixo para GitHub Pages ou raiz
 const BASE = '{{ site.baseurl | default: "" }}';
 
-// Arquivos “estáticos” básicos
+// App Shell mínimo
 const APP_SHELL = [
   `${BASE}/`,
   `${BASE}/utilitarios/`,
@@ -20,73 +20,76 @@ const APP_SHELL = [
   `${BASE}/assets/img/icons/maskable-512.png`
 ];
 
-// Instala e pré-cacheia o básico
+// Instala (pré-cache básico)
 self.addEventListener('install', (e) => {
   self.skipWaiting();
-  e.waitUntil(
-    caches.open(APP_CACHE).then(c => c.addAll(APP_SHELL))
-  );
+  e.waitUntil(caches.open(APP_CACHE).then(c => c.addAll(APP_SHELL)));
 });
 
-// Ativa e remove versões antigas
+// Ativa (limpa versões antigas)
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(k => ![APP_CACHE, IMG_CACHE].includes(k))
-          .map(k => caches.delete(k))
+      Promise.all(keys
+        .filter(k => ![APP_CACHE, IMG_CACHE].includes(k))
+        .map(k => caches.delete(k))
       )
     ).then(() => self.clients.claim())
   );
 });
 
-// Estratégias de fetch
+// Fetch
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   const url = new URL(req.url);
-  const isSameOrigin = url.origin === self.location.origin;
+  const same = url.origin === self.location.origin;
 
-  // Navegações (HTML)
+  // HTML (navegação): network-first com timeout
   if (req.mode === 'navigate') {
-    e.respondWith(networkFirst(req, APP_CACHE));
+    e.respondWith(networkFirstWithTimeout(req, APP_CACHE, 1500));
     return;
   }
 
-  // CSS/JS internos
-  if (isSameOrigin && (req.destination === 'style' || req.destination === 'script')) {
-    e.respondWith(networkFirst(req, APP_CACHE));
+  // CSS/JS internos: stale-while-revalidate
+  if (same && (req.destination === 'style' || req.destination === 'script')) {
+    e.respondWith(staleWhileRevalidate(req, APP_CACHE));
     return;
   }
 
-  // Imagens internas
-  if (isSameOrigin && req.destination === 'image') {
+  // Imagens internas: cache-first
+  if (same && req.destination === 'image') {
     e.respondWith(cacheFirst(req, IMG_CACHE));
     return;
   }
-  // demais: indiferente (segue a rede)
+
+  // Outros: deixa seguir a rede
 });
 
-// Helpers
-async function networkFirst(req, cacheName) {
+// ===== Helpers =====
+async function networkFirstWithTimeout(req, cacheName, ms=1500){
   const cache = await caches.open(cacheName);
+  const timer = new Promise((_, rej) => setTimeout(()=>rej(new Error('timeout')), ms));
   try {
-    const fresh = await fetch(req, { cache: 'no-store' });
+    const fresh = await Promise.race([fetch(req, { cache:'no-store' }), timer]);
     cache.put(req, fresh.clone());
     return fresh;
-  } catch (err) {
+  } catch {
     const cached = await cache.match(req);
-    return cached || Response.error();
+    return cached || fetch(req);
   }
 }
 
-async function cacheFirst(req, cacheName) {
+async function staleWhileRevalidate(req, cacheName){
   const cache = await caches.open(cacheName);
   const cached = await cache.match(req);
-  if (cached) {
-    fetch(req).then(res => res.ok && cache.put(req, res.clone())); // atualiza em BG
-    return cached;
-  }
+  const fetching = fetch(req).then(res => { if(res.ok) cache.put(req, res.clone()); return res; });
+  return cached || fetching;
+}
+
+async function cacheFirst(req, cacheName){
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(req);
+  if (cached) { fetch(req).then(res => res.ok && cache.put(req, res.clone())); return cached; }
   const fresh = await fetch(req);
   if (fresh.ok) cache.put(req, fresh.clone());
   return fresh;
