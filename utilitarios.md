@@ -14,14 +14,16 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 <div class="blog-layout">
   <!-- Lateral com filtros -->
   <aside class="blog-sidebar">
-    <h3>Categorias</h3>
-    <nav class="blog-filtros-vertical">
-      <button data-filter="parceiros" class="on">Parceiros</button>
-      <button data-filter="nutrição">Nutrição</button>
-      <button data-filter="treino">Treino</button>
-      <button data-filter="autocuidado">Autocuidado</button>
-    </nav>
-  </aside>
+  <h3>Categorias</h3>
+  <nav class="blog-filtros-vertical">
+    <button data-filter="parceiros" class="on">Parceiros</button>
+    <button data-filter="nutrição">Nutrição</button>
+    <button data-filter="treino">Treino</button>
+    <button data-filter="autocuidado">Autocuidado</button>
+    <button data-filter="roupas">Roupas</button>
+    <button data-filter="livros">Livros</button>
+  </nav>
+</aside>
 
   <!-- Lista de utilitários -->
   <section class="blog-lista">
