@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Blog
-description: "{{ site.meta_descriptions.blog }}"
+title: Início
+body_class: home-page
+description: "{{ site.meta_descriptions.home }}"
 ---
 
 <section class="blog-header">
