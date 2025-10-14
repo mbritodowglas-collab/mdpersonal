@@ -1,96 +1,75 @@
----
-layout: default
-title: Início
-body_class: home-page
-description: "{{ site.meta_descriptions.home }}"
----
+/* ===============================
+   HOME (escopado em .home-page)
+   =============================== */
 
-<section class="blog-header">
-  <h1>Artigos sobre Treino, Mente e Gestão Fitness</h1>
-  <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
-</section>
+/* Cabeçalho */
+.home-page .blog-header{
+  max-width:1000px; margin:0 auto; padding:2rem 1rem 1rem;
+  border-bottom:1px solid var(--borda);
+}
+.home-page .blog-header h1{ color:var(--dourado); margin:0 0 .3rem; }
+.home-page .blog-header p{ color:#ccc; margin:0; font-size:.95rem; }
 
-<div class="blog-layout">
-  <!-- Lateral fixa de categorias -->
-  <aside class="blog-sidebar">
-    <h3>Categorias</h3>
-    <nav class="blog-filtros-vertical">
-      <button data-filter="ultimos" class="on">Últimos</button>
-      <button data-filter="treino">Treino</button>
-      <button data-filter="neurociência">Neurociência</button>
-      <button data-filter="nutrição">Nutrição</button>
-      <button data-filter="gestão">Gestão</button>
-    </nav>
-  </aside>
+/* Layout com lateral de categorias */
+.home-page .blog-layout{
+  display:grid; grid-template-columns:240px 1fr; gap:2rem;
+  align-items:start; margin-top:.75rem; max-width:1000px; margin-inline:auto;
+}
+.home-page .blog-sidebar{ position:sticky; top:5rem; display:flex; flex-direction:column; }
 
-  <section class="blog-lista">
-    <!-- Destaque (top 1 do paginator) -->
-    {% assign top = paginator.posts | first %}
-    {% if top %}
-    <a class="dst-wrap" href="{{ top.url | relative_url }}">
-      <span class="dst-thumb" style="background-image:url('{{ top.cover | default: site.default_thumb | relative_url }}')"></span>
-      <span class="dst-info">
-        <span class="cat">{{ top.category | default: 'Treino' }}</span>
-        <h2>{{ top.title }}</h2>
-        <p>{{ top.description | default: top.excerpt | strip_html | truncate: 140 }}</p>
-      </span>
-    </a>
-    {% endif %}
+/* Botões (mesmo look dos Utilitários) */
+.home-page .blog-sidebar h3{
+  color:var(--dourado); font-size:1rem; margin:0 0 .6rem;
+  text-transform:uppercase; opacity:.95;
+}
+.home-page .blog-filtros-vertical{ display:flex; flex-direction:column; gap:.45rem; }
+.home-page .blog-filtros-vertical button{
+  background:#111; border:1px solid rgba(255,255,255,.10);
+  color:#ccc; padding:.55rem .7rem; border-radius:10px;
+  font-weight:700; font-size:.9rem; line-height:1.1; cursor:pointer;
+  transition:.2s; text-align:left;
+}
+.home-page .blog-filtros-vertical button:hover{
+  color:#fff; border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.06);
+}
+.home-page .blog-filtros-vertical button.on{
+  background:var(--vermelho); color:#fff; border-color:var(--vermelho);
+}
 
-    <!-- Cards (pula o primeiro) -->
-    <div class="cards">
-      {% for post in paginator.posts offset:1 %}
-      <article class="card" data-cats="{{ post.category | downcase }}">
-        <a href="{{ post.url | relative_url }}">
-          <span class="thumb" style="background-image:url('{{ post.cover | default: site.default_thumb | relative_url }}')"></span>
-          <div class="card-body">
-            <div class="meta">
-              <span class="cat">{{ post.category | default: 'Treino' }}</span>
-              <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
-            </div>
-            <h3>{{ post.title }}</h3>
-            <p class="exc">{{ post.description | default: post.excerpt | strip_html | truncate: 110 }}</p>
-            <span class="ler">Ler artigo →</span>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
-    </div>
+/* Destaque (post 1: imagem + info) */
+.home-page .blog-lista{ max-width:1000px; margin:0 auto; padding:1rem; }
+.home-page .dst-wrap{
+  display:grid; grid-template-columns:1.2fr 1fr; gap:1rem; align-items:stretch;
+  text-decoration:none; color:inherit;
+}
+.home-page .dst-thumb{
+  background:#111 center/cover no-repeat; border:1px solid #1c1c1c;
+  border-radius:14px; min-height:220px;
+}
+.home-page .dst-info{
+  background:#0f0f0f; border:1px solid #1c1c1c; border-radius:14px;
+  padding:1rem; display:flex; flex-direction:column; justify-content:center;
+}
+.home-page .dst-wrap:hover .dst-info{ border-color:#2a2a2a; }
 
-    <!-- Paginação -->
-    <nav class="post-nav" aria-label="Paginação">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}">← Mais recentes</a>
-      {% else %}
-        <span></span>
-      {% endif %}
+/* Cards de posts (2–3 col no desktop, 1 no mobile) */
+.home-page .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+@media (max-width:1000px){ .home-page .cards{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .home-page .cards{ grid-template-columns:1fr; } }
 
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}">Mais antigos →</a>
-      {% endif %}
-    </nav>
-  </section>
-</div>
+/* Thumb e corpo do card (usa os estilos globais existentes) */
 
-<script>
-(function(){
-  const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
-  const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
-  const norm = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
-
-  function applyFilter(slug){
-    const f = norm(slug);
-    cards.forEach(c=>{
-      const cat = norm(c.dataset.cats||'');
-      c.style.display = (!f || f==='ultimos' || cat.includes(f)) ? '' : 'none';
-    });
+/* Mobile: lateral vira faixa rolável no topo */
+@media (max-width:768px){
+  .home-page .blog-layout{ grid-template-columns:1fr; }
+  .home-page .blog-sidebar{
+    position:sticky; top:3.5rem; z-index:9;
+    background:#0b0b0b; border-bottom:1px solid var(--borda);
+    padding:.6rem 1rem .8rem;
   }
-  btns.forEach(b=>b.addEventListener('click',()=>{
-    btns.forEach(x=>x.classList.remove('on')); b.classList.add('on');
-    applyFilter(b.dataset.filter);
-    window.scrollTo({top:0,behavior:'smooth'});
-  }));
-  applyFilter('ultimos');
-})();
-</script>
-
+  .home-page .blog-filtros-vertical{
+    flex-direction:row; overflow-x:auto; gap:.4rem;
+  }
+  .home-page .dst-wrap{ grid-template-columns:1fr; }
+  .home-page .dst-thumb{ min-height:200px; }
+}
