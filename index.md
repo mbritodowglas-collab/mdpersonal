@@ -1,43 +1,95 @@
 ---
 layout: default
-title: Início
+title: Blog
+description: "{{ site.meta_descriptions.blog }}"
 ---
 
-<section class="hero" style="background-image:url('{{ '/assets/css/hero.jpg' | relative_url }}')">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>MÁRCIO DOWGLAS PERSONAL TRAINER</h1>
-    <p class="sub">Treino, neurociência e saúde mental — artigos que viram vídeos e resultados reais.</p>
-    <div class="btn-row">
-      <a class="btn destaque" href="{{ '/avaliacao' | relative_url }}">Avaliação gratuita</a>
-    </div>
-  </div>
+<section class="blog-header">
+  <h1>Artigos sobre Treino, Mente e Gestão Fitness</h1>
+  <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
 </section>
 
-<section class="artigos">
-  <h2>Últimos artigos</h2>
-  <div class="cards">
-    {% if site.posts and site.posts.size > 0 %}
-      {% for post in site.posts limit:3 %}
-        <article class="card">
-          <a href="{{ post.url | relative_url }}">
-            <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/posts/default.jpg' | relative_url }}')"></div>
-            <div class="card-body">
-              <p class="meta">
-                {% if post.categories and post.categories.size > 0 %}
-                  <span class="cat">{{ post.categories[0] }}</span>
-                {% endif %}
-                <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
-              </p>
-              <h3>{{ post.title }}</h3>
-              <p class="exc">{{ post.excerpt | default: post.content | strip_html | truncate: 140 }}</p>
-              <span class="ler">Ler artigo →</span>
-            </div>
-          </a>
-        </article>
-      {% endfor %}
-    {% else %}
-      <p>Em breve, novos artigos no blog.</p>
+<div class="blog-layout">
+  <!-- Lateral fixa de categorias -->
+  <aside class="blog-sidebar">
+    <h3>Categorias</h3>
+    <nav class="blog-filtros-vertical">
+      <button data-filter="ultimos" class="on">Últimos</button>
+      <button data-filter="treino">Treino</button>
+      <button data-filter="neurociência">Neurociência</button>
+      <button data-filter="nutrição">Nutrição</button>
+      <button data-filter="gestão">Gestão</button>
+    </nav>
+  </aside>
+
+  <section class="blog-lista">
+    <!-- Destaque (top 1 do paginator) -->
+    {% assign top = paginator.posts | first %}
+    {% if top %}
+    <a class="dst-wrap" href="{{ top.url | relative_url }}">
+      <span class="dst-thumb" style="background-image:url('{{ top.cover | default: site.default_thumb | relative_url }}')"></span>
+      <span class="dst-info">
+        <span class="cat">{{ top.category | default: 'Treino' }}</span>
+        <h2>{{ top.title }}</h2>
+        <p>{{ top.description | default: top.excerpt | strip_html | truncate: 140 }}</p>
+      </span>
+    </a>
     {% endif %}
-  </div>
-</section>
+
+    <!-- Cards (pula o primeiro) -->
+    <div class="cards">
+      {% for post in paginator.posts offset:1 %}
+      <article class="card" data-cats="{{ post.category | downcase }}">
+        <a href="{{ post.url | relative_url }}">
+          <span class="thumb" style="background-image:url('{{ post.cover | default: site.default_thumb | relative_url }}')"></span>
+          <div class="card-body">
+            <div class="meta">
+              <span class="cat">{{ post.category | default: 'Treino' }}</span>
+              <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
+            </div>
+            <h3>{{ post.title }}</h3>
+            <p class="exc">{{ post.description | default: post.excerpt | strip_html | truncate: 110 }}</p>
+            <span class="ler">Ler artigo →</span>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Paginação -->
+    <nav class="post-nav" aria-label="Paginação">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}">← Mais recentes</a>
+      {% else %}
+        <span></span>
+      {% endif %}
+
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}">Mais antigos →</a>
+      {% endif %}
+    </nav>
+  </section>
+</div>
+
+<script>
+(function(){
+  const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
+  const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
+  const norm = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+
+  function applyFilter(slug){
+    const f = norm(slug);
+    cards.forEach(c=>{
+      const cat = norm(c.dataset.cats||'');
+      c.style.display = (!f || f==='ultimos' || cat.includes(f)) ? '' : 'none';
+    });
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.remove('on')); b.classList.add('on');
+    applyFilter(b.dataset.filter);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+  applyFilter('ultimos');
+})();
+</script>
+
