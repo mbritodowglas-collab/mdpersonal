@@ -2,7 +2,7 @@
 layout: null
 permalink: /sw.js
 ---
-const VERSION   = 'v7';  // ↑ aumente sempre que mudar algo do SW/manifest
+const VERSION   = 'v5';  // ↑ aumente sempre que mudar algo do SW/manifest
 const APP_CACHE = `mdp-app-${VERSION}`;
 const IMG_CACHE = `mdp-img-${VERSION}`;
 
