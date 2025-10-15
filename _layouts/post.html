@@ -18,27 +18,45 @@ layout: default
     {% assign resumo = page.excerpt | default: page.content | strip_html | truncate: 180 %}
     {% if resumo %}<p class="post-deck">{{ resumo }}</p>{% endif %}
 
-   {%- if page.image -%}
-  <figure class="post-cover">
-    <img
-      src="{{ page.image | relative_url }}"
-      alt="{{ page.title | escape }}"
-      loading="eager"
-      width="1200" height="630">
-  </figure>
-{%- endif -%}
+    {% if page.image %}
+      <figure class="post-cover">
+        <img src="{{ page.image | relative_url }}"
+             alt="{{ page.title | escape }}"
+             loading="eager"
+             width="1200" height="630">
+      </figure>
+    {% endif %}
   </div>
 
   <!-- Conteúdo -->
   <div class="post-body">
     {{ content }}
 
-    {%- if page.afiliados and page.afiliados.size > 0 -%}
+    {% if page.afiliados and page.afiliados.size > 0 %}
       {% include afiliados.html %}
-    {%- endif -%}
+    {% endif %}
   </div>
 
-  <!-- === Posts relacionados (mesma categoria; fallback p/ recentes) === -->
+  <!-- Botões de compartilhamento -->
+  {% assign share_url = page.url | relative_url | absolute_url %}
+  {% assign share_text = page.title | default: site.title %}
+  <section class="share">
+    <span class="share-label">Compartilhar:</span>
+
+    <button class="share-btn js-webshare" type="button" aria-label="Compartilhar">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.82-4H12a1 1 0 0 0 0 2h2.17A3 3 0 0 0 18 8Zm-6 9a1 1 0 0 0-1 1v2.82A3 3 0 1 0 14 22v-2a1 1 0 0 0-1-1h-1Zm-6-5a3 3 0 1 0-2.82-4H4a1 1 0 0 0 0 2H3.83A3 3 0 0 0 6 12Z" fill="currentColor"/></svg>
+      Compartilhar
+    </button>
+
+    <a class="share-btn" href="https://api.whatsapp.com/send?text={{ share_text | uri_escape }}%20{{ share_url | uri_escape }}" target="_blank" rel="noopener nofollow">WhatsApp</a>
+    <a class="share-btn" href="https://t.me/share/url?url={{ share_url | uri_escape }}&text={{ share_text | uri_escape }}" target="_blank" rel="noopener nofollow">Telegram</a>
+    <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ share_url | uri_escape }}&text={{ share_text | uri_escape }}" target="_blank" rel="noopener nofollow">X/Twitter</a>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | uri_escape }}" target="_blank" rel="noopener nofollow">Facebook</a>
+    <button class="share-btn js-copy" type="button" data-url="{{ share_url }}">Copiar link</button>
+    <span class="copy-toast" aria-live="polite" hidden>Link copiado!</span>
+  </section>
+
+  <!-- Posts relacionados -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
     <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
@@ -54,7 +72,7 @@ layout: default
                     <span class="rel-thumb"
                       role="img"
                       aria-label="Capa de {{ p.title }}"
-                      style="background-image:url('{{ p.image | default: site.default_thumb | default: "/assets/img/thumb-default.jpg" | relative_url }}')"></span>
+                      style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
                     <span class="rel-meta">
                       <strong>{{ p.title }}</strong>
                       <small>{{ p.date | date: "%d %b %Y" }}</small>
@@ -78,7 +96,7 @@ layout: default
                 <span class="rel-thumb"
                   role="img"
                   aria-label="Capa de {{ p.title }}"
-                  style="background-image:url('{{ p.image | default: site.default_thumb | default: "/assets/img/thumb-default.jpg" | relative_url }}')"></span>
+                  style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
                 <span class="rel-meta">
                   <strong>{{ p.title }}</strong>
                   <small>{{ p.date | date: "%d %b %Y" }}</small>
@@ -109,3 +127,66 @@ layout: default
   {% endif %}
 
 </div>
+
+<!-- SCRIPT do compartilhamento -->
+<script>
+(function(){
+  const shareBtn = document.querySelector('.js-webshare');
+  const copyBtn  = document.querySelector('.js-copy');
+  const toast    = document.querySelector('.copy-toast');
+  const url      = copyBtn ? copyBtn.dataset.url : window.location.href;
+  const title    = document.title.replace(/\s+·.*$/, '');
+
+  if (shareBtn) {
+    if (navigator.share) {
+      shareBtn.addEventListener('click', async ()=>{
+        try {
+          await navigator.share({ title, url });
+          if (typeof gtag === 'function') gtag('event','share_webapi',{event_category:'Share',value:1});
+        } catch(e){}
+      });
+    } else {
+      shareBtn.hidden = true;
+    }
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async ()=>{
+      try {
+        await navigator.clipboard.writeText(url);
+        if (toast) { toast.hidden = false; clearTimeout(window.__t); window.__t=setTimeout(()=>toast.hidden=true, 1800); }
+        if (typeof gtag === 'function') gtag('event','share_copy',{event_category:'Share',value:1});
+      } catch(e) {
+        const inp = document.createElement('input');
+        inp.value = url; document.body.appendChild(inp); inp.select();
+        document.execCommand('copy'); document.body.removeChild(inp);
+        if (toast) { toast.hidden = false; clearTimeout(window.__t); window.__t=setTimeout(()=>toast.hidden=true, 1800); }
+      }
+    });
+  }
+
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('.share a[href]');
+    if(!a) return;
+    const label = (new URL(a.href)).host.replace('www.','');
+    if (typeof gtag === 'function') gtag('event','share_link',{event_category:'Share',event_label:label,value:1});
+  });
+})();
+</script>
+
+<style>
+.share{
+  display:flex; flex-wrap:wrap; gap:.5rem; align-items:center;
+  margin:1.5rem 0; padding:.75rem; border:1px solid #1e1e1e;
+  border-radius:12px; background:#0f0f0f;
+}
+.share-label{ opacity:.8; margin-right:.5rem; }
+.share .share-btn{
+  appearance:none; border:1px solid #2a2a2a; background:#141414; color:#fff;
+  padding:.45rem .7rem; border-radius:999px; font-size:.92rem; line-height:1;
+  cursor:pointer; display:inline-flex; align-items:center; gap:.4rem;
+  text-decoration:none;
+}
+.share .share-btn:hover{ border-color:#3a3a3a; transform:translateY(-1px); }
+.share .copy-toast{ margin-left:.5rem; font-size:.88rem; opacity:.9; }
+</style>
