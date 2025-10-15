@@ -6,11 +6,11 @@ permalink: /manifest.webmanifest
   "name": "Márcio Dowglas Personal Trainer",
   "short_name": "MD Personal",
   "description": "Treino, neurociência e saúde mental — conteúdos práticos.",
-  "id": "{{ site.baseurl | default: '' }}/",              /* ajuda o Android a não duplicar app */
-  "start_url": "{{ site.baseurl | default: '' }}/",       /* melhor que index.html */
-  "scope": "{{ site.baseurl | default: '' }}/",
+  "id": "{{ site.url }}{{ site.baseurl }}/",
+  "start_url": "{{ site.baseurl | default: '' | absolute_url }}/?source=pwa",
+  "scope": "{{ site.baseurl | default: '' | absolute_url }}/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],       /* fallback elegante */
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#0b0b0b",
   "theme_color": "#0b0b0b",
@@ -18,17 +18,17 @@ permalink: /manifest.webmanifest
   "dir": "ltr",
   "icons": [
     {
-      "src": "{{ site.baseurl | default: '' }}/assets/img/icons/icon-192.png",
+      "src": "{{ '/assets/img/icons/icon-192.png' | relative_url | absolute_url }}",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "{{ site.baseurl | default: '' }}/assets/img/icons/icon-512.png",
+      "src": "{{ '/assets/img/icons/icon-512.png' | relative_url | absolute_url }}",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "{{ site.baseurl | default: '' }}/assets/img/icons/maskable-512.png",
+      "src": "{{ '/assets/img/icons/maskable-512.png' | relative_url | absolute_url }}",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
