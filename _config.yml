@@ -7,12 +7,15 @@ url: "https://mbritodowglas-collab.github.io"   # domínio raiz do GitHub Pages 
 baseurl: "/mdpersonal"                           # subpasta do projeto (com barra inicial, sem barra final)
 timezone: "America/Manaus"
 
+# Onde os posts vão sair (URLs bonitas)
+permalink: /blog/:title/
+
 # =========================
 # Build
 # =========================
 markdown: kramdown
 
-# Deixa o Jekyll usar seu layout de post por padrão
+# Layout padrão para posts
 defaults:
   - scope:
       path: ""
@@ -21,14 +24,14 @@ defaults:
       layout: post
 
 # =========================
-# Variáveis do site (usadas no layout)
+# Variáveis do site (usadas nos layouts)
 # =========================
 default_thumb: "/assets/img/thumb-default.jpg"
 default_af_thumb: "/assets/img/afiliados/thumb-default.jpg"
 shopee_link: "https://shopee.com.br/"
 fithouse_link: "https://www.fithouse.com.br/"
 og_image: "/assets/img/og-default.jpg"
-ga4_id: "G-7LD3B5YK06"   # GA4
+ga4_id: "G-7LD3B5YK06"
 
 # =========================
 # Meta descriptions por página (opcional)
