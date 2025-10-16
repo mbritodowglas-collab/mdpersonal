@@ -806,5 +806,26 @@ layout: default
   {% endif %}
 </div>
 
+.autor-bio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.autor-foto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff4747; /* opcional: borda vermelha premium */
+}
+
+.autor-info {
+  color: #ddd;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 
 
