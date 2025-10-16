@@ -1,110 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} · {{ site.title }}</title>
 
-  <title>
-    {% if page.title %}
-      {{ page.title }} | {{ site.description }}
-    {% else %}
-      {{ site.title }} — {{ site.description }}
-    {% endif %}
-  </title>
-
-  <!-- Meta description: page.description > page.excerpt > site.description -->
-  <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}" />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#0b0b0b" />
-  <meta name="color-scheme" content="dark light" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="{{ page.url | relative_url | absolute_url }}" />
-
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"/>
-
-  <!-- Favicons / PWA -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/img/favicon-192.png' | relative_url }}">
-  <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
-  <link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }} — Feed" href="{{ '/feed.xml' | relative_url | absolute_url }}">
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="{{ site.title }}">
+  <meta name="description" content="{{ page.excerpt | default: site.meta_descriptions.default }}">
   <meta property="og:title" content="{{ page.title | default: site.title }}">
-  <meta property="og:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
-  <meta property="og:url" content="{{ page.url | relative_url | absolute_url }}">
-  <meta property="og:image" content="{{ page.image | default: site.og_image | default: site.default_thumb | relative_url | absolute_url }}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
-  <meta name="twitter:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 180 }}">
-  <meta name="twitter:image" content="{{ page.image | default: site.og_image | default: site.default_thumb | relative_url | absolute_url }}">
+  <meta property="og:description" content="{{ page.excerpt | default: site.meta_descriptions.default }}">
+  <meta property="og:image" content="{{ page.image | default: site.og_image | relative_url }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta name="theme-color" content="#0b0b0b">
 
-  <!-- JSON-LD: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"{{ site.title }}",
-    "url":"{{ '/' | absolute_url }}",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"{{ '/utilitarios/?q=' | absolute_url }}{% raw %}{search_term_string}{% endraw %}",
-      "query-input":"required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- JSON-LD: Person (autor) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"{{ site.author | default: 'Márcio Dowglas' }}",
-    "jobTitle":"Personal Trainer",
-    "identifier":"{{ site.cref | default: 'CREF 003918-G/AM' }}",
-    "description":"Personal Trainer com {{ site.experience_years | default: '10+' }} anos de atuação, integrando treino e neurociência.",
-    "url":"{{ '/' | absolute_url }}",
-    "sameAs":[
-      "https://instagram.com/marciodowglasfitness",
-      "https://youtube.com/@marciodowglastreinador",
-      "https://youtube.com/@centrodeneurotreinamento"
-    ]
-  }
-  </script>
-
-  <!-- GA4 (opcional) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id | default: 'G-XXXXXXX' }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config','{{ site.ga4_id | default: "G-XXXXXXX" }}');
-  </script>
+  <link rel="icon" href="{{ '/assets/img/icons/icon-192.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
-<body class="{{ page.body_class }}">
-  <!-- Header -->
+
+<body>
   <header class="site-header">
-    <nav class="main-nav">
-      <a href="{{ '/' | relative_url }}">Início</a>
-      <a href="{{ '/blog/' | relative_url }}">Blog</a>
-      <a href="{{ '/utilitarios/' | relative_url }}">Utilitários</a>
-      <a href="{{ '/about/' | relative_url }}">Sobre</a>
+    <nav class="nav">
+      <a href="{{ '/' | relative_url }}" class="logo">MD Personal</a>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Início</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+        <li><a href="{{ '/utilitarios/' | relative_url }}">Utilitários</a></li>
+        <li><a href="{{ '/sobre/' | relative_url }}">Sobre</a></li>
+      </ul>
     </nav>
   </header>
 
-  <!-- Banner de instalação PWA (oculto até o JS ativar) -->
-  <div id="pwa-install" hidden>
-    <div class="pwa-bar">
-      <div class="pwa-left">
-        <img src="{{ '/assets/img/icons/icon-192.png' | relative_url }}" alt="Ícone do MD Personal" width="40" height="40" loading="lazy" decoding="async">
-        <div>
-          <strong>Instalar o app do MD Personal?</strong>
-          <small>Receba os posts mais rápido e acesse offline.</small>
-        </div>
-      </div>
-      <div class="pwa-actions">
-        <button class
+  <main>
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ 'now' | date: "%Y" }} Márcio Dowglas Personal Trainer — CREF 003918-G/AM</p>
+    <p>@marciodowglasfitness · @marciodowglastreinador · @centrodneurotreinamento</p>
+  </footer>
+</body>
+</html>
