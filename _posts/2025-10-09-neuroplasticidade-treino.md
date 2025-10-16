@@ -8,16 +8,18 @@ excerpt: "O treino físico não transforma só o corpo, mas também o cérebro. 
 afiliados:
   - title: "Nutrify Ômega-3 — 60 cáps"
     url: "https://www.fithouse.com.br/vitaminas/omega-3-pote-com-60-capsulas-nutrify?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "EPA e DHA: suporte cognitivo e anti-inflamatório natural."
-  - title: "Bodyaction Magnésio Inositol 210g"
-    url: "https://www.fithouse.com.br/vitaminas/vitamina-magnesio-inositol-pote-210g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Auxilia no foco, sono e equilíbrio do sistema nervoso."
+    image: "/assets/img/afiliados/omega3-nutrify.jpg"
+    note: "EPA/DHA para suporte cognitivo e ação anti-inflamatória."
+
+  - title: "Ocean Drop Magnésio Plus — 180 cáps"
+    url: "https://www.fithouse.com.br/vitaminas/magnesio-plus-pote-180-capsulas-ocean-drop?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+    image: "/assets/img/afiliados/magnesio-plus-oceandrop.jpg"
+    note: "Magnésio para sono, relaxamento e sinapses eficientes."
+
   - title: "DUX Vitamina D3 + K2 — 20 ml"
     url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-frasco-20ml-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
-    note: "Regula neurotransmissores e favorece a performance cognitiva."
+    image: "/assets/img/afiliados/d3-k2-dux.jpg"
+    note: "Suporte à imunidade e ao metabolismo do cálcio."
 cta:
   text: "Agende sua Avaliação Gratuita"
   url: "/avaliacao/"
