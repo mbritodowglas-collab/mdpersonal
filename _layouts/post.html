@@ -16,19 +16,22 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
 
     {% assign resumo = page.excerpt | default: page.content | strip_html | truncate: 180 %}
-    {% if resumo %}<p class="post-deck">{{ resumo }}</p>{% endif %}
+    {% if resumo %}
+      <p class="post-deck">{{ resumo }}</p>
+    {% endif %}
 
     {% if page.image %}
       <figure class="post-cover">
         <img src="{{ page.image | relative_url }}"
              alt="{{ page.title | escape }}"
              loading="eager"
-             width="1200" height="630">
+             width="1200"
+             height="630">
       </figure>
     {% endif %}
   </div>
 
-  <!-- Conteúdo -->
+  <!-- Corpo do artigo -->
   <div class="post-body">
     {{ content }}
 
@@ -40,15 +43,97 @@ layout: default
   <!-- Botões de compartilhamento -->
   {% assign share_url = page.url | absolute_url %}
   {% assign share_text = page.title | default: site.title %}
-  <section class="share">
-    <span class="share-label">Compartilhar:</span>
 
-    <button class="share-btn js-webshare" type="button" aria-label="Compartilhar">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.82-4H12a1 1 0 0 0 0 2h2.17A3 3 0 0 0 18 8Zm-6 9a1 1 0 0 0-1 1v2.82A3 3 0 1 0 14 22v-2a1 1 0 0 0-1-1h-1Zm-6-5a3 3 0 1 0-2.82-4H4a1 1 0 0 0 0 2H3.83A3 3 0 0 0 6 12Z" fill="currentColor"/></svg>
-      Compartilhar
-    </button>
+  <section class="share-minimal" aria-label="Compartilhar este artigo">
+    <a class="share-square whatsapp"
+       href="https://api.whatsapp.com/send?text={{ share_text | uri_escape }}%20{{ share_url | uri_escape }}"
+       target="_blank" rel="noopener nofollow"
+       aria-label="Compartilhar no WhatsApp">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+        <path d="M17.47 14.37c-.27-.13-1.62-.8-1.87-.9-.25-.09-.43-.13-.61.14-.18.27-.7.9-.86 1.09-.16.18-.32.2-.6.07-.27-.13-1.15-.43-2.2-1.36-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.06-.13-.61-1.47-.83-2.02-.22-.52-.44-.45-.61-.46-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3 0 1.36.98 2.67 1.12 2.85.14.18 1.93 2.95 4.7 4.14.66.29 1.18.46 1.58.59.66.21 1.26.18 1.74.11.53-.08 1.62-.66 1.85-1.29.23-.63.23-1.16.16-1.27-.07-.11-.25-.18-.52-.31zM12.05 2C6.52 2 2 6.52 2 12.05c0 1.93.51 3.8 1.48 5.45L2 22l4.65-1.43a10.02 10.02 0 0 0 5.4 1.57h.01c5.53 0 10.05-4.52 10.05-10.05S17.58 2 12.05 2z"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
 
-    <a class="share-btn" href="https://api.whatsapp.com/send?text={{ share_text | uri_escape }}%20{{ share_url | uri_escape }}" target="_blank" rel="noopener nofollow">WhatsApp</a>
-    <a class="share-btn" href="https://t.me/share/url?url={{ share_url | uri_escape }}&text={{ share_text | uri_escape }}" target="_blank" rel="noopener nofollow">Telegram</a>
-    <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ share_url | uri_escape }}&text={{ share_text | uri_escape }}" target="_blank" rel="noopener nofollow">X/Twitter</a>
-    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | uri_escape }}" target="_blank" rel="noopener no
+    <a class="share-square instagram"
+       href="https://www.instagram.com/marciodowglasfitness"
+       target="_blank" rel="noopener"
+       aria-label="Abrir Instagram do Márcio">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+        <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm0 2a3 3 0 1 1-.001 6.001A3 3 0 0 1 12 9zm4.5-.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5z"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+  </section>
+
+  <!-- Posts relacionados -->
+  {% assign primary_cat = page.categories | first %}
+  <div class="post-rel">
+    <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
+    <ul class="rel-list">
+      {% assign count = 0 %}
+      {% if primary_cat %}
+        {% for p in site.posts %}
+          {% if p.url != page.url and p.categories and count < 3 %}
+            {% for c in p.categories %}
+              {% if c == primary_cat %}
+                <li class="rel-item">
+                  <a class="rel-link" href="{{ p.url | relative_url }}">
+                    <span class="rel-thumb"
+                      role="img"
+                      aria-label="Capa de {{ p.title }}"
+                      style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
+                    <span class="rel-meta">
+                      <strong>{{ p.title }}</strong>
+                      <small>{{ p.date | date: "%d %b %Y" }}</small>
+                    </span>
+                  </a>
+                </li>
+                {% assign count = count | plus: 1 %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if count == 0 %}
+        {% assign shown = 0 %}
+        {% for p in site.posts %}
+          {% if p.url != page.url and shown < 3 %}
+            <li class="rel-item">
+              <a class="rel-link" href="{{ p.url | relative_url }}">
+                <span class="rel-thumb"
+                  role="img"
+                  aria-label="Capa de {{ p.title }}"
+                  style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
+                <span class="rel-meta">
+                  <strong>{{ p.title }}</strong>
+                  <small>{{ p.date | date: "%d %b %Y" }}</small>
+                </span>
+              </a>
+            </li>
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </ul>
+
+    <p style="margin:.5rem 0 0">
+      <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
+    </p>
+  </div>
+
+  <!-- Navegação entre posts -->
+  {% if page.previous or page.next %}
+    <nav class="post-nav">
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+
+</div>
