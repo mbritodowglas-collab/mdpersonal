@@ -853,5 +853,67 @@ layout: default
   .about-foto{ margin:0 auto; }
 }
 
+/* ===== CTA (Avaliacao) ===== */
+.cta-post{
+  margin: 1rem 0 1.5rem;
+  text-align: center;
+}
+.btn-cta{
+  display: inline-block;
+  background: #e53935;            /* vermelho principal */
+  color: #fff;
+  padding: .75rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid #ff6262;      /* leve contraste na borda */
+  box-shadow: 0 8px 22px rgba(229,57,53,.18);
+  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+}
+.btn-cta:hover{
+  background: #ff4d4d;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(255,77,77,.22);
+}
+.btn-cta:focus{
+  outline: 2px solid #ff4d4d;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(255,77,77,.25);
+}
+
+/* ===== Tags ===== */
+.post-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .55rem;
+  align-items: center;
+  margin: .25rem 0 1.25rem;       /* vem logo após a bio */
+  color: #ddd;
+}
+.post-tags strong{
+  margin-right: .25rem;
+  font-weight: 700;
+  color: #fff;
+}
+.post-tags .tag{
+  display: inline-block;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+  font-size: .88rem;
+  line-height: 1;
+  background: rgba(227,197,101,.08);              /* dourado sutil do seu tema */
+  color: #e3c565;
+  border: 1px solid rgba(227,197,101,.35);
+  transition: transform .15s ease, border-color .2s ease;
+}
+.post-tags .tag:hover{
+  transform: translateY(-1px);
+  border-color: rgba(227,197,101,.6);
+}
+
+/* ===== Ajuste fino mobile ===== */
+@media (max-width: 640px){
+  .btn-cta{ width: 100%; }
+}
 
 
