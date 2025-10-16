@@ -916,4 +916,35 @@ layout: default
   .btn-cta{ width: 100%; }
 }
 
+/* ===== Tags Clicáveis ===== */
+.post-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .55rem;
+  align-items: center;
+  margin: .25rem 0 1.25rem;
+  color: #ddd;
+}
+.post-tags strong{
+  margin-right: .25rem;
+  font-weight: 700;
+  color: #fff;
+}
+.post-tags .tag{
+  display: inline-block;
+  padding: .22rem .6rem;
+  border-radius: 999px;
+  font-size: .88rem;
+  line-height: 1;
+  background: rgba(227,197,101,.08);
+  color: #e3c565;
+  border: 1px solid rgba(227,197,101,.35);
+  text-decoration: none;
+  transition: all .2s ease;
+}
+.post-tags .tag:hover{
+  background: rgba(227,197,101,.15);
+  border-color: rgba(227,197,101,.6);
+  transform: translateY(-1px);
+}
 
