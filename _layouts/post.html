@@ -27,11 +27,11 @@ layout: default
     {% endif %}
   </div>
 
-  <!-- Corpo do artigo -->
+  <!-- Corpo -->
   <div class="post-body">
     {{ content }}
 
-    <!-- BIO (logo após o texto) -->
+    <!-- 1️⃣ BIO -->
     <section class="autor-bio">
       <img src="{{ '/assets/img/marcio-bio.jpg' | relative_url }}" alt="Márcio Dowglas — Personal Trainer" class="autor-foto">
       <div class="autor-info">
@@ -40,19 +40,29 @@ layout: default
       </div>
     </section>
 
-    <!-- CTA (botão) -->
+    <!-- 2️⃣ TAGS -->
+    {% if page.tags and page.tags.size > 0 %}
+      <p class="post-tags">
+        <strong>Tags:</strong>
+        {% for t in page.tags %}
+          <span class="tag">{{ t }}</span>{% unless forloop.last %} {% endunless %}
+        {% endfor %}
+      </p>
+    {% endif %}
+
+    <!-- 3️⃣ CTA -->
     {% assign cta_url  = page.cta.url  | default: '/avaliacao/' %}
     {% assign cta_text = page.cta.text | default: 'Agende sua Avaliação Gratuita' %}
     <div class="cta-post">
       <a href="{{ cta_url | relative_url }}" class="btn-cta">{{ cta_text }}</a>
     </div>
 
-    <!-- Recomendações -->
+    <!-- 4️⃣ Afiliados -->
     {% if page.afiliados and page.afiliados.size > 0 %}
       {% include afiliados.html %}
     {% endif %}
 
-    <!-- Compartilhar (antes das tags) -->
+    <!-- 5️⃣ Compartilhar -->
     {% assign share_url = page.url | absolute_url %}
     <section class="share-minimal" aria-label="Compartilhar este artigo">
       <p class="share-label">📤 Compartilhar em:</p>
@@ -62,19 +72,9 @@ layout: default
         <a class="share-link" href="https://www.instagram.com/marciodowglasfitness" target="_blank" rel="noopener">Instagram</a>
       </p>
     </section>
-
-    <!-- Tags (opcional; usa front-matter `tags:`) -->
-    {% if page.tags and page.tags.size > 0 %}
-      <p class="post-tags">
-        <strong>Tags:</strong>
-        {% for t in page.tags %}
-          <span class="tag">{{ t }}</span>{% unless forloop.last %} {% endunless %}
-        {% endfor %}
-      </p>
-    {% endif %}
   </div>
 
-  <!-- Relacionados -->
+  <!-- 6️⃣ Relacionados -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
     <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
@@ -90,10 +90,14 @@ layout: default
                     <span class="rel-thumb" role="img"
                           aria-label="Capa de {{ p.title }}"
                           style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
-                    <span class="rel-meta"><strong>{{ p.title }}</strong><small>{{ p.date | date: "%d %b %Y" }}</small></span>
+                    <span class="rel-meta">
+                      <strong>{{ p.title }}</strong>
+                      <small>{{ p.date | date: "%d %b %Y" }}</small>
+                    </span>
                   </a>
                 </li>
-                {% assign count = count | plus: 1 %}{% break %}
+                {% assign count = count | plus: 1 %}
+                {% break %}
               {% endif %}
             {% endfor %}
           {% endif %}
@@ -106,12 +110,15 @@ layout: default
     </p>
   </div>
 
-  <!-- Navegação -->
+  <!-- 7️⃣ Navegação -->
   {% if page.previous or page.next %}
     <nav class="post-nav">
-      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% endif %}
-      {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+      {% endif %}
     </nav>
   {% endif %}
-
 </div>
