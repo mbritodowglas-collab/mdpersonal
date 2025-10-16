@@ -23,7 +23,7 @@ layout: default
     {% if page.image %}
       <figure class="post-cover">
         <img src="{{ page.image | relative_url }}"
-             alt="{{ page.title | escape }}"
+             alt="{{ page.title | escape }} — Imagem ilustrativa do artigo"
              loading="eager"
              width="1200"
              height="630">
@@ -35,12 +35,27 @@ layout: default
   <div class="post-body">
     {{ content }}
 
+    {% if page.cta and page.cta.url and page.cta.text %}
+      <div class="cta-post">
+        <a href="{{ page.cta.url | relative_url }}" class="btn-cta">{{ page.cta.text }}</a>
+      </div>
+    {% endif %}
+
     {% if page.afiliados and page.afiliados.size > 0 %}
       {% include afiliados.html %}
     {% endif %}
+
+    <!-- Bio do autor -->
+    <section class="autor-bio">
+      <img src="{{ '/assets/img/marcio-bio.jpg' | relative_url }}" alt="Márcio Dowglas — Personal Trainer" class="autor-foto">
+      <div class="autor-info">
+        <strong>{{ site.author | default: 'Márcio Dowglas' }}</strong> — Personal Trainer ({{ site.cref | default: 'CREF 003918-G/AM' }})
+        <p>Mais de {{ site.experience_years | default: '10+' }} anos unindo treino, neurociência e comportamento para evolução física e mental.</p>
+      </div>
+    </section>
   </div>
 
-  <!-- Botões de compartilhamento -->
+  <!-- Botões de compartilhamento (somente WhatsApp e Instagram) -->
   {% assign share_url = page.url | absolute_url %}
   {% assign share_text = page.title | default: site.title %}
 
@@ -69,71 +84,4 @@ layout: default
   <!-- Posts relacionados -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
-    <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
-    <ul class="rel-list">
-      {% assign count = 0 %}
-      {% if primary_cat %}
-        {% for p in site.posts %}
-          {% if p.url != page.url and p.categories and count < 3 %}
-            {% for c in p.categories %}
-              {% if c == primary_cat %}
-                <li class="rel-item">
-                  <a class="rel-link" href="{{ p.url | relative_url }}">
-                    <span class="rel-thumb"
-                      role="img"
-                      aria-label="Capa de {{ p.title }}"
-                      style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
-                    <span class="rel-meta">
-                      <strong>{{ p.title }}</strong>
-                      <small>{{ p.date | date: "%d %b %Y" }}</small>
-                    </span>
-                  </a>
-                </li>
-                {% assign count = count | plus: 1 %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-
-      {% if count == 0 %}
-        {% assign shown = 0 %}
-        {% for p in site.posts %}
-          {% if p.url != page.url and shown < 3 %}
-            <li class="rel-item">
-              <a class="rel-link" href="{{ p.url | relative_url }}">
-                <span class="rel-thumb"
-                  role="img"
-                  aria-label="Capa de {{ p.title }}"
-                  style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
-                <span class="rel-meta">
-                  <strong>{{ p.title }}</strong>
-                  <small>{{ p.date | date: "%d %b %Y" }}</small>
-                </span>
-              </a>
-            </li>
-            {% assign shown = shown | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    </ul>
-
-    <p style="margin:.5rem 0 0">
-      <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
-    </p>
-  </div>
-
-  <!-- Navegação entre posts -->
-  {% if page.previous or page.next %}
-    <nav class="post-nav">
-      {% if page.previous %}
-        <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
-      {% endif %}
-      {% if page.next %}
-        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
-      {% endif %}
-    </nav>
-  {% endif %}
-
-</div>
+    <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif
