@@ -37,6 +37,7 @@ permalink: /blog/
       <button data-filter="Neurociência">Neurociência</button>
       <button data-filter="Nutrição">Nutrição</button>
       <button data-filter="Gestão">Gestão</button>
+      <button data-filter="Depoimentos">Depoimentos</button>
     </nav>
   </aside>
 
@@ -44,7 +45,9 @@ permalink: /blog/
     <div class="cards">
       {% if site.posts and site.posts.size > 0 %}
         {% for post in site.posts %}
-          <article class="card" data-cats="{{ post.categories | join: ',' }}">
+          {% assign cats = post.categories | join: ' ' %}
+          {% assign tags = post.tags | join: ' ' %}
+          <article class="card" data-cats="{{ cats }} {{ tags }}">
             <a href="{{ post.url | relative_url }}">
               <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/img/thumb-default.jpg' | relative_url }}')"></div>
               <div class="card-body">
@@ -68,23 +71,44 @@ permalink: /blog/
   </section>
 </div>
 
-<!-- SCRIPT (filtro sem scroll) -->
+<!-- SCRIPT (filtro + suporte a ?tag= e ?cat=) -->
 <script>
 (function(){
   const cards = Array.from(document.querySelectorAll('.card'));
   const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
+
+  function applyFilter(f){
+    const needle = (f || 'all').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
+    cards.forEach(c=>{
+      const cats = (c.dataset.cats || '')
+        .normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+      const match = (needle === 'all' || cats.includes(needle));
+      c.style.display = match ? '' : 'none';
+    });
+  }
+
+  // Clique nos botões
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btns.forEach(b=>b.classList.remove('on'));
       btn.classList.add('on');
-
-      const f = (btn.dataset.filter || 'all').toLowerCase();
-      cards.forEach(c=>{
-        const cats = (c.dataset.cats || '').toLowerCase();
-        const match = (f === 'all' || cats.includes(f));
-        c.style.display = match ? '' : 'none';
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  // Suporte a ?tag= e ?cat= (aceita acentos/maiúsculas)
+  const params = new URLSearchParams(window.location.search);
+  const qs = (params.get('tag') || params.get('cat') || '').trim();
+  if (qs){
+    // Tenta ativar botão se existir
+    const matchBtn = btns.find(b => b.dataset.filter.toLowerCase() === qs.toLowerCase());
+    if (matchBtn){ matchBtn.click(); }
+    else { // Senão, filtra direto por substring (funciona p/ tags)
+      btns.forEach(b=>b.classList.remove('on'));
+      applyFilter(qs);
+    }
+  } else {
+    applyFilter('all');
+  }
 })();
 </script>
