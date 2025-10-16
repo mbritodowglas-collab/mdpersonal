@@ -4,6 +4,7 @@ layout: default
 
 <div class="post-wrap">
 
+  <!-- Cabeçalho -->
   <div class="post-head">
     {% if page.categories and page.categories.size > 0 %}
       <p class="meta">
@@ -26,6 +27,7 @@ layout: default
     {% endif %}
   </div>
 
+  <!-- Corpo -->
   <div class="post-body">
     {{ content }}
 
@@ -39,15 +41,19 @@ layout: default
       {% include afiliados.html %}
     {% endif %}
 
+    <!-- Bio do autor -->
     <section class="autor-bio">
-      <img src="{{ '/assets/img/marcio-bio.jpg' | relative_url }}" alt="Márcio Dowglas — Personal Trainer" class="autor-foto">
+      <img src="{{ '/assets/img/marcio-bio.jpg' | relative_url }}"
+           alt="Márcio Dowglas — Personal Trainer"
+           class="autor-foto">
       <div class="autor-info">
-        <strong>Márcio Dowglas</strong> — Personal Trainer (CREF 003918-G/AM)
+        <p><strong>Márcio Dowglas</strong> — Personal Trainer (CREF 003918-G/AM)</p>
         <p>Mais de 10 anos unindo treino, neurociência e comportamento para evolução física e mental.</p>
       </div>
     </section>
   </div>
 
+  <!-- Compartilhar -->
   {% assign share_url = page.url | absolute_url %}
   {% assign share_text = page.title | default: site.title %}
 
@@ -56,7 +62,7 @@ layout: default
 
     <div class="share-buttons">
       <a class="share-square whatsapp"
-         href="https://api.whatsapp.com/send?text={{ page.title | uri_escape }}%20{{ page.url | absolute_url | uri_escape }}"
+         href="https://api.whatsapp.com/send?text={{ share_text | uri_escape }}%20{{ share_url | uri_escape }}"
          target="_blank" rel="noopener nofollow"
          aria-label="Compartilhar no WhatsApp">
         {% raw %}
@@ -81,6 +87,7 @@ layout: default
     </div>
   </section>
 
+  <!-- Relacionados -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
     <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
@@ -96,7 +103,10 @@ layout: default
                     <span class="rel-thumb" role="img"
                           aria-label="Capa de {{ p.title }}"
                           style="background-image:url('{{ p.image | default: site.default_thumb | relative_url }}')"></span>
-                    <span class="rel-meta"><strong>{{ p.title }}</strong><small>{{ p.date | date: "%d %b %Y" }}</small></span>
+                    <span class="rel-meta">
+                      <strong>{{ p.title }}</strong>
+                      <small>{{ p.date | date: "%d %b %Y" }}</small>
+                    </span>
                   </a>
                 </li>
                 {% assign count = count | plus: 1 %}
@@ -108,13 +118,20 @@ layout: default
       {% endif %}
     </ul>
 
-    <p style="margin:.5rem 0 0"><a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a></p>
+    <p style="margin:.5rem 0 0">
+      <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
+    </p>
   </div>
 
+  <!-- Navegação -->
   {% if page.previous or page.next %}
     <nav class="post-nav">
-      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% endif %}
-      {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}
+      {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+      {% endif %}
     </nav>
   {% endif %}
 </div>
