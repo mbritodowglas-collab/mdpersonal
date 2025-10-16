@@ -827,5 +827,31 @@ layout: default
   line-height: 1.4;
 }
 
+/* ===== Página Sobre ===== */
+.about-hero{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  gap:1rem;
+  align-items:center;
+  margin:1rem 0 1.25rem;
+}
+.about-foto{
+  width:92px;height:92px;border-radius:999px;object-fit:cover;
+  border:1px solid #262626;box-shadow:0 0 0 3px rgba(255,255,255,.03);
+}
+.about-head p{ margin:.35rem 0; }
+.about-cref{ opacity:.9; }
+
+.about-list ul{ margin:.5rem 0 1rem; padding-left:1.1rem; }
+.about-list li{ margin:.2rem 0; }
+
+.about-social a{ color:#e3c565; }
+
+/* Ajuste mobile */
+@media (max-width: 719px){
+  .about-hero{ grid-template-columns:1fr; text-align:center; }
+  .about-foto{ margin:0 auto; }
+}
+
 
 
