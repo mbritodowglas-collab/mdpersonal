@@ -17,8 +17,8 @@ permalink: /about/
 
   .about-photo{
     width:100%;max-width:240px;aspect-ratio:1/1;border-radius:14px;
-    background:#111;               /* <- corrigido */
-    object-fit:cover;               /* <- corrigido */
+    background:#111;
+    object-fit:cover;
     display:block;border:1px solid #1c1c1c
   }
 
@@ -43,7 +43,6 @@ permalink: /about/
   .about-social{margin-top:.5rem}
   .about-social a{color:var(--dourado);font-weight:600}
 
-  /* Mobile: 1 coluna + foto centralizada */
   @media(max-width:840px){
     .about-grid{grid-template-columns:1fr;gap:1rem}
     .about-photo{max-width:220px;margin:0 auto}
@@ -68,7 +67,13 @@ permalink: /about/
     <div class="about-text">
       <p>
         Olá! Eu sou <strong>Márcio Dowglas</strong>, Personal Trainer. Este site existe para transformar
-        conhecimento em prática: artigos curtos, diretos, e aplicáveis — a base dos vídeos que você vê nas plataformas.
+        conhecimento em prática: artigos curtos, diretos e aplicáveis — a base dos vídeos que você vê nas plataformas.
+      </p>
+
+      <p>
+        Sou profissional de Educação Física há mais de <strong>10 anos</strong>, registrado no 
+        <strong>CREF 003918-G/AM</strong>. Minha trajetória foi construída unindo o treinamento físico à neurociência 
+        e ao comportamento humano — criando métodos que ajudam pessoas a evoluírem com propósito, equilíbrio e constância.
       </p>
 
       <div class="about-box">
