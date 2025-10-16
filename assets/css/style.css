@@ -590,3 +590,50 @@ section.artigos h2{color:var(--dourado);margin:0 0 1rem;font-size:1.6rem}
 
 /* (Sanidade) nunca estilize âncoras fora do share como botões do share */
 .share-btn{ /* vazio de propósito */ }
+
+/* ===== Compartilhamento minimal (WhatsApp + Instagram) ===== */
+.share-minimal{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  margin:2rem 0 1.5rem;
+}
+
+.share-square{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:120px;
+  height:110px;
+  border-radius:8px;          /* quadrado (sem pílula) */
+  text-decoration:none;
+  font-weight:700;
+  font-size:.95rem;
+  color:#fff;
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+  transition:transform .18s ease, opacity .18s ease, filter .18s ease;
+}
+.share-square:hover{ transform:translateY(-3px); opacity:.95; }
+
+.share-square svg{ margin-bottom:.35rem; }
+
+/* Cores */
+.share-square.whatsapp{
+  background:#25D366;
+  box-shadow:0 0 10px rgba(37,211,102,.35);
+}
+.share-square.instagram{
+  background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  box-shadow:0 0 10px rgba(214,36,159,.35);
+}
+
+/* Mobile: ocupa a largura com boa proporção */
+@media (max-width: 480px){
+  .share-minimal{ gap:.75rem; }
+  .share-square{ flex:1; height:96px; }
+}
+
+/* Isolamento do rodapé */
+.post-wrap{ padding-bottom: 1rem; }
+
