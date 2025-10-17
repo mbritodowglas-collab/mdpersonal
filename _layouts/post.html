@@ -40,15 +40,15 @@ layout: default
       </div>
     </section>
 
-    <!-- 2️⃣ TAGS (agora clicáveis) -->
-{% if page.tags and page.tags.size > 0 %}
-  <p class="post-tags">
-    <strong>Tags:</strong>
-    {% for t in page.tags %}
-      <a class="tag" href="{{ '/blog/?tag=' | append: t | relative_url }}">{{ t }}</a>{% unless forloop.last %} {% endunless %}
-    {% endfor %}
-  </p>
-{% endif %}
+    <!-- 2️⃣ TAGS -->
+    {% if page.tags and page.tags.size > 0 %}
+      <p class="post-tags">
+        <strong>Tags:</strong>
+        {% for t in page.tags %}
+          <a class="tag" href="{{ '/blog/?tag=' | append: t | relative_url }}">{{ t }}</a>{% unless forloop.last %} {% endunless %}
+        {% endfor %}
+      </p>
+    {% endif %}
 
     <!-- 3️⃣ CTA -->
     {% assign cta_url  = page.cta.url  | default: '/avaliacao/' %}
@@ -104,23 +104,22 @@ layout: default
         {% endfor %}
       {% endif %}
     </ul>
-
     <p style="margin:.5rem 0 0">
       <a href="{{ '/blog/' | relative_url }}" class="ler">Ver mais no blog →</a>
     </p>
   </div>
 
-<!-- 7️⃣ Comentários -->
-<section id="comments" class="post-comments">
-  <script src="https://utteranc.es/client.js"
-    repo="mbritodowglas-collab/mdpersonal"
-    issue-term="title"
-    label="comentário"
-    theme="github-dark"
-    crossorigin="anonymous"
-    async>
-  </script>
-</section>
+  <!-- 7️⃣ Comentários -->
+  <section id="comments" class="post-comments">
+    <script src="https://utteranc.es/client.js"
+      repo="mbritodowglas-collab/mdpersonal"
+      issue-term="title"
+      label="comentário"
+      theme="github-dark"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </section>
 
   <!-- 8️⃣ Navegação -->
   {% if page.previous or page.next %}
