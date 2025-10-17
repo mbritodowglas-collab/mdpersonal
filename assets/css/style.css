@@ -1358,5 +1358,25 @@ layout: default
   }
 }
 
+/* ===== Correção de alinhamento dos campos — apenas desktop ===== */
+@media (min-width: 900px){
+  /* Alinha os inputs pela base */
+  .tool-form .grid{
+    align-items: end;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Normaliza a altura dos rótulos */
+  .tool-form .field > span{
+    display:block;
+    line-height:1.2;
+    min-height:2.8rem; /* altura igual para rótulos com 1 ou 2 linhas */
+  }
+
+  /* Uniformiza a altura dos inputs */
+  .tool-form .field input{
+    height:46px;
+  }
+}
 
 
