@@ -30,16 +30,15 @@ permalink: /blog/
 <!-- GRID: lateral + lista -->
 <div class="blog-layout">
   <aside class="blog-sidebar">
-    <h3>Categorias</h3>
-    <nav class="blog-filtros-vertical">
-      <button data-filter="all" class="on">Últimos</button>
-      <button data-filter="Treino">Treino</button>
-      <button data-filter="Neurociência">Neurociência</button>
-      <button data-filter="Nutrição">Nutrição</button>
-      <button data-filter="Gestão">Gestão</button>
-      <button data-filter="Depoimentos">Depoimentos</button>
-    </nav>
-  </aside>
+  <nav class="blog-filtros-vertical" aria-label="Filtrar por categoria">
+    <button data-filter="all" class="on">Últimos</button>
+    <button data-filter="Treino">Treino</button>
+    <button data-filter="Neurociência">Neurociência</button>
+    <button data-filter="Nutrição">Nutrição</button>
+    <button data-filter="Gestão">Gestão</button>
+    <button data-filter="Depoimentos">Depoimentos</button>
+  </nav>
+</aside>
 
   <section class="blog-lista">
     <div class="cards">
