@@ -25,7 +25,6 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
-
       {%- comment -%}
         Lê _data/afiliados.yml.
         data-cats = categorias do item (lowercase) para o filtro.
@@ -61,7 +60,6 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
           </a>
         </article>
       {%- endfor -%}
-
     </div>
   </section>
 </div>
@@ -92,19 +90,29 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
     });
   }
 
+  // clique nos botões
   btns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btns.forEach(b=>b.classList.remove('on'));
       btn.classList.add('on');
       applyFilter(btn.dataset.filter);
-      // rola a faixa pra mostrar o botão ativo
-      document.querySelector('.cat-strip').scrollTo({ left: btn.offsetLeft - 16, behavior: 'smooth' });
+      // rola a faixa para o botão ativo
+      const strip = document.querySelector('.cat-strip');
+      strip.scrollTo({ left: btn.offsetLeft - 16, behavior: 'smooth' });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 
-  // Começa em Parceiros
-  applyFilter('parceiros');
+  // filtro inicial por querystring (?cat=treino)
+  const params = new URLSearchParams(location.search);
+  const qcat = params.get('cat');
+  if (qcat) {
+    const target = btns.find(b => norm(b.dataset.filter) === norm(qcat));
+    if (target) target.click();
+    else applyFilter(qcat);
+  } else {
+    applyFilter('parceiros');
+  }
 })();
 </script>
 
@@ -141,7 +149,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 }
 .cat-strip button:active{ transform:scale(.98); }
 
-/* ===== Grid e cards (mantido em 2 colunas) ===== */
+/* ===== Grid e cards (duas colunas) ===== */
 .utilitarios-page .blog-lista .cards{
   display:grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
@@ -165,8 +173,8 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   border:1px solid #1c1c1c; border-radius:12px;
   background:#111; overflow:hidden;
 }
-.utilitarios-page .blog-lista .card .af-thumb.r1x1{ padding-top:100%; }      /* 1:1 */
-.utilitarios-page .blog-lista .card .af-thumb.r16x9{ padding-top:56.25%; }   /* 16:9 */
+.utilitarios-page .blog-lista .card .af-thumb.r1x1{ padding-top:100%; }
+.utilitarios-page .blog-lista .card .af-thumb.r16x9{ padding-top:56.25%; }
 
 /* Imagem preenchendo o wrapper */
 .utilitarios-page .blog-lista .card .af-thumb .af-img{
