@@ -3,6 +3,7 @@ layout: post
 title: "Quantas Vezes por Semana Devo Treinar?"
 date: 2025-10-13
 categories: [Treino]
+tags: [frequência de treino, adaptação neuromuscular, neuroplasticidade, recuperação, consistência, treino de força, dopamina, BDNF, performance]
 image: "/assets/img/posts/frequencia-treino-adaptacoes-neuromusculares.jpg"
 excerpt: "Mais treino nem sempre significa mais resultado. Entenda como a frequência ideal equilibra estímulo, recuperação e consistência neural para evoluir de verdade."
 afiliados:
@@ -14,7 +15,7 @@ afiliados:
     url: "https://s.shopee.com.br/9AFwIahWad"
     image: "/assets/img/afiliados/foam-roller.jpg"
     note: "Recupere seu corpo, reduza dores e melhore a mobilidade."
-  - title: "Corde de Pular Ajustável"
+  - title: "Corda de Pular Ajustável"
     url: "https://s.shopee.com.br/2B6BvkeGAa"
     image: "/assets/img/afiliados/corda-pular.jpg"
     note: "Aqueça, melhore o condicionamento e otimize o treino."
@@ -93,7 +94,3 @@ Não se cobre por estar “treinando pouco”.
 Prefira **manter a chama acesa todos os dias**, mesmo que em pequenos passos, do que tentar incendiar tudo de uma vez e apagar em seguida.
 
 > “A constância vence a intensidade, quando o assunto é evolução.”
-
----
-
-**Tags:** frequência de treino, adaptação neuromuscular, neuroplasticidade, recuperação, consistência, treino de força, dopamina, BDNF, performance
