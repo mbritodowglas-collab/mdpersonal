@@ -64,11 +64,21 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 .tool-hero p{color:#cfcfcf}
 
 .tool-card-full{max-width:860px;margin:0 auto 2.5rem;padding:1rem}
-.tool-form .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-.field{display:flex;flex-direction:column;gap:.35rem;position:relative}
+
+/* Grid responsivo */
+.tool-form .grid{
+  display:grid;
+  gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+
+.field{display:flex;flex-direction:column;gap:.35rem}
 .field span{color:#ddd;font-weight:600}
-.field small{opacity:.7}
-.field input{background:#0f0f0f;border:1px solid #222;border-radius:10px;color:#fff;padding:.7rem .8rem}
+.field input{
+  background:#0f0f0f;border:1px solid #222;border-radius:10px;color:#fff;padding:.7rem .8rem
+}
+.field-note{color:#999;font-size:.8rem;margin-top:.35rem;font-style:italic;opacity:.9}
+
 .btn-cta{margin-top:.8rem;background:#d62828;color:#fff;border:0;border-radius:10px;padding:.85rem 1rem;font-weight:700;cursor:pointer}
 .btn-cta:hover{background:#ff4040}
 .hint{color:#aaa;font-size:.9rem;margin:.45rem 0 0}
@@ -83,20 +93,11 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 .tool-table thead th{background:#101010;color:#f0d26a;text-align:left}
 .tool-table tbody tr:hover{background:#0c0c0c}
 
-/* Aviso discreto abaixo do campo */
-.field-note{color:#999;font-size:.8rem;margin-top:.2rem;font-style:italic;opacity:.9}
-
-/* ===== Desktop: mantém tudo alinhado mesmo com o aviso ===== */
+/* ===== Desktop: 3 colunas e alturas iguais ===== */
 @media (min-width: 900px){
-  .tool-form .grid{
-    grid-template-columns: repeat(3, 1fr);
-    align-items: start;
-  }
-  /* não deixa o aviso empurrar a altura do cartão */
-  .field{padding-bottom:1.2rem}
-  .field .field-note{
-    position:absolute; left:0; bottom:.1rem; margin:0;
-  }
+  .tool-form .grid{ grid-template-columns:repeat(3,1fr); align-items:start; }
+  /* equaliza a altura das "cards" de campo para não desalinha */
+  .field{ min-height: 124px; }
 }
 </style>
 
