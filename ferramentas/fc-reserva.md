@@ -21,6 +21,7 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
       <label class="field">
         <span>FC Máxima <small>(se não souber, calculo por 220 − idade)</small></span>
         <input type="number" id="fcmax" inputmode="numeric" min="80" max="220" placeholder="ex.: 190">
+        <small class="field-note">(Se não souber, apenas deixe vazio)</small>
       </label>
 
       <label class="field">
@@ -81,11 +82,20 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 .tool-table th,.tool-table td{padding:.75rem;border-bottom:1px solid #1f1f1f}
 .tool-table thead th{background:#101010;color:#f0d26a;text-align:left}
 .tool-table tbody tr:hover{background:#0c0c0c}
+
+/* Aviso discreto abaixo do campo */
+.field-note{
+  color:#999;
+  font-size:.8rem;
+  margin-top:.2rem;
+  font-style:italic;
+  opacity:.9;
+}
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-  const pctList = [50,55,60,65,70,75,80]; // % desejados
+  const pctList = [50,55,60,65,70,75,80];
   const el = (id)=>document.getElementById(id);
 
   function round(x){ return Math.round(x); }
@@ -105,12 +115,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const hrr = fcMax - fcRep;
 
-    // preenche meta
     el('out-fcmax').textContent = fcMax;
     el('out-fcrep').textContent = fcRep;
     el('out-hrr').textContent = hrr;
 
-    // tabela
     const tbody = el('tbody-fcr');
     tbody.innerHTML = '';
     pctList.forEach(p=>{
