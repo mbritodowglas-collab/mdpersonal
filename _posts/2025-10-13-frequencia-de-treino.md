@@ -85,7 +85,7 @@ Mais importante que a planilha é **a constância possível na sua rotina**.
 Um plano de seis treinos por semana não vale nada se você só consegue cumprir três.  
 A frequência ideal é aquela **que cabe na sua vida e te mantém motivado**.
 
-## Conclusão: o equilíbrio é a verdadeira chave
+## O equilíbrio é a verdadeira chave
 
 Treinar é um diálogo entre corpo e cérebro.  
 Quando há estímulo, pausa e consistência, o progresso se torna inevitável.  
