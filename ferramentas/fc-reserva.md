@@ -14,15 +14,15 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
   <form id="form-fcr" class="tool-form" onsubmit="return false;" autocomplete="off">
     <div class="grid">
       <label class="field">
-        <span>Idade <small>(opcional)</small></span>
-        <input type="number" id="idade" inputmode="numeric" min="8" max="100" placeholder="ex.: 32">
+        <span>Idade</span>
+        <input type="number" id="idade" inputmode="numeric" min="8" max="100" placeholder="ex.: 32" required>
       </label>
 
       <label class="field">
-  <span>FC Máxima</span>
-  <input type="number" id="fcmax" inputmode="numeric" min="80" max="220" placeholder="ex.: 190">
-  <small class="field-note">(Se não souber, apenas deixe vazio — será calculado automaticamente por 220 − idade)</small>
-</label>
+        <span>FC Máxima</span>
+        <input type="number" id="fcmax" inputmode="numeric" min="80" max="220" placeholder="ex.: 190">
+        <small class="field-note">(Se não souber, deixe vazio — calculo por 220 − idade)</small>
+      </label>
 
       <label class="field">
         <span>FC de Repouso</span>
@@ -65,7 +65,7 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 
 .tool-card-full{max-width:860px;margin:0 auto 2.5rem;padding:1rem}
 .tool-form .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-.field{display:flex;flex-direction:column;gap:.35rem}
+.field{display:flex;flex-direction:column;gap:.35rem;position:relative}
 .field span{color:#ddd;font-weight:600}
 .field small{opacity:.7}
 .field input{background:#0f0f0f;border:1px solid #222;border-radius:10px;color:#fff;padding:.7rem .8rem}
@@ -84,12 +84,19 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 .tool-table tbody tr:hover{background:#0c0c0c}
 
 /* Aviso discreto abaixo do campo */
-.field-note{
-  color:#999;
-  font-size:.8rem;
-  margin-top:.2rem;
-  font-style:italic;
-  opacity:.9;
+.field-note{color:#999;font-size:.8rem;margin-top:.2rem;font-style:italic;opacity:.9}
+
+/* ===== Desktop: mantém tudo alinhado mesmo com o aviso ===== */
+@media (min-width: 900px){
+  .tool-form .grid{
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+  /* não deixa o aviso empurrar a altura do cartão */
+  .field{padding-bottom:1.2rem}
+  .field .field-note{
+    position:absolute; left:0; bottom:.1rem; margin:0;
+  }
 }
 </style>
 
@@ -97,21 +104,18 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 document.addEventListener('DOMContentLoaded', function(){
   const pctList = [50,55,60,65,70,75,80];
   const el = (id)=>document.getElementById(id);
-
-  function round(x){ return Math.round(x); }
+  const round = x => Math.round(x);
 
   function calc() {
     const idade = parseInt(el('idade').value,10);
     const fcMaxInput = parseInt(el('fcmax').value,10);
     const fcRep = parseInt(el('fcrep').value,10);
 
+    if (isNaN(idade)) { alert('Informe sua idade.'); return; }
     if (isNaN(fcRep)) { alert('Informe sua FC de repouso.'); return; }
 
     let fcMax = fcMaxInput;
-    if (isNaN(fcMax)) {
-      if (isNaN(idade)) { alert('Informe Idade ou FC Máxima.'); return; }
-      fcMax = 220 - idade; // estimativa simples
-    }
+    if (isNaN(fcMax)) { fcMax = 220 - idade; }
 
     const hrr = fcMax - fcRep;
 
