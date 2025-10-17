@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Intensidade por Repetições Máximas (RM)
-permalink: /utilitarios/rm-intensidade/
-description: "Estime sua 1RM a partir do peso e repetições e veja as cargas por percentual de intensidade."
+title: Intensidade por RM
+permalink: /ferramentas/rm-intensidade/
+description: "Informe reps máximas e carga; veja percentuais relativos à 1RM."
 ---
 
 <section class="tool-hero">
