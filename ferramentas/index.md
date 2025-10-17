@@ -15,7 +15,7 @@ image: "/assets/img/ferramentas-bg.jpg"
   <div class="tools-grid">
 
     <!-- FC de Reserva -->
-    <a href="{{ '/ferramentas/fc-reserva/' | relative_url }}" class="tool-card" aria-label="Abrir calculadora de intensidade por FC de Reserva">
+    <a href="{{ '/ferramentas/fc-reserva.html' | relative_url }}" class="tool-card" aria-label="Abrir calculadora de intensidade por FC de Reserva">
       <div class="tool-thumb" style="background-image:url('{{ '/assets/img/ferramentas/fc-reserva.jpg' | relative_url }}')"></div>
       <div class="tool-info">
         <h3>Intensidade por FC de Reserva</h3>
@@ -25,7 +25,7 @@ image: "/assets/img/ferramentas-bg.jpg"
     </a>
 
     <!-- Repetições Máximas -->
-    <a href="{{ '/ferramentas/rm-intensidade/' | relative_url }}" class="tool-card" aria-label="Abrir calculadora de intensidade por RM">
+    <a href="{{ '/ferramentas/rm-intensidade.html' | relative_url }}" class="tool-card" aria-label="Abrir calculadora de intensidade por RM">
       <div class="tool-thumb" style="background-image:url('{{ '/assets/img/ferramentas/rm-intensidade.jpg' | relative_url }}')"></div>
       <div class="tool-info">
         <h3>Intensidade por Repetições Máximas (RM)</h3>
@@ -59,18 +59,12 @@ image: "/assets/img/ferramentas-bg.jpg"
 }
 .tool-card:hover{ transform:translateY(-3px); border-color:#d62828; }
 
-/* ★ Corrigido: garante altura da imagem */
 .tool-thumb{
-  position:relative; width:100%;
-  background-size:cover; background-position:center;
-  filter:brightness(.9);
-  min-height:180px;
   aspect-ratio:16/9;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.9);
 }
-@supports not (aspect-ratio: 1) {
-  .tool-thumb::before{ content:""; display:block; padding-top:56.25%; }
-}
-
 .tool-info{
   padding:1rem;
   display:flex;
