@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Intensidade por FC de Reserva
-permalink: /utilitarios/fc-reserva/
-description: "Calcule sua zona de treino cardiovascular com o método Karvonen (FC de Reserva)."
+permalink: /ferramentas/fc-reserva/
+description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 ---
 
 <section class="tool-hero">
