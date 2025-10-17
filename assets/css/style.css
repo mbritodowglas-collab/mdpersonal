@@ -1174,3 +1174,85 @@ layout: default
   outline-offset: 3px;
 }
 
+/* ===== Chips de categorias (mobile) ===== */
+@media (max-width: 720px){
+
+  /* faz virar uma fileira rolável na horizontal */
+  .blog-filtros-vertical{
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: .25rem 1rem .5rem;
+    margin: .25rem -1rem 1rem; /* encosta nas bordas no mobile */
+    scroll-snap-type: x proximity;
+
+    /* leve “fade” nas bordas para indicar que rola pro lado */
+    mask-image: linear-gradient(to right,
+      transparent, black 12px, black calc(100% - 12px), transparent);
+  }
+
+  /* esconde a barra de rolagem no mobile */
+  .blog-filtros-vertical::-webkit-scrollbar{ display: none; }
+
+  /* cada botão vira um “chip” */
+  .blog-filtros-vertical button{
+    flex: 0 0 auto;            /* não quebrar de linha */
+    scroll-snap-align: start;
+    appearance: none;
+    border: 1px solid #2a2a2a;
+    background: #121212;
+    color: #E8E8E8;
+    padding: .5rem .75rem;
+    border-radius: 999px;
+    font-size: .9rem;
+    line-height: 1;
+    font-weight: 600;
+    white-space: nowrap;        /* evita quebrar o texto do chip */
+    transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+  }
+
+  .blog-filtros-vertical button:hover{
+    border-color: #3a3a3a;
+  }
+
+  /* estado ativo (sem aquele “bloco” estranho) */
+  .blog-filtros-vertical button.on{
+    background: #E9C24C;       /* seu dourado */
+    color: #0B0B0B;
+    border-color: transparent;
+    box-shadow: 0 6px 18px rgba(233, 194, 76, 0.18);
+  }
+
+  /* clique mais gostoso */
+  .blog-filtros-vertical button:active{
+    transform: scale(0.98);
+  }
+}
+
+/* Desktop/tablet mantém em múltiplas linhas, mas com o mesmo visual dos chips */
+@media (min-width: 721px){
+  .blog-filtros-vertical{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .blog-filtros-vertical button{
+    appearance:none;
+    border:1px solid #2a2a2a;
+    background:#121212;
+    color:#E8E8E8;
+    padding:.5rem .75rem;
+    border-radius:999px;
+    font-size:.92rem;
+    font-weight:600;
+  }
+  .blog-filtros-vertical button.on{
+    background:#E9C24C;
+    color:#0B0B0B;
+    border-color:transparent;
+    box-shadow:0 6px 18px rgba(233,194,76,.18);
+  }
+}
+
+
