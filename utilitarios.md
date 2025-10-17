@@ -61,6 +61,12 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   </div>
 </section>
 
+<!-- CTA Ferramentas -->
+<section class="tools-cta">
+  <a href="{{ '/ferramentas/' | relative_url }}" class="btn-cta">Abrir Ferramentas de Treino →</a>
+  <p class="tools-note">Calculadoras: FC de Reserva (Karvonen) e Intensidade por RM.</p>
+</section>
+
 <script>
 (function(){
   // Marca a página para escopo de CSS
@@ -178,4 +184,28 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 .utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
 .utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
 .utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
+
+/* ===== CTA Ferramentas ===== */
+.tools-cta{
+  text-align:center;
+  margin: 1.5rem 0 2.5rem;
+}
+.tools-cta .btn-cta{
+  display:inline-block;
+  background:#d62828;
+  color:#fff;
+  padding:.85rem 1.2rem;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.25s;
+}
+.tools-cta .btn-cta:hover{
+  background:#ff4040;
+}
+.tools-cta .tools-note{
+  margin-top:.5rem;
+  color:#bdbdbd;
+  font-size:.9rem;
+}
 </style>
