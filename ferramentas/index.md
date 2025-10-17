@@ -59,12 +59,18 @@ image: "/assets/img/ferramentas-bg.jpg"
 }
 .tool-card:hover{ transform:translateY(-3px); border-color:#d62828; }
 
+/* ★ Corrigido: garante altura da imagem */
 .tool-thumb{
-  aspect-ratio:16/9;
-  background-size:cover;
-  background-position:center;
+  position:relative; width:100%;
+  background-size:cover; background-position:center;
   filter:brightness(.9);
+  min-height:180px;
+  aspect-ratio:16/9;
 }
+@supports not (aspect-ratio: 1) {
+  .tool-thumb::before{ content:""; display:block; padding-top:56.25%; }
+}
+
 .tool-info{
   padding:1rem;
   display:flex;
@@ -75,3 +81,4 @@ image: "/assets/img/ferramentas-bg.jpg"
 .tool-info p{ color:#bbb; font-size:.9rem; line-height:1.4; }
 .tool-btn{ margin-top:.6rem; color:#d62828; font-weight:600; font-size:.9rem; }
 </style>
+
