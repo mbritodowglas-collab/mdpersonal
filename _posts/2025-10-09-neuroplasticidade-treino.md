@@ -3,6 +3,7 @@ layout: post
 title: "Neuroplasticidade e Treino: Como o Corpo Aprende Novos Movimentos"
 date: 2025-10-09
 categories: [Neurociência]
+tags: [neuroplasticidade, aprendizado motor, foco, dopamina, treino consciente, sistema nervoso, coordenação, desempenho, ômega-3, magnésio, vitamina D3]
 image: "/assets/img/posts/neuroplasticidade.jpg"
 excerpt: "O treino físico não transforma só o corpo, mas também o cérebro. Entenda como a neuroplasticidade melhora desempenho, coordenação e motivação."
 afiliados:
@@ -66,7 +67,3 @@ Esse foco consciente fortalece a **conexão corpo–mente**, melhora o desempenh
 O treino ideal não forma apenas músculos — **ele reprograma o cérebro**.  
 A cada série, você reforça circuitos neurais de força, foco e disciplina.  
 E é isso que transforma o treino em algo maior: um processo contínuo de evolução física e mental.
-
----
-
-**Tags:** neuroplasticidade, aprendizado motor, foco, dopamina, treino consciente, sistema nervoso, coordenação, desempenho, ômega-3, magnésio, vitamina D3
