@@ -14,16 +14,16 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 <div class="blog-layout">
   <!-- Lateral com filtros -->
   <aside class="blog-sidebar">
-  <h3>Categorias</h3>
-  <nav class="blog-filtros-vertical">
-    <button data-filter="parceiros" class="on">Parceiros</button>
-    <button data-filter="nutrição">Nutrição</button>
-    <button data-filter="treino">Treino</button>
-    <button data-filter="autocuidado">Autocuidado</button>
-    <button data-filter="roupas">Roupas</button>
-    <button data-filter="livros">Livros</button>
-  </nav>
-</aside>
+    <h3>Categorias</h3>
+    <nav class="blog-filtros-vertical">
+      <button data-filter="parceiros" class="on">Parceiros</button>
+      <button data-filter="nutrição">Nutrição</button>
+      <button data-filter="treino">Treino</button>
+      <button data-filter="autocuidado">Autocuidado</button>
+      <button data-filter="roupas">Roupas</button>
+      <button data-filter="livros">Livros</button>
+    </nav>
+  </aside>
 
   <!-- Lista de utilitários -->
   <section class="blog-lista">
@@ -44,7 +44,7 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
              href="{{ it.url }}"
              target="_blank"
              rel="{% if is_partner %}noopener nofollow sponsored{% else %}noopener{% endif %}">
-            
+
             <!-- Wrapper fixa a proporção por padding-top -->
             <span class="af-thumb {% if is_partner %}r16x9{% else %}r1x1{% endif %}">
               <span class="af-img"
@@ -68,6 +68,12 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
     </div>
   </section>
 </div>
+
+<!-- CTA para Ferramentas -->
+<section class="tools-cta">
+  <a href="{{ '/ferramentas/' | relative_url }}" class="btn-cta">Abrir Ferramentas de Treino →</a>
+  <p class="tools-note">Calculadoras: FC de Reserva (Karvonen) e Intensidade por RM.</p>
+</section>
 
 <!-- Filtro por categoria -->
 <script>
@@ -150,5 +156,28 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 .utilitarios-page .blog-lista .card .exc{ margin:0; color:#cfcfcf; }
 .utilitarios-page .blog-lista .card .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
 .utilitarios-page .blog-lista .card:hover .ler{ color:#ff4040; }
-</style>
 
+/* CTA Ferramentas */
+.utilitarios-page .tools-cta{
+  text-align:center;
+  margin: 1.5rem 0 2.5rem;
+}
+.utilitarios-page .tools-cta .btn-cta{
+  display:inline-block;
+  background:#d62828;
+  color:#fff;
+  padding:.85rem 1.2rem;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.25s;
+}
+.utilitarios-page .tools-cta .btn-cta:hover{
+  background:#ff4040;
+}
+.utilitarios-page .tools-cta .tools-note{
+  margin-top:.5rem;
+  color:#bdbdbd;
+  font-size:.9rem;
+}
+</style>
