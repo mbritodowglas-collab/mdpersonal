@@ -19,10 +19,10 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
       </label>
 
       <label class="field">
-        <span>FC Máxima <small>(se não souber, calculo por 220 − idade)</small></span>
-        <input type="number" id="fcmax" inputmode="numeric" min="80" max="220" placeholder="ex.: 190">
-        <small class="field-note">(Se não souber, apenas deixe vazio)</small>
-      </label>
+  <span>FC Máxima</span>
+  <input type="number" id="fcmax" inputmode="numeric" min="80" max="220" placeholder="ex.: 190">
+  <small class="field-note">(Se não souber, apenas deixe vazio — será calculado automaticamente por 220 − idade)</small>
+</label>
 
       <label class="field">
         <span>FC de Repouso</span>
