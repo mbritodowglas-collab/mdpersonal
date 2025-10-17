@@ -1341,5 +1341,22 @@ layout: default
   margin: 2rem 0 3rem;
 }
 
+.tool-thumb{
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.9);
+  min-height: 180px;     /* garante altura mesmo sem aspect-ratio */
+  aspect-ratio: 16 / 9;  /* browsers modernos */
+}
+@supports not (aspect-ratio: 1) {
+  .tool-thumb::before{
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* fallback 16:9 */
+  }
+}
+
 
 
