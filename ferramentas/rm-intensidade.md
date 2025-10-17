@@ -11,7 +11,7 @@ description: "Informe reps máximas e carga; veja percentuais relativos à 1RM."
 </section>
 
 <section class="tool-card-full">
-  <form id="form-rm" class="tool-form" onsubmit="return false;">
+  <form id="form-rm" class="tool-form" onsubmit="return false;" autocomplete="off">
     <div class="grid">
       <label class="field">
         <span>Peso levantado (kg)</span>
@@ -34,7 +34,10 @@ description: "Informe reps máximas e carga; veja percentuais relativos à 1RM."
     </div>
 
     <div class="table-wrap">
-      <table class="tool-table">
+      <table class="tool-table" aria-describedby="tbl-title-rm">
+        <caption id="tbl-title-rm" style="text-align:left;opacity:.75;padding:.5rem 0 .25rem;">
+          Cargas por percentual da 1RM (com base na 1RM estimada)
+        </caption>
         <thead>
           <tr>
             <th>% da 1RM</th>
@@ -74,7 +77,7 @@ description: "Informe reps máximas e carga; veja percentuais relativos à 1RM."
 </style>
 
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   // percentuais mais usados em prescrição
   const pctList = [50,60,70,75,80,85,90];
   const el = (id)=>document.getElementById(id);
@@ -106,6 +109,5 @@ description: "Informe reps máximas e carga; veja percentuais relativos à 1RM."
   }
 
   el('btn-rm').addEventListener('click', calc);
-})();
+});
 </script>
-
