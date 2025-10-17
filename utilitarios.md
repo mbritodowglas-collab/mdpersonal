@@ -11,20 +11,17 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   <p>Ferramentas, acessórios e suplementos que recomendo — com curadoria por categoria.</p>
 </section>
 
-<div class="blog-layout">
-  <!-- Lateral com filtros -->
-  <aside class="blog-sidebar">
-    <h3>Categorias</h3>
-    <nav class="blog-filtros-vertical">
-      <button data-filter="parceiros" class="on">Parceiros</button>
-      <button data-filter="nutrição">Nutrição</button>
-      <button data-filter="treino">Treino</button>
-      <button data-filter="autocuidado">Autocuidado</button>
-      <button data-filter="roupas">Roupas</button>
-      <button data-filter="livros">Livros</button>
-    </nav>
-  </aside>
+<!-- Faixa rolável de categorias -->
+<nav class="cat-strip" aria-label="Filtrar por categoria">
+  <button data-filter="parceiros" class="on">Parceiros</button>
+  <button data-filter="nutrição">Nutrição</button>
+  <button data-filter="treino">Treino</button>
+  <button data-filter="autocuidado">Autocuidado</button>
+  <button data-filter="roupas">Roupas</button>
+  <button data-filter="livros">Livros</button>
+</nav>
 
+<div class="blog-layout">
   <!-- Lista de utilitários -->
   <section class="blog-lista">
     <div class="cards">
@@ -78,13 +75,12 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 <!-- Filtro por categoria -->
 <script>
 (function(){
-  // Escopo por segurança
   document.addEventListener('DOMContentLoaded', function(){
     document.body.classList.add('utilitarios-page');
   });
 
   const cards = Array.from(document.querySelectorAll('.card[data-cats]'));
-  const btns  = Array.from(document.querySelectorAll('.blog-filtros-vertical [data-filter]'));
+  const btns  = Array.from(document.querySelectorAll('.cat-strip [data-filter]'));
 
   const norm = (s='') => s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().trim();
 
@@ -101,6 +97,8 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
       btns.forEach(b=>b.classList.remove('on'));
       btn.classList.add('on');
       applyFilter(btn.dataset.filter);
+      // rola a faixa pra mostrar o botão ativo
+      document.querySelector('.cat-strip').scrollTo({ left: btn.offsetLeft - 16, behavior: 'smooth' });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
@@ -112,6 +110,38 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
 
 <!-- Estilo escopado desta página -->
 <style>
+/* ===== Faixa rolável de categorias ===== */
+.cat-strip{
+  display:flex;
+  gap:.6rem;
+  overflow-x:auto;
+  padding:.25rem 1rem .9rem;
+  margin:0 auto .6rem;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  max-width:980px;
+}
+.cat-strip::-webkit-scrollbar{ display:none; }
+.cat-strip button{
+  flex:0 0 auto;
+  border:1px solid #2a2a2a;
+  background:#0e0e0e;
+  color:#e9e9e9;
+  padding:.55rem .95rem;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.95rem;
+  transition:.2s ease;
+}
+.cat-strip button.on{
+  background:#f0d26a;
+  color:#121212;
+  border-color:#f0d26a;
+  box-shadow:0 6px 18px rgba(240,210,106,.18);
+}
+.cat-strip button:active{ transform:scale(.98); }
+
+/* ===== Grid e cards (mantido em 2 colunas) ===== */
 .utilitarios-page .blog-lista .cards{
   display:grid;
   grid-template-columns: repeat(2, minmax(0,1fr));
@@ -172,12 +202,8 @@ description: "Acessórios, suplementos e ferramentas recomendadas — curadoria 
   text-decoration:none;
   transition:.25s;
 }
-.utilitarios-page .tools-cta .btn-cta:hover{
-  background:#ff4040;
-}
+.utilitarios-page .tools-cta .btn-cta:hover{ background:#ff4040; }
 .utilitarios-page .tools-cta .tools-note{
-  margin-top:.5rem;
-  color:#bdbdbd;
-  font-size:.9rem;
+  margin-top:.5rem; color:#bdbdbd; font-size:.9rem;
 }
 </style>
