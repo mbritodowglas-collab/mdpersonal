@@ -1266,5 +1266,10 @@ layout: default
   }
 }
 
+.post-comments{
+  margin: 2rem 0 1rem;
+  border-top: 1px solid #1e1e1e;
+  padding-top: 1rem;
+}
 
 
