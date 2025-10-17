@@ -1255,4 +1255,16 @@ layout: default
   }
 }
 
+/* Sem título "Categorias": elimina espaçamentos extras */
+.blog-sidebar { padding-top: 0; }
+.blog-sidebar .blog-filtros-vertical { margin-top: 0; }
+
+/* Mobile: chips roláveis (mantém o que já colocamos), só afinando margens */
+@media (max-width: 720px){
+  .blog-filtros-vertical{
+    margin: .25rem -1rem 1.1rem; /* um pouco menos alto que antes */
+  }
+}
+
+
 
