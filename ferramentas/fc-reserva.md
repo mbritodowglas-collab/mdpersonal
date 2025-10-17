@@ -11,7 +11,7 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 </section>
 
 <section class="tool-card-full">
-  <form id="form-fcr" class="tool-form" onsubmit="return false;">
+  <form id="form-fcr" class="tool-form" onsubmit="return false;" autocomplete="off">
     <div class="grid">
       <label class="field">
         <span>Idade <small>(opcional)</small></span>
@@ -19,7 +19,7 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
       </label>
 
       <label class="field">
-        <span>FC Máxima <small>(se não souber, calculo por 220 - idade)</small></span>
+        <span>FC Máxima <small>(se não souber, calculo por 220 − idade)</small></span>
         <input type="number" id="fcmax" inputmode="numeric" min="80" max="220" placeholder="ex.: 190">
       </label>
 
@@ -41,7 +41,10 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
     </div>
 
     <div class="table-wrap">
-      <table class="tool-table">
+      <table class="tool-table" aria-describedby="tbl-title-fcr">
+        <caption id="tbl-title-fcr" style="text-align:left;opacity:.75;padding:.5rem 0 .25rem;">
+          Tabela de FC alvo por percentual da FC de reserva (Karvonen)
+        </caption>
         <thead>
           <tr>
             <th>% da FC de Reserva</th>
@@ -81,7 +84,7 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
 </style>
 
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   const pctList = [50,55,60,65,70,75,80]; // % desejados
   const el = (id)=>document.getElementById(id);
 
@@ -111,8 +114,7 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
     const tbody = el('tbody-fcr');
     tbody.innerHTML = '';
     pctList.forEach(p=>{
-      const inten = p/100;
-      const alvo = round(hrr * inten + fcRep);
+      const alvo = round(hrr * (p/100) + fcRep);
       const tr = document.createElement('tr');
       tr.innerHTML = `<td>${p}%</td><td><strong>${alvo}</strong> bpm</td>`;
       tbody.appendChild(tr);
@@ -122,5 +124,5 @@ description: "Calcule as zonas por FC de Reserva (Karvonen) – 50% a 80%."
   }
 
   el('btn-fcr').addEventListener('click', calc);
-})();
+});
 </script>
