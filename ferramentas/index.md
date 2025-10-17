@@ -75,4 +75,3 @@ image: "/assets/img/ferramentas-bg.jpg"
 .tool-info p{ color:#bbb; font-size:.9rem; line-height:1.4; }
 .tool-btn{ margin-top:.6rem; color:#d62828; font-weight:600; font-size:.9rem; }
 </style>
-
