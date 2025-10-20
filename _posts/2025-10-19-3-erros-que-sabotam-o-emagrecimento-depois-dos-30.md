@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "3 Erros que Sabotam o Emagrecimento Depois dos 30"
-date: 2025-10-21
+date: 2025-10-19
 categories: [Treino]
 tags: [emagrecimento, metabolismo, treino de força, sono, dopamina, neurociência, comportamento, hábitos, constância]
 image: "/assets/img/posts/erros-emagrecimento-depois-dos-30.jpg"
