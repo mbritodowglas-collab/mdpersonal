@@ -29,6 +29,81 @@
   note: "Conforto e estilo."
   cat: ["Parceiros"]
 
+# =========================
+# NUTRIÇÃO — WHEY / PROTEÍNA
+# =========================
+- title: "Shark Pro Ultra Whey Protein — 900g (Banana & Canela)"
+  url: "https://www.fithouse.com.br/whey-protein-concentrado/ultra-whey-protein-pote-900g-sabor-banana-ccanela-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/whey-shark-banana-canela.jpg"
+  note: "Base proteica essencial."
+  cat: ["Nutrição"]
+
+- title: "Adaptogen Tasty Whey — 900g"
+  url: "https://www.fithouse.com.br/proteinas/whey-protein-tasty-whey-pote-900g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/whey-adaptogen-tasty.jpg"
+  note: "Blend saboroso, boa digestão."
+  cat: ["Nutrição"]
+
+- title: "Shark Pro Whey Beef Protein — 900g (Frutas Vermelhas)"
+  url: "https://www.fithouse.com.br/proteinas/whey-beef-protein-zero-lactose-pote-900g-shark-pro-frutas-vermelhas?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/whey-beef-pro-shark.jpg"
+  note: "Zero lactose — alternativa à proteína do leite."
+  cat: ["Nutrição"]
+
+- title: "Nutrata Pasta de Amendoim + Whey — 600g"
+  url: "https://www.fithouse.com.br/pasta-de-amendoim/pasta-de-amendoim-com-whey-protein-600g-nutrata-dulce-de-leche-crunchy-havanna?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/pasta-amendoim-whey.jpg"
+  note: "Snack proteico prático."
+  cat: ["Nutrição"]
+
+- title: "Vitafor Whey Concentrado — Refil 900g (Morango)"
+  url: "https://www.fithouse.com.br/whey-protein-concentrado/whey-protein-concentrado-refil-900g-morango-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/whey-vitafor-refil-morango.jpg"
+  note: "Custo/benefício para uso diário."
+  cat: ["Nutrição"]
+
+
+# =========================
+# NUTRIÇÃO — CREATINA
+# =========================
+- title: "Shark Pro Creatina Flavor — 300g (Limão)"
+  url: "https://www.fithouse.com.br/creatina/energy-creatina-flavor-pote-300g-sabor-limao-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/creatina-shark-limao.jpg"
+  note: "Força e desempenho cognitivo."
+  cat: ["Nutrição"]
+
+- title: "Black Skull Creatine — 300g"
+  url: "https://www.fithouse.com.br/creatina/creatine-300g-blackskull?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/creatina-blackskull.jpg"
+  note: "Monohidratada — alto respaldo científico."
+  cat: ["Nutrição"]
+
+- title: "Adaptogen Creatina — Refil 1kg"
+  url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/creatina-adaptogen-1kg.jpg"
+  note: "Alto rendimento."
+  cat: ["Nutrição"]
+
+
+# =========================
+# NUTRIÇÃO — AMINOÁCIDOS / INTRA
+# =========================
+- title: "Adaptogen Intra Amino Sport — 196,8g"
+  url: "https://www.fithouse.com.br/pre-treino/aminoacido-intra-amino-sport-pote-196-80g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/intra-amino-adaptogen.jpg"
+  note: "Suporte intra-treino."
+  cat: ["Nutrição"]
+
+
+# =========================
+# NUTRIÇÃO — TERMOGÊNICO
+# =========================
+- title: "Vitafor Termo Plus — 240g (frutas vermelhas + gengibre)"
+  url: "https://www.fithouse.com.br/termogenicos/termogenico-termo-plus-pote-240g-frutas-vermelhas-com-gengibre-e-cha-verde-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  image: "/assets/img/afiliados/termogenico-vitafor-termo-plus.jpg"
+  note: "Auxílio ao metabolismo (uso orientado)."
+  cat: ["Nutrição"]
+
 
 # ==========================
 # NUTRIÇÃO — MULTIVITAMÍNICOS
