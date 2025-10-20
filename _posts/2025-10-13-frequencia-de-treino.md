@@ -9,7 +9,7 @@ excerpt: "Mais treino nem sempre significa mais resultado. Entenda como a frequ�
 afiliados:
   - title: "Shark Pro Creatina Flavor 300g — Limão"
     url: "https://www.fithouse.com.br/creatina/energy-creatina-flavor-pote-300g-sabor-limao-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    image: "/assets/img/afiliados/thumb-default.jpg"
+    image: "/assets/img/afiliados/creatina-shark-limao.jpg"
     note: "Mais força, energia e recuperação muscular acelerada."
   - title: "Foam Roller — Liberação miofascial"
     url: "https://s.shopee.com.br/9AFwIahWad"
