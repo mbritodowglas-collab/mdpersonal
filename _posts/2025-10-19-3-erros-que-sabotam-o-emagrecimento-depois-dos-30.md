@@ -4,7 +4,7 @@ title: "3 Erros que Sabotam o Emagrecimento Depois dos 30"
 date: 2025-10-19
 categories: [Treino]
 tags: [emagrecimento, metabolismo, treino de força, sono, dopamina, neurociência, comportamento, hábitos, constância]
-image: "/assets/img/posts/erros-emagrecimento-depois-dos-30.jpg"
+image: "/assets/img/posts/erros-emagrecimento-depois-dos.jpg"
 excerpt: "Depois dos 30, o corpo muda, a mente também. Descubra os erros mais comuns que travam o emagrecimento e como ajustar o jogo sem pirar no processo."
 afiliados:
   - title: "Vitafor Termo Plus — 240g (frutas vermelhas + gengibre)"
