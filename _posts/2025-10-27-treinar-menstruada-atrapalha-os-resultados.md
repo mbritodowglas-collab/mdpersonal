@@ -32,7 +32,7 @@ O segredo é respeitar o corpo — entender o que tá rolando no ciclo e ajustar
 
 ---
 
-## 🩸 Fase Menstrual (dias 1–5)
+##  Fase Menstrual (dias 1–5)
 
 É quando os hormônios **estrógeno e progesterona** despencam, e o corpo fica mais sensível.  
 Pode rolar cólica, inchaço e aquele cansaço básico.  
@@ -45,7 +45,7 @@ A liberação de **endorfina** e o aumento da circulação fazem mágica aqui.
 
 ---
 
-## 🌱 Fase Folicular (dias 6–13)
+##  Fase Folicular (dias 6–13)
 
 Aqui o jogo vira.  
 O **estrógeno sobe**, o corpo responde melhor ao treino e a disposição volta.  
@@ -57,7 +57,7 @@ Essa é a fase pra dar aquele gás no agachamento e na musculação.
 
 ---
 
-## 💥 Fase Ovulatória (dias 14–16)
+##  Fase Ovulatória (dias 14–16)
 
 O **estrógeno** chega no pico e o hormônio LH tá bombando.  
 Você sente mais disposição, foco e força — parece até que tudo flui mais fácil.  
@@ -70,7 +70,7 @@ Nada de querer virar atleta olímpica em 3 dias.
 
 ---
 
-## 🌙 Fase Lútea (dias 17–28)
+##  Fase Lútea (dias 17–28)
 
 Essa fase é mais puxada.  
 A **progesterona** aumenta, o corpo tende a reter líquido, o sono piora e o humor oscila.  
@@ -81,7 +81,7 @@ Foca em treinos moderados, respiração e alongamentos.
 
 ---
 
-## 🧠 E o lado emocional?
+##  E o lado emocional?
 
 Treinar durante o ciclo tem efeito direto no cérebro.  
 O exercício ajuda a equilibrar o sistema nervoso, reduz ansiedade e melhora o foco.  
@@ -92,7 +92,7 @@ Ou seja, o treino não só cuida do corpo — **ele regula também o emocional**
 
 ---
 
-## 💬 Resumo do papo
+##  Então anota pra não errar mais
 
 - **Menstrual:** movimento leve e foco em aliviar sintomas.  
 - **Folicular:** hora de crescer, força total.  
