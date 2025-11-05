@@ -1,28 +1,16 @@
-# ===========================
-# YOUTUBE — ÚLTIMOS LANÇAMENTOS (atualizável automaticamente)
-# ===========================
-# Gerado e mantido pelo workflow .github/workflows/update-youtube.yml
-# Não é necessário editar manualmente (a menos que queira forçar o último vídeo).
-
-updated_at: "2025-11-05T00:00:00Z"
-
 playlists:
-  - key: "mdpersonal"
-    name: "MD Personal"
-    title: "Último vídeo — MD Personal"
-    playlist_id: "PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-"
-    playlist_url: "https://youtube.com/playlist?list=PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-&si=3MuMbayS8e8ZmIpL"
-    last_id: "COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_MD"
-    video_url: "https://www.youtube.com/watch?v=COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_MD"
-    thumb: "https://img.youtube.com/vi/COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_MD/hqdefault.jpg"
-    published: "2025-11-05"
+  - key: "mdp_treino"
+    title: "MD Personal — Últimos vídeos (Playlist 1)"
+    id: "PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-"   # ID da sua 1ª playlist
+    url: "https://youtube.com/playlist?list=PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-"
+    last_id: ""   # deixamos vazio; o workflow pode preencher
+    title_last: ""  # opcional: preenchido pelo workflow
+    published: ""   # opcional: preenchido pelo workflow
 
-  - key: "cnt"
-    name: "CNT"
-    title: "Último vídeo — CNT (Centro de NeuroTreinamento)"
-    playlist_id: "PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ"
-    playlist_url: "https://youtube.com/playlist?list=PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ&si=iqXTcIl2exyNVtxN"
-    last_id: "COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_CNT"
-    video_url: "https://www.youtube.com/watch?v=COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_CNT"
-    thumb: "https://img.youtube.com/vi/COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_CNT/hqdefault.jpg"
-    published: "2025-11-05"
+  - key: "mdp_cnt"
+    title: "MD Personal — Últimos vídeos (Playlist 2)"
+    id: "PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ"   # ID da sua 2ª playlist
+    url: "https://youtube.com/playlist?list=PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ"
+    last_id: ""
+    title_last: ""
+    published: ""
