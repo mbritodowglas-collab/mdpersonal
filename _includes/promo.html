@@ -7,6 +7,7 @@
     <div class="md-promo__text">
       <strong class="md-promo__title"></strong>
       <span class="md-promo__desc"></span>
+      <span class="md-promo__note">eu selecionei esse item; link oficial/afiliado ✅</span>
       <span class="md-promo__cta">Ver</span>
     </div>
   </a>
@@ -18,8 +19,10 @@
   max-width: 320px; width: calc(100vw - 24px);
   background:#0f0f0f; border:1px solid #1f1f1f; color:#eee;
   border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.45); overflow:hidden;
-  font-family: inherit;
+  font-family: inherit; opacity:0; transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease;
 }
+.md-promo.show{ opacity:1; transform: translateY(0); }
 .md-promo[hidden]{ display:none !important; }
 .md-promo__body{
   display:grid; grid-template-columns: 96px 1fr; gap:10px;
@@ -30,6 +33,7 @@
 .md-promo__text{ display:flex; flex-direction:column; gap:4px; }
 .md-promo__title{ font-size:1rem; color:#fff; }
 .md-promo__desc{ font-size:.9rem; color:#cfcfcf; }
+.md-promo__note{ font-size:.8rem; opacity:.8; color:#9ad29a; }
 .md-promo__cta{
   margin-top:6px; align-self:flex-start;
   background:#d62828; color:#fff; font-weight:700;
@@ -50,11 +54,12 @@
 <script>
 (function(){
   try{
+    // Força exibir SEM lembrar fechamento / sem "uma vez por sessão"
     const cfg = {
       items: {{ promo.items | jsonify }},
       rotation: {{ promo.rotation | jsonify }},
-      rememberHours: {{ promo.remember_close_hours | default: 0 }},
-      oncePerSession: {{ promo.once_per_session | default: false }},
+      rememberHours: 0,         // << ignora remember_close_hours do YAML
+      oncePerSession: false,    // << sempre que mudar de página, pode aparecer
       hideOn: {{ promo.hide_on_paths | default: "[]" | jsonify }}
     };
 
@@ -62,24 +67,11 @@
     const path = location.pathname.replace(/\/+$/,'') || '/';
     if (Array.isArray(cfg.hideOn) && cfg.hideOn.includes(path)) return;
 
-    // 2) controle de recorrência (fechou recentemente?)
-    const CLOSE_KEY = "mdpromo_closed_at";
-    if (cfg.rememberHours && cfg.rememberHours > 0){
-      const ts = +localStorage.getItem(CLOSE_KEY) || 0;
-      if (Date.now() - ts < cfg.rememberHours * 3600 * 1000) return;
-    }
-    // uma vez por sessão?
-    if (cfg.oncePerSession){
-      if (sessionStorage.getItem("mdpromo_seen") === "1") return;
-    }
-
-    // 3) escolhe item ativo
+    // 2) escolhe item ativo
     const pool = (cfg.items||[]).filter(it => it && it.active);
     if (!pool.length) return;
 
-    function pickRandom(list){
-      return list[Math.floor(Math.random()*list.length)];
-    }
+    function pickRandom(list){ return list[Math.floor(Math.random()*list.length)]; }
     function pickWeighted(list){
       const arr = [];
       list.forEach(it=>{
@@ -91,32 +83,40 @@
     const chosen = (cfg.rotation === "weighted-random") ? pickWeighted(pool) : pickRandom(pool);
     if (!chosen) return;
 
-    // 4) injeta conteúdo
+    // 3) injeta conteúdo
     const box   = document.getElementById("md-promo");
     const link  = box.querySelector(".md-promo__body");
     const img   = box.querySelector(".md-promo__img img");
+    const imgWrap = box.querySelector(".md-promo__img");
     const ttl   = box.querySelector(".md-promo__title");
     const desc  = box.querySelector(".md-promo__desc");
     const cta   = box.querySelector(".md-promo__cta");
 
     link.href = chosen.url || "#";
-    img.src = chosen.image || "";
-    img.alt = chosen.title || "Oferta";
     ttl.textContent  = chosen.title || "Produto";
     desc.textContent = chosen.text  || "";
     cta.textContent  = chosen.cta   || "Ver";
 
-    // mostra
-    box.hidden = false;
-    if (cfg.oncePerSession) sessionStorage.setItem("mdpromo_seen","1");
+    if (chosen.image){
+      img.src = chosen.image;
+      img.alt = chosen.title || "Oferta";
+      imgWrap.style.display = "";
+    } else {
+      img.removeAttribute("src");
+      imgWrap.style.display = "none";
+      // Rebalanceia o grid se não tiver imagem
+      box.querySelector(".md-promo__body").style.gridTemplateColumns = "1fr";
+    }
 
-    // fechar
+    // 4) mostra (com transição)
+    box.hidden = false;
+    requestAnimationFrame(()=> box.classList.add("show"));
+
+    // 5) fechar (não grava nada, reaparece na próxima página)
     box.querySelector(".md-promo__close").addEventListener("click", function(ev){
       ev.stopPropagation();
-      box.hidden = true;
-      if (cfg.rememberHours && cfg.rememberHours > 0){
-        localStorage.setItem(CLOSE_KEY, String(Date.now()));
-      }
+      box.classList.remove("show");
+      setTimeout(()=>{ box.hidden = true; }, 200);
     });
   }catch(e){}
 })();
