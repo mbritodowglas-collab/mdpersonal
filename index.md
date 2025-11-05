@@ -15,15 +15,16 @@ title: Início
 </section>
 
 <section class="artigos">
-  <h2>Últimos artigos</h2>
+  <h2>Últimos artigos e vídeos</h2>
 
   {% comment %}
-    Se houver vídeo em _data/youtube.yml, mostramos 1 card de vídeo + 2 artigos.
-    Caso contrário, mantemos 3 artigos (comportamento atual).
+    Verifica se há playlists no arquivo _data/youtube.yml.
+    Se existir pelo menos uma e tiver last_id, mostra o card de vídeo (MD Personal).
   {% endcomment %}
   {% assign has_video = false %}
-  {% if site.data.youtube and site.data.youtube.last_id %}
+  {% if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists[0].last_id %}
     {% assign has_video = true %}
+    {% assign vid = site.data.youtube.playlists[0] %}
   {% endif %}
 
   {% assign limit_posts = 3 %}
@@ -34,7 +35,6 @@ title: Início
   <div class="cards">
 
     {% if has_video %}
-      {% assign vid = site.data.youtube %}
       <article class="card card-video">
         <a href="https://www.youtube.com/watch?v={{ vid.last_id | escape }}" target="_blank" rel="noopener" aria-label="Assistir: {{ vid.title | default: 'Último vídeo no YouTube' }}">
           <div class="thumb video-thumb" style="--yt-thumb:url('https://img.youtube.com/vi/{{ vid.last_id | escape }}/hqdefault.jpg')">
@@ -79,13 +79,41 @@ title: Início
 </section>
 
 <style>
-/* Ajuste visual do card de vídeo para manter o padrão dos cards */
+.artigos .cards{
+  display:grid;
+  gap:1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.artigos .card{
+  background:#0f0f0f;
+  border:1px solid #1f1f1f;
+  border-radius:16px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:.25s ease;
+}
+.artigos .card:hover{ transform: translateY(-3px); border-color:#2a2a2a; }
+.artigos .thumb{
+  aspect-ratio:16/9;
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.92);
+}
+.artigos .card-body{ padding:1rem; display:flex; flex-direction:column; gap:.4rem; }
+.artigos .meta{ display:flex; align-items:center; gap:.5rem; margin:0; font-size:.9rem; opacity:.95; }
+.artigos .cat{
+  background:rgba(227,197,101,.1);
+  color:#e3c565; border:1px solid rgba(227,197,101,.35);
+  padding:.12rem .5rem; border-radius:999px; font-weight:600;
+}
+.artigos h3{ color:#fff; font-size:1.08rem; margin:.2rem 0 .25rem; line-height:1.35; }
+.artigos .exc{ color:#cfcfcf; margin:0; }
+.artigos .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
+
 .card-video .video-thumb{
   position: relative;
-  background-image: var(--bg, none);
-  background: #000;
-}
-.card-video .video-thumb{
   background-image: var(--yt-thumb);
   background-size: cover;
   background-position: center;
