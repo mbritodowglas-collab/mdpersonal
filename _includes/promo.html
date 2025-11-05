@@ -51,7 +51,14 @@
       rotation: {{ promo.rotation | jsonify }},
       rememberHours: 0,
       oncePerSession: false,
-      hideOn: {{ promo.hide_on_paths | jsonify }}
+      hideOn: {{ promo.hide_on_paths | default: "[]" | jsonify }}
+    };
+
+    // base respeitando baseurl do Jekyll
+    const BASE = "{{ '' | relative_url }}";
+    const resolveUrl = (u)=>{
+      if (!u) return "";
+      return /^https?:\/\//i.test(u) ? u : (BASE.replace(/\/$/,'') + '/' + u.replace(/^\//,''));
     };
 
     const path = location.pathname.replace(/\/+$/,'') || '/';
@@ -73,7 +80,7 @@
     const desc  = box.querySelector(".md-promo__desc");
     const cta   = box.querySelector(".md-promo__cta");
 
-    const href = chosen.url || "{{ '/' | relative_url }}";
+    const href = resolveUrl(chosen.url || "{{ '/' | relative_url }}");
     link.setAttribute("href", href);
     link.setAttribute("data-href", href);
     if (/^https?:\/\//i.test(href)) { link.setAttribute("target","_blank"); link.setAttribute("rel","noopener nofollow external"); }
@@ -84,7 +91,7 @@
     cta.textContent  = chosen.cta   || "Ver";
 
     if (chosen.image){
-      img.src = chosen.image;
+      img.src = resolveUrl(chosen.image);
       img.alt = chosen.title || "Produto recomendado";
       imgWrap.style.display = "";
     } else {
