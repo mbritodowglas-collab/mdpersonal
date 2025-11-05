@@ -18,13 +18,26 @@ title: Início
   <h2>Últimos artigos e vídeos</h2>
 
   {% comment %}
-    Verifica se há playlists no arquivo _data/youtube.yml.
-    Se existir pelo menos uma e tiver last_id, mostra o card de vídeo (MD Personal).
+    Busca o item mais recente em _data/youtube.yml (entre playlists) pelo campo "published".
+    Espera-se estrutura:
+    youtube.yml ->
+      playlists:
+        - key: "mdpersonal"
+          title: "Último vídeo — MD Personal"
+          playlist_url: "..."
+          last_id: "VIDEO_ID"
+          thumb: "https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg"
+          published: "2025-11-05"  # ISO-like recomendado
   {% endcomment %}
   {% assign has_video = false %}
-  {% if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists[0].last_id %}
-    {% assign has_video = true %}
-    {% assign vid = site.data.youtube.playlists[0] %}
+  {% assign vid = nil %}
+
+  {% if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists.size > 0 %}
+    {% assign _sorted = site.data.youtube.playlists | sort: 'published' | reverse %}
+    {% assign vid = _sorted[0] %}
+    {% if vid and vid.last_id %}
+      {% assign has_video = true %}
+    {% endif %}
   {% endif %}
 
   {% assign limit_posts = 3 %}
@@ -35,9 +48,14 @@ title: Início
   <div class="cards">
 
     {% if has_video %}
+      {% assign yt_thumb = vid.thumb %}
+      {% if yt_thumb == nil or yt_thumb == '' %}
+        {% assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' %}
+      {% endif %}
+
       <article class="card card-video">
         <a href="https://www.youtube.com/watch?v={{ vid.last_id | escape }}" target="_blank" rel="noopener" aria-label="Assistir: {{ vid.title | default: 'Último vídeo no YouTube' }}">
-          <div class="thumb video-thumb" style="--yt-thumb:url('https://img.youtube.com/vi/{{ vid.last_id | escape }}/hqdefault.jpg')">
+          <div class="thumb video-thumb" style="--yt-thumb:url('{{ yt_thumb }}')">
             <span class="play-badge" aria-hidden="true">▶</span>
           </div>
           <div class="card-body">
@@ -46,7 +64,7 @@ title: Início
               {% if vid.published %}<span class="date">{{ vid.published }}</span>{% endif %}
             </p>
             <h3>{{ vid.title | default: 'Último vídeo no YouTube' }}</h3>
-            <p class="exc">Assista à atualização mais recente do canal. Conteúdo alinhado com os artigos da semana.</p>
+            <p class="exc">Assista ao conteúdo mais recente do canal. Mantemos alinhado com os artigos da semana.</p>
             <span class="ler">Ver no YouTube →</span>
           </div>
         </a>
@@ -112,6 +130,7 @@ title: Início
 .artigos .exc{ color:#cfcfcf; margin:0; }
 .artigos .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
 
+/* Card de vídeo */
 .card-video .video-thumb{
   position: relative;
   background-image: var(--yt-thumb);
