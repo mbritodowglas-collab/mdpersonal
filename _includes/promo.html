@@ -51,7 +51,7 @@
       rotation: {{ promo.rotation | jsonify }},
       rememberHours: 0,
       oncePerSession: false,
-      hideOn: {{ promo.hide_on_paths | default: "[]" | jsonify }}
+      hideOn: {{ promo.hide_on_paths | jsonify }}
     };
 
     const path = location.pathname.replace(/\/+$/,'') || '/';
