@@ -1,9 +1,8 @@
 enabled: true
-remember_close_hours: 24
+remember_close_hours: 0
 hide_on_paths:
   - "/avaliacao"
-
-rotation: "weighted-random"   # "random" ou "weighted-random"
+rotation: "weighted-random"
 once_per_session: false
 
 items:
@@ -12,7 +11,7 @@ items:
     weight: 3
     title: "Creatina Adaptogen — Refil 1kg"
     text: "Força e rendimento. Cupom: MDSUPLEMENTOS5"
-    image: "/assets/img/afiliados/creatina-adaptogen-1kg.jpg"
+    image: "{{ '/assets/img/afiliados/creatina-adaptogen-1kg.jpg' | relative_url }}"
     url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
     cta: "Ver oferta"
 
@@ -21,7 +20,7 @@ items:
     weight: 2
     title: "Kettlebell (4–12 kg)"
     text: "Força funcional e versatilidade no treino em casa."
-    image: "/assets/img/afiliados/kettlebell.jpg"
+    image: "{{ '/assets/img/afiliados/kettlebell.jpg' | relative_url }}"
     url: "https://s.shopee.com.br/1VqV85rdT0"
     cta: "Conferir"
 
@@ -30,6 +29,6 @@ items:
     weight: 3
     title: "Routine Dermo — Hidratante FPS 50"
     text: "Proteção diária pra treinar ao ar livre."
-    image: "/assets/img/afiliados/routine-dermo-fps50.jpg"
+    image: "{{ '/assets/img/afiliados/routine-dermo-fps50.jpg' | relative_url }}"
     url: "https://s.shopee.com.br/1g9vRrOMa1"
     cta: "Ver"
