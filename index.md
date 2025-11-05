@@ -19,7 +19,8 @@ title: Início
 
   {%- comment -%}
     Seleciona a playlist mais recente entre _data/youtube.yml -> playlists,
-    comparando o campo "published" (quando existir).
+    comparando o campo "published" (quando existir). Se não houver "published",
+    usa a primeira playlist do arquivo.
   {%- endcomment -%}
   {%- assign has_video = false -%}
   {%- assign vid = nil -%}
@@ -29,14 +30,9 @@ title: Início
     {%- assign latest_date = vid.published | default: '' -%}
     {%- for it in site.data.youtube.playlists -%}
       {%- if it.published and it.published != '' -%}
-        {%- if latest_date == '' -%}
+        {%- if latest_date == '' or it.published > latest_date -%}
           {%- assign latest_date = it.published -%}
           {%- assign vid = it -%}
-        {%- else -%}
-          {%- if it.published > latest_date -%}
-            {%- assign latest_date = it.published -%}
-            {%- assign vid = it -%}
-          {%- endif -%}
         {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
@@ -49,29 +45,21 @@ title: Início
   <div class="cards">
 
     {%- if has_video -%}
-      {%- comment -%} Monta URL da playlist {%- endcomment -%}
-      {%- assign pl_url = vid.url -%}
-      {%- if pl_url == nil or pl_url == '' -%}
-        {%- if vid.id -%}
-          {%- assign pl_url = 'https://www.youtube.com/playlist?list=' | append: vid.id -%}
-        {%- endif -%}
-      {%- endif -%}
+      {%- comment -%}
+        Tenta usar o "id" da playlist para o iframe (capa e lista automáticas).
+        Se não houver "id", faz fallback para card clicável com thumb/hqdefault.
+      {%- endcomment -%}
 
-      {%- comment -%} Resolve thumb (thumb > thumb_hq > last_id) {%- endcomment -%}
-      {%- assign yt_thumb = vid.thumb -%}
-      {%- if yt_thumb == nil or yt_thumb == '' -%}
-        {%- assign yt_thumb = vid.thumb_hq -%}
-      {%- endif -%}
-      {%- if yt_thumb == nil or yt_thumb == '' -%}
-        {%- if vid.last_id -%}
-          {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
-        {%- endif -%}
-      {%- endif -%}
-
-      <article class="card card-video">
-        <a href="{{ pl_url }}" target="_blank" rel="noopener" aria-label="Abrir playlist no YouTube: {{ vid.title | default: 'Últimos vídeos' }}">
-          <div class="thumb video-thumb" style="--yt-thumb:url('{{ yt_thumb }}')">
-            <span class="play-badge" aria-hidden="true">▶</span>
+      {%- if vid.id and vid.id != '' -%}
+        <!-- Player incorporado da playlist (capa e vídeos sempre atualizados) -->
+        <article class="card card-video">
+          <div class="thumb video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/videoseries?list={{ vid.id | escape }}"
+              title="{{ vid.title | default: 'Últimos vídeos' }}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
           <div class="card-body">
             <p class="meta">
@@ -81,11 +69,47 @@ title: Início
               {%- endif -%}
             </p>
             <h3>{{ vid.title | default: 'Últimos vídeos' }}</h3>
+            {%- assign pl_url = vid.url -%}
+            {%- if pl_url == nil or pl_url == '' -%}
+              {%- assign pl_url = 'https://www.youtube.com/playlist?list=' | append: vid.id -%}
+            {%- endif -%}
             <p class="exc">Assista à playlist mais recente do canal. Mantemos alinhado com os artigos da semana.</p>
-            <span class="ler">Abrir playlist →</span>
+            <a class="ler" href="{{ pl_url }}" target="_blank" rel="noopener">Abrir playlist →</a>
           </div>
-        </a>
-      </article>
+        </article>
+      {%- else -%}
+        {%- comment -%}
+          Fallback: sem "id" da playlist. Renderiza card estático que abre a URL.
+          Resolve thumb: usa "thumb" > "thumb_hq" > imagem do last_id.
+        {%- endcomment -%}
+        {%- assign pl_url = vid.url -%}
+        {%- assign yt_thumb = vid.thumb -%}
+        {%- if yt_thumb == nil or yt_thumb == '' -%}
+          {%- assign yt_thumb = vid.thumb_hq -%}
+        {%- endif -%}
+        {%- if (yt_thumb == nil or yt_thumb == '') and vid.last_id -%}
+          {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
+        {%- endif -%}
+
+        <article class="card card-video">
+          <a href="{{ pl_url }}" target="_blank" rel="noopener" aria-label="Abrir playlist no YouTube: {{ vid.title | default: 'Últimos vídeos' }}">
+            <div class="thumb video-thumb" style="--yt-thumb:url('{{ yt_thumb }}')">
+              <span class="play-badge" aria-hidden="true">▶</span>
+            </div>
+            <div class="card-body">
+              <p class="meta">
+                <span class="cat">YouTube</span>
+                {%- if vid.published and vid.published != '' -%}
+                  <span class="date">{{ vid.published }}</span>
+                {%- endif -%}
+              </p>
+              <h3>{{ vid.title | default: 'Últimos vídeos' }}</h3>
+              <p class="exc">Assista à playlist mais recente do canal. Mantemos alinhado com os artigos da semana.</p>
+              <span class="ler">Abrir playlist →</span>
+            </div>
+          </a>
+        </article>
+      {%- endif -%}
     {%- endif -%}
 
     {%- if site.posts and site.posts.size > 0 -%}
@@ -146,7 +170,7 @@ title: Início
 .artigos .exc{ color:#cfcfcf; margin:0; }
 .artigos .ler{ color:#d62828; font-weight:700; margin-top:.2rem; }
 
-/* Card de vídeo */
+/* Card de vídeo — THUMB (fallback) */
 .card-video .video-thumb{
   position: relative;
   background-image: var(--yt-thumb);
@@ -168,5 +192,22 @@ title: Início
 }
 @media (hover:hover){
   .card-video:hover .thumb{ filter: brightness(1); }
+}
+
+/* Card de vídeo — IFRAME (principal) */
+.video-embed{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:12px;
+  overflow:hidden;
+  background:#000;
+}
+.video-embed iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
 }
 </style>
