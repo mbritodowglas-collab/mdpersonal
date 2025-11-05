@@ -17,12 +17,3 @@ items:
     cta: "Ver oferta"
 
 
-
-- id: "shark-pro-beef-protein"
-    active: true
-    weight: 3
-title: "Shark Pro Whey Beef Protein — 900g (Frutas Roxas)"
-  url: "https://s.shopee.com.br/1Vr7HKjl6p"
-  image: "/assets/img/afiliados/whey-beef-pro-shark.jpg"
-  note: "Zero lactose — alternativa à proteína do leite."
-cta: "Conferir"
