@@ -10,10 +10,26 @@ items:
   - id: "creatina-adaptogen-1kg"
     active: true
     weight: 3
-    title: "Creatina Platinum 1kg"
-    text: "Força e foco. Cupom: MDSUPLEMENTOS5"
+    title: "Creatina Adaptogen — Refil 1kg"
+    text: "Força e rendimento. Cupom: MDSUPLEMENTOS5"
     image: "/assets/img/afiliados/creatina-adaptogen-1kg.jpg"
     url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
     cta: "Ver oferta"
 
+  - id: "kettlebell-4-12kg"
+    active: true
+    weight: 2
+    title: "Kettlebell (4–12 kg)"
+    text: "Força funcional e versatilidade no treino em casa."
+    image: "/assets/img/afiliados/kettlebell.jpg"
+    url: "https://s.shopee.com.br/1VqV85rdT0"
+    cta: "Conferir"
 
+  - id: "routine-dermo-fps50"
+    active: true
+    weight: 3
+    title: "Routine Dermo — Hidratante FPS 50"
+    text: "Proteção diária pra treinar ao ar livre."
+    image: "/assets/img/afiliados/routine-dermo-fps50.jpg"
+    url: "https://s.shopee.com.br/1g9vRrOMa1"
+    cta: "Ver"
