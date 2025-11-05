@@ -2,8 +2,8 @@ name: Update YouTube data
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # a cada 6h
-  workflow_dispatch:        # botão "Run workflow"
+    - cron: "0 */6 * * *"   # a cada 6h (UTC)
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,17 +15,20 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0           # permite rebase/push sem erro
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Install deps
+      - name: Install runtime deps (no-save)
         run: |
-          mkdir -p scripts
-          npm init -y
-          npm install xml2js yaml node-fetch@3
+          npm install --no-save xml2js yaml node-fetch@3
+
+      - name: Ensure _data folder
+        run: mkdir -p _data
 
       - name: Fetch playlists & write _data/youtube.yml
         run: node scripts/fetch-youtube.mjs
@@ -37,6 +40,7 @@ jobs:
             git config user.email "actions@github.com"
             git add _data/youtube.yml
             git commit -m "chore: update youtube data"
+            git pull --rebase
             git push
           else
             echo "Sem mudanças."
