@@ -1,0 +1,20 @@
+# ===========================
+# YOUTUBE — ÚLTIMOS LANÇAMENTOS
+# ===========================
+# Sempre que sair um vídeo novo, basta atualizar o campo "last_id" com o ID do novo vídeo.
+# (o ID é o código que vem depois de "watch?v=" na URL)
+
+playlists:
+  - key: "mdpersonal"
+    title: "Último vídeo — MD Personal"
+    playlist_url: "https://youtube.com/playlist?list=PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-&si=3MuMbayS8e8ZmIpL"
+    last_id: "COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_MD"
+    thumb: "https://img.youtube.com/vi/COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_MD/hqdefault.jpg"
+    published: "2025-11-05"
+
+  - key: "cnt"
+    title: "Último vídeo — CNT (Centro de NeuroTreinamento)"
+    playlist_url: "https://youtube.com/playlist?list=PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ&si=iqXTcIl2exyNVtxN"
+    last_id: "COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_CNT"
+    thumb: "https://img.youtube.com/vi/COLOQUE_AQUI_O_ID_DO_VIDEO_MAIS_RECENTE_DO_CNT/hqdefault.jpg"
+    published: "2025-11-05"
