@@ -1,6 +1,6 @@
 # ===== PARCEIROS (lojas/vitrines) =====
 - title: "Fit House — Cupom MDSUPLEMENTOS5"
-  url: "https://www.fithouse.com.br?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/3fvbqTjNx9"
   image: "/assets/img/afiliados/fithouse.jpg"
   note: "Use o cupom MDSUPLEMENTOS5."
   cat: ["Parceiros"]
@@ -32,50 +32,55 @@
 # =========================
 # NUTRIÇÃO — WHEY / PROTEÍNA
 # =========================
-- title: "Shark Pro Ultra Whey Protein — 900g (Banana & Canela)"
-  url: "https://www.fithouse.com.br/whey-protein-concentrado/ultra-whey-protein-pote-900g-sabor-banana-ccanela-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+- title: "Shark Pro Ultra Whey Protein — 900g"
+  url: "https://s.shopee.com.br/20nNrLvg1B"
   image: "/assets/img/afiliados/whey-shark-banana-canela.jpg"
   note: "Base proteica essencial."
   cat: ["Nutrição"]
 
 - title: "Adaptogen Tasty Whey — 900g"
-  url: "https://www.fithouse.com.br/proteinas/whey-protein-tasty-whey-pote-900g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/4ArsSAApAd"
   image: "/assets/img/afiliados/whey-adaptogen-tasty.jpg"
   note: "Blend saboroso, boa digestão."
   cat: ["Nutrição"]
 
-- title: "Shark Pro Whey Beef Protein — 900g (Frutas Vermelhas)"
-  url: "https://www.fithouse.com.br/proteinas/whey-beef-protein-zero-lactose-pote-900g-shark-pro-frutas-vermelhas?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+- title: "Shark Pro Whey Beef Protein — 900g (Frutas Roxas)"
+  url: "https://s.shopee.com.br/1Vr7HKjl6p"
   image: "/assets/img/afiliados/whey-beef-pro-shark.jpg"
   note: "Zero lactose — alternativa à proteína do leite."
   cat: ["Nutrição"]
 
 - title: "Nutrata Pasta de Amendoim + Whey — 600g"
-  url: "https://www.fithouse.com.br/pasta-de-amendoim/pasta-de-amendoim-com-whey-protein-600g-nutrata-dulce-de-leche-crunchy-havanna?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/5AkPe8YaGr"
   image: "/assets/img/afiliados/pasta-amendoim-whey.jpg"
   note: "Snack proteico prático."
   cat: ["Nutrição"]
 
-- title: "Vitafor Whey Concentrado — Refil 900g (Morango)"
-  url: "https://www.fithouse.com.br/whey-protein-concentrado/whey-protein-concentrado-refil-900g-morango-vitafor?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+- title: "Vitafor Whey Concentrado — Refil 900g"
+  url: "https://s.shopee.com.br/2g34feEwaP"
   image: "/assets/img/afiliados/whey-vitafor-refil-morango.jpg"
   note: "Custo/benefício para uso diário."
   cat: ["Nutrição"]
-
 
 # =========================
 # NUTRIÇÃO — CREATINA
 # =========================
 - title: "Shark Pro Creatina Flavor — 300g (Limão)"
-  url: "https://www.fithouse.com.br/creatina/energy-creatina-flavor-pote-300g-sabor-limao-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/7fRkdBI9ih"
   image: "/assets/img/afiliados/creatina-shark-limao.jpg"
   note: "Força e desempenho cognitivo."
   cat: ["Nutrição"]
 
 - title: "Black Skull Creatine — 300g"
-  url: "https://www.fithouse.com.br/creatina/creatine-300g-blackskull?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/8AO1FzUeg0"
   image: "/assets/img/afiliados/creatina-blackskull.jpg"
   note: "Monohidratada — alto respaldo científico."
+  cat: ["Nutrição"]
+
+- title: "Creatina Platinum — Pote"
+  url: "https://s.shopee.com.br/7KouGcKzMf"
+  image: "/assets/img/afiliados/creatina-platinum-pote.jpg"
+  note: "Série Platinum para rendimento."
   cat: ["Nutrição"]
 
 - title: "Adaptogen Creatina — Refil 1kg"
@@ -84,6 +89,11 @@
   note: "Alto rendimento."
   cat: ["Nutrição"]
 
+- title: "Adaptogen Creatina Platinum Series"
+  url: "https://s.shopee.com.br/7KouGteS3b"
+  image: "/assets/img/afiliados/creatina-adaptogen-platinum.jpg"
+  note: "Linha Platinum."
+  cat: ["Nutrição"]
 
 # =========================
 # NUTRIÇÃO — AMINOÁCIDOS / INTRA
@@ -94,7 +104,6 @@
   note: "Suporte intra-treino."
   cat: ["Nutrição"]
 
-
 # =========================
 # NUTRIÇÃO — TERMOGÊNICO
 # =========================
@@ -104,98 +113,98 @@
   note: "Auxílio ao metabolismo (uso orientado)."
   cat: ["Nutrição"]
 
-
 # ==========================
 # NUTRIÇÃO — MULTIVITAMÍNICOS
 # ==========================
 - title: "Adaptogen Osteo Ultra — 120 cáps"
-  url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-osteo-ultra-pote-120-capsulas-72g-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/4q7ZIOuPfa"
   image: "/assets/img/afiliados/multi-osteo-ultra.jpg"
   note: "Cobre deficiências comuns."
   cat: ["Nutrição"]
 
 - title: "MuscleTech Platinum — 60 comp."
-  url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-platinum-pote-com-60-comprimidos-muscletech?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/7V8KTPPlYK"
   image: "/assets/img/afiliados/multi-platinum-muscletech.jpg"
   note: "Boa cobertura diária."
   cat: ["Nutrição"]
 
 - title: "Shark Pro Vitta Daily — 30 cáps"
-  url: "https://www.fithouse.com.br/multivitaminicos/multivitaminico-vitta-daily-pote-com-30-capsulas-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/1LXh80g3gL"
   image: "/assets/img/afiliados/multi-vitta-daily-shark.jpg"
   note: "Rotina simplificada."
   cat: ["Nutrição"]
-
 
 # =========================
 # NUTRIÇÃO — ÔMEGA-3
 # =========================
 - title: "Nutrify Ômega-3 — 60 cáps"
-  url: "https://www.fithouse.com.br/vitaminas/omega-3-pote-com-60-capsulas-nutrify?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/AKSVqj3LvJ"
   image: "/assets/img/afiliados/omega3-nutrify.jpg"
   note: "EPA/DHA — anti-inflamatório."
   cat: ["Nutrição"]
 
 - title: "DUX Fish Oil — 180 cáps"
-  url: "https://www.fithouse.com.br/omega-3/omega-3-fish-oil-pote-com-180-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/Lf9wTKezU"
   image: "/assets/img/afiliados/omega3-dux-fish-oil.jpg"
   note: "Alto rendimento."
   cat: ["Nutrição"]
 
-
 # =========================
 # NUTRIÇÃO — MAGNÉSIO
 # =========================
+- title: "Bodyaction Magnésio + Inositol — 210g"
+  url: "https://s.shopee.com.br/4VUiuYttJi"
+  image: "/assets/img/afiliados/magnesio-inositol-bodyaction.jpg"
+  note: "Regula SNC e sono."
+  cat: ["Nutrição"]
+
 - title: "Ocean Drop Magnésio Plus — 180 cáps"
-  url: "https://www.fithouse.com.br/vitaminas/magnesio-plus-pote-180-capsulas-ocean-drop?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/12JYMDo52"
   image: "/assets/img/afiliados/magnesio-plus-oceandrop.jpg"
   note: "Praticidade em cápsulas."
   cat: ["Nutrição"]
-
 
 # =========================
 # NUTRIÇÃO — D3 + K2
 # =========================
 - title: "DUX Vitamina D3 + K2 — 20 ml"
-  url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-frasco-20ml-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/6KwN62sob5"
   image: "/assets/img/afiliados/d3-k2-dux.jpg"
   note: "Imunidade + cálcio."
   cat: ["Nutrição"]
 
 - title: "PuraVida D3 + K2 — 20 ml"
-  url: "https://www.fithouse.com.br/vitaminas/vitamina-d3-k2-gotas-20-ml-pura-vida?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/BLjkkB9Uz"
   image: "/assets/img/afiliados/d3-k2-puravida.jpg"
   note: "Gotas fáceis de dosar."
   cat: ["Nutrição"]
 
-
 # =========================
 # NUTRIÇÃO — COLÁGENO / ESTÉTICA
 # =========================
-- title: "Bodyaction Colágeno Verisol + Ácido Hialurônico 200g"
-  url: "https://www.fithouse.com.br/colagenos/colageno-verisol-com-acido-hialuronico-lata-200g-bodyaction?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+- title: "Bodyaction Colágeno Verisol + Ácido Hialurônico — 200g"
+  url: "https://s.shopee.com.br/3VcBiuxBKi"
   image: "/assets/img/afiliados/colageno-verisol-bodyaction.jpg"
   note: "Pele, unhas e articulações."
   cat: ["Nutrição"]
-
 
 # =========================
 # NUTRIÇÃO — PRÉ-TREINO / CAFEÍNA
 # =========================
 - title: "Nex Life Pre-Workout 300g — Uva"
-  url: "https://www.fithouse.com.br/pre-treino/pre-workout-pote-300g-sabor-uva-nex-life?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/8V0rgGiuJb"
   image: "/assets/img/afiliados/pre-nex-life-uva.jpg"
   note: "Energia e foco."
   cat: ["Nutrição"]
 
 - title: "Shark Pro — Pré Treino 300g"
-  url: "https://www.fithouse.com.br/pre-treino/pre-treino-shark-energy-pote-300g-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/3VcBj9ZWWj"
   image: "/assets/img/afiliados/pre-shark-pro.jpg"
   note: "Disposição para treinar."
   cat: ["Nutrição"]
 
 - title: "Nutrata Nervous 415g — Pink Lemonade"
-  url: "https://www.fithouse.com.br/pre-treino/promopack-pre-treino-nervous-415g-nutrata-pink-lemonade?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
+  url: "https://s.shopee.com.br/30fv8I50st"
   image: "/assets/img/afiliados/pre-nutrata-nervous-pink.jpg"
   note: "Para treinos intensos."
   cat: ["Nutrição"]
