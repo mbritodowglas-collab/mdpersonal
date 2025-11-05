@@ -10,35 +10,40 @@ permalink: /blog/
   <p>Conteúdos práticos sobre treino, neurociência, nutrição e gestão de academias — base dos vídeos do canal.</p>
 </section>
 
-<!-- DESTAQUE (fora do header) -->
-{% if site.posts and site.posts.size > 0 %}
-  {% assign destaque = site.posts | first %}
-  <section class="blog-destaque">
-    <a class="dst-wrap" href="{{ destaque.url | relative_url }}">
-      <div class="thumb" style="background-image:url('{{ destaque.image | default: '/assets/img/thumb-default.jpg' | relative_url }}')"></div>
-      <div class="dst-info">
-        {% if destaque.categories and destaque.categories.size > 0 %}
-          <span class="cat">{{ destaque.categories[0] }}</span>
-        {% endif %}
-        <h2>{{ destaque.title }}</h2>
-        <p>{{ destaque.excerpt | default: destaque.content | strip_html | truncate: 160 }}</p>
+<!-- DESTAQUE: player do YouTube no topo (substitui o antigo "último artigo") -->
+<section class="blog-destaque">
+  <div class="dst-wrap dst-video" aria-label="Playlist do YouTube — MD Personal">
+    <div class="thumb" style="aspect-ratio:16/9; border-radius:12px; overflow:hidden;">
+      <iframe
+        src="https://www.youtube.com/embed/videoseries?list=PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-"
+        title="Últimos vídeos — MD Personal"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width:100%;height:100%;border:0;"></iframe>
+    </div>
+    <div class="dst-info">
+      <span class="cat">YouTube</span>
+      <h2>Últimos vídeos — MD Personal</h2>
+      <p>Assista diretamente à playlist do canal. A capa e a ordem se atualizam conforme você organiza a playlist no YouTube.</p>
+      <div class="row">
+        <a class="btn" href="https://youtube.com/playlist?list=PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-" target="_blank" rel="noopener">Abrir playlist</a>
       </div>
-    </a>
-  </section>
-{% endif %}
+    </div>
+  </div>
+</section>
 
 <!-- GRID: lateral + lista -->
 <div class="blog-layout">
   <aside class="blog-sidebar">
-  <nav class="blog-filtros-vertical" aria-label="Filtrar por categoria">
-    <button data-filter="all" class="on">Últimos</button>
-    <button data-filter="Treino">Treino</button>
-    <button data-filter="Neurociência">Neurociência</button>
-    <button data-filter="Nutrição">Nutrição</button>
-    <button data-filter="Gestão">Gestão</button>
-    <button data-filter="Depoimentos">Depoimentos</button>
-  </nav>
-</aside>
+    <nav class="blog-filtros-vertical" aria-label="Filtrar por categoria">
+      <button data-filter="all" class="on">Últimos</button>
+      <button data-filter="Treino">Treino</button>
+      <button data-filter="Neurociência">Neurociência</button>
+      <button data-filter="Nutrição">Nutrição</button>
+      <button data-filter="Gestão">Gestão</button>
+      <button data-filter="Depoimentos">Depoimentos</button>
+    </nav>
+  </aside>
 
   <section class="blog-lista">
     <div class="cards">
@@ -111,3 +116,33 @@ permalink: /blog/
   }
 })();
 </script>
+
+<style>
+/* Ajustes visuais do destaque com vídeo (mantém estética do blog) */
+.blog-destaque .dst-wrap{
+  display:grid; gap:12px;
+  grid-template-columns: 1fr;
+  background:#0f0f0f; border:1px solid #1f1f1f; border-radius:16px;
+  padding:12px;
+}
+.blog-destaque .thumb{ background:#000; }
+.blog-destaque .dst-info{ display:flex; flex-direction:column; gap:.4rem; padding:4px 6px; }
+.blog-destaque .dst-info .cat{
+  display:inline-block; background:rgba(227,197,101,.1);
+  color:#e3c565; border:1px solid rgba(227,197,101,.35);
+  padding:.12rem .5rem; border-radius:999px; font-weight:600; font-size:.9rem;
+}
+.blog-destaque h2{ margin:.2rem 0 .25rem; font-size:1.2rem; color:#fff; }
+.blog-destaque p{ color:#cfcfcf; margin:0; }
+.blog-destaque .row{ margin-top:.5rem; }
+.blog-destaque .btn{ display:inline-block; padding:.6rem .9rem; border-radius:10px; background:#d62828; color:#fff; text-decoration:none; font-weight:700; }
+.blog-destaque .btn:hover{ background:#ff4040; }
+
+/* Layout responsivo do destaque */
+@media (min-width:860px){
+  .blog-destaque .dst-wrap{ grid-template-columns: 1.3fr .7fr; }
+}
+
+/* Opcional: garantir mesma “cara” dos cards */
+.blog-lista .cards .thumb{ aspect-ratio:16/9; background-size:cover; background-position:center; }
+</style>
