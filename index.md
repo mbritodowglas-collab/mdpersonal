@@ -17,63 +17,82 @@ title: Início
 <section class="artigos">
   <h2>Últimos artigos e vídeos</h2>
 
-  {% comment %}
-    Busca o item mais recente em _data/youtube.yml (entre playlists) pelo campo "published".
-  {% endcomment %}
-  {% assign has_video = false %}
-  {% assign vid = nil %}
+  {%- comment -%}
+    Pegamos a playlist mais recente (entre _data/youtube.yml -> playlists)
+    usando o campo "published". Se estiver vazio, caímos no primeiro item.
+    O card SEMPRE abre a PLAYLIST (não o watch?v=).
+  {%- endcomment -%}
+  {%- assign has_video = false -%}
+  {%- assign vid = nil -%}
 
-  {% if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists.size > 0 %}
-    {% assign _sorted = site.data.youtube.playlists | sort: 'published' | reverse %}
-    {% assign vid = _sorted[0] %}
-    {% if vid and (vid.last_id or vid.url) %}
-      {% assign has_video = true %}
-    {% endif %}
-  {% endif %}
+  {%- if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists.size > 0 -%}
+    {%- assign with_date = site.data.youtube.playlists | where_exp: "p", "p.published and p.published != ''" -%}
+    {%- if with_date and with_date.size > 0 -%}
+      {%- assign _sorted = with_date | sort: 'published' | reverse -%}
+      {%- assign vid = _sorted[0] -%}
+    {%- else -%}
+      {%- assign vid = site.data.youtube.playlists[0] -%}
+    {%- endif -%}
+    {%- if vid -%}
+      {%- assign has_video = true -%}
+    {%- endif -%}
+  {%- endif -%}
 
-  {% assign limit_posts = 3 %}
-  {% if has_video %}
-    {% assign limit_posts = 2 %}
-  {% endif %}
+  {%- assign limit_posts = 3 -%}
+  {%- if has_video -%}
+    {%- assign limit_posts = 2 -%}
+  {%- endif -%}
 
   <div class="cards">
 
-    {% if has_video %}
-      {%- assign yt_thumb = vid.thumb | default: vid.thumb_hq -%}
+    {%- if has_video -%}
+      {%- comment -%} Resolve URL da playlist (prioriza campo url; senão monta por id) {%- endcomment -%}
+      {%- assign pl_url = vid.url -%}
+      {%- if pl_url == nil or pl_url == '' -%}
+        {%- if vid.id -%}
+          {%- assign pl_url = 'https://www.youtube.com/playlist?list=' | append: vid.id -%}
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- comment -%} Resolve thumb (thumb local > thumb_hq > last_id) {%- endcomment -%}
+      {%- assign yt_thumb = vid.thumb -%}
       {%- if yt_thumb == nil or yt_thumb == '' -%}
+        {%- assign yt_thumb = vid.thumb_hq -%}
+      {%- endif -%}
+      {%- if (yt_thumb == nil or yt_thumb == '') and vid.last_id -%}
         {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
       {%- endif -%}
-      {%- assign yt_href = vid.url | default: ('https://www.youtube.com/watch?v=' | append: vid.last_id) -%}
 
       <article class="card card-video">
-        <a href="{{ yt_href | escape }}" target="_blank" rel="noopener" aria-label="Assistir: {{ vid.title | default: 'Último vídeo no YouTube' }}">
-          <!-- Setando o background diretamente pra evitar qualquer conflito de CSS var -->
-          <div class="thumb video-thumb" style="background-image:url('{{ yt_thumb }}')">
+        <a href="{{ pl_url }}" target="_blank" rel="noopener" aria-label="Abrir playlist no YouTube: {{ vid.title | default: 'Últimos vídeos' }}">
+          <div class="thumb video-thumb" style="--yt-thumb:url('{{ yt_thumb }}')">
             <span class="play-badge" aria-hidden="true">▶</span>
           </div>
           <div class="card-body">
             <p class="meta">
               <span class="cat">YouTube</span>
-              {% if vid.published %}<span class="date">{{ vid.published }}</span>{% endif %}
+              {%- if vid.published and vid.published != '' -%}
+                <span class="date">{{ vid.published }}</span>
+              {%- endif -%}
             </p>
-            <h3>{{ vid.title | default: 'Último vídeo no YouTube' }}</h3>
-            <p class="exc">Assista ao conteúdo mais recente do canal. Mantemos alinhado com os artigos da semana.</p>
-            <span class="ler">Ver no YouTube →</span>
+            <h3>{{ vid.title | default: 'Últimos vídeos' }}</h3>
+            <p class="exc">Assista à playlist mais recente do canal. Mantemos alinhado com os artigos da semana.</p>
+            <span class="ler">Abrir playlist →</span>
           </div>
         </a>
       </article>
-    {% endif %}
+    {%- endif -%}
 
-    {% if site.posts and site.posts.size > 0 %}
-      {% for post in site.posts limit:limit_posts %}
+    {%- if site.posts and site.posts.size > 0 -%}
+      {%- for post in site.posts limit:limit_posts -%}
         <article class="card">
           <a href="{{ post.url | relative_url }}">
             <div class="thumb" style="background-image:url('{{ post.image | default: '/assets/posts/default.jpg' | relative_url }}')"></div>
             <div class="card-body">
               <p class="meta">
-                {% if post.categories and post.categories.size > 0 %}
+                {%- if post.categories and post.categories.size > 0 -%}
                   <span class="cat">{{ post.categories[0] }}</span>
-                {% endif %}
+                {%- endif -%}
                 <span class="date">{{ post.date | date: "%d %b %Y" }}</span>
               </p>
               <h3>{{ post.title }}</h3>
@@ -82,10 +101,10 @@ title: Início
             </div>
           </a>
         </article>
-      {% endfor %}
-    {% else %}
+      {%- endfor -%}
+    {%- else -%}
       <p>Em breve, novos artigos no blog.</p>
-    {% endif %}
+    {%- endif -%}
   </div>
 </section>
 
@@ -126,6 +145,13 @@ title: Início
 /* Card de vídeo */
 .card-video .video-thumb{
   position: relative;
+  background-image: var(--yt-thumb);
+  background-size: cover;
+  background-position: center;
+}
+.card-video .thumb{
+  aspect-ratio: 16/9;
+  filter: brightness(.92);
 }
 .card-video .play-badge{
   position:absolute;
