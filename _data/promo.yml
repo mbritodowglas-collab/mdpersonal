@@ -1,44 +1,55 @@
-# Caixa flutuante de promo — curadoria manual (NÃO lê Utilitários)
-enabled: true
+<script>
+(function(){
+  try{
+    const cfg = {
+      items: {{ promo.items | jsonify }},
+      rotation: {{ promo.rotation | jsonify }},
+      rememberHours: 0,  // << Forçado a 0: não lembra fechamento
+      oncePerSession: false, // << Mostra sempre que mudar de página
+      hideOn: {{ promo.hide_on_paths | default: "[]" | jsonify }}
+    };
 
-# 0 = não lembrar; 24 = some por 24h após fechar
-remember_close_hours: 24
+    const path = location.pathname.replace(/\/+$/,'') || '/';
+    if (Array.isArray(cfg.hideOn) && cfg.hideOn.includes(path)) return;
 
-# Páginas onde NÃO deve aparecer
-hide_on_paths:
-  - "/avaliacao"
+    const pool = (cfg.items||[]).filter(it => it && it.active);
+    if (!pool.length) return;
 
-# Estratégia de rotação
-rotation: "weighted-random"   # "random" ou "weighted-random"
+    function pickRandom(list){
+      return list[Math.floor(Math.random()*list.length)];
+    }
+    function pickWeighted(list){
+      const arr = [];
+      list.forEach(it=>{
+        const w = Math.max(1, Number(it.weight||1));
+        for(let i=0;i<w;i++) arr.push(it);
+      });
+      return pickRandom(arr);
+    }
+    const chosen = (cfg.rotation === "weighted-random") ? pickWeighted(pool) : pickRandom(pool);
+    if (!chosen) return;
 
-# (opcional) limitar 1 exibição por sessão de navegação
-once_per_session: true
+    const box   = document.getElementById("md-promo");
+    const link  = box.querySelector(".md-promo__body");
+    const img   = box.querySelector(".md-promo__img img");
+    const ttl   = box.querySelector(".md-promo__title");
+    const desc  = box.querySelector(".md-promo__desc");
+    const cta   = box.querySelector(".md-promo__cta");
 
-# Itens curados por você (coloque só o que quer sortear)
-items:
-  - id: "creatina-adaptogen-1kg"
-    active: true
-    weight: 3
-    title: "Creatina Platinum 1kg"
-    text: "Força e foco. Cupom: MDSUPLEMENTOS5"
-    image: "/assets/img/afiliados/creatina-adaptogen-1kg.jpg"
-    url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    cta: "Ver oferta"
+    link.href = chosen.url || "#";
+    img.src = chosen.image || "";
+    img.alt = chosen.title || "Oferta";
+    ttl.textContent  = chosen.title || "Produto";
+    desc.textContent = chosen.text  || "";
+    cta.textContent  = chosen.cta   || "Ver";
 
-  - id: "omega3-dux-180"
-    active: true
-    weight: 1
-    title: "Ômega-3 DUX 180 cáps"
-    text: "EPA/DHA para saúde e foco."
-    image: "/assets/img/afiliados/omega3-dux-fish-oil.jpg"
-    url: "https://www.fithouse.com.br/omega-3/omega-3-fish-oil-pote-com-180-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    cta: "Conferir"
+    box.hidden = false;
 
-  - id: "whey-shark-900"
-    active: false      # desliga quando não quiser sortear
-    weight: 2
-    title: "Ultra Whey Shark 900g"
-    text: "Base proteica diária."
-    image: "/assets/img/afiliados/whey-shark-banana-canela.jpg"
-    url: "https://www.fithouse.com.br/whey-protein-concentrado/ultra-whey-protein-pote-900g-sabor-banana-ccanela-shark-pro?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    cta: "Comprar"
+    // Fecha manualmente sem bloquear reexibição
+    box.querySelector(".md-promo__close").addEventListener("click", function(ev){
+      ev.stopPropagation();
+      box.hidden = true;
+    });
+  }catch(e){}
+})();
+</script>
