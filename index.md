@@ -18,47 +18,37 @@ title: Início
   <h2>Últimos artigos e vídeos</h2>
 
   {% comment %}
-    Pega a playlist mais recente em _data/youtube.yml.
-    Se houver "published" nas playlists, ordena por published (desc);
-    senão usa a primeira da lista.
+    Busca o item mais recente em _data/youtube.yml (entre playlists) pelo campo "published".
   {% endcomment %}
   {% assign has_video = false %}
   {% assign vid = nil %}
+
   {% if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists.size > 0 %}
-    {% assign _pl = site.data.youtube.playlists %}
-    {% assign _with_date = _pl | where_exp: "p", "p.published and p.published != ''" %}
-    {% if _with_date.size > 0 %}
-      {% assign vid = _with_date | sort: 'published' | reverse | first %}
-    {% else %}
-      {% assign vid = _pl | first %}
+    {% assign _sorted = site.data.youtube.playlists | sort: 'published' | reverse %}
+    {% assign vid = _sorted[0] %}
+    {% if vid and (vid.last_id or vid.url) %}
+      {% assign has_video = true %}
     {% endif %}
-    {% if vid %}{% assign has_video = true %}{% endif %}
   {% endif %}
 
   {% assign limit_posts = 3 %}
-  {% if has_video %}{% assign limit_posts = 2 %}{% endif %}
+  {% if has_video %}
+    {% assign limit_posts = 2 %}
+  {% endif %}
 
   <div class="cards">
 
     {% if has_video %}
-      {%- assign yt_href = vid.url -%}
-      {%- if yt_href == nil or yt_href == '' and vid.last_id -%}
-        {%- assign yt_href = 'https://www.youtube.com/watch?v=' | append: vid.last_id -%}
-      {%- endif -%}
-
-      {%- assign yt_thumb = vid.thumb -%}
+      {%- assign yt_thumb = vid.thumb | default: vid.thumb_hq -%}
       {%- if yt_thumb == nil or yt_thumb == '' -%}
-        {%- if vid.last_id -%}
-          {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
-        {%- else -%}
-          {%- assign yt_thumb = '/assets/img/yt-fallback.jpg' | relative_url -%}
-        {%- endif -%}
+        {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
       {%- endif -%}
+      {%- assign yt_href = vid.url | default: ('https://www.youtube.com/watch?v=' | append: vid.last_id) -%}
 
       <article class="card card-video">
-        <a href="{{ yt_href }}" target="_blank" rel="noopener"
-           aria-label="Abrir: {{ vid.title | default: 'Últimos vídeos' }}">
-          <div class="thumb video-thumb" style="--yt-thumb:url('{{ yt_thumb }}')">
+        <a href="{{ yt_href | escape }}" target="_blank" rel="noopener" aria-label="Assistir: {{ vid.title | default: 'Último vídeo no YouTube' }}">
+          <!-- Setando o background diretamente pra evitar qualquer conflito de CSS var -->
+          <div class="thumb video-thumb" style="background-image:url('{{ yt_thumb }}')">
             <span class="play-badge" aria-hidden="true">▶</span>
           </div>
           <div class="card-body">
@@ -66,7 +56,7 @@ title: Início
               <span class="cat">YouTube</span>
               {% if vid.published %}<span class="date">{{ vid.published }}</span>{% endif %}
             </p>
-            <h3>{{ vid.title | default: 'MD Personal — Últimos vídeos' }}</h3>
+            <h3>{{ vid.title | default: 'Último vídeo no YouTube' }}</h3>
             <p class="exc">Assista ao conteúdo mais recente do canal. Mantemos alinhado com os artigos da semana.</p>
             <span class="ler">Ver no YouTube →</span>
           </div>
@@ -105,6 +95,7 @@ title: Início
   gap:1rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
+
 .artigos .card{
   background:#0f0f0f;
   border:1px solid #1f1f1f;
@@ -135,17 +126,17 @@ title: Início
 /* Card de vídeo */
 .card-video .video-thumb{
   position: relative;
-  background-image: var(--yt-thumb);
-  background-size: cover;
-  background-position: center;
 }
-.card-video .thumb{ aspect-ratio: 16/9; filter: brightness(.92); }
 .card-video .play-badge{
-  position:absolute; inset:auto auto 10px 10px;
+  position:absolute;
+  inset:auto auto 10px 10px;
   display:inline-flex; align-items:center; justify-content:center;
   width:42px; height:42px; border-radius:50%;
   background:#ff0000; color:#fff; font-weight:700;
-  box-shadow:0 6px 18px rgba(0,0,0,.35); font-size:1rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  font-size:1rem;
 }
-@media (hover:hover){ .card-video:hover .thumb{ filter: brightness(1); } }
+@media (hover:hover){
+  .card-video:hover .thumb{ filter: brightness(1); }
+}
 </style>
