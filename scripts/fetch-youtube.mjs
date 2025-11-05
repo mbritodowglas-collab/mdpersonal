@@ -5,14 +5,8 @@ import { parseStringPromise } from "xml2js";
 import yaml from "yaml";
 
 const PLAYLISTS = [
-  {
-    name: "MD Personal",
-    id: "PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-", // sua playlist MD
-  },
-  {
-    name: "CNT",
-    id: "PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ", // sua playlist CNT
-  },
+  { name: "MD Personal — Playlist 1", id: "PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-" },
+  { name: "MD Personal — Playlist 2", id: "PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ" },
 ];
 
 const FEED_URL = (playlistId) =>
@@ -20,27 +14,38 @@ const FEED_URL = (playlistId) =>
 
 async function fetchLatest(playlist) {
   const res = await fetch(FEED_URL(playlist.id));
-  if (!res.ok) throw new Error(`Falha ao buscar RSS da playlist ${playlist.name}`);
+  if (!res.ok) throw new Error(`Falha ao buscar RSS da playlist: ${playlist.name}`);
 
   const xml = await res.text();
   const data = await parseStringPromise(xml);
 
-  // Estrutura do feed:
-  // data.feed.entry[0] é o vídeo mais recente
+  // Vídeo mais recente
   const entry = data?.feed?.entry?.[0];
-  if (!entry) return { ...playlist, last_id: null };
-
-  const videoId = entry?.["yt:videoId"]?.[0] || null;
-  const title = entry?.title?.[0] || "";
+  const videoId = entry?.["yt:videoId"]?.[0] || "";
+  const titleLast = entry?.title?.[0] || "";
   const published = entry?.published?.[0] || "";
 
   return {
-    ...playlist,
+    // título exibido no card (pode ser só o nome da playlist)
+    title: playlist.name,
+    // link PRINCIPAL usado no index -> abre a página da PLAYLIST
+    url: `https://www.youtube.com/playlist?list=${playlist.id}`,
+
+    // dados auxiliares do último vídeo (se quiser usar)
     last_id: videoId,
-    title,
+    title_last: titleLast,
     published,
-    url: videoId ? `https://www.youtube.com/watch?v=${videoId}&list=${playlist.id}` : "",
-    thumb_hq: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "",
+
+    // miniatura (capa do último vídeo); o index usa 'thumb'
+    thumb: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "",
+
+    // opcional: link direto para o vídeo já dentro da playlist
+    url_video: videoId
+      ? `https://www.youtube.com/watch?v=${videoId}&list=${playlist.id}`
+      : "",
+
+    // sempre bom manter o id da playlist
+    id: playlist.id,
   };
 }
 
@@ -52,7 +57,16 @@ async function main() {
       results.push(r);
     } catch (e) {
       console.error(e);
-      results.push({ ...p, last_id: null, title: "", published: "" });
+      results.push({
+        title: p.name,
+        url: `https://www.youtube.com/playlist?list=${p.id}`,
+        last_id: "",
+        title_last: "",
+        published: "",
+        thumb: "",
+        url_video: "",
+        id: p.id,
+      });
     }
   }
 
