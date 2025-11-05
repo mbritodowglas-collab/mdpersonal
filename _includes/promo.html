@@ -1,0 +1,124 @@
+{% assign promo = site.data.promo %}
+{% if promo and promo.enabled %}
+<div id="md-promo" class="md-promo" role="dialog" aria-live="polite" aria-label="Oferta" hidden>
+  <button class="md-promo__close" aria-label="Fechar oferta" title="Fechar">×</button>
+  <a class="md-promo__body" href="#" target="_blank" rel="noopener">
+    <div class="md-promo__img"><img alt="" loading="lazy" decoding="async"></div>
+    <div class="md-promo__text">
+      <strong class="md-promo__title"></strong>
+      <span class="md-promo__desc"></span>
+      <span class="md-promo__cta">Ver</span>
+    </div>
+  </a>
+</div>
+
+<style>
+.md-promo{
+  position: fixed; right: 16px; bottom: 16px; z-index: 9999;
+  max-width: 320px; width: calc(100vw - 24px);
+  background:#0f0f0f; border:1px solid #1f1f1f; color:#eee;
+  border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.45); overflow:hidden;
+  font-family: inherit;
+}
+.md-promo[hidden]{ display:none !important; }
+.md-promo__body{
+  display:grid; grid-template-columns: 96px 1fr; gap:10px;
+  text-decoration:none; color:inherit; padding:10px 12px 12px 10px;
+}
+.md-promo__img{ width:96px; height:96px; border-radius:12px; overflow:hidden; background:#000; }
+.md-promo__img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.md-promo__text{ display:flex; flex-direction:column; gap:4px; }
+.md-promo__title{ font-size:1rem; color:#fff; }
+.md-promo__desc{ font-size:.9rem; color:#cfcfcf; }
+.md-promo__cta{
+  margin-top:6px; align-self:flex-start;
+  background:#d62828; color:#fff; font-weight:700;
+  padding:.45rem .7rem; border-radius:10px;
+}
+.md-promo__body:hover .md-promo__cta{ background:#ff4040; }
+.md-promo__close{
+  position:absolute; top:6px; right:8px; width:28px; height:28px;
+  border:0; border-radius:999px; background:#1a1a1a; color:#ddd; cursor:pointer;
+  font-size:18px; line-height:1; display:flex; align-items:center; justify-content:center;
+}
+.md-promo__close:hover{ background:#272727; color:#fff; }
+@media (max-width:480px){
+  .md-promo{ right:10px; left:10px; bottom:10px; max-width:none; }
+}
+</style>
+
+<script>
+(function(){
+  try{
+    const cfg = {
+      items: {{ promo.items | jsonify }},
+      rotation: {{ promo.rotation | jsonify }},
+      rememberHours: {{ promo.remember_close_hours | default: 0 }},
+      oncePerSession: {{ promo.once_per_session | default: false }},
+      hideOn: {{ promo.hide_on_paths | default: "[]" | jsonify }}
+    };
+
+    // 1) página bloqueada?
+    const path = location.pathname.replace(/\/+$/,'') || '/';
+    if (Array.isArray(cfg.hideOn) && cfg.hideOn.includes(path)) return;
+
+    // 2) controle de recorrência (fechou recentemente?)
+    const CLOSE_KEY = "mdpromo_closed_at";
+    if (cfg.rememberHours && cfg.rememberHours > 0){
+      const ts = +localStorage.getItem(CLOSE_KEY) || 0;
+      if (Date.now() - ts < cfg.rememberHours * 3600 * 1000) return;
+    }
+    // uma vez por sessão?
+    if (cfg.oncePerSession){
+      if (sessionStorage.getItem("mdpromo_seen") === "1") return;
+    }
+
+    // 3) escolhe item ativo
+    const pool = (cfg.items||[]).filter(it => it && it.active);
+    if (!pool.length) return;
+
+    function pickRandom(list){
+      return list[Math.floor(Math.random()*list.length)];
+    }
+    function pickWeighted(list){
+      const arr = [];
+      list.forEach(it=>{
+        const w = Math.max(1, Number(it.weight||1));
+        for(let i=0;i<w;i++) arr.push(it);
+      });
+      return pickRandom(arr);
+    }
+    const chosen = (cfg.rotation === "weighted-random") ? pickWeighted(pool) : pickRandom(pool);
+    if (!chosen) return;
+
+    // 4) injeta conteúdo
+    const box   = document.getElementById("md-promo");
+    const link  = box.querySelector(".md-promo__body");
+    const img   = box.querySelector(".md-promo__img img");
+    const ttl   = box.querySelector(".md-promo__title");
+    const desc  = box.querySelector(".md-promo__desc");
+    const cta   = box.querySelector(".md-promo__cta");
+
+    link.href = chosen.url || "#";
+    img.src = chosen.image || "";
+    img.alt = chosen.title || "Oferta";
+    ttl.textContent  = chosen.title || "Produto";
+    desc.textContent = chosen.text  || "";
+    cta.textContent  = chosen.cta   || "Ver";
+
+    // mostra
+    box.hidden = false;
+    if (cfg.oncePerSession) sessionStorage.setItem("mdpromo_seen","1");
+
+    // fechar
+    box.querySelector(".md-promo__close").addEventListener("click", function(ev){
+      ev.stopPropagation();
+      box.hidden = true;
+      if (cfg.rememberHours && cfg.rememberHours > 0){
+        localStorage.setItem(CLOSE_KEY, String(Date.now()));
+      }
+    });
+  }catch(e){}
+})();
+</script>
+{% endif %}
