@@ -3,16 +3,15 @@
 <div id="md-promo" class="md-promo" role="dialog" aria-live="polite" aria-label="Oferta" hidden>
   <button class="md-promo__close" aria-label="Fechar oferta" title="Fechar">×</button>
 
-  {# 1) href inicial válido para o proofer; JS sobrescreve depois #}
   <a class="md-promo__body"
-     href="{{ '/' | relative_url }}"
-     data-href="" 
-     target="_blank" rel="noopener nofollow external">
+     href="{{ '/' | relative_url }}" data-href=""
+     target="_blank" rel="noopener nofollow external"
+     data-proofer-ignore>
     <div class="md-promo__img">
-      {# 2) src inicial válido p/ proofer (pixel transparente) #}
       <img alt="Produto recomendado"
            loading="lazy" decoding="async"
-           src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+           src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+           data-proofer-ignore>
     </div>
     <div class="md-promo__text">
       <strong class="md-promo__title"></strong>
@@ -24,7 +23,24 @@
 </div>
 
 <style>
-/* … (seu CSS permanece igual) … */
+.md-promo{ position:fixed; right:16px; bottom:16px; z-index:9999; max-width:320px; width:calc(100vw - 24px);
+  background:#0f0f0f; border:1px solid #1f1f1f; color:#eee; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.45);
+  overflow:hidden; font-family:inherit; opacity:0; transform:translateY(8px); transition:opacity .25s, transform .25s; }
+.md-promo.show{ opacity:1; transform:translateY(0); }
+.md-promo[hidden]{ display:none!important; }
+.md-promo__body{ display:grid; grid-template-columns:96px 1fr; gap:10px; text-decoration:none; color:inherit; padding:10px 12px 12px 10px; }
+.md-promo__img{ width:96px; height:96px; border-radius:12px; overflow:hidden; background:#000; }
+.md-promo__img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.md-promo__text{ display:flex; flex-direction:column; gap:4px; }
+.md-promo__title{ font-size:1rem; color:#fff; }
+.md-promo__desc{ font-size:.9rem; color:#cfcfcf; }
+.md-promo__note{ font-size:.8rem; opacity:.8; color:#9ad29a; }
+.md-promo__cta{ margin-top:6px; align-self:flex-start; background:#d62828; color:#fff; font-weight:700; padding:.45rem .7rem; border-radius:10px; }
+.md-promo__body:hover .md-promo__cta{ background:#ff4040; }
+.md-promo__close{ position:absolute; top:6px; right:8px; width:28px; height:28px; border:0; border-radius:999px; background:#1a1a1a;
+  color:#ddd; cursor:pointer; font-size:18px; line-height:1; display:flex; align-items:center; justify-content:center; }
+.md-promo__close:hover{ background:#272727; color:#fff; }
+@media (max-width:480px){ .md-promo{ right:10px; left:10px; bottom:10px; max-width:none; } }
 </style>
 
 <script>
@@ -45,10 +61,7 @@
     if (!pool.length) return;
 
     const pickRandom = list => list[Math.floor(Math.random()*list.length)];
-    const pickWeighted = list => {
-      const arr=[]; list.forEach(it=>{ const w=Math.max(1,Number(it.weight||1)); for(let i=0;i<w;i++) arr.push(it); });
-      return pickRandom(arr);
-    };
+    const pickWeighted = list => { const arr=[]; list.forEach(it=>{ const w=Math.max(1,Number(it.weight||1)); for(let i=0;i<w;i++) arr.push(it); }); return pickRandom(arr); };
     const chosen = (cfg.rotation === "weighted-random") ? pickWeighted(pool) : pickRandom(pool);
     if (!chosen) return;
 
@@ -60,17 +73,11 @@
     const desc  = box.querySelector(".md-promo__desc");
     const cta   = box.querySelector(".md-promo__cta");
 
-    // Atualiza conteúdo
     const href = chosen.url || "{{ '/' | relative_url }}";
     link.setAttribute("href", href);
     link.setAttribute("data-href", href);
-    if (/^https?:\/\//i.test(href)) {
-      link.setAttribute("target","_blank");
-      link.setAttribute("rel","noopener nofollow external");
-    } else {
-      link.removeAttribute("target");
-      link.setAttribute("rel","nofollow");
-    }
+    if (/^https?:\/\//i.test(href)) { link.setAttribute("target","_blank"); link.setAttribute("rel","noopener nofollow external"); }
+    else { link.removeAttribute("target"); link.setAttribute("rel","nofollow"); }
 
     ttl.textContent  = chosen.title || "Produto";
     desc.textContent = chosen.text  || "";
@@ -85,11 +92,9 @@
       box.querySelector(".md-promo__body").style.gridTemplateColumns = "1fr";
     }
 
-    // Mostra
     box.hidden = false;
     requestAnimationFrame(()=> box.classList.add("show"));
 
-    // Fechar (sem lembrar)
     box.querySelector(".md-promo__close").addEventListener("click", function(ev){
       ev.stopPropagation();
       box.classList.remove("show");
