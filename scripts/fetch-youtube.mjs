@@ -5,83 +5,69 @@ import { parseStringPromise } from "xml2js";
 import yaml from "yaml";
 
 const PLAYLISTS = [
-  { name: "MD Personal — Playlist 1", id: "PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-" },
-  { name: "MD Personal — Playlist 2", id: "PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ" },
+  { name: "MD Personal", id: "PLyHDAg9JOEnxubgaUYGLFrZJkPDi6lBX-" },
+  { name: "CNT",         id: "PLyHDAg9JOEnwA_QHpPrUbBBtagjQPT8tZ" },
 ];
 
-const FEED_URL = (playlistId) =>
-  `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+const FEED_URL = (id) => `https://www.youtube.com/feeds/videos.xml?playlist_id=${id}`;
 
-async function fetchLatest(playlist) {
-  const res = await fetch(FEED_URL(playlist.id));
-  if (!res.ok) throw new Error(`Falha ao buscar RSS da playlist: ${playlist.name}`);
-
-  const xml = await res.text();
+async function fetchLatest(p) {
+  const r = await fetch(FEED_URL(p.id));
+  if (!r.ok) throw new Error(`Falha ao buscar RSS da playlist ${p.name}`);
+  const xml = await r.text();
   const data = await parseStringPromise(xml);
 
-  // Vídeo mais recente
-  const entry = data?.feed?.entry?.[0];
-  const videoId = entry?.["yt:videoId"]?.[0] || "";
-  const titleLast = entry?.title?.[0] || "";
-  const published = entry?.published?.[0] || "";
+  const entry = data?.feed?.entry?.[0]; // último vídeo
+  if (!entry) {
+    return {
+      ...p,
+      last_id: "",
+      title_last: "",
+      // published vazio força a cair pro fim no sort
+      published: "",
+      url_playlist: `https://www.youtube.com/playlist?list=${p.id}`,
+      url_watch: "",
+      thumb_hq: "",
+    };
+  }
+
+  const videoId   = entry?.["yt:videoId"]?.[0] || "";
+  const title     = entry?.title?.[0] || "";
+  const published = entry?.published?.[0] || ""; // ISO 8601 (ok p/ sort lexicográfico)
 
   return {
-    // título exibido no card (pode ser só o nome da playlist)
-    title: playlist.name,
-    // link PRINCIPAL usado no index -> abre a página da PLAYLIST
-    url: `https://www.youtube.com/playlist?list=${playlist.id}`,
-
-    // dados auxiliares do último vídeo (se quiser usar)
+    ...p,
     last_id: videoId,
-    title_last: titleLast,
-    published,
-
-    // miniatura (capa do último vídeo); o index usa 'thumb'
-    thumb: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "",
-
-    // opcional: link direto para o vídeo já dentro da playlist
-    url_video: videoId
-      ? `https://www.youtube.com/watch?v=${videoId}&list=${playlist.id}`
-      : "",
-
-    // sempre bom manter o id da playlist
-    id: playlist.id,
+    title_last: title,
+    published, // ISO, ex: 2025-11-05T12:34:56+00:00
+    url_playlist: `https://www.youtube.com/playlist?list=${p.id}`,
+    url_watch: videoId ? `https://www.youtube.com/watch?v=${videoId}&list=${p.id}` : "",
+    thumb_hq: videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "",
   };
 }
 
 async function main() {
-  const results = [];
+  const playlists = [];
   for (const p of PLAYLISTS) {
-    try {
-      const r = await fetchLatest(p);
-      results.push(r);
-    } catch (e) {
+    try { playlists.push(await fetchLatest(p)); }
+    catch (e) {
       console.error(e);
-      results.push({
-        title: p.name,
-        url: `https://www.youtube.com/playlist?list=${p.id}`,
+      playlists.push({
+        ...p,
         last_id: "",
         title_last: "",
         published: "",
-        thumb: "",
-        url_video: "",
-        id: p.id,
+        url_playlist: `https://www.youtube.com/playlist?list=${p.id}`,
+        url_watch: "",
+        thumb_hq: "",
       });
     }
   }
 
-  const doc = {
-    updated_at: new Date().toISOString(),
-    playlists: results,
-  };
-
-  const yml = yaml.stringify(doc);
+  const doc = { updated_at: new Date().toISOString(), playlists };
   fs.mkdirSync("_data", { recursive: true });
-  fs.writeFileSync("_data/youtube.yml", yml, "utf8");
-  console.log("Escrito em _data/youtube.yml:\n", yml);
+  fs.writeFileSync("_data/youtube.yml", yaml.stringify(doc), "utf8");
+  console.log("OK: _data/youtube.yml atualizado");
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+main().catch(err => { console.error(err); process.exit(1); });
