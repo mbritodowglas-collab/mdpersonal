@@ -18,35 +18,38 @@ title: Início
   <h2>Últimos artigos e vídeos</h2>
 
   {%- comment -%}
-    Pegamos a playlist mais recente (entre _data/youtube.yml -> playlists)
-    usando o campo "published". Se estiver vazio, caímos no primeiro item.
-    O card SEMPRE abre a PLAYLIST (não o watch?v=).
+    Seleciona a playlist mais recente entre _data/youtube.yml -> playlists,
+    comparando o campo "published" (quando existir).
   {%- endcomment -%}
   {%- assign has_video = false -%}
   {%- assign vid = nil -%}
 
   {%- if site.data.youtube and site.data.youtube.playlists and site.data.youtube.playlists.size > 0 -%}
-    {%- assign with_date = site.data.youtube.playlists | where_exp: "p", "p.published and p.published != ''" -%}
-    {%- if with_date and with_date.size > 0 -%}
-      {%- assign _sorted = with_date | sort: 'published' | reverse -%}
-      {%- assign vid = _sorted[0] -%}
-    {%- else -%}
-      {%- assign vid = site.data.youtube.playlists[0] -%}
-    {%- endif -%}
-    {%- if vid -%}
-      {%- assign has_video = true -%}
-    {%- endif -%}
+    {%- assign vid = site.data.youtube.playlists[0] -%}
+    {%- assign latest_date = vid.published | default: '' -%}
+    {%- for it in site.data.youtube.playlists -%}
+      {%- if it.published and it.published != '' -%}
+        {%- if latest_date == '' -%}
+          {%- assign latest_date = it.published -%}
+          {%- assign vid = it -%}
+        {%- else -%}
+          {%- if it.published > latest_date -%}
+            {%- assign latest_date = it.published -%}
+            {%- assign vid = it -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if vid -%}{%- assign has_video = true -%}{%- endif -%}
   {%- endif -%}
 
   {%- assign limit_posts = 3 -%}
-  {%- if has_video -%}
-    {%- assign limit_posts = 2 -%}
-  {%- endif -%}
+  {%- if has_video -%}{%- assign limit_posts = 2 -%}{%- endif -%}
 
   <div class="cards">
 
     {%- if has_video -%}
-      {%- comment -%} Resolve URL da playlist (prioriza campo url; senão monta por id) {%- endcomment -%}
+      {%- comment -%} Monta URL da playlist {%- endcomment -%}
       {%- assign pl_url = vid.url -%}
       {%- if pl_url == nil or pl_url == '' -%}
         {%- if vid.id -%}
@@ -54,13 +57,15 @@ title: Início
         {%- endif -%}
       {%- endif -%}
 
-      {%- comment -%} Resolve thumb (thumb local > thumb_hq > last_id) {%- endcomment -%}
+      {%- comment -%} Resolve thumb (thumb > thumb_hq > last_id) {%- endcomment -%}
       {%- assign yt_thumb = vid.thumb -%}
       {%- if yt_thumb == nil or yt_thumb == '' -%}
         {%- assign yt_thumb = vid.thumb_hq -%}
       {%- endif -%}
-      {%- if (yt_thumb == nil or yt_thumb == '') and vid.last_id -%}
-        {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
+      {%- if yt_thumb == nil or yt_thumb == '' -%}
+        {%- if vid.last_id -%}
+          {%- assign yt_thumb = 'https://img.youtube.com/vi/' | append: vid.last_id | append: '/hqdefault.jpg' -%}
+        {%- endif -%}
       {%- endif -%}
 
       <article class="card card-video">
@@ -114,7 +119,6 @@ title: Início
   gap:1rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-
 .artigos .card{
   background:#0f0f0f;
   border:1px solid #1f1f1f;
