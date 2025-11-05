@@ -16,11 +16,13 @@ items:
     url: "https://www.fithouse.com.br/creatina/creatina-platinum-series-refil-1kg-adaptogen?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
     cta: "Ver oferta"
 
-  - id: "omega3-dux-180"
+
+
+- id: "omega3-dux-180"
     active: true
-    weight: 1
-    title: "Ômega-3 DUX 180 cáps"
-    text: "EPA/DHA para saúde e foco."
-    image: "/assets/img/afiliados/omega3-dux-fish-oil.jpg"
-    url: "https://www.fithouse.com.br/omega-3/omega-3-fish-oil-pote-com-180-capsulas-dux-human-health?am=mdsuplementos&parceiro=10447&cupom=mdsuplementos5"
-    cta: "Conferir"
+    weight: 3
+title: "Shark Pro Whey Beef Protein — 900g (Frutas Roxas)"
+  url: "https://s.shopee.com.br/1Vr7HKjl6p"
+  image: "/assets/img/afiliados/whey-beef-pro-shark.jpg"
+  note: "Zero lactose — alternativa à proteína do leite."
+cta: "Conferir"
