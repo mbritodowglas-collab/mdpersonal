@@ -116,8 +116,6 @@ Ou seja: pra treinos que exigem atenção, carga e precisão — força primeiro
 
 ## Como fica na prática
 
-Se eu resumisse como resumo pros meus alunos:
-
 - **Hipertrofia:** musculação → aeróbico  
 - **Emagrecer com preservação muscular:** musculação → aeróbico  
 - **Cardio e resistência:** aeróbico → musculação  
