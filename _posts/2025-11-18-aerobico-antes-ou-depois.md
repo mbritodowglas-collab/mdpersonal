@@ -24,7 +24,7 @@ cta:
   url: "/avaliacao/"
 ---
 
-## Vamos conversar direto sobre isso
+## Vamos bater um papo rápido sobre isso
 
 Quando alguém me pergunta se o aeróbico vem antes ou depois da musculação, eu já sei que a pessoa tá tentando otimizar o treino — e isso é ótimo.  
 E pra ser sincero, não é uma pergunta simples. A ordem realmente muda o que o corpo prioriza.  
