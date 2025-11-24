@@ -15,23 +15,35 @@ layout: default
 
     <h1 class="post-title">{{ page.title }}</h1>
 
-    {% assign resumo = page.excerpt | default: page.content | strip_html | truncate: 180 %}
-    {% if resumo %}<p class="post-deck">{{ resumo }}</p>{% endif %}
-
+    {%- comment -%}
+      Banner do post
+      Usa page.image como imagem principal do artigo.
+    {%- endcomment -%}
     {% if page.image %}
       <figure class="post-cover">
         <img src="{{ page.image | relative_url }}"
              alt="{{ page.title | escape }}"
-             loading="eager" width="1200" height="630">
+             loading="lazy" decoding="async" width="1200" height="630">
       </figure>
+    {% endif %}
+
+    {%- comment -%}
+      Introdução curta
+      Prioridade:
+      1) page.intro (se definido no front matter)
+      2) page.excerpt
+      3) início do conteúdo (content truncado)
+    {%- endcomment -%}
+    {% assign resumo = page.intro | default: page.excerpt | default: page.content | strip_html | truncate: 180 %}
+    {% if resumo %}
+      <p class="post-deck">{{ resumo }}</p>
     {% endif %}
   </div>
 
   <!-- Corpo -->
   <div class="post-body">
-    {{ content }}
 
-    <!-- 1️⃣ BIO -->
+    <!-- 1️⃣ BIO (subiu pro topo, antes do conteúdo) -->
     <section class="autor-bio">
       <img src="{{ '/assets/img/marcio-bio.jpg' | relative_url }}" alt="Márcio Dowglas — Personal Trainer" class="autor-foto">
       <div class="autor-info">
@@ -40,7 +52,10 @@ layout: default
       </div>
     </section>
 
-    <!-- 2️⃣ TAGS -->
+    <!-- 2️⃣ CONTEÚDO -->
+    {{ content }}
+
+    <!-- 3️⃣ TAGS -->
     {% if page.tags and page.tags.size > 0 %}
       <p class="post-tags">
         <strong>Tags:</strong>
@@ -50,19 +65,19 @@ layout: default
       </p>
     {% endif %}
 
-    <!-- 3️⃣ CTA -->
+    <!-- 4️⃣ CTA -->
     {% assign cta_url  = page.cta.url  | default: '/avaliacao/' %}
     {% assign cta_text = page.cta.text | default: 'Agende sua Avaliação Gratuita' %}
     <div class="cta-post">
       <a href="{{ cta_url | relative_url }}" class="btn-cta">{{ cta_text }}</a>
     </div>
 
-    <!-- 4️⃣ Afiliados -->
+    <!-- 5️⃣ Afiliados -->
     {% if page.afiliados and page.afiliados.size > 0 %}
       {% include afiliados.html %}
     {% endif %}
 
-    <!-- 5️⃣ Compartilhar -->
+    <!-- 6️⃣ Compartilhar -->
     {% assign share_url = page.url | absolute_url %}
     <section class="share-minimal" aria-label="Compartilhar este artigo">
       <p class="share-label">📤 Compartilhar em:</p>
@@ -74,7 +89,7 @@ layout: default
     </section>
   </div>
 
-  <!-- 6️⃣ Relacionados -->
+  <!-- 7️⃣ Relacionados -->
   {% assign primary_cat = page.categories | first %}
   <div class="post-rel">
     <h3>Relacionados{% if primary_cat %} — {{ primary_cat }}{% endif %}</h3>
@@ -109,7 +124,7 @@ layout: default
     </p>
   </div>
 
-  <!-- 7️⃣ Comentários -->
+  <!-- 8️⃣ Comentários -->
   <section id="comments" class="post-comments">
     <script src="https://utteranc.es/client.js"
       repo="mbritodowglas-collab/mdpersonal"
@@ -121,7 +136,7 @@ layout: default
     </script>
   </section>
 
-  <!-- 8️⃣ Navegação -->
+  <!-- 9️⃣ Navegação -->
   {% if page.previous or page.next %}
     <nav class="post-nav">
       {% if page.previous %}
