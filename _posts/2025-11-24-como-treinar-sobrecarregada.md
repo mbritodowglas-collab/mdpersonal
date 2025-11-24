@@ -7,9 +7,21 @@ image: "/assets/img/posts/sobrecarga-feminina-treino.jpg"
 excerpt: "Quando a rotina está caótica, o treino parece impossível — mas a ciência mostra que dá para fazer funcionar sem culpa e sem perfeccionismo."
 tags: [treino feminino, rotina, sobrecarga, estresse, neurociência, hábito]
 afiliados:
-  - "Minibands / Faixas elásticas"
-  - "Foam Roller — Liberação miofascial"
-  - "Caderno / Bullet Journal Fitness"
+  afiliados:
+  - title: "Minibands / Faixas elásticas"
+    url: "https://s.shopee.com.br/5pzUIGrxGf"
+    image: "/assets/img/afiliados/minibands.jpg"
+    note: "Ativação rápida e prática para treinos em casa."
+
+  - title: "Foam Roller — Liberação miofascial"
+    url: "https://s.shopee.com.br/9AFwIahWad"
+    image: "/assets/img/afiliados/foam-roller.jpg"
+    note: "Alívio da tensão e recuperação muscular."
+
+  - title: "Caderno / Bullet Journal Fitness"
+    url: "https://s.shopee.com.br/30fJ14SSfi"
+    image: "/assets/img/afiliados/bullet-journal-fitness.jpg"
+    note: "Organização do treino, foco e constância."
 cta:
   text: "Fazer avaliação gratuita"
   url: "/avaliacao/"
