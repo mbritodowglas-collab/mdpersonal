@@ -7,7 +7,6 @@ image: "/assets/img/posts/sobrecarga-feminina-treino.jpg"
 excerpt: "Quando a rotina está caótica, o treino parece impossível — mas a ciência mostra que dá para fazer funcionar sem culpa e sem perfeccionismo."
 tags: [treino feminino, rotina, sobrecarga, estresse, neurociência, hábito]
 afiliados:
-  afiliados:
   - title: "Minibands / Faixas elásticas"
     url: "https://s.shopee.com.br/5pzUIGrxGf"
     image: "/assets/img/afiliados/minibands.jpg"
