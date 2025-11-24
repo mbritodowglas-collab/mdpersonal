@@ -3,7 +3,7 @@ layout: post
 title: "Como Treinar Mesmo Estando Sobrecarregada"
 date: 2025-11-23
 categories: [Treino]
-image: "/assets/posts/sobrecarga-feminina-treino.jpg"
+image: "/assets/img/posts/sobrecarga-feminina-treino.jpg"
 excerpt: "Quando a rotina está caótica, o treino parece impossível — mas a ciência mostra que dá para fazer funcionar sem culpa e sem perfeccionismo."
 tags: [treino feminino, rotina, sobrecarga, estresse, neurociência, hábito]
 afiliados:
