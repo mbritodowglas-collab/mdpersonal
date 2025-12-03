@@ -114,7 +114,7 @@ Quando você melhora mobilidade e estabilidade, a profundidade começa a vir sem
 
 ---
 
-## Erro 1: descer dobrando os joelhos primeiro
+## Descer dobrando os joelhos primeiro
 
 Sim, isso acontece demais.
 
@@ -134,7 +134,7 @@ Goblet squat com kettlebell ajuda muito a ensinar esse padrão.
 
 ---
 
-## Erro 2: subir estendendo o joelho antes do quadril
+## Subir estendendo o joelho antes do quadril
 
 Esse aqui é mais sutil, mas destrói sua força.
 
